@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Однородные уравнения</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                     displayAlign: "center",
+                      "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="osnovny_opredeleniya.html">Основные определения</a></li>
+                        <li><a href="geom_int_ody_razresh.html">Геометрическая интерпретация ОДУ первого порядка, разрешенного относительно производной</a></li>
+                        <li><a href="s_razdel_perem.html">Уравнения с разделяющимися переменными</a></li>
+                        <li><a href="odnorodny_uravnenia.html">Однородные уравнения</a></li>
+                        <li><a href="lineynuie_uravneniya.html">Линейные уравнения</a></li>
+                        <li><a href="uravneniye_bernulli.html">Уравнение Бернулли</a></li>
+                        <li><a href="uravneniye_rikkati.html">Уравнение Риккати</a></li>
+                        <li><a href="uravnenia_v_poln_diff.html">Уравнения в полных дифференциалах</a></li>
+                        <li><a href="integrirushiy_mnozhitel.html">Интегрирующий множитель</a></li>
+                        <li><a href="ne_razresh_otn_proizv.html">ДУ 1-го порядка, не разрешенные относительно производной. Особые решения</a></li>
+                        <li><a href="kurs_algebry.html">Вспомогательный материал из курса алгебры и математического анализа</a></li>
+                        <li><a href="dokazatelstvo_teor_koshi.html">Доказательство теоремы Коши</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Однородные уравнения</div>
+                    <p>Многие типы уравнений сводятся к уравнениям с разделяющимися переменными. К ним относятся \(\textbf {однородные уравнения}\).
+                    
+                    <p>Определение: функция \(f(x, y)\) есть \(\textbf {однородная функция}\) \(m\)-\(\textbf {ого измерения}\), если для любого \(t\in \textbf{R}\) выполняется тождество 
+                        \[f(tx,ty)=t^mf(x,y).\]</p>
+                    <p> \(\textbf {Однородным}\) называют уравнение \(y'=f(x,y)\), в котором функция \(f(x,y)\) удовлетворяет условию \(f(tx,ty)=f(x,y)\), т.е. является однородной функцией нулевого измерения. Заменяя
+                    в последнем равенстве \(t\) на \(\frac1x\), получим \(f(x,y)=f(1,\frac{y}{x})=\Phi(\frac{y}{x}).\) Следовательно, уравнение \(y'=f(x,y)\) называется однородным, если его можно привести к виду 
+                        \begin{equation}\label{9}
+                            \frac{dy}{dx} =  \Phi ( \frac{y}{x} ). \tag{9}
+                        \end{equation}</p>
+                    <p>Применим замену переменной: введем новую искомую функцию \(u(x)\)  вместо \(y(x)\) по формуле \(y=ux\). Замена \(u=\frac{y}{x}\)  предполагает, что \(x\) не обращается в нуль.</p>
+
+                    <p>Относительно функции \(u(x)\) получится уравнение \(\frac{du}{dx}x+u=\Phi(u)\) или 
+                        \begin{equation}\label{10}
+                            x\frac{du}{dx}=\Phi(u)-u, \tag{10}
+                        \end{equation}
+                    </p>
+                    <p>
+                     а это уравнение с разделяющимися переменными.</p>
+                    <p>Имеются три возможности:</p>
+                    <p>1. \(\Phi(u)-u\neq0,\) дело сводится к интегрированию уравнения \({\frac{du}{\Phi(u)-u}=\frac{dx}x}\)  с разделяющимися переменными.
+                    </br>2. При некоторых значениях \(u=\overline{u},\) \(\Phi(\overline{u})-\overline{u}=0.\) Очевидно, функция \(u=\overline{u}\) является решением уравнения \(x\frac{du}{dx}=\Phi(u)-u\) (\ref{10}), а \(y=\overline{u}x\) - решение уравнения \(\frac{dy}{dx}=\Phi\left(\frac{y}{x}\right) (\ref{9})\).
+                    </br>3. \(\Phi(u)-u\equiv0\), а это означает ,что \(\Phi(u)\equiv{u}\), или \(\Phi(\frac{y}{x})\equiv\frac{y}{x}\); Уравнение (\ref{9}) принимает вид \(\frac{dy}{dx}=\frac{y}{x},\) и \(y=Cx\) --- его общее решение.</p>
+                    
+                    <p>На однородном уравнении прослеживается тенденция, характерная для интегрирования многих типов дифференциальных уравнений:
+                    \(\textbf {тем или иным способом уравнение нового типа преобразуется к типу, уже изученному.}\)</p>
+                    <div class="example">Пример 1</div>
+                    <p> \(y'=\frac{(x^2+y^2)}{xy}.\) Придадим уравнению вид
+                        \[y'=\frac{x}{y} + \frac{y}{x}\]
+                    В правой части стоит однородная функция нулевого измерения. Делаем замену \(y=ux.\)
+                    \( x\frac{du}{dx}+u=\frac 1u+u\), или \( udu=\frac{dx}{x}\). Интегрируя, находим  \(\frac{u^2}{2}=\ln |x|+C_1\), или \(u^2=2\ln |x|+\ln C,\) или \(y^2=x^2\ln(Cx^2)\) -- общий интеграл.
+                    <div class="example">Замечание</div>
+                    <p> ОДУ вида 
+                        \[M(x,y)\,dx+N(x,y)\,dy=0\]
+                    называется однородным, если \(M\) и \(N\) -- однородные функции одного и того же измерения \(m\). Для его интегрирования нет необходимости приводить его к виду (\ref{9}), можно применить подстановку \(y=ux\) и получить уравнение с разделяющимися переменными.</p>
+                    
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

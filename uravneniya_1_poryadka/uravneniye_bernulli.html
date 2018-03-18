@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Уравнение Бернулли</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="osnovny_opredeleniya.html">Основные определения</a></li>
+                        <li><a href="geom_int_ody_razresh.html">Геометрическая интерпретация ОДУ первого порядка, разрешенного относительно производной</a></li>
+                        <li><a href="s_razdel_perem.html">Уравнения с разделяющимися переменными</a></li>
+                        <li><a href="odnorodny_uravnenia.html">Однородные уравнения</a></li>
+                        <li><a href="lineynuie_uravneniya.html">Линейные уравнения</a></li>
+                        <li><a href="uravneniye_bernulli.html">Уравнение Бернулли</a></li>
+                        <li><a href="uravneniye_rikkati.html">Уравнение Риккати</a></li>
+                        <li><a href="uravnenia_v_poln_diff.html">Уравнения в полных дифференциалах</a></li>
+                        <li><a href="integrirushiy_mnozhitel.html">Интегрирующий множитель</a></li>
+                        <li><a href="ne_razresh_otn_proizv.html">ДУ 1-го порядка, не разрешенные относительно производной. Особые решения</a></li>
+                        <li><a href="kurs_algebry.html">Вспомогательный материал из курса алгебры и математического анализа</a></li>
+                        <li><a href="dokazatelstvo_teor_koshi.html">Доказательство теоремы Коши</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Уравнение Бернулли</div>
+                    <p>Уравнение Бернулли относится к типу уравнений, которые приводятся к линейному неоднородному ОДУ.</p>
+                    <p>Общий вид этого уравнения
+                        \begin{equation}\label{15}
+                            y'+a(x)y=b(x)y^n, \tag{15}
+                        \end{equation}
+                    </p>
+                    <p>где \(n\) может быть любым вещественным числом. Функции \(a(x) \) и \(b(x) \) предполагаются непрерывными в промежутке
+                    \((\alpha, \beta)\).</p>
+                    <p>Исключим случаи \(n=1\) и \(n=0\), так как при этих значениях \(n\) уравнение (\ref{15}) , превращается в однородное или неоднородное линейное уравнение.</p>
+                    <p>Разделим обе части уравнения (\ref{15}) на \(y^n\), полагая \(y\neq 0\):
+                         \[\frac{y'}{y^n}+\frac{a(x)}{y^{n-1}}=b(x).\]</p>
+                    <p>Вводя новую искомую функцию \(z=y^{1-n}\), получим
+                    линейное уравнение \(\frac{z'}{1-n}+a(x)z=b(x)\).</p>
+                <div class="example">Пример 1.</div>
+
+                    <p>Решим уравнение \(y'-\frac{4}{x}y=x\sqrt{y}.\) Это уравнение Бернулли с \(n=\frac12\). Делим обе части уравнения на \( \sqrt{y}\) в предположении \(y\ne 0\):
+                        \[\frac{y'}{\sqrt{y}}-\frac{4}{x}\sqrt{y}=x.\]</p>
+                    <p>Вводим новую переменную \(z=\sqrt{y}\), \( \frac{dz}{dx}=\frac{1}{2\sqrt{y}}\cdot\frac{dy}{dx}\), подставляем в уравнение
+                        \[z'-\frac{2}{x}z=\frac{x}{2}.\]</p>
+                    <p>Получили линейное неоднородное уравнение относительно функции \(z\), решим соответствующее однородное:
+                        \[\frac{dz}{dx}=\frac{2}{x}z, \frac{dz}{z}=\frac{2dx}{x}, \ln|z|=2\ln|x|+\ln C, z=Cx^2. \]</p>
+
+                    <p>Варьируем постоянную \(C=C(x)\):
+                        \[C'x^2+2xC-\frac{2}{x}\cdot Cx^2=\frac{x}{2}, \hspace{0.5cm} \text{или} \hspace{0.5cm} C'=\frac{1}{2x}, C=\frac12\ln|x|+D.\]</p>
+                    <p>Следовательно,
+                        \[z=x^2\left(\frac12\ln|x|+D\right).\]</p>
+                    <p>Возвращаемся к переменной \(y=x^4\left(\frac12\ln|x|+D\right)^2\).
+                    Кроме того, есть еще решение \(y=0\) \({\triangle}\).</p>
+
+                    <div class="example">Пример 2.</div>
+                    <p>Заметим, что рассмотренная ранее модель эффективности рекламы (см. пример (<a href="lineynuie_uravneniya.html#mjx-eqn-11">11</a>) первой лекции) описывается уравнением Бернулли:
+                        \[\frac{dx}{dt}=kx(N-x), \hspace{0.5cm} \text{или}\ \hspace{0.5cm}  \frac{dx}{dt}-kN\,x=-k\,x^2.\]</p>
+                    <p>Если в начальный момент времени о новом товаре знало \( N_1 \) человек, т.е. \(x(0)=N_1\), то решение имеет вид (<a href="lineynuie_uravneniya.html#mjx-eqn-11">11</a>)
+                        \begin{equation}\label{16}
+                            x=\frac{N}{1+\left(\frac{N}{N_1}-1\right)e^{-kNt}} \tag{16}
+                        \end{equation}
+                    </p>
+                    <p>Второе слагаемое знаменателя стремится к нулю при \(t\rightarrow \infty\), поэтому \(x\rightarrow N\).
+                    
+                    График функции  (\ref{16}) \(-\) логистическая кривая.
+                    <p class="field"><img class="logo" width="70%" height="70%" alt=графики src="../images/DUlogistic.jpg"></p>
+                    <p align="center">Рис. Логистическая кривая</p>
+                    </p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

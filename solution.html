@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Решение</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+        <script type="text/javascript" src="/MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    </head>
+  <body>
+    
+    <p>\(  \int_{-\infty}^{+\infty} x \frac{\alpha}{2} * e^{- \alpha *   | x -  \beta |} = \frac{\alpha}{2} int_{-\infty}^{\beta} x  * e^{ \alpha * ( x -  \beta) } +  \int_{\beta}^{+\infty} x  * e^{- \alpha *  (x -  \beta) })  \)</p>
+    <p>Посчитаем первый:</p>
+    <p>\( t=x-\beta => x=t+\beta \)</p>
+    <p>\(  \int_{-\infty}^{\beta} (t+\beta)* e^{\alpha t} \)</p>
+    <p>\( \int_{-\infty}^{\beta} t* e^{\alpha t} + \int_{-\infty}^{\beta} \beta * e^{\alpha t} \)</p>
+    <p>Посчитаем первый тут:</p>
+    <p>\( u=t=> du=dt\)</p>
+    <p>\( dv=e^{\alpha t} => v = \int e^{\alpha t} = \frac{1}{\alpha} e^{\alpha t}\)</p>
+    <p>\( \int udv =  uv - \int vdu\)</p>
+    <p>\( \frac{\beta}{\alpha} * e^{\alpha \beta} - \frac{1}{\alpha} \int_{-\infty}^{\beta} e^{\alpha t} dt= \frac{\beta}{\alpha} * e^{\alpha \beta}  - \frac{1}{\alpha} e^{\alpha \beta} \)</p>
+    <p>В итоге</p>
+    <p>\( \frac{\beta}{\alpha} * e^{\alpha \beta}  - \frac{1}{\alpha} e^{\alpha \beta} + \beta  *  e^{\alpha \beta}  = \frac{(\beta-1) e^{\alpha \beta}}{\alpha} + \beta  *  e^{\alpha \beta} \)</p>
+    <p>Считаем второй</p>
+    <p>\( \int_{\beta}^{+\infty} x  * e^{- \alpha *  (x -  \beta) } \)</p>
+      <p>\( t=x-\beta => x=t+\beta \)</p>
+    <p>\(  \int_{\beta}^{+\infty} (t+\beta)* e^{-\alpha t} \)</p>
+    <p>\( \int_{\beta}^{+\infty} t* e^{-\alpha t} + \int_{\beta}^{+\infty} \beta * e^{-\alpha t} \)</p>
+    <p>Посчитаем первый тут:</p>
+    <p>\( u=t=> du=dt\)</p>
+    <p>\( dv=e^{-\alpha t} => v = \int e^{-\alpha t} = \frac{1}{-\alpha} e^{-\alpha t}\)</p>
+    <p>\( \int udv =  uv - \int vdu\)</p>
+    <p>\( \frac{\beta}{-\alpha} * e^{-\alpha \beta} - \frac{1}{-\alpha} \int_{-\infty}^{\beta} e^{-\alpha t} dt= \frac{\beta}{-\alpha} * e^{-\alpha \beta}  - \frac{1}{-\alpha} e^{-\alpha \beta} \)</p>
+    <p>В итоге</p>
+    <p>\( \frac{\beta}{-\alpha} * e^{-\alpha \beta}  - \frac{1}{-\alpha} e^{-\alpha \beta} - \beta  *  e^{-\alpha \beta} = \frac{\beta-1) e^{-\alpha \beta}}{-\alpha} - \beta  *  e^{-\alpha \beta} \)</p>
+      <p>Собираем всё</p>
+    <p>\( \frac{\alpha}{2} (\frac{(\beta-1) e^{\alpha \beta}}{\alpha} + \beta  *  e^{\alpha \beta} + \frac{(\beta-1) e^{-\alpha \beta}}{-\alpha} - \beta  *  e^{-\alpha \beta}) \)</p>
+    </body>
+</html>

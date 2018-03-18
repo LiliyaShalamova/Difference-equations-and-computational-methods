@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Уравнения с разделяющимися переменными</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="osnovny_opredeleniya.html">Основные определения</a></li>
+                        <li><a href="geom_int_ody_razresh.html">Геометрическая интерпретация ОДУ первого порядка, разрешенного относительно производной</a></li>
+                        <li><a href="s_razdel_perem.html">Уравнения с разделяющимися переменными</a></li>
+                        <li><a href="odnorodny_uravnenia.html">Однородные уравнения</a></li>
+                        <li><a href="lineynuie_uravneniya.html">Линейные уравнения</a></li>
+                        <li><a href="uravneniye_bernulli.html">Уравнение Бернулли</a></li>
+                        <li><a href="uravneniye_rikkati.html">Уравнение Риккати</a></li>
+                        <li><a href="uravnenia_v_poln_diff.html">Уравнения в полных дифференциалах</a></li>
+                        <li><a href="integrirushiy_mnozhitel.html">Интегрирующий множитель</a></li>
+                        <li><a href="ne_razresh_otn_proizv.html">ДУ 1-го порядка, не разрешенные относительно производной. Особые решения</a></li>
+                        <li><a href="kurs_algebry.html">Вспомогательный материал из курса алгебры и математического анализа</a></li>
+                        <li><a href="dokazatelstvo_teor_koshi.html">Доказательство теоремы Коши</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Уравнения с разделяющимися переменными</div>
+                    <p>Уравнение вида
+                        \begin{equation}\label{5}
+                            y' = f(x)g(y), \tag{5}
+                        \end{equation}
+                    </p>
+                    <p>где функция, стоящая в правой части, есть произведение функции, зависящей только от \(x\), на функцию, зависящую только от \(y\), называется \(\textbf {уравнением с разделяющимися переменными.}\) 
+                        \[\Gamma : \hspace{1cm} a < x < b, \hspace{1cm} c < y < d \]</p>
+                    <p>Если при некотором \(\overline{y} \in  (c, d)\) выполняется \(g\left(\overline{y} \right) = 0\), то функция \(y \equiv \overline{y}\) является решением уравнения (\ref{5}), в чем легко убедиться непосредственной подстановкой.</p>
+                    <p>В дальнейшем будем считать, что \(g\left(y \right)  \neq  0\), \(y \in  (c, d)\).
+                    <br>Запишем уравнение (\ref{5}) в виде
+                        \[\frac{dy}{dx} = f(x)g(y).\]</p>
+                    <p>Пусть \(y = \varphi (x) - \)решение этого уравнения на некотором промежутке \((\alpha, \beta) \subset (a, b) \) и \(c<\)\(\varphi (x)<\)\(d\), тогда выполняется тождество
+                        \[\frac{d(\varphi (x))}{dx} = f(x)g(\varphi(x)).\]</p>
+                    <p>Поскольку мы предположили, что \(g\left(y \right)  \neq  0\) на \((c, d)\) и \(c<\)\(\varphi (x)<\)\(d\), то 
+                        \[\frac{d(\varphi (x))}{g(\varphi (x))} = f(x)dx, \hspace{0.5cm} x \in (\alpha, \beta)\]</p>
+                    <p>Если дифференциалы равны, то их неопределенные интегралы могут отличаться лишь на константу:
+                        
+                        \begin{equation}\label{6}
+                            \int \frac{d(\varphi (x))}{g(\varphi (x))} = \int f(x)dx + C. \tag{6}
+                        \end{equation}
+                        </p>
+                    <p>Далее при замене переменной в неопределенном интеграле по формуле \(y = \varphi (x)\) получим: 
+                        \[\int \frac{d(\varphi (x))}{g(\varphi (x))} = \int \frac{d(y)}{g(y)} = G(y) = G(\varphi(x)) =\] 
+                        \[= \int f(x)dx + C = F(x) + C,\]</p>
+                    <p>где \(G(y) - \) одна из первообразных функции \(\frac{1}{g(y)},\) a \(F(x) -\) первообразная функции \(f(x).\)</p>
+                    <p>Тем самым, функция \(y = \varphi (x)\) удовлетворяет уравнению: 
+                        \begin{equation}\label{7}
+                            G(y) = F(x) + C \tag{7}
+                        \end{equation}
+                        при подходящем значении проивольной постоянной.</p>
+                    <p>Уравнение \(G(y) = F(x) + C (7)\) имеет вид \(H(x, y ,C) = 0.\) Оно не содержит ни производных, ни дифференциалов и при фиксированном \(С\) определяет \(y\) как неявную функцию от \(x\).</p>
+                    <p>Уравнение \(H(x, y ,C) = 0,\) задающее общее решение в неявной форме, называют \(\textbf {общим интегралом.}\) При конкретном значении \(C\) соотношение \(H(x, y ,C) = 0\) называют \(\textbf {частным интегралом.}\)</p>
+                    <div class="example">Вопросы.</div>
+                    <p>1. Пусть \((x_{0}, y_{0}) \in Г\) и \(g(y_{0}) \neq 0.\) Определим постоянную \(\overline{C} = G(y_{0}) - F(x_{0}).\) Почему соотношение \(G(y) = F(x) + \overline{C}\) определяет явно функцию \(y(x)\) в окрестности точки \((x_{0}, y_{0})?\)</p>
+                    <p>2. Почему эта функция \(y(x)\) является решением уравнения \(y' = f(x)g(y)?\)</p>
+                    <div class="example">Этапы решения уравнения с разделяющимися переменными \(y' = f(x)g(y)\):</div>
+                    <p>1. Записываем производную как отношение дифференциалов: 
+                        \[\frac{dy}{dx} = f(x)g(y).\]</p>
+                    <p>2. Разделяем переменные \(\frac{d(y)}{g(y)} = f(x)dx\) при условии \(g(y) \neq 0.\)</p>
+                    <p>3. Навешиваем интегралы \(\int \frac{d(y)}{g(y)} = \int f(x)dx + C,\) получаем общий интеграл.</p>
+                    <p>4. Если \(g(\overline{y}) = 0,\) находим решения \(y \equiv \overline{y}.\)</p>
+                    <div class="example">Пример 1.</div>
+                    <p>Решить уравнение \(y' =  \frac{y}{x}.\)</p>
+                    <p>\(\textbf {Решение:}\)</p>
+                    <p>Запишем производную как отношение дифференциалов: \(\frac{dy}{dx} = \frac{y}{x}.\)</p>
+                    <p>Разделяя переменные, получаем 
+                        \[\frac{dy}{y} = \frac{dx}{x}, y \neq 0.\]</p>
+                    <p>\(\int \frac{dy}{y} = \int \frac{dx}{x} + C_{1}.\)</p>
+                    <p>\(ln|y| = ln|x| + lnC_{2},\) где \(C_{1} = lnC_{2}, (C_{2} > 0).\)</p>
+                    <p>Находим \(|y| = C_{2}|x|\), что эквивалентно уравнению \(y = ±C_{2}x.\)</p>
+                    <p>Или \(y = Cx, C \neq 0.\)</p>
+                    <p>\(y \equiv 0\) - решение уравнения, входит в семейство \(y = Cx\) при \(C = 0.\)</p>
+                    <p>Общее решение \(y = Cx, C \in R.\)</p>
+                    <div class="example">Пример 2.</div>
+                    <p>Уравнение взрыва. Физико-химические задачи: скорость реакции пропорциональна концентрации обоих реагентов: 
+                        \[y' = ky^{2}, \hspace{0.5cm} k>0.\]</p>
+                    <p>\(\textbf {Решение:}\)</p>
+                    <p>\(\frac{dy}{dt} = ky^{2},\) \(\frac{dy}{y^{2}} = kdt,\) \(y \neq 0,\) \(-\frac{1}{y} = kt + C,\) \(y \equiv 0.\)</p>
+                    <p>Решим задачу Коши с начальным условием \(y(0) = y_{0} \neq 0:\)
+                        \[C = - \frac{1}{y_{0}},\]
+                        \[y = \frac{1}{k}\frac{1}{\frac{1}{ky_{0} - t}}.\]</p>
+                    <p>Количество вещества становится бесконечным за конечное время: интегральная кривая решения с начальным условием \(y_{0} \neq 0\) имеет вертикальную асимптоту(момент взрыва) \(t = \frac{1}{ky_{0}}\).</p>
+                    <p class="field"><img class="logo" alt="График" width="70%" height="70%"
+                                src="../images/DUcollapse.jpg"></p>
+                    <div class="example">Замечание.</div>
+                    <p>Уравнение \(M(x,y)dx+N(x,y)dy = 0\) называют уравнением с разделяющимися переменными, если его коэффициенты \(M\) и \(N\) представимы в виде:
+                        \[M(x,y) = M_{1}(x)·M_{2}(y); \hspace{0.5cm} N(x,y) = N_{1}(x)·N_{2}(y).\] </p>
+                    <p>Рассмотрим способ решения уравнения 
+                        \begin{equation}\label{8}
+                            M_{1}(x)M_{2}(y)dx + N_{1}(x)N_{2}(y)dy = 0. \tag{8}
+                        \end{equation}
+                    </p>
+                    <p>Сначала предположим, что \(M_{2}(y) \neq 0\) и \(N_{1}(x) \neq 0\). Поделим обе части (\ref{8}) на произведение \(M_{2}(y)N_{1}(x):\) 
+                        \[\frac{M_{1}(x)}{N_{1}(x)}dx = -\frac{N_{2}(y)}{M_{2}(y)}dy.\]</p>
+                    <p>Интегрируем обе части, получим: 
+                        \[\int \frac{M_{1}(x)}{N_{1}(x)}dx = - \int \frac{N_{2}(y)}{M_{2}(y)}dy + C.\]</p>
+                    <p>Пусть теперь \(M_{2}(\overline{y}) = 0.\) Непосредственной подстановкой в уравнение (\ref{8}) убеждаемся, что функция \(y \equiv \overline{y}\) является решением (дифференциал функции \(y \equiv \overline{y}\) равен 0). 
+                    Аналогично, когда искомой является функция \(x\), \(x \equiv \overline{x}\) будет решением уравнения (\ref{8}), если \(N_{1}(\overline{x}) = 0.\)</p>
+                    <div class="example">Пример 3.</div>
+                    <p>  \((y^{2} - 1)dx+2xydy = 0.\) Это уравнение с разделяющимися переменными.</p>
+                    <p>\(\textbf {Решение:}\)</p>
+                    <p>Считая \(x \neq 0\) и \(y^{2} \neq 1\), разделяем переменные и интегрируем
+                        \[\frac{dx}{x} = -\frac{2ydy}{y^{2} - 1}; \hspace{0.5cm}\int \frac{dx}{x} = - \int \frac{2ydy}{y^{2} - 1} + C_{1}.\]</p>
+                    <p>Вычисляя интегралы, получаем
+                        \[ln|x|+ ln|y^{2} - 1| = lnC_{2}, \hspace{0.5cm}x(y^{2} - 1) = C.\]</p>
+                    <p>Кроме этого, в случае \(y = y(x)\) есть решения \(y = 1, y = -1\), (если \(x = x(y)\), то \(x = 0\) – решение). </p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

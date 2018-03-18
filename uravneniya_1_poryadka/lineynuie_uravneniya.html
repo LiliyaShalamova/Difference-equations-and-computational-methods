@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Линейные уравнения</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="osnovny_opredeleniya.html">Основные определения</a></li>
+                        <li><a href="geom_int_ody_razresh.html">Геометрическая интерпретация ОДУ первого порядка, разрешенного относительно производной</a></li>
+                        <li><a href="s_razdel_perem.html">Уравнения с разделяющимися переменными</a></li>
+                        <li><a href="odnorodny_uravnenia.html">Однородные уравнения</a></li>
+                        <li><a href="lineynuie_uravneniya.html">Линейные уравнения</a></li>
+                        <li><a href="uravneniye_bernulli.html">Уравнение Бернулли</a></li>
+                        <li><a href="uravneniye_rikkati.html">Уравнение Риккати</a></li>
+                        <li><a href="uravnenia_v_poln_diff.html">Уравнения в полных дифференциалах</a></li>
+                        <li><a href="integrirushiy_mnozhitel.html">Интегрирующий множитель</a></li>
+                        <li><a href="ne_razresh_otn_proizv.html">ДУ 1-го порядка, не разрешенные относительно производной. Особые решения</a></li>
+                        <li><a href="kurs_algebry.html">Вспомогательный материал из курса алгебры и математического анализа</a></li>
+                        <li><a href="dokazatelstvo_teor_koshi.html">Доказательство теоремы Коши</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Линейные уравнения</div>
+                    <p>Здесь рассматриваются ОДУ 1-го порядка, линейные относительно неизвестной функции и ее производной.</p>
+                    <p>Общий вид линейного уравнения 1-го порядка следующий:
+                        \begin{equation}\label{11}
+                            y'+a(x)y=b(x). \tag{11}
+                        \end{equation}
+                    Функции \(a(x)\) и \(b(x)\) считаются непрерывными в промежутке \((\alpha, \beta)\). Легко заметить, что это требование обеспечивает выполнение условий теоремы Коши в полосе, задаваемой неравенствами
+                        \[\Gamma: \hspace{1cm} \alpha < x < \beta, \hspace{1cm} -\infty < y < +\infty.\]
+                    Если \(b(x)\equiv 0\), уравнение (\ref{11}) называют линейным однородным. В противном случае - неоднородным.</p>
+                    <p>
+                    Уравнение 
+                        \begin{equation}\label{12}
+                            \frac{dy}{dx}+a(x)y=0 \tag{12}
+                        \end{equation}
+                         называют линейным однородным уравнением, соответствующим неоднородному уравнению (\ref{11})</p>
+                    <div class="example">Замечание</div>
+                    <p>Обратите внимание, что линейное однородное ОДУ НЕ является ОДНОРОДНЫМ ОДУ в смысле предыдущего параграфа.</p>
+                    <p>Сначала проинтегрируем однородное уравнение (\ref{12}). Полагая \(y\neq 0\), разделяем переменные \(\frac{dy}{y}=-a(x)dx;\) 
+                        \[\ln |y|=-\int a(x)dx+\ln |C| \hspace{1cm} (C\neq 0), \hspace{1cm} \text{или} \hspace{1cm} y=Ce^{-\int a(x)dx}.\]
+                    Кроме этого, имеется решение \(y\equiv 0\), называемое тривиальным. Чтобы объединить оба решения одной формулой, разрешается произвольной постоянной \(C\)  принимать значение нуль.</p>
+                    <p>Переходим к решению неоднородного уравнения. Применим метод вариации произвольной постоянной, предложенный Лагранжем. В методе Лагранжа сначала находится общее решение однородного уравнения \(y=Ce^{-\int a(x)dx}\), а затем постоянная \(C\) заменяется функцией аргумента \(x\), т.е. превращается в переменную величину, варьируется. Выражение 
+
+                        \begin{equation}\label{13}
+                            y=C(x)e^{-\int a(x)dx} \tag{13}
+                        \end{equation}
+                    подставляем в неоднородное уравнение, после чего находится неизвестная вначале функция \(C(x)\). Производную \(y'\) вычисляем как производную произведения двух функций:
+                    \[\frac{dC}{dx}\cdot e^{-\int a(x)dx}-C(x)a(x)e^{-\int a(x)dx}+a(x)C(x)e^{-\int a(x)dx}=b(x).\]
+                    Отсюда \(\frac{dC}{dx}e^{-\int a(x)dx}=b(x)\), следовательно, 
+                    \[\frac{dC}{dx}=b(x)e^{\int a(x)dx} \hspace{0.5cm} и \hspace{0.5cm} C(x)=\int\, b(x)e^{\int a(x)dx}dx+D\],
+                    где \(D\) - произвольная постоянная.</p>
+                    <p>Подставляя найденную функцию \(C(x)\) в формулу (\ref{13}), получаем общее решение неоднородного уравнения 
+                        \begin{equation}\label{14}
+                            y = De^{-\int a(x)dx}+e^{-\int a(x)dx}\int\left(b(x)e^{\int a(x)dx}\right)dx. \tag{14}
+                        \end{equation}
+                    Запоминать следует не формулу (\ref{14}), а метод Лагранжа.</p>
+                    <div class="example">Замечание</div>
+                    <p>Каждое решение уравнения (\ref{11}) определено на всем промежутке \((\alpha, \beta)\).</p>
+                    <div class="example">Замечание</div>
+                    <p>Формула (\ref{14}) показывает, что общее решение линейного неоднородного ОДУ есть сумма общего решения линейного однородного, соответствующего данному неоднородному, и какого-нибудь частного решения исходного неоднородного ОДУ.</p>
+                    <div class="example">Пример 1</div>
+                    <p>Решить дифференциальное уравнение \(y'-\frac{2}{x}y=x^3\)</p>
+                    <p>\(\textbf {Шаг 1.}\) Решаем однородное уравнение \(y'-\frac{2}{x}y=0\). Разделяем
+                    переменные \(\frac{dy}{y}=\frac{2}{x}dx; \hspace{1cm} \int \frac{dy}{y}=\int \frac{2dx}{x}; \hspace{1cm}  \ln |y|=2\ln |x|+\ln C; \hspace{1cm} y=Cx^2\)</p> 
+                    <p>(при \(C=0\) получается тривиальное решение \(y\equiv0\)).</p>
+                    <p>\(\textbf {Шаг 2.}\) Считая \(C\) функцией \(x\), подставляем полученное выражение в исходное уравнение: 
+                        \[\frac{dC}{dx}x^2 + C \cdot 2x-\frac{2}{x}\cdot Cx^2 =x^3, \text{    или    } \frac{dC}{dx}x^2=x^3.\]
+                    В заданном уравнении  \(x\) находится в знаменателе, следовательно, предполагается, что \(x\neq 0\), поэтому можно сократить на \(x^2\).</p>
+                    <p>Получаем \(\frac{dC}{dx}=x; \hspace{1cm} C=\frac{1}{2}x^2 +D.\)
+                        \[Ответ: y=Dx^2 + \frac{1}{2}x^4.\hspace{1cm} {\bigtriangleup}\]</p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

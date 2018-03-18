@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Уравнения, допускающие понижение порядка</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="#">Дифференциальные уравнения высших порядков</a></li>
+                        <li><a href="du_v_kanon_forme.html">Дифференциальные уравнения в канонической форме</a></li>
+                        <li><a href="uravneniya_s_ponizheniem_poraydka.html">Уравнения, допускающие понижение порядка</a></li>
+                        <li><a href="pervyue_integralyu_systmyu.html">Первые интегралы системы ДУ и понижение порядка</a></li>
+                        <li><a href="svedenie_systemy_du_k_odnorodnomu.html">Сведение системы ДУ к однородному уравнению</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Уравнение, допускающие понижение порядка</div>
+                    <p>В некоторых случаях можно понизить порядок уравнения
+                        \begin{equation}\label{6}
+                            F(x,y,y',y'',\ldots ,y^{(n)} )=0. \tag{6}
+                        \end{equation}
+                    1). Уравнение не содержит искомой функции и нескольких её производных:
+                        \begin{equation}\label{7}
+                            F(x,y^{(k)} ,y^{(k+1)} ,\ldots ,y^{(n)} )=0, \tag{7}
+                        \end{equation}
+                    Заменой \(y^{(k)} =z,\quad F(x,z,z',\ldots ,z^{(n-k)} )=0\) понижается порядок уравнения на \(k\) единиц. При этом
+                        \[\begin{array}{l} {y^{(k)} (x)=z(x)} \\ {y^{(k+1)} (x)=z'(x)} \\ {\quad \quad \quad \cdots } \\ {y^{(n)} (x)=z^{(n-k)} (x)} \end{array}\]</p>
+                    <p>Общее решение уравнения \(F(x,z,z',\ldots ,z^{(n-k)} )=0\) выглядит как \(z=z(x,C_{1} ,C_{2} ,\ldots ,C_{n-k} )\), чтобы найти общее решение уравнения (\ref{7}), делаем следующее:
+                        \[\begin{array}{l} {y^{(k)} (x)=z(x,C_{1} ,C_{2} ,\ldots ,C_{n-k} )} \\ {y^{(k-1)} (x)=\int z(x,C_{1} ,C_{2} ,\ldots ,C_{n-k} )dx+C_{n-k+1}  } \\ {\quad \quad \quad \cdots } \end{array}\]
+                    и так далее, в результате получим общее решение уравнения (\ref{7}) в виде \(y=y(x,C_{1} ,C_{2} ,\ldots ,C_{n} )\).</p>
+                    <p>2). Уравнение не содержит явно независимой переменной:
+                        \begin{equation}\label{8}
+                            F(y,y',\ldots ,y^{(n)} )=0, \tag{8}
+                        \end{equation}
+                    Введение новой искомой функции \(p\) и нового аргумента \(y\) по формуле \(y'=p(y)\) позволяет понизить порядок уравнения на единицу.
+                        \[\begin{array}{l} {y'=p} \\ {y''=(y'_{x} )'_{x} =p'_{x} =(p(y))'_{x} =\frac{dp}{dy} \frac{dy}{dx} =\frac{dp}{dy} y'=p\frac{dp}{dy} } \\ {y'''=((y'_{x} )'_{x} )'_{x} =\left(p\frac{dp}{dy} \right)_{x} ^{{'} } =\frac{d}{dx} \left(p\frac{dp}{dy} \right)=\frac{d}{dy} \left(p\frac{dp}{dy} \right)\frac{dy}{dx} =\left(\frac{d^{2} p}{dy^{2} } p+\left(\frac{dp}{dy} \right)^{2} \right)p} \\ {\ldots } \end{array}\]
+                    и так далее.</p>
+                    <p>Выражение \(\frac{d^{k} y}{dx^{k} } \) будет содержать производные функции \(p(y)\) не выше
+                    \((k-1)\)-го порядка, что понижает порядок (\ref{8}) на единицу.
+                    Общее решение уравнения
+                        \[\tilde{F}\left(y,\frac{dp}{dy} ,\frac{d^{2} p}{dy^{2} } ,\ldots ,\frac{d^{(n-1)} p}{dy^{n-1} } \right)=0\]
+                    запишется как
+                        \[p=p\left(y,C_{1} ,C_{2} ,\ldots ,C_{n-1} \right).\]
+                     А общее решение исходного уравнения (ref{8}) находится
+                     так 
+                         \[\frac{dy}{dx} =p\left(y,C_{1} ,C_{2} ,\ldots ,C_{n-1} \right)\Rightarrow y=y(x,C_{1} ,C_{2} ,\ldots ,C_{n} ).\]</p>
+                     <p>3). Уравнение вида
+                         \begin{equation}\label{9}
+                            F(x,y,y',y'',\ldots ,y^{(n)} )=\frac{d}{dx} \left(\Phi (x,y,y',y'',\ldots ,y^{(n-1)} )\right)=0. \tag{9}
+                        \end{equation}
+                    Тогда функция \(y=\varphi (x)\) является решением уравнения (\ref{9})  в интервале \((r1,r2)\)
+                      тогда и только тогда, когда 
+                          \[\Phi \left(x,\varphi (x),\varphi '(x),\ldots ,\varphi ^{(n-1)} (x)\right)\equiv C\] 
+                      в этом интервале. Получаем первый интеграл   
+                          \[\Phi \left(x,y,y',\ldots ,y^{(n-1)} \right)=C\]
+                       уравнения (\ref{9}) и понижаем его порядок на единицу (о первых интегралах см. далее). Получим общее решение (\ref{9}) \(y=y(x,C_{1} ,C_{2} ,\ldots ,C_{n} )\).</p>
+                       <p>4). Уравнение вида (\ref{6})
+                           \[F(x,y,y',y'',\ldots ,y^{(n)} )=0,\] 
+                       левая часть \(-\) однородная функция переменных \(y,y',\ldots ,y^{(n)} \),
+                        \[\forall t\quad F\left(x,ty,ty',\ldots ,ty^{(n)} \right)=t^{m} F\left(x,y,y',\ldots ,y^{(n)} \right)\].
+                    Вводим новую искомую функцию \(z=z(x)\), такую что \(y'=yz\). Далее
+                        \[\begin{array}{l} {y''=\left(y'\right)^{{'} } =\left(yz\right)^{{'} } =y'z+yz'=yz^{2} +yz'=y(z^{2} +z')} \\ {y'''=\left(y''\right)^{{'} } =\left(y(z^{2} +z')\right)^{{'} } =y'(z^{2} +z')+y(2z\cdot z'+z'')}\\ {=yz(z^{2} +z')+y(2z\cdot z'+z'') =y(z^{3} +3zz'+z'')} \end{array} \]</p>
+                    <p>Имеем
+                        \[F\left(x,y,y\cdot z\, ,\; y(z^{2} +z'), \quad y(z^{3} +3zz'+z''),\; \ldots \right)=0, \]
+                    то есть 
+                        \[y^{m} \tilde{F}(x,z,z',\ldots ,z^{(n-1)} )=0.\]
+                    При \(m>0 \quad y=0 - {\textrm {решение,}} \quad m<0  \quad y=0 - { \textrm{не решение}}\). Имеем
+                        \[\tilde{F}(x,z,z',\ldots ,z^{(n-1)} )=0 \Rightarrow z=z(x,C_{1} ,C_{2} ,\ldots ,C_{n-1} )\]
+                    Значит \(y'=y\cdot z(x,C_{1} ,C_{2} ,\ldots ,C_{n-1} )\) и
+                        \[{\frac{dy}{y} =z(x,C_{1} ,C_{2} ,\ldots ,C_{n-1} )dx} \] 
+                        \[{\ln \left|y\right|=\int z(x,C_{1} ,C_{2} ,\ldots ,C_{n-1} )dx+\ln C_{n}  }  \]
+                    Общее решение исходного уравнения: 
+                        \[y=C_{n} e^{\int z(x,C_{1} ,C_{2} ,\ldots ,C_{n-1} )dx } .\] </p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

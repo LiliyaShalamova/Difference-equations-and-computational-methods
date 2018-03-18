@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Сведение системы дифференциальных уравнений к одному уравнению</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="#">Дифференциальные уравнения высших порядков</a></li>
+                        <li><a href="du_v_kanon_forme.html">Дифференциальные уравнения в канонической форме</a></li>
+                        <li><a href="uravneniya_s_ponizheniem_poraydka.html">Уравнения, допускающие понижение порядка</a></li>
+                        <li><a href="pervyue_integralyu_systmyu.html">Первые интегралы системы ДУ и понижение порядка</a></li>
+                        <li><a href="svedenie_systemy_du_k_odnorodnomu.html">Сведение системы ДУ к однородному уравнению</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Сведение системы дифференциальных уравнений к одному уравнению</div>
+                    <p>Пусть дана система
+                        \begin{equation}\label{13}
+                            \left\{\begin{array}{l} {\dot{x}_{1} =f_{1} (t,x_{1} ,x_{2} ,...,x_{n} )} \\ {\dot{x}_{2} =f_{2} (t,x_{1} ,x_{2} ,...,x_{n} )} \\ {........................} \\ {\dot{x}_{n} =f_{n} (t,x_{1} ,x_{2} ,...,x_{n} )} \end{array}\right. \tag{13}
+                        \end{equation}
+
+                    Возьмём первое уравнение, продифференцируем его \(n\) раз, заменяя производные
+                    \( \frac{dx_{i} }{dt} \quad i=\overline{1,n}\) правыми частями системы.
+                        \[\begin{array}{l} {\frac{d^{2} x_{1} }{dt^{2} }
+                        =\frac{\partial f_{1} }{\partial t} +\sum _{i=1}^{n}\frac{\partial f_{1} }{\partial x_{i} }  \frac{dx_{i} }{dt}
+                        =\frac{\partial f_{1} }{\partial t} +\sum _{i=1}^{n}\frac{\partial f_{1} }{\partial x_{i} }  f_{i}
+                        =f_{2}^{*} \left(t,x_{1} ,x_{2} ,...,x_{n} \right)} \\[4ex] {\frac{d^{3} x_{1} }{dt^{3} }
+                        =\frac{\partial f_{2}^{*} }{\partial t} +\sum _{i=1}^{n}\frac{\partial f_{2}^{*} }{\partial x_{i} }
+                         \frac{dx_{i} }{dt} =\frac{\partial f_{2}^{*} }{\partial t} +
+                         \sum _{i=1}^{n}\frac{\partial f_{2}^{*} }{\partial x_{i} }  f_{i} =f_{3}^{*} \left(t,x_{1} ,x_{2} ,...,x_{n} \right)} \end{array}\]
+
+                    И далее
+                        \[\frac{d^{n-1} x_{1} }{dt^{n-1} } =f_{n-1}^{*} \left(t,x_{1} ,x_{2} ,...,x_{n} \right),\]
+
+
+                        \begin{equation}\label{14}
+                            \frac{d^{n} x_{1} }{dt^{n} } =f_{n}^{*} \left(t,x_{1} ,x_{2} ,...,x_{n} \right). \tag{14}
+                        \end{equation}
+                    </p>
+                    <p>Рассмотрим систему
+                        \begin{equation}\label{15}
+                            \left\{\begin{array}{l} {\frac{dx_{1} }{dt} =f_{1} (t,x_{1} ,x_{2} ,...,x_{n} )}
+                            \\ {\frac{dx_{1} }{dt^{2} } =f_{2}^{*} (t,x_{1} ,x_{2} ,...,x_{n} )} \\ {..........................} \\ {\frac{dx_1^{n-1} }{dt^{n-1} } =f_{n-1}^{*} (t,x_{1} ,x_{2} ,...,x_{n} )} \end{array}\right. \tag{15}
+                        \end{equation}
+
+                    Предположим, что выполнены условия, при которых эта система определяет \(x_{2} ,x_{3} ,\ldots ,x_{n}\), т.е.
+                        
+                        \begin{equation}\label{16}
+                            \left\{\begin{array}{l} {x_{2}=g_{2}^{*}(t,x_{1} ,\frac{dx_{1} }{dt } ,\ldots ,\frac{d^{n-1} x_{1} }{dt^{n-1} } )} \\ {............................}
+                            \\ {x_{n} =g_{n}^{*} (t,x_{1} ,\frac{dx_{1} }{dt } ,\ldots ,\frac{d^{n-1} x_{1} }{dt^{n-1} } )} \end{array}\right. \tag{16}
+                        \end{equation}
+                    </p>
+                    <p>Тогда, подставив их в уравнение (\ref{14}), получим уравнение \(n\)-го порядка
+                        \begin{equation}\label{17}
+                            \frac{d^{n} x_{1} }{dt^{n} } =\Phi \left(t,x_{1} ,\frac{dx_{1} }{dt} ,\ldots ,\frac{d^{n-1} x_{1} }{dt^{n-1} } \right). \tag{17}
+                        \end{equation}
+                    Пусть найдено общее решение уравнения 
+                        \[x_{1} =\varphi (t,C_{1} ,C_{2} ,\ldots ,C_{n} ). \]
+                    Подставляя эту функцию в формулы 
+                    (\ref{16}), вычисляем \(x_{2} ,x_{3} ,\ldots ,x_{n}\)
+                    как функции \( t,C_{1} ,C_{2} ,\ldots ,C_{n} \).
+                    Вместе с функцией 
+                        \[x_{1} =\varphi (t,C_{1} ,C_{2} ,\ldots ,C_{n} ) \] 
+                        они составляют общее решение системы (\ref{13}).
+                    </p>
+
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

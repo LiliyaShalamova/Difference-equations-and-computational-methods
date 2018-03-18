@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Основные определения</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                    <li class="category"><a href="../systems_lineynuh_du.html">Разностные уравнения</a></li>
+                        <li><a href="diff_equations.html">Разностные уравнения</a></li>
+                        <li><a href="basic_def.html">Основные определения</a></li>
+                        <li><a href="solution_methods.html">Методы решения</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Основные определения</div>
+                    <p>\(\textbf{Разностным уравнением n-го порядка}\) называется уравнение вида
+                    \[\begin{equation}\label{4} x(t+n) = V(t, x(t), x(t+1),..., x(t+n-1)), \tag{4} \end{equation} \] где \(t\ \in N\)</p>
+                    <div class="example">\(\textbf {Замечание.}\)</div>
+                    <p>Уравнение \[x(t+4) = x(t+2)\] не следует считать уравнением 4-го порядка.
+                    После замены времени \(\tau = t+2\) получим уравнение 2-го порядка
+                    \[x(\tau + 2) = x(\tau).\]</p>
+                    <p>\(\textbf{Решением}\) разностного уравнения называется всякая последовательность \(\varphi(t)\),
+                    для которой \[\varphi(t+n) = V(t, \varphi(t), \varphi(t+1),..., \varphi(t+n-1))\]
+                    при всех \(t \in N\)</p>
+                    <p>\(\textbf{Положением равновесия }\) для разностного уравнения называется решение
+                    \(\varphi(t)\equiv_{t \in N}x_0 .\)</p>
+                    <div class="example">\(\textbf {Теорема.}\)</div>
+                    <p>Существование и единственность решения разностного уравнения.</p>
+                    <p>Для любого набора начальных значений \((u_1, u_2,..., u_n) \in R^n\)
+                    существует единственное решение уравнения \(n\)-го порядка (\ref{4}), 
+                    удовлетворяющее начальным условиям \(\varphi(1) = u_1, \varphi(2) = u_2,..., \varphi(n) = u_n.\)</p>
+                    <div class="example">\(\textbf {Доказательство.}\)</div>
+                    <p>Индукцией по \(t,\;t\in N\)</p>
+                    <div class="example">\(\textbf {Пример 1.}\)</div>
+                    <p>Арифметическая прогрессия.</p>
+                    <p>Пусть \(x(t)\) - элемент арифметической прогрессии с номером \(t\), а \(d\) - 
+                    разность прогрессии. Тогда \[x(t+1) = x(t) + d\] разностное уравнение 1-го порядка, не имеющее при \(d\neq 0\)
+                    положения равновесия.
+                    </p>
+                    <div class="example">\(\textbf {Пример 2.}\)</div>
+                    <p>Геометрическая прогрессия со знаменателем \(q\) определяется разностным уравнением 1-го порядка
+                    \[x(t+1) = qx(t)\]. Число \(x_0\) - положение равновесия \(\Leftrightarrow\;x_0=qx_0\;\Leftrightarrow\;(q=1)\;или\;(x_0=0)\)
+                    </p>
+                    <div class="example">\(\textbf {Пример 3.}\)</div>
+                    <p>Рост процентного вклада. Пусть \(x(t)\) - величина вклада после \(t\) месяцев,
+                    \(R\) - месячная процентная ставка. Тогда
+                    \[x(t+1) = (1 + \frac{R}{100})x(t)\]</p>
+                    <div class="example">\(\textbf {Пример 4.}\)</div>
+                    <p>Рост процентного вклада с регулярными взносами
+                    \[x(t+1) = (1 + \frac{R}{100})x(t) + P,\] где \(P\) - величина
+                    ежемесячного взноса.</p>
+                    <div class="example">\(\textbf {Пример 5.}\)</div>
+                    <p>Величина долга по займу с регулярными выплатами
+                    \[x(t+1) = (1 + \frac{R}{100})x(t) - P,\] где \(P\) - размер выплат.</p>
+                    <div class="example">\(\textbf {Пример 6.}\)</div>
+                    <p>Последовательность Фибоначчи \[1, 1, 2, 3, 5, 8,...\]
+                    удовлетворяет разностному уравнению 2-го порядка 
+                    \[x(t+2) = x(t+1) + x(t)\] и начальным условиям \[x(1) = 1, x(2) = 1.\]</p>
+                    <div class="example">\(\textbf {Пример 7.}\)</div>
+                    <p>Паутинообразная модель рынка.</p>
+                    <p>Модель рыночного регулирования цены на рынке одного товара.</p>
+                    <p>Обозначения"</p>
+                    <p>\(P(t)\) - цена товара, \(D(t)\) - величина спроса на товар, \(S(t)\) - величина
+                    предложения товара в период \(t\).</p>
+                    <p>Предположения:</p>
+                    <p>1) функция спроса линейно зависит от текущей цены товара
+                    \[D(t) = \alpha + AP(t),\] где \(A < 0,\;\alpha\) - постоянные параметры;</p>
+                    <p>2) функция предложения линейно зависит от цены на товар за предыдущий период
+                    \[S(t) = \beta + BP(t-1),\] где \(B>0, \beta\) - постоянные параметры(предложение сегодня складывается на основе вчерашних цен);</p>
+                    <p>3) цена каждого периода устанавливается так, чтобы уравнять спрос и предложение
+                    \[D(t) = S(t);\]</p>
+                    <p>4) известна начальная цена \(P(0)\)</p>
+                    <p>Отсюда \[\alpha + AP(t) = \beta + BP(t-1)\] или
+                    \[P(t) = \frac{B}{A}P(t-1) + \frac{\beta - \alpha}{A}.\]</p>
+                    <p>Это линейное неоднородное разностное уравнение 1-го порядка с постоянными коэффициентами.</p>
+                    <p>Графическая интерпретация процесса рыночного регулирования цены.</p>
+                    <p>В системе координат \((P,Q)\) прямые \(D = \alpha + AP\) и \(S = \beta + BP\)</p>
+                    <p>Точка пересечения прямых соответствует положению равновесия на рынке - равновесной цене \(P^*\)</p>
+                    <p class="field"><img class="logo" alt="Равновесная цена" src="../images/3.jpg"></p>
+                    <p class="field"><img class="logo" alt="Равновесная цена" src="../images/4.jpg"></p>
+                    <p>Если \(\left | \frac{B}{A} \right | < 1,\) то паутина сходится к точке равновесия, т.е.
+                    \(\lim_{t \to \infty} P(t) = P^*\)</p>
+                    <p class="field"><img class="logo" alt="Равновесная цена" src="../images/5.jpg"></p>
+                    <p>В случае \(\left | \frac{B}{A} \right | > 1,\) то паутина расходится.</p>
+                    <p>Колебания цены увеличиваются с каждым новым периодом.</p>
+                    <p class="field"><img class="logo" alt="Равновесная цена" src="../images/6.jpg"></p>
+                    <p>В случае \(\left | \frac{B}{A} \right | = 1\) цена меняется циклически (повторяется через
+                    каждые два периода).</p>
+                    <div class="example">\(\textbf {Пример 8.}\)</div>
+                    <p>Модель делового цикла(Самуэльсона-Хикса) описывает волнообразный характер развития
+                    экономики - чередование подъемов и спадов конъюнктуры.</p>
+                    <p>Предположения:</p>
+                    <p>1) Величина потребления в любой период времени является линейной функцией национального дохода
+                    за предыдущий период \[C(t) = aY(t-1) + b,\] где \(0<\)\(a<\)1,\(\;b>0\)</p>
+                    <p>(число a - коэффициент склонности к потреблению).</p>
+                    <p>2) Текущий объем инвестиций пропорционален с некоторым коэффициентом приращению национального дохода за предыдущий период
+                    \[I(t) = \lambda(Y(t-1) - Y(t-2)),\] \(\lambda\) - коэффициент акселерации.
+                    Допускается \(I(t) < 0.\)</p>
+                    <p>3) Выполняется закон сохранения: \[Y(t) = C(t) + I(t).\] В результате получается
+                    \[Y(t) = aY(t-1) + b + \lambda(Y(t-1) - Y(t-2))\] или
+                    \[Y(t) = (a + \lambda)Y(t-1) - \lambda Y(t-2) + b\]
+                    Замена нумерации моментов времени \(\tau = t + 2\).
+                    \[Y(\tau+2) = (a+\lambda)Y(\tau+1) - \lambda Y(\tau) + b.\] 
+                    линейное неоднородное разностное уравнение 2-го порядка с постоянными коэффициентами.</p>
+
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

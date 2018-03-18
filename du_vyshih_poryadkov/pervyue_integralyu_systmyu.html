@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Первые интегралы системы ДУ и понижение порядка</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="#">Дифференциальные уравнения высших порядков</a></li>
+                        <li><a href="du_v_kanon_forme.html">Дифференциальные уравнения в канонической форме</a></li>
+                        <li><a href="uravneniya_s_ponizheniem_poraydka.html">Уравнения, допускающие понижение порядка</a></li>
+                        <li><a href="pervyue_integralyu_systmyu.html">Первые интегралы системы ДУ и понижение порядка</a></li>
+                        <li><a href="svedenie_systemy_du_k_odnorodnomu.html">Сведение системы ДУ к однородному уравнению</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Первые интегралы системы дифференциальных уравнений и понижение порядка. Симметричная запись системы дифференциальных уравнений.</div>
+                    <p>Рассмотрим автономную систему ДУ.
+                        \begin{equation}\label{10}
+                            \dot{X}=F(X). \tag{10}
+                        \end{equation}
+                        \[X=(x_{1} ,x_{2} ,\ldots ,x_{n} )^T, \]
+                        \[F(X)=\left(f_{1} (x_{1} ,x_{2} ,\ldots ,x_{n} ),f_{2} (x_{1} ,x_{2} ,\ldots ,x_{n} ), \ldots ,f_{n} (x_{1} ,x_{2} ,\ldots ,x_{n} )\right)^T. \]
+                     В скалярной форме система (\ref{10}) имеет вид
+                         \begin{equation}\label{11}
+                            \dot{x}_{i} =f_{i} (x_{1} ,x_{2} ,\ldots ,x_{n} ),\quad i=\overline{1,n}, \tag{11}
+                        \end{equation}
+                    Функции \(f_{i} (x_{1} ,x_{2} ,\ldots ,x_{n} )\) непрерывными вместе с
+                    \( \frac{\partial f_{i} }{\partial x_{k} } \quad \; (i,k=\overline{1,n})\) в \( \Gamma \) пространства \(x_{1} ,x_{2} ,\ldots ,x_{n}\).</p>
+                    <p>\( \underline{Определение} \textbf{. Первым интегралом системы} \quad \dot{X}=F(X)\) в области \(G\subset \Gamma \) называется функция \(U(X)=U(x_{1} ,x_{2} ,\ldots ,x_{n} )\), если
+
+                    1) \(U(X)\) определена и непрерывна вместе со своими частными производными \(\frac{\partial U}{\partial x_{i} } \quad \; (i=\overline{1,n})\) в области \(G\).
+
+                    2) Для любого решения \(X=\varphi (t)=\left(\varphi _{1}(t),\varphi _{2} (t),\ldots ,\varphi _{n}(t)\right)\),
+                    график которого не покидает области \(G\), справедливо соотношение:
+                        \[U(\varphi (t))=U\left(\varphi _{1} (t),\varphi _{2} (t),\ldots ,\varphi _{n} (t)\right)=const.\]</p>
+                    <p>\(\underline{Замечания: } \)</p>
+                    <p>1). Предполагаем, что \(U(X)\) - не есть тождественная константа.</p>
+
+                    <p>2). При замене одного решения \(X=\varphi^{(1)}(t)\) другим \(X=\varphi ^{(2)} (t)\) величина \(U(\varphi (t))\) может измениться.</p>
+
+                    <p>3). Если \(U(X)\) - первый интеграл, то первым интегралом называют также уравнение \(U(X)=C\).</p>
+
+                    <div class="example">Теорема. \( \textit{Критерий первого интеграла}\)</div>
+                    Непрерывно дифференцируемая функция на \(G\) является первым интегралом системы 
+                    \( \dot{X}=F(X) \) на  \( G \quad \Leftrightarrow  \quad \forall X\in G\subset \Gamma \quad \sum _{i=1}^{n}\frac{\partial U}{\partial x_{i} } (X) \cdot f_{i} (X)=0. \)</p>
+                    <p><div class="example">Доказательство</div>
+                    Возьмём \(\xi \in G\), обозначим через \(X=\varphi (t,\xi )\) - решение системы \(\dot{X}=F(X)\), c начальным условием \( \varphi (0,\xi )=\xi \).
+                    Вычисляем
+                        \[\frac{dU}{dt} (\varphi (t,\xi ))=\sum _{i=1}^{n}\frac{\partial U}{\partial x_{i} } (\varphi (t,\xi )) \cdot \frac{d\varphi _{i} (t,\xi )}{dt}, \]
+                    но, так как \( X=\varphi (t,\xi ) \) - решение, то
+                        \[\frac{d\varphi _{i} (t,\xi )}{dt} =f_{i} (\varphi (t,\xi ))=f_{i} (\varphi _{1} (t,\xi ),\varphi _{2} (t,\xi ),\ldots ,\varphi _{n} (t,\xi )). \]
+                    Значит
+                        \[\frac{dU}{dt} (\varphi (t,\xi ))=\sum _{i=1}^{n}\frac{\partial U}{\partial x_{i} } (\varphi (t,\xi )) \cdot f_{i} (\varphi (t,\xi )). \]</p>
+                    <p> \( (\Rightarrow)\quad \) Пусть \( U(X) \) - первый интеграл, тогда \(\forall t\quad \frac{dU}{dt} (\varphi (t,\xi ))=0 \).
+                    Возьмём \(t=0\).
+                        \[\sum _{i=1}^{n}\frac{\partial U}{\partial x_{i} } (\varphi (0,\xi )) \cdot f_{i} (\varphi (0,\xi ))=\sum _{i=1}^{n}\frac{\partial U}{\partial x_{i} } (\xi ) \cdot f_{i} (\xi )=0\quad \forall \xi \in G. \]
+
+                    Значит (роль \(X\) играет \(\xi\) выполняется
+                        \[\forall X\in G\; \; \sum _{i=1}^{n}\frac{\partial U}{\partial x_{i} } (X) \cdot f_{i} (X)=0.\]</p>
+                    <p>\( (\Leftarrow )\quad \) Пусть \( \forall X\in G\; \; \sum _{i=1}^{n}\frac{\partial U}{\partial x_{i} } (X) \cdot f_{i} (X)=0 \).
+                    Заметим, что левая часть равенства -- полная производная функции \(U(\varphi (t,\xi ))\), \(X=\varphi (t,\xi )\).
+                    Теперь
+                        \[\frac{dU}{dt} \; (\varphi (t,\xi ))=\sum _{i=1}^{n}\frac{\partial U}{\partial x_{i} } (\varphi (t,\xi )) \cdot f_{i} (\varphi (t,\xi ))=0. \]
+                    Отсюда \( U(\varphi (t,\xi ))=const \). ( Таким образом, \( U(X) \) - первый интеграл).
+                    \( \textbf{Теорема доказана.} \)</p>
+                    <p>Если \( X_{0} \in \Gamma \) и \(F(X_{0} )=0\), точка \(X_{0} \) называется точкой \(\textbf {покоя}\) или равновесия.
+                    Дело в том, что система имеет решение \( X\equiv X_{0} \).
+
+                    Далее изучаем первые интегралы в окрестности точки \( X_{0} \), для которых \(F(X_{0} )\ne 0\).</p>
+
+                    <p>\( \underline {Определение}. \) Первые интегралы \( U_{1} (X),U_{2} (X),\ldots ,U_{m} (X) \) (\(m < n\)) называются
+                    независимыми в некоторой окрестности точки \(X_{0} \), для которой \(F(X_{0} )\ne 0\), если матрица,
+                    составленная из частных производных этих первых интегралов
+                    \( \left\{\frac{dU_{j} }{dx_{i} } \left(X_{0} \right),\quad 1\le j\le m,\; 1\le i\le n\right\}\) имеет ранг \(m\).</p>
+                    <p><div class="example">Теорема</div>
+                    Если известны \(m \quad (m < n) \) независимых в точке \(X^{0} \in \Gamma \) первых интегралов
+                     системы (\ref{10}) , то порядок системы можно понизить на \(m\) единиц в некоторой окрестности точки \(X^{0} \).
+                     <div class="example">Доказательство</div>
+                     Без ограничения общности возьмём отличный от нуля определитель \(m\)-го порядка,
+                     составленный из первых \(m\) столбцов матрицы \(\left\{\frac{dU_{j} }{dx_{i} } \left(X_{0} \right)\right\}\),
+                     то есть рассматриваем
+                         \[\det \left\{\frac{dU_{j} }{dx_{i} } \left(X_{0} \right),\quad 1\le j\le m,\; 1\le i\le m\right\}\ne 0\].
+                    Проведём замену переменных:
+                        \[\begin{array}{l} {y_{1} =U_{1} (X)} \\ {y_{2} =U_{2} (X)} \\ {\ldots } \\ {y_{m} =U_{m} (X)} \\ {y_{m+1} \equiv x_{m+1} } \\ {\ldots } \\ {y_{n} \equiv x_{n} } \end{array} \]
+
+                    Замена осуществима, если якобиан преобразования отличен от нуля в некоторой окрестности точки .
+
+                    Якобиан имеет вид
+
+                        \[
+                        \left|\begin{array}{l}
+                        {\, \frac{dU_{1} }{dx_{1} } \left(X_{0} \right)\quad \cdots \quad \frac{dU_{1} }{dx_{m} } \left(X_{0} \right)\quad
+                        \cdots \cdots \cdots \cdots \cdots \cdots \cdots \quad \frac{dU_{1} }{dx_{n} } \left(X_{0} \right)} \\
+                        {\, \frac{dU_{2} }{dx_{1} } \left(X_{0} \right)\quad \cdots \quad \frac{dU_{2} }{dx_{m} } \left(X_{0} \right)\quad
+                        \cdots \cdots \cdots \cdots \cdots \cdots \cdots \quad \frac{dU_{2} }{dx_{n} } \left(X_{0} \right)} \\
+                        {\, \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots  \cdots\cdots  \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots } \\
+                        {\frac{dU_{m} }{dx_{1} } \left(X_{0} \right)\quad \cdots \quad \frac{dU_{m} }{dx_{m} } \left(X_{0} \right)\quad
+                        \cdots \cdots \cdots \cdots \cdots \cdots \cdots \quad  \frac{dU_{m} }{dx_{n} } \left(X_{0} \right)} \\
+                        {\, \quad 0\quad \quad \quad \quad \quad \quad 0\quad \quad \quad \quad \quad 1\quad \quad \; \; 0\quad \quad \; 0\quad \quad \quad
+                        \; \; \; 0} \\
+                        {\, \quad 0\quad \quad \quad \quad \quad \quad 0\quad \quad \quad \quad \quad 0\quad \quad \; \; 1\quad \quad \; 0\quad \quad \quad
+                        \; \; \; 0} \\
+                        {\, \cdots \cdots \cdots \cdots \cdots\cdots \cdots \cdots \cdots \cdots  \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots } \\
+                        {\, \quad 0\quad \quad \quad \quad \quad \quad 0\quad \quad \quad \quad \quad 0\quad \quad \; \; 0\quad \quad \; 0\quad \quad \quad
+                        \; \; \; 1} \end{array}\right|=
+                        \]
+                        
+                        \[=\left|\begin{array}{l} {\, \frac{dU_{1} }{dx_{1} } \left(X_{0} \right)\quad \cdots \quad \frac{dU_{1} }{dx_{m} } \left(X_{0} \right)} \\
+                        {\, \frac{dU_{2} }{dx_{1} } \left(X_{0} \right)\quad \cdots \quad \frac{dU_{2} }{dx_{m} } \left(X_{0} \right)} \\
+                        {\, \,  \cdots \cdots \cdots \cdots \cdots \cdots\cdots \cdots } \\
+                        {\frac{dU_{m} }{dx_{1} } \left(X_{0} \right)\quad \cdots \quad \frac{dU_{m} }{dx_{m} } \left(X_{0} \right)} \end{array}\right|\ne 0
+                        \]
+
+                    Якобиан отличен от нуля не только в точке \(X^{0} \), но и в некоторой окрестности точки \(X^{0} \), так как элементы якобиана являются непрерывными функциями.
+
+                    В переменных \(y_{1} ,y_{2} ,\ldots ,y_{n} \) система (\ref{11}) примет вид
+                        \begin{equation}\label{12}
+                            \dot{y}_{i} =g_{i} \left(y_{1} ,y_{2} ,\ldots ,y_{n} \right)\quad \overline{i=1,n}. \tag{12}
+                        \end{equation}
+                    </p>
+                    <p>Если \( i=\overline{1,m} \), то по критерию первого интеграла имеем
+                        \[\frac{dy_{i} }{dt} =\frac{dU_{i} (X)}{dt} =\sum _{i=1}^{n}\frac{\partial U_{i} (X)}{\partial x_{i} }  f_{i} (X)=0, \]
+                     поэтому получаем \(y_{1} =C_{1} ,y_{2} =C_{2} ,\ldots ,y_{m} =C_{m} \).
+
+                    Система перепишется в виде
+
+                        \[\left\{\begin{array}{l} {\dot{y}_{m+1} =g_{m+1} \left(C_{1} ,C_{2} ,\ldots ,C_{m} ,y_{m+1} ,\ldots ,y_{n} \right)\quad } \\ {\dot{y}_{m+2} =g_{m+2} \left(C_{1} ,C_{2} ,\ldots ,C_{m} ,y_{m+1} ,\ldots ,y_{n} \right)} \\ {\cdots } \\ {\dot{y}_{n} =g_{n} \left(C_{1} ,C_{2} ,\ldots ,C_{m} ,y_{m+1} ,\ldots ,y_{n} \right)} \end{array}\right. ,\]
+                    т. е. получили систему порядка \(n-m\).
+
+                    \( \textbf{Теорема доказана.}\)
+                    <div class="example"></div></p>
+                    <p>В случае, когда \(m=n-1\), т. е.
+
+                    \(\dot{y}_{n} =g_{n} \left(C_{1} ,C_{2} ,\ldots ,C_{n-1} ,y_{n} \right)\), нужно решить одно дифференциальное уравнение.<p>
+
+                    <p>В случае, когда \(m=n\), \(U_{1} =C_{1} ,U_{2} =C_{2} ,\ldots ,U_{n} =C_{n} \).</p>
+
+                    <p>В общем случае решения находятся в виде:
+
+                        \[\left\{\begin{array}{l} {y_{m+1} =y_{m+1} \left(t,C_{1} ,C_{2} ,\ldots ,C_{m} ,C_{m+1} ,\ldots ,C_{n} \right)\quad } \\ {y_{m+2} =y_{m+2} \left(t,C_{1} ,C_{2} ,\ldots ,C_{m} ,C_{m+1} ,\ldots ,C_{n} \right)} \\ {\cdots } \\ {y_{n} =y_{n} \left(t,C_{1} ,C_{2} ,\ldots ,C_{m} ,C_{m+1} ,\ldots ,C_{n} \right)} \end{array}\right. .\]
+
+                    Как искать первые интегралы.</p>
+                    <p>От системы
+                        \[\left\{\begin{array}{l} {\dot{x}_{1} =f_{1} (x_{1} ,x_{2} ,...,x_{n} )} \\ {\dot{x}_{2} =f_{2} (x_{1} ,x_{2} ,...,x_{n} )} \\ {......................} \\ {\dot{x}_{n} =f_{n} (x_{1} ,x_{2} ,...,x_{n} )} \end{array}\right. \]
+                    перейдем к системе
+                         \[\left\{\begin{array}{l} {dt=\frac{dx_{1} }{f_{1} (x_{1} ,\,x_{2} ,\,...,\,x_{n} )} } \\ {dt=\frac{dx_{2} }{f_{2} (x_{1} ,\,x_{2} ,\,...,\,x_{n} )} } \\ {...................} \\{dt=\frac{dx_{n} }{f_{n} (x_{1} ,\,x_{2} ,\,...,\,x_{n} )} } \end{array}\right.\]
+                     получим  систему в симметрической форме:
+                        \[\frac{dx_{1} }{f_{1} (X)} =\frac{dx_{2} }{f_{2} (X)} =\cdots =\frac{dx_{n} }{f_{n} (X)}.\]
+
+                    Решения дадут первые интегралы. Иногда получается найти решения только части уравнений, тогда  мы получаем соответственно столько же и первых интегралов.</p>
+                    <p><div class="example">Замечание</div>
+                    Если функция \( V\left(U_{1} ,U_{2} ,\ldots ,U_{n} \right)\) определена и непрерывна вместе со своими частными производными
+                    \( \frac{\partial V}{\partial U_{j} } \quad j=\overline{1,m}\) в «достаточно большой» области, а  \(U_{1} (X),U_{2} (X),\ldots ,U_{m} (X)\) \(-\) первые интегралы системы \(\dot{X}=F(X)\),
+                    то и функция \(V\left(U_{1} (X),U_{2} (X),\ldots ,U_{n} (X)\right)\)
+                     \(-\) первый интеграл. («Достаточно большая» область \(-\) туда входят все \( U_{1} (X),U_{2} (X),\ldots ,U_{m} (X)\)).</p>
+
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

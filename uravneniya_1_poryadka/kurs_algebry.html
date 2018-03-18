@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Вспомогательный курс алгебры</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="osnovny_opredeleniya.html">Основные определения</a></li>
+                        <li><a href="geom_int_ody_razresh.html">Геометрическая интерпретация ОДУ первого порядка, разрешенного относительно производной</a></li>
+                        <li><a href="s_razdel_perem.html">Уравнения с разделяющимися переменными</a></li>
+                        <li><a href="odnorodny_uravnenia.html">Однородные уравнения</a></li>
+                        <li><a href="lineynuie_uravneniya.html">Линейные уравнения</a></li>
+                        <li><a href="uravneniye_bernulli.html">Уравнение Бернулли</a></li>
+                        <li><a href="uravneniye_rikkati.html">Уравнение Риккати</a></li>
+                        <li><a href="uravnenia_v_poln_diff.html">Уравнения в полных дифференциалах</a></li>
+                        <li><a href="integrirushiy_mnozhitel.html">Интегрирующий множитель</a></li>
+                        <li><a href="ne_razresh_otn_proizv.html">ДУ 1-го порядка, не разрешенные относительно производной. Особые решения</a></li>
+                        <li><a href="kurs_algebry.html">Вспомогательный материал из курса алгебры и математического анализа</a></li>
+                        <li><a href="dokazatelstvo_teor_koshi.html">Доказательство теоремы Коши</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title"> Вспомогательный материал из курса алгебры и математического анализа.</div>
+                    <p>\(\textbf {1. Линейные нормированные пространства.}\) </p>
+                    <p>Множество \(B\) называется линейным пространством, если для любых его элементов \(x\), \(y\) определена сумма \((x + y) \in B\) 
+                    и для любого \((x + y) \in B\) и вещественного (или комплексного) числа \(\alpha\) определено произведение \(\alpha x \in B\) со следующими свойствами: </p>
+                    <p>1) \(x + y = y + x.\) </p>
+                    <p>2) \((x + y) + z = x + (y + z).\) </p>
+                    <p>3) Существует нулевой элемент \(O_{B} \in B\), такой, что \(x + O_{B} = x\) для всех \(x \in B.\) </p>
+                    <p>4) \(1·x = x\), \(0·x = O_{B}.\) </p>
+                    <p>5) \(\alpha(\beta x) = \alpha\beta·x.\) </p>
+                    <p>6) \((\alpha + \beta)x = \alpha x + \beta x\) и т.д.</p>
+                    <p>Линейное пространство \(B\) называется нормированным, если каждому элементу \(x \in B\) поставлено в соответствие
+                    число \(||x||\) (норма \(x\)), обладающее следующими свойствами:</p>
+                    <p>1) \(||x|| > 0\), \(x \neq O_{B}\); \(||O_{B}|| = 0\). </p>
+                    <p>2) \( ||\alpha x|| = |\alpha|||x|| (\alpha — число). \)</p>
+                    <p>3) \(||x + y||\leq||x||+||y||\) (неравенство треугольника).</p>
+                    <div class="example">Пример 1.</div>
+                    <p>Числовая прямая \(R\), \(||x|| = |x|.\) </p>
+                    <div class="example">Пример 2.</div>
+                    <p>Евклидово пространство \(E^{n}\). Элементы — векторы 
+                        \[x = (x_{1},x_{2},...,x_{n})^{T}\]
+                        \[||x|| = |x| = \sqrt{\sum_{j=1}^n x_{j}^{2}}\]</p>
+                    <div class="example">Пример 3.</div>
+                    <p>Пространство \(R^{n}\). Элементы — векторы 
+                        \[x = (x_{1},x_{2},...,x_{n})^{T}.\] </p>
+                    <p>\(||x|| = |x| = max_{1\leq j\leq n}|x_{j}|\)</p>
+                    <div class="example">Пример 4.</div>
+                    <p>Пространство \(C(a,b)\). Элементы — функции \(x(t)\), непрерывные на отрезке \([a,b]\), с нормой 
+                        \[||x(·)|| = max_{a\leq t\leq b}|x(t)|\]</p>
+                    <div class="example">Пример 5.</div>
+                    <p>Пространство \(C(a,b)\). Элементы — вектор-функции 
+                        \[x(t) = (x_{1}(t),x_{2}(t),...,x_{n}(t))^{T},\]
+                    непрерывные на отрезке \([a,b]\), с нормой
+                        \[||x(·)||_{C} = max_{1\leq j\leq n}(max_{a\leq t\leq b}|x_{j}(t)|).\]</p>
+                    <div class="example"></div>
+                    <p>Множество \(M \in B\) называется ограниченным,если существует \(R > 0\) такое, что \(||x|| \leq R\) для всех \(x \in M\). </p>
+                    <p>В \(\textbf {В}\) по определению \( \lim_{n \rightarrow \infty} x_{n} = x\), если \( \lim_{n \rightarrow \infty} ||x_{n} - x|| = 0.\)</p>
+                    <p>Свойства пределов аналогичны свойствам пределов для числовых последовательностей.</p>
+                    <p>Сходимость в \(B = R^{n}\) величин \(x^{k}\) к \(x\) эквивалентна сходимости компонент</p>
+                    <p>\(\lim_{k \rightarrow \infty} x_{j}^{k} = x_{j}\), \(j = 1, 2, ..., n.\)</p>
+                    <p>Сходимость в \(B = C(a,b)\) величин \(x_{n}(t)\) к \(x(t)\) — равномерная сходимость последовательности \({x_{n}(t)}\) на \([a,b]\).</p>
+                    <p>Последовательность \({x_{n}}\) называется фундаментальной, если
+                       \[\lim_{k, l \rightarrow \infty}||x_{k} - x_{l}|| = 0.\]</p>
+                    <p>Линейное нормированное пространство называется полным, если всякая фундаментальная последовательность является сходящейся.
+                    Полное нормированное пространство называют банаховым. Пространства из примеров банаховы. </p>
+                    <p>Ряд \(\sum_{n=1}^\infty x_{n}\) (\(x_{n} \in B\)) - сходящийся, если сходится последовательность частичных сумм. </p>
+                    <p>Если ряд \(\sum_{n=1}^\infty x_{n}\) сходится по норме (т.е. ряд \(\sum_{n=1}^\infty ||x_{n}||\) сходится), то этот ряд сходится.</p>
+                    <p>Пусть каждому элементу \(x \in M\), \(M \subset B\), поставлен элемент \(A(x) \in B\). Тогда задан оператор \(A\).</p>
+                    <div class="example">Пример 6.</div>
+                    <p> Пусть \(x = x(t)\) — непрерывная функция, определенная на отрезке \([\alpha,\beta]\) с графиком в пределах некоторого
+                    открытого множества \(Г\) и \(t_{0} \in [\alpha,\beta]\). Определим оператор
+                        \begin{equation}\label{1}
+                            A(x(·))=x^{*}(t) = x_{0} + \int_{t_{0}}^{t} f[\tau, x(\tau)]d\tau
+                        \end{equation} 
+                    </p>
+                    <p>где \(f(t,x)\) - функция, определенная и непрерывная в области \(Г\). 
+                    Функция \(x^{*}(t)\) непрерывна в промежутке \([\alpha,\beta]\).
+                    Обозначим отображение \(x(t)\) в \(x^{*}(t)\) через \(A\): \(A(x(·)) = x^{*}(·)\).</p>
+                    <div class="example"></div>
+                    <p>\(\textbf {2. Принцип сжатых отображений.}\) </p>
+                    <p>Применим метод последовательных приближений к уравнению 
+                        \[\varphi = A( \varphi ) , \hspace{0.5cm} \varphi \in B,\] </p>
+                    <p>\(A\) действует из \(B\) в \(B\). Возьмем произвольную точку \(\varphi_{0} \in B\)
+                        \[\varphi_{1} = A(\varphi_{0}), \varphi_{2} = A(\varphi_{1}),...,\varphi_{n+1} = A(\varphi_{n}).\]</p>
+                    <p>Пусть \(\varphi_{n}\) сходится к \(\varphi\) и оператор \(A\) позволяет осуществить предельный переход
+                    при \(n \rightarrow \infty\) в равенстве 
+                        \[\varphi_{n+1} = A(\varphi_{n}),\]</p>
+                    <p>получаем неподвижную точку 
+                        \[\varphi = A(\varphi).\]</p>
+                    <p>Пусть \(M \subset B\). Оператор \(A\), определенный на \(M\), сжимает \(M\), если</p>
+                    <p>1. \(A: M \rightarrow M\) (для любого \(\varphi \in M\) имеем \(A(\varphi) \in M\)).</p>
+                    <p>2. Существует 
+                        \[k, \hspace{0.5cm} 0 < k < 1\] такое, что </p>
+                    <p>\(||A(\varphi_{1}) - A(\varphi_{2})|| \leq k||\varphi_{1} - \varphi_{2}||\) для любых \(\varphi_{1}, \varphi_{2} \in M\).</p>
+                    <div class="entry_title"> Достаточные условия сходимости метода. Принцип сжатых отображений.</div>
+                    <div class="example">\(\textbf {Теорема 8.}\)</div>
+                    <p>
+                        Пусть \(M\) — замкнутое ограниченное множество в банаховом пространстве \(B\). Пусть оператор \(A\) сжимает \(M\).
+                        Тогда уравнение 
+                        \begin{equation}\label{2}
+                            \varphi = A( \varphi)
+                        \end{equation}  
+                        имеет решение \(\varphi \in M\), и притом единственное.</p>
+                    <div class="example">\(\textbf {Доказательство.}\)</div>
+                    <p> Применим к (\ref{2}) метод последовательных приближений. Возьмем \(\varphi_{0} \in M\) и построим 
+                        \[\varphi_{1} = A(\varphi_{0}), \varphi_{2} = A(\varphi_{1}),..., \hspace{0.5cm}\varphi_{n+1} = A(\varphi_{n}).\]</p>
+                    <p>1. Так как \(A : M \rightarrow M\), то все \(\varphi_{j} \in M\).</p>
+                    <p>2. Последовательность \( {\varphi_{n}} \) сходится. Сходимость \({\varphi_{n}}\) эквивалентна сходимости ряда 
+                        \begin{equation}\label{3}
+                            \varphi_{0} + (\varphi_{1} - \varphi_{0}) + (\varphi_{2} - \varphi_{1}) + ... + (\varphi_{n+1} - \varphi_{n}) + ....
+                        \end{equation}
+                    </p>
+                    <p>Т.к. \(M\) ограничено, то \(\exists C > 0\), что \(||\varphi|| \leq C\) для любого \(\varphi \in M\).</p>
+                    <p>По индукциии доказывается, что
+                        \begin{equation}\label{4}
+                            ||\varphi_{n+1} - \varphi_{n}|| \leq 2Ck^{n}, \hspace{0.5cm} n = 0, 1, ....
+                        \end{equation}
+                    </p>
+                    <p>При \(n = 0\) верно,
+                        \[||\varphi_{1} - \varphi_{0}|| \leq ||\varphi_{1}|| + ||\varphi_{0}|| \leq 2C .\]</p>
+                    <p>И если \((4)\) справедливо для \(n\), то для \(n + 1\) в силу условия теоремы 
+                        \[||\varphi_{n+1} - \varphi_{n}|| = ||A(\varphi_{n} - A(\varphi_{n-1}))|| \leq k||\varphi_{n} - \varphi_{n-1}|| \leq 2Ck^{n}\].</p>
+                    <p>Это доказывает (\ref{4}). Значит ряд (\ref{3}) равномерно сходится по признаку Вейерштрасса (нормы членов ряда не превосходят членов
+                    убывающей геометрической прогрессии со знаменателем \(k\), \(0\) < \(k\) < \(1\)). Т.е.
+                        \[\lim_{n \rightarrow \infty} \varphi_{n} = \varphi \] существует и \(\varphi \in M\) (\(M\) - замкнуто)</p>
+                    <p>3. Докажем, что
+                        \begin{equation}\label{5}
+                            \lim_{n \rightarrow \infty} A(\varphi_{n}) = A(\varphi).
+                        \end{equation}
+                    </p>
+                    <p>Действительно, 
+                        \[||A(\varphi_{n}) - A(\varphi)|| \leq k||\varphi_{n} - \varphi|| \rightarrow 0\] при \(n \rightarrow \infty\) и (\ref{5}) доказано.</p>
+                    <p>4. Теперь, переходя к пределу при \(n \rightarrow \infty\) в равенстве 
+                        \[\varphi_{n+1} = A(\varphi_{n}),\]</p>
+                    <p>получаем, что \(\varphi\) — решение уравнения (\ref{2}). </p>
+                    <p>5. Решение уравнения (\ref{2}) единственно. Пусть \(\varphi, \psi\ \in M\) являются решениями.
+                    Тогда \(\varphi - \psi\ = A(\varphi) - A(\psi)\), откуда
+                        \[||\varphi - \psi\|| \leq k||\varphi - \psi\||.\]</p>
+                    <p>Так как \(0\) < \(k\) < \(1\), то \(||\varphi - \psi|| = 0\) и \(\varphi = \psi \). \(\textbf {Теорема доказана.}\)</p>
+                    <p>Рассмотрим задачу Коши для уравнения
+                        \begin{equation}\label{6}
+                            \frac{dx}{dt} = f(t, x),
+                        \end{equation}
+                    </p>
+                    <p>с начальным условием 
+                        \begin{equation}\label{7}
+                            x(t_{0}) = x_{0}.
+                        \end{equation}
+                    </p>
+                    <div class="example">\(\textbf {Лемма 1.}\)</div>
+                    <p>Пусть \(x = x(t)\) — некоторое решение уравнения (\ref{6}),определенное на интервале \(t \in (\alpha_{1},\alpha_{2})\),
+                    так что выполнено тождество
+                        \begin{equation}\label{8}
+                            \frac{dx(t)}{dt} = f(t, x(t)), \hspace{0.5cm}  t \in (\alpha_{1},\alpha_{2}),
+                        \end{equation} 
+                    </p>
+                    <p>и \(x = x(t)\) удовлетворяет начальному условию (\ref{7}). Тогда для функции \(x = x(t)\) на всем 
+                        \( (\alpha_{1}, \alpha_{2})\) выполнено интегральное тождество
+                        \begin{equation}\label{9}
+                            x(t) = x_{0} + \int_{t_{0}}^{t} f[\tau, x(\tau)]d\tau.
+                        \end{equation} 
+                    </p>
+                    <p>Обратно, если для некоторой непрерывной функции \(x = x(t)\) на \((\alpha_{1},\alpha_{2})\) выполнено тождество (\ref{9}),
+                    то функция \(x = x(t)\) дифференцируема, является решением уравнения (\ref{6}) и удовлетворяет начальному условию (\ref{7}).</p>
+                    <div class="example">\(\textbf {Доказательство.}\)</div>
+                    <p>1. Пусть для некоторой непрерывной функции \(x = x(t)\) на интервале \((\alpha_{1},\alpha_{2})\) выполнено (\ref{9}).
+                    По теореме о производной от интеграла по переменному верхнему пределу имеем </p>
+                    <p>\(\frac{dx}{dt} = f[t, x(t)]\). При \(t = t_{0}\) из \((9)\) получаем \(x(t_{0}) = x_{0}\). </p>
+                    <p>2.Пусть теперь \(x = x(t)\) — решение задачи Коши (\ref{6})-(\ref{7}). Интегрируем 
+                        \begin{equation}\label{10}
+                            dx(t) \equiv f[t,x(t)]dt.
+                        \end{equation}
+                    </p>
+                    <p>в пределах от \(t_{0}\) до \(t\) получаем
+                        \[x(t) - x(t_{0}) = \int_{t_{0}}^{t} f[\tau,x(\tau)]d\tau.\].</p>
+                    <p>Учитывая \(x(t_{0}) = x_{0}\) получаем (\ref{9}). </p>
+                    <p>\(\textbf {Лемма доказана.}\)</p>
+
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

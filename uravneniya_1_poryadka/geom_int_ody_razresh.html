@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Геометрическая интерпритация ОДУ</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="osnovny_opredeleniya.html">Основные определения</a></li>
+                        <li><a href="geom_int_ody_razresh.html">Геометрическая интерпретация ОДУ первого порядка, разрешенного относительно производной</a></li>
+                        <li><a href="s_razdel_perem.html">Уравнения с разделяющимися переменными</a></li>
+                        <li><a href="odnorodny_uravnenia.html">Однородные уравнения</a></li>
+                        <li><a href="lineynuie_uravneniya.html">Линейные уравнения</a></li>
+                        <li><a href="uravneniye_bernulli.html">Уравнение Бернулли</a></li>
+                        <li><a href="uravneniye_rikkati.html">Уравнение Риккати</a></li>
+                        <li><a href="uravnenia_v_poln_diff.html">Уравнения в полных дифференциалах</a></li>
+                        <li><a href="integrirushiy_mnozhitel.html">Интегрирующий множитель</a></li>
+                        <li><a href="ne_razresh_otn_proizv.html">ДУ 1-го порядка, не разрешенные относительно производной. Особые решения</a></li>
+                        <li><a href="kurs_algebry.html">Вспомогательный материал из курса алгебры и математического анализа</a></li>
+                        <li><a href="dokazatelstvo_teor_koshi.html">Доказательство теоремы Коши</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Геометрическая интерпретация ОДУ первого порядка,
+                    разрешенного относительно производной</div>
+
+                    <p>Геометрическая интерпретация ОДУ первого порядка,
+                        разрешенного относительно производной \(y'=f(x, y)\) (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>)</p>
+                    <p>График решения \(y =y(x)\)  дифференциального уравнения (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>) называется его \(\textbf{интегральной     кривой}\).</p>
+                    <p>В геометрических терминах уравнение (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>) выражает следующий факт:</p>
+
+                    <p>Кривая на плоскости \((x,y)\) является интегральной кривой уравнения \(y'=f(x, y)\) тогда и только тогда,когда в любой точке \((x_0,y_0)\) этой кривой она имеет
+                        касательную с угловым коэффициентом \(k = f(x_0, y_0)\).</p>
+                     <p>Таким образом, зная правую часть уравнения (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>), мы можем заранее построить касательные ко всем
+                         интегральным кривым во всех точках: для этого каждой точке \((x_0,y_0)\) области \(\Gamma\) нужно сопоставить проходящую через нее прямую с угловым коэффициентом \(k = f(x_0, y_0)\). Полученное соответствие между точками плоскости и проходящими через нее прямыми называется \(\textbf{полем направления}\) уравнения (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>).</p>
+                    <p>Конечно, фактически поле направлений можно построить лишь в виде достаточно густой сетки отрезков
+                        с отмеченными на них точками (см. рис.). После этого задача построения интегральных кривых становится похожей на отыскание нужного пути в большом парке, снабженном густой сетью стрелок-указателей.</p>
+
+                    <p class="field"><img class="logo" alt=графики width="60%" height="60%" src="../images/DUfield1.jpg"></p>
+                    <p>Задача Коши с геометрической точки зрения заключается в нахождении интегральной кривой, проходящей через
+                        заданную точку \((x_0,y_0)\).</p>
+
+                    <p>Теорема существования и единственности утверждает, что через каждую точку области \(\Gamma\), в которой непрерывны \(f(x,y)\) и \(f'_y(x,y)\), проходит интегральная кривая, и притом единственная.</p>
+
+                    <div class="graphics">
+                        <div class="field2">
+                            <img alt="Поле" src="../images/DUfield1.jpg">
+                            <p>Рис.1</p>
+                        </div>
+                        <div class="field2">
+                            <img alt="Поле" src="../images/DUfield2.jpg">
+                            <p>Рис.2</p>
+                        </div>
+                        <p>Поле направлений и интегральные кривые уравнения \(y' = x^2 + y^2\)</p>
+                    </div>
+                    
+
+                     <div class="example">Замечание.</div>
+                    <p>Вместо уравнения \(y'=f(x, y)\) (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>) можно рассматривать уравнение
+                        \begin{equation}\label{4}
+                            M(x,y)\,dx+N(x,y)\,dy=0 \tag{4}
+                        \end{equation}
+                        
+                    записанное \(\textbf{в дифференциальной форме}\), оно содержит дифференциалы искомой функции и независимой переменной.
+                    Вообще говоря, здесь переменные \(x\) и \(y\) являются равноправными, поэтому рассматривают зависимости как \(y\) от \(x\), так и \(x\) от \(y\).</p>
+
+                    <p>Уравнение (\ref{4}) может быть получено из уравнения (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>) следующим образом: \(\frac{dy}{dx}=f(x,y)\), или
+                        \(f(x,y)dx-dy=0\).</p>
+                    <p>Обратно, там, где \(N(x,y)\ne 0\) уравнение (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>) преобразуется к виду (\ref{4}).</p>
+                    <div class="example"></div>
+                    <p>Лишь немногие обыкновенные дифференциальные уравнения допускают интегрирование в квадратурах т. е.
+                        выражение общего решения через элементарные функции и интегралы от них.</p>
+                    <p>Термин "квадратура", означает взятие неопределенного интеграла и объясняется тем,
+                        что интегралами выражают площади фигур, а задача вычисления площади фигуры с древних времен называлась квадрированием (например, "квадратура круга").</p>
+                    <p>Уравнение \(y'=f(x, y)\) (<a href="osnovny_opredeleniya.html#mjx-eqn-1">1</a>) в общем случае не интегрируется, т.е. нет способа нахождения решения при     произвольной функции \(f(x,y)\). Поэтому приходится рассматривать такие частные виды этой функции, при
+                       которых можно указать способ решения. Такие уравнения относят к интегрируемым типам.</p>
+
+</p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

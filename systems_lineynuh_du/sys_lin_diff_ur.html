@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Системы линейных ДУ</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="sys_lin_diff_ur.html">Системы линейных дифференциальных уравнений</a></li>
+                        <li><a href="lin_neodnor_sys.html">Линейные неоднородные системы</a></li>
+                        <li><a href="lin_sys_s_post_coofic.html">Линейные системы с постоянными коэффициентами</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title"> Системы линейных дифференциальных уравнений</div>
+                    <p>Линейная система ДУ \(n\)-го порядка:
+                    \[\left\{\begin{array}{l} {\dot{x}_{1} =a_{11} (t)x_{1} +a_{12} (t)x_{2} +\ldots +a_{1n} (t)x_{n} +f_{1} (t)} 
+                    \\ {\dot{x}_{2} =a_{21} (t)x_{1} +a_{22} (t)x_{2} +\ldots +a_{2n} (t)x_{n} +f_{2} (t)} 
+                    \\ {...............................................} 
+                    \\ {\dot{x}_{n} =a_{n1} (t)x_{1} +a_{n2} (t)x_{2} +\ldots +a_{nn} (t)x_{n} +f_{n} (t)} \end{array}\right. \]
+                    где искомые функции \(x_{1} (t),x_{2} (t),\ldots ,x_{n} (t)\).</p>
+                    <p>В сокращённом виде систему записывают так:
+                    \[\dot{x}_{i} =\sum _{k=1}^{n}a_{ik} (t)x_{k} +f_{i} (t) ,\quad i=1,\; 2,\, \ldots ,\, n,\]
+                    где \(\dot{x}_{i} =\frac{dx_{i} }{dt} \).</p>
+                    <p>Введём обозначения:
+                    \[X=\left(\begin{array}{l} {x_{1} } \\ {x_{2} } \\ {\, \, \vdots } \\ {x_{n} } \end{array}\right), \hspace{0.5cm}
+                    F(t)=\left(\begin{array}{l} {f_{1} (t)} \\ {f_{2} (t)} \\ {\, \; \; \, \vdots } \\ {f_{n} (t)} \end{array}\right), \hspace{0.5cm}
+                    A(t)=\left\{a_{ij} (t)\right\}_{i,j=1}^{n} , \hspace{0.5cm}
+                    \dot{X}=\left(\begin{array}{l} {\dot{x}_{1} } \\ {\dot{x}_{2} } \\ {\, \, \vdots } \\ {\dot{x}_{n} } \end{array}\right)\]
+                    Тогда система линейных дифференциальных уравнений запишется:
+                    \[\begin{equation} \label{1}\dot{X}=A(t)X+F(t),\quad X\in R^{n}.\tag{1}\end{equation}\]
+                    Можно воспринимать систему линейных ДУ как векторное дифференциальное уравнение.</p>
+                    <p>Возьмём
+                    \[t\in (r_{1} ,r_{2} ),\; \; \; X=(x_{1} ,x_{2} ,\ldots ,x_{n} )\in R^{n}.\]
+                    Применим теорему Коши к системе (\ref{1}), получим, что система (\ref{1}) имеет всегда единственное решение на
+                    \((r_{1},r_{2})\) при начальных условиях
+                    \[X(t_{0} )=X^{0} ,\; t_0\in (r_{1} ,r_{2} ),\; \; \;X^{0}=\left(\begin{array}{l} {x_{1}^{0} } \\ {x_{2}^{0} } \\ {\, \, \vdots } \\ {x_{n}^{0} } \end{array}\right)\in R^{n}
+                    \]
+                    Система линейных дифференциальных уравнений (\ref{1}) \(\dot{X}=A(t)X+F(t),\quad X\in R^{n} \) - неоднородная система.
+                    Если \(F(t)\equiv 0\), то \(\dot{X}=A(t)\cdot X,\quad X\in R^{n} \) - однородная система.</p>
+                    <div class="example">Предложение.</div>
+                    <p>Пусть \(X(t)\) -- решение однородной системы и пусть при некотором значении
+                    \(t=t_0\) \(X(t_0)=0,\) тогда \(X(t)\equiv0,\) \(t\in(\alpha,\beta).\)</p>
+                    <div class="example">Доказательство.</div>
+                    <p>Однородная система обладает тривиальным решением \(X\equiv 0\). Это решение удовлетворяет начальным условиям  \(t=t_0.\)
+                    В силу теоремы Коши о существовании и единственности решения эти решения совпадают.</p>
+                    <div class="example">Принцип суперпозиции</div>
+                    <p>Если \(X=X_{s} (t)\quad s=1\, ,2,\, \ldots ,S\) являются решениями уравнений
+                    \[\dot{X}=A(t)X+F_{s} (t),\quad X\in R^{n} ,\]
+                    то \(X=\sum _{s=1}^{S}\alpha _{s}  X_{s} (t)\) - решение следующей системы
+                    \[\dot{X}=A(t)X+\sum _{s=1}^{S}\alpha _{s} F_{s} (t) ,\quad X\in R^{n} .\]</p>
+                    <div class="example">Следствия</div>
+                    <p>1. Линейная комбинация решений однородной системы также является решением этой системы.
+                    <br>2. Разность произвольных решений неоднородной системы является решением соответствующей однородной системы.
+                    <br>3. Вектор-функция \(X=U(t)+iV(t)\), где \(U(t)\),\(V(t)\) -- действительные вектор-функции, является решением системы
+                    \[\dot{X}=A(t)X+F_{1} (t)+iF_{2} (t),\quad X\in R^{n},\]
+                    где \(F_{1}(t)\), \(F_{2}(t)\) -- также действительные вектор-функции,
+                    \[\Updownarrow \]
+                    \(X=U(t)\) - решение \(\dot{X}=A(t)X+F_{1} (t),\quad X\in R^{n} \) и
+                    \(X=V(t) - решение \dot{X}=A(t)X+F_{2} (t),\quad X\in R^{n} \).
+                    Все следствия проверяются подстановкой. Введём вспомогательные обозначения:
+                    \[X_1=\left(\begin{array}{l} {x_{11} } \\ {x_{21} } \\ {\, \, \vdots } \\ {x_{n1} } \end{array}\right), \hspace{0.5cm}
+                    X_2=\left(\begin{array}{l} {x_{12} } \\ {x_{22} } \\ {\, \, \vdots } \\ {x_{n2} } \end{array}\right),
+                    \ldots,
+                    X_n=\left(\begin{array}{l} {x_{1n} } \\ {x_{2n} } \\ {\, \, \vdots } \\ {x_{nn} } \end{array}\right),
+                    \]
+                    \[Y(t)=\left\{X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\right\}
+                    \]
+                    Матрица \(Y(t)\) состоит из столбцов 
+                    \[X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t).\]
+                    Рассмотрим систему 
+                    \[\dot{X}=A(t)X,\quad X\in R^{n},\]
+                    и пусть \(X_{1} ,\; X_{2} ,\ldots ,X_{n} \) - решения этой системы. Имеем представление 
+                    \[\dot{x}_{ik} =\sum _{j=1}^{n}a_{ij} (t)x_{jk}  ,\quad i=1,\; 2,\, \ldots ,\, n,\quad \; k=1,\; 2,\, \ldots ,\, n,\]
+                    что можно записать в матричной форме
+                    \[\begin{equation} \label{2}\dot{Y}=A(t)Y, \tag{2}\end{equation}\]
+                    так \(Y =\left\{X_{1} ,\; X_{2} ,\ldots ,X_{n} \right\}\) - решение матричного уравнения (\ref{2}).</p>
+                    <div class="example">Определение.</div>
+                    <p>Вектор-функции \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\) линейно зависимы при \(\; t\in (r_{1} ,r_{2} )\),
+                    если
+                    \[\exists C_{1} ,C_{2} ,\ldots ,C_{n} :\quad \sum _{i=1}^{n}C_{i}^{2}  \ne 0\quad \sum _{i=1}^{n}C_{i}  X_{i}(t) =0.\]
+                    Если из 
+                    \[\sum _{i=1}^{n}C_{i}  X_{i} =0\Rightarrow \forall i=1,\, 2,\, \ldots ,\, n\quad C_{i} =0,\]
+                    тогда вектор-функции \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\) линейно независимы.
+                    <br>Обозначим
+                    \[C=\left(\begin{array}{l} {C_{1} } \\ {C_{2} } \\ {\, \, \vdots } \\ {C_{n} } \end{array}\right), \]
+                    тогда 
+                    \[Y(t)C=\sum _{i=1}^{n}C_{i}  X_{i} (t).\]
+                    \(\textbf{Определителем Вронского}\) системы вектор-функций 
+                    \[X_{1} (t)\in R^{n} ,\; X_{2} (t)\in R^{n} ,\ldots ,X_{n} (t)\in R^{n}\]
+                    называют \(W(t)=\det Y(t)\).</p>
+                    <div class="example">Теорема.</div>
+                    <p>1). Если \(n\)-мерные вектор-функции \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\) линейно зависимы при \(\; t\in (r_{1} ,r_{2} )\), то определитель Вронского этой системы нулевой, т.е. \(W(t)=0\quad t\in (r_{1} ,r_{2} )\).
+                    <br>2). Если же функции \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\) - решения однородной системы \(\dot{X}=A(t)X,\quad X\in R^{n} \) и линейно независимы, то \(W(t)\ne 0\quad t\in (r_{1} ,r_{2} )\).
+                    <div class="example">Доказательство.</div>
+                    <div class="example">Утверждение 1.</div>
+                    Функции \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\) - линейно зависимы.
+                    Тогда \(\forall t\in (r_{1} ,r_{2} )\; \exists C=(C_{1} ,C_{2} ,\ldots ,C_{n} ):\quad \sum _{i=1}^{n}C_{i}^{2}  \ne 0\quad Y(t)C=0\).
+                    Посмотрим на равенство \(Y(t)C=0\) как на линейную однородную систему уравнений относительно вектора \(C\). Так как \(C\) -- ненулевой вектор, то наряду с решением системы \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\), существует тривиальное решение
+                    \(X_{i} \equiv 0\quad \; i=\overline{1,n}\). По теореме из курса алгебры \(\det Y(t)=0\).
+                    Получаем, что \(\forall t\in (r_{1} ,r_{2} )\quad W(t)=\det Y(t)=0\).
+                    <br>Утверждение1 доказано.
+                    <div class="example">Утверждение 2.</div>
+                    Докажем от противного. Предположим, что \(\exists t_{0} \in (r_{1} ,r_{2} )\quad \; W(t_{0} )=0\). Так как у линейной однородной системы уравнений \(Y(t_{0} )C=0\), у этой системы нулевой главный определитель, т. е. \(W(t_{0} )=\det Y(t_{0} )=0\), тогда \(\exists \bar{C}=(\bar{C}_{1} ,\bar{C}_{2} ,\ldots ,\bar{C}_{n} )\ne 0\) - нетривиальное решение, получаем \(Y(t_0)\bar{C}=0\).
+                    <br>Так как линейная комбинация решений -- тоже решение, т. е. 
+                    \[\hspace{2cm}X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\]
+                     - система решений системы \(\dot{X}=A(t)X\) (или решение уравнения \(Y(t)C=0\)), значит \(X(t)=Y(t)\bar{C}=\sum _{i=1}^{n}\bar{C}_{i}  X_{i} \) - решение \(\dot{X}=A(t)\cdot X,\quad X\in R^{n} \).
+                    <div class="entry_title">Задача Коши:</div>
+                    \[\left\{\begin{array}{l} {\dot{X}=A(t)X} \\ {X(t_{0} )=Y(t_{0} )\bar{C}} \end{array}\right. \]
+                    Здесь \(t_{0} \in (r_{1} ,r_{2} )\) \(X(t_{0} )=Y(t_{0} )\bar{C}\) - начальное условие задачи Коши.
+                    <br>Но и тривиальное решение \(X\equiv 0\) удовлетворяет условию \(X(t_0)=0\).</p>
+                    <p>В силу однозначности решения задачи Коши \(t\in (r_{1} ,r_{2} )\) \(X(t)=Y(t)\bar{C}\equiv 0\), то есть \(\sum _{i=1}^{n}\bar{C}_{i}  X_{i} \equiv 0\), отсюда \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\) - линейно зависимы, получили противоречие с линейной независимостью \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\).
+                    Утверждение 2 доказано.</p>
+                    <div class="example">Определение:</div> 
+                    <p>Фундаментальной системой решений однородной системы уравнений \(n\)-го порядка
+                        \[\dot{X}=A(t)\cdot X,\quad X\in R^{n}\]
+                    называют набор из \(n\) линейно независимых решений этой системы
+                        \[X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t).\]
+                    Матрицу \(Y(t)=\left\{X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\right\}\) называют фундаментальной матрицей, если
+                        \[Y(t_{0})=E,\]
+                    \(Y(t)\) называют нормальной фундаментальной матрицей. Здесь \(E\) \(-\) матрица тождественного преобразования.
+                    <br>Из выше доказанной теоремы получаем</p>
+                    <div class="example">Критерий фундаментальности системы решений (матрицы \(Y(t)\))</div>
+                    <p>Система решений \(X_{1} (t),\; X_{2} (t),\ldots ,X_{n} (t)\) фундаментальна
+                    \[\Leftrightarrow \exists t_{0} \in (r_{1} ,r_{2} )\quad \; W(t_{0} )\neq0.\]</p>
+                    <div class="example">Теорема об общем виде решений линейной однородной системы дифференциальных уравнений.</div>
+                    <p>1). Любая система \(\dot{X}=A(t)\cdot X,\quad X\in R^{n} \) имеет ФСР.
+                    </br>2). Если \(Y(t)\) \(-\) фундаментальная матрица векторного уравнения \(\dot{X}=A(t)\cdot X\), то всякое решение этого векторного уравнения представимо в виде \(X(t)=Y(t)\cdot C,\; \)где \(C=(C_{1} ,C_{2} ,\ldots ,C_{n} )\) - вектор произвольных постоянных.</p>
+                    <div class="example">Доказательство:</div>
+                    <p>1). Возьмём \(Y^{0}\) \(-\) постоянная матрица, \(\det Y^{0} \ne 0.\) Рассмотрим задачу Коши:
+                    \[\begin{array}{l} {\dot{Y}=A(t)Y} \\ {Y(t_{0})=Y^{0} } \end{array},\]
+                    где \(t_{0} \in (r_{1} ,r_{2}).\) Столбцы \(Y(t)\) есть
+                    \[X_{1} (t)\in R^{n} ,\; X_{2} (t)\in R^{n} ,\ldots ,X_{n} (t)\in R^{n}\]
+                    \(-\) решения соответствующей системы \(\dot{X}=A(t)X\).
+                    <br>В силу единственности решения задачи Коши \(Y(t)\) найдется единственным образом.</p>
+                    <p>Определитель Вронского системы вектор-функций
+                    \[X_{1} (t)\in R^{n} ,\; X_{2} (t)\in R^{n} ,\ldots ,X_{n} (t)\in R^{n}\]
+                    есть
+                    \[W(t)=\det Y(t),\quad W(t_{0})=\det Y(t_{0})=\det Y^{0} \ne 0.\]
+                    По критерию фундаментальности \(Y(t)\) \(-\) фундаментальная матрица.</p>
+                    <p>В силу того, что матрицу \(Y^{0}\), \(\det Y^{0} \ne 0\) можно выбирать бесконечно многими способами, то существует бесконечное число
+                    фундаментальных матриц, соответствующих данному векторному уравнению \(\dot{Y}=A(t)\cdot Y\) иначе, существует бесконечно много ФСР
+                    \[X_{1} (t)\in R^{n} ,\; X_{2} (t)\in R^{n} ,\ldots ,X_{n} (t)\in R^{n}\]
+                    для системы \(\dot{X}=A(t)X\).</p>
+                    <p>2). Пусть \(Y(t)\) \(-\) фундаментальная матрица решений системы \(\dot{X}=A(t)\cdot X\), \(X=\bar{X}(t)\) - какое-то решение этой системы,
+                    возьмём какое-то
+                        \[t_{0} \in (r_{1} ,r_{2} ),\quad X^{0} =\bar{X}(t_{0} ).\]
+                    Рассмотрим уравнение
+                        \[Y(t_{0})\cdot C=X^{0},\]
+                    (\(Y(t_{0}\)) \(-\) невырожденная матрица), далее получаем
+                        \[C=Y^{-1} (t_{0} )X^{0},\]
+                    тогда
+                    \[X(t)=Y(t)\cdot C=Y(t)\cdot Y^{-1} (t_{0} )X^{0} ,\]
+                    \[X(t_{0} )=Y(t_{0} )\cdot C=Y(t_{0} )\cdot Y^{-1} (t_{0} )X^{0} =X^{0} ,\]
+                    получили \(X^{0} =X(t_{0} )\) (т. е. \(X(t_{0})\) удовлетворяет начальному условию задачи Коши).</p>
+                    <p>В силу единственности решения задачи Коши \(\bar{X}(t)\equiv X(t)\), отсюда
+                        \[\bar{X}(t)=Y(t)\cdot Y^{-1} (t_{0} )X^{0} =Y(t)\cdot C.\]
+                    Обозначим \(K(t,t_{0} )=Y(t)Y^{-1} (t_{0}),\) тогда любое решение задачи Коши
+                        \[\left\{\begin{array}{l} {\dot{X}=A(t)X} \\ {X(t_{0} )=X^{0} } \end{array}\right.\]
+                    выглядит так:
+                        \[X(t)=K(t,t_{0} )X^{0}.\]
+                    Матрица \(K(t,t_{0} )\) \(-\) импульсная матрица системы или матрица Коши;
+                    \(K(t,t_{0} )\) \(-\) фундаментальная и нормальная, однозначно определяется соотношениями
+                        \[\left\{\begin{array}{l} {\frac{dK(t,t_{0} )}{dt} =A(t)K(t,t_{0} )} \\ {K(t_{0} ,t_{0} )=E} \end{array}\right.\]
+                    Здесь \(t_{0 }\) -- фиксированный параметр.
+                    <br>\(\textbf{Теорема доказана.}\)</p>
+                    <div class="example">Формула Лиувилля-Остроградского.</div>
+                    <p>Пусть дана линейная система \(\dot{X}=A(t)X\), \(X\in R^{n} \) , распишем её в виде
+                        \[\begin{equation} \label{3}\dot{x}_{i} =a_{i1} (t)x_{1} +a_{i2} (t)x_{2} +\ldots +a_{in} (t)x_{n} \quad \quad i=\overline{1,n}, \tag{3}\end{equation}\]
+                    столбцы \(X_{1} ,X_{2} ,\ldots ,X_{n} \) - решение уравнения, рассмотрим определитель Вронского для этих решений
+                        \[\begin{array}{l} {\quad \quad \quad \underline{X_{1} \; X_{2} \, \ldots \, X_{n} }} \\ {W(t)=\left|\begin{array}{l} {x_{11} \; x_{12} \, \ldots \, x_{1n} } \\ {x_{21} \; x_{22} \, \ldots \, x_{2n} } \\ {\, \vdots \, \, \, \; \; \, \vdots \quad \, \vdots \quad \vdots } \\ {x_{n1} \; x_{n2} \, \ldots \, x_{nn} } \end{array}\right|\quad \left|\begin{array}{l} {z_{1} } \\ {z_{2} } \\ {\, \vdots } \\ {z_{n} } \end{array}\right. } \end{array},\]</p>
+                     т. е. за \(z_{i} \) обозначим векторы строки определителя
+                        \[z_{i} =(x_{i1} \; x_{i2} \, \ldots \, x_{in} )\; \; i=\overline{1,n}.\]
+                    Подставим поочерёдно \(X_{1} ,X_{2} ,\ldots ,X_{n} \) в уравнение (\ref{3}). 
+                     \[\begin{equation} \label{4}\hspace{1cm}
+                    \left\{\begin{array}{l} {\dot{x}_{i1} =a_{i1} (t)x_{11} +a_{i2} (t)x_{21} +\ldots +a_{in} (t)x_{n1} }
+                    \\ {\dot{x}_{i2} =a_{i1} (t)x_{12} +a_{i2} (t)x_{22} +\ldots +a_{in} (t)x_{n2} } \tag{4}
+                    \\ {...........................................} \\
+                    {\dot{x}_{in} =a_{i1} (t)x_{1n} +a_{i2} (t)x_{2n} +\ldots +a_{in} (t)x_{nn} } \end{array}\right.\end{equation}
+                    \] 
+                    Систему (\ref{4}) запишем в векторной форме 
+                         \[\begin{equation} \label{5}\dot{z}_{i} =a_{i1} (t)z_{1} +a_{i2} (t)z_{2} +\ldots +a_{in} (t)z_{n} \quad \quad i=\overline{1,n}. \tag{5}\end{equation}\] 
+                    Для вычисления производной определителя Вронского воспользуемся правилом 
+                        \[\dot{W}(t)=W_{1} +W_{2} +\ldots +W_{n}.\] 
+                        \[W_{i} =\left|\begin{array}{l} {z_{_{1} } } \\ {z_{2} } \\ {...} \\ {\dot{z}_{i} } \\ {...} \\ {z_{n} } \end{array}\right|=
+                    \left|\begin{array}{l} {\quad \quad \quad \quad \quad \quad z_{_{1} } } \\
+                    {\quad \quad \quad \quad \quad \quad z_{2} } \\
+                    {\quad \quad \quad \quad \quad \quad \ldots } \\
+                    {a_{i1} (t)z_{1} +a_{i2} (t)z_{2} +\ldots +a_{in} (t)z_{n} } \\
+                    {\quad \quad \quad \quad \quad \quad \ldots } \\
+                    {\quad \quad \quad \quad \quad \quad z_{n} } \end{array}\right|=\] 
+                         \[=\left|\begin{array}{l} {\quad z_{_{1} } } \\ {\quad z_{2} } \\ {\quad \ldots } \\ {a_{i1} (t)z_{1} } \\
+                    {\quad \ldots } \\ {\quad z_{n} } \end{array}\right|+\ldots +\left|\begin{array}{l} {\quad z_{_{1} } } \\ {\quad z_{2} }
+                    \\ {\quad \ldots } \\ {a_{ii} (t)z_{i} } \\ {\quad \ldots } \\
+                    {\quad z_{n} } \end{array}\right|+\ldots +\left|\begin{array}{l} {\quad z_{_{1} } } \\
+                    {\quad z_{2} } \\ {\quad \ldots } \\ {a_{in} (t)z_{n} } \\ {\quad \ldots } \\ {\quad z_{n} } \end{array}\right|=
+                    \left|\begin{array}{l} {\quad z_{_{1} } } \\ {\quad z_{2} } \\ {\quad \ldots } \\ {a_{ii} (t)z_{i} }
+                    \\ {\quad \ldots } \\ {\quad z_{n} } \end{array}\right|\] 
+                        \[W_{i} =a_{ii} (t)W(t)\] 
+                        \[\dot{W}(t)=\sum _{i=1}^{n}a_{ii} (t)W(t)\] 
+                     или 
+                        \[\dot{W}(t)=S(t)W(t),\] 
+                      где \(S(t)=\sum _{i=1}^{n}a_{ii} (t)\) \(-\) след матрицы \(A(t)\).
+                    <br>Решение уравнения \(\dot{W}(t)=S(t)W(t)\) записываются в виде 
+                        \[W(t)=W(t_{0} )e^{-\int _{t_{0} }^{t}S(\tau )d\tau  }\] 
+                    или 
+                        \[W(t)=C_{1} e^{-\int S(\tau )d\tau  }.\] 
+                    Эти формулы называют формулами Лиувилля-Остроградского для линейной системы уравнений 
+                        \[\dot{x}_{i} =\sum _{k=1}^{n}a_{ik} x_{k}  \quad i=\overline{1,n}.\]
+                    </p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

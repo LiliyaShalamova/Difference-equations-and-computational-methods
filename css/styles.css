@@ -1,0 +1,311 @@
+* 
+{
+	outline: none;
+}
+
+html, body 
+{
+	color: #151c1f;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+}
+
+body 
+{
+	background: #ededed;
+}
+
+a 
+{
+	color: #1976D2;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+a:hover 
+{
+	text-decoration: none;
+}
+
+h2, .entry_title 
+{
+	font-size: 20px;
+	margin: 5px 0 15px 0;
+}
+
+h3 
+{
+	font-size: 16px;
+}
+
+ul 
+{
+	padding-left: 24px;
+}
+
+ul li 
+{
+	padding: 2px 0;
+}
+
+#content_col a
+{
+	font-size: 18px;
+	font-family: times;
+	text-decoration: none;
+	color: red;
+}
+
+.global_container 
+{
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 960px;
+	width: 90%;
+}
+
+.formula img 
+{
+	position: absolute;
+	left: 50%;
+	margin-left: -86px;
+
+}
+
+.graphics
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.graphics p 
+{
+	text-align: center;
+	align-self: flex-start;
+}
+
+.field2 img
+{
+	width: 95%;
+}
+
+.field2
+{
+	text-align: center;
+	flex: 1 50%;
+}
+
+#content_container 
+{
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+	margin-top: 20px;
+	margin-bottom: 18px;
+}
+
+#header 
+{
+	background: url('../images/top.png') no-repeat;
+	border-radius: 2px 2px 0 0;
+	-moz-border-radius: 2px 2px 0 0;
+	-webkit-border-radius: 2px 2px 0 0;
+	height: 200px;
+	padding: 0 32px;
+}
+
+#header .title,
+#header .descr 
+{
+	font-size: 20px;
+	text-shadow: #ffffff 0px 1px 1px;
+}
+
+#header .title 
+{
+	font-size: 32px;
+	padding-top: 95px;
+}
+
+.content 
+{
+	padding: 20px 12px;
+	position: relative;
+	display: flex;
+}
+
+#left_col 
+{
+	float: left;
+	padding-right: 12px;
+	flex: 1 23%;
+}
+
+#content_col 
+{
+	flex: 1 70%;
+	word-break: normal;
+}
+
+.lcol_menu 
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lcol_menu li 
+{
+	margin: 0;
+	padding: 0;
+}
+
+.lcol_menu li a
+{
+	color: #000000;
+	display: inline-block;
+	font-size: 14px;
+	padding: 5px 10px 6px 10px;
+	text-decoration: none;
+}
+
+.lcol_menu li a:hover 
+{
+	color: #1976D2;
+	text-decoration: underline;
+}
+
+.lcol_menu li.category,
+.lcol_menu li.homepage 
+{
+	background: #37474f;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	margin-top: 5px;
+}
+
+.lcol_menu li.homepage 
+{
+	background: #1976D2;
+	margin-top: 0;
+}
+
+.lcol_menu li.category a,
+.lcol_menu li.homepage a 
+{
+	color: #ffffff;
+	padding-top: 7px;
+	padding-bottom: 8px;
+}
+
+.lcol_menu li.category a:hover 
+{
+	color: #ffffff;
+	text-decoration: underline;
+}
+.field 
+{
+	text-align: center;
+}
+
+#welcome_text 
+{
+	background: url('../images/welcome_text_bg.jpg') no-repeat;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+    font-size: 16px;
+	height: 400px;
+	padding: 0 80px 0 80px;
+}
+
+#welcome_text .title 
+{
+	font-size: 20px;
+	padding: 32px 0 12px 0;
+}
+
+.category_descr 
+{
+	background: #fafafa;
+	border: 1px solid #eaeaea;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	color: #37474f;
+	font-size: 14px;
+	font-style: italic;
+	padding: 8px 12px;
+}
+
+.example 
+{
+	background: #fafafa;
+	border: 1px solid #eaeaea;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 12px 0;
+	padding: 4px 12px;
+}
+
+#footer 
+{
+	background: #f7f7f7;
+	border-radius: 0 0 2px 2px;
+	-moz-border-radius: 0 0 2px 2px;
+	-webkit-border-radius: 0 0 2px 2px;
+	font-size: 14px;
+	color: #757575;
+	padding: 14px 12px 15px 12px;
+	text-align: center;
+}
+
+#subfooter 
+{
+	color: #757575;
+	font-size: 13px;
+	padding: 0 0 20px 0;
+	text-align: center;
+}
+
+#footer a,
+#subfooter a,
+#footer a:link,
+#subfooter a:link,
+#footer a:visited,
+#subfooter a:visited 
+{
+	color: #757575;
+}
+
+#footer a:hover,
+#subfooter a:hover 
+{
+	color: #252525;
+}
+
+
+@media (max-width: 768px) {
+	#content_col img
+	{
+		width: 80%;
+	}
+
+	.content 
+	{
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+
+}

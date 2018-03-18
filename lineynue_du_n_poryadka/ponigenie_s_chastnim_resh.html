@@ -1,0 +1,132 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Понижение порядка линейного однородного ДУ N-го порядка с помощью частных решений</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li><a href="lin_dif_ur.html">Линейные Дифференциальные Уравнения n-го порядка</a></li>
+                        <li><a href="ponigenie_s_chastnim_resh.html">Понижение порядка линейного однородного ДУ n-го порядка с помощью частных решений</a></li>
+                        <li><a href="lin_odn_dif_ur_2_por_s_postk.html">Линейные ДУ 2-го порядка с постоянными коэффициентами</a></li>
+                        <li><a href="lin_odn_dif_ur_n_por_s_postk.html">Линейные ДУ n-го порядка с постоянными коэффициентами</a></li>
+                        <li><a href="lin_neodn_dif_ur_n_por_s_postk.html">Линейные Неоднородные ДУ n-го порядка с постоянными коэффициентами</a></li>    <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Понижение порядка линейного однородного дифференциального уравнения n-го порядка с помощью частных решений.</div> 
+
+                    <p>Пусть дано уравнение
+                        \begin{equation}\label{8}
+                            y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=0 \tag{8}
+                        \end{equation} 
+                    и известно его нетривиальное частное решение \(y=\varphi (t)\), тогда проведём замену переменных
+                        \begin{equation}\label{9}
+                            y=\varphi (t)z, \tag{9}
+                        \end{equation} 
+                    где \(z=z(t)\) \(-\) новая искомая функция.</p>
+                    <p>Можно понизить порядок исходного ДУ (\ref{8}) на единицу, причём новое ДУ для \(z\) также будет линейным однородным.</p>
+                    <p>Докажем, что уравнение относительно переменной \(z\) имеет вид:
+                        \begin{equation}\label{10}
+                            b_{0} (t)z^{(n)} +b_{1} (t)z^{(n-1)} +...+b_{n-1} (t)z'+b_{n} (t)z=0 \tag{10}
+                        \end{equation} 
+                    причём \(b_{0} (t)=\varphi (t);\quad b_{n} (t)\equiv 0\)</p>
+                    <p>Подставим в уравнение (\ref{8}) выражение (\ref{9}) и сгруппируем слагаемые,
+                    содержащие производные от \(z\) одного порядка. </p>
+                    <p>Учитывая, что 
+                    \[y^{(k)}=\varphi (t)z^{(k)}+\ldots+\varphi^{(k)}(t)z,\]
+                    где в ненаписанных членах содержатся производные \(z\) не выше \((k-1)\).</p>
+                    <p>Отсюда вытекает, что уравнение для \(z\) примет вид (\ref{10}), причём \(b_0(t)=\varphi(t)\).</p>
+                    <p>Докажем, что \(b_{n} (t)\equiv 0\).</p>
+                    <p>Если \(y=\varphi (t)z\) \(-\) решение уравнения (\ref{8}),
+                    то \(z\) \(-\) решение уравнения (\ref{9})</p>
+                    <p>При \(z=1\) получаем \(y=\varphi (t)\).
+                    Эта функция является решением уравнения (\ref{8}) . Значит \(z=1\)  решение уравнения (\ref{10}).
+                    Подставляя в уравнение (\ref{10}) \(z=1\), получим \(b_{n} (t)\cdot 1=0\, \Rightarrow \; b_{n} (t)\equiv 0\, \).</p>
+
+                    <p>Если надо получить уравнение со старшим коэффициентом 1, то поделим (\ref{10}) на \(b_{0} (t)=\varphi (t)\),
+                    рассматривая промежуток, где \(\varphi (t)\ne 0\). </p>
+
+                    <p>Замена \(z'=u\) в уравнении (\ref{10}) приводит к
+                        \begin{equation}\label{11}
+                            \varphi(t)u^{(n-1)} +b_{1} (t)u^{(n-2)} +...+b_{n-1} (t)u=0 \tag{11}
+                        \end{equation}
+                    т. е. получили линейное уравнение \((n-1)\) порядка. Можно привести его к стандартному виду,
+                    поделив его на \(\varphi (t)\), рассматривая промежуток, где \(\varphi (t)\ne 0\).</p>
+
+                    <p>Если найдено нетривиальное решение \(u=\psi(t)\) уравнения (\ref{11}),
+                    то вычисляется 
+                    \[z=\int \psi(t)dt , y=\varphi(t)\int \psi(t)dt \]
+                    Это новое решение уравнения (\ref{8}) и решение \(\varphi(t)\) линейно независимы, так как \(\psi(t)\) нетривиально
+                    (т. е. \(\int \psi (t)dt\), - не \(const\)).</p>
+                    <p>Зная два линейно независимых решения \(\varphi _{1} (t)\) и \(\varphi _{2} (t)\) уравнения (\ref{8}),
+                    можно понизить его порядок на две единицы.</p>
+                    <p>Действительно, функция \(z\), определяемая
+                    соотношением \[\varphi _{2} (t)=\varphi _{1} (t)z(t),\] должна быть решением уравнения (\ref{10}).
+                    Поэтому
+                    \[u=z'=\left(\frac{\varphi _{2} }{\varphi _{1} } \right)^{{'} } \]
+                    является известным нетривиальным
+                    решением (\ref{11}), что позволяет понизить на единицу его порядок, сохраняя линейность.</p>
+
+                    <p>Значение \(r\) линейно независимых решений (\(r\le n-1\)) даёт возможность понизить порядок на \(r\) единиц,
+                     а при \(r=n\) сразу получается общее решение уравнения (\ref{8}).</p>
+
+
+                    <p>\(\textbf {Запись линейного уравнения в операторной форме}\)</p>
+
+                    \[y^{(n)}+a_1(x)y^{(n-1)}+\ldots+a_n(x)y=0.\]
+
+                    <p>Пусть функция \(y(x)\) \(-\) \(n\) раз  дифференцируема  в интервале \((r_1,r_2)\), а
+                        \begin{equation}\label{12}
+                            L(y(x)):=y^{(n)}+a_1(x)y^{(n-1)}+\ldots+a_n(x)y. \tag{12}
+                        \end{equation}
+                    </p>
+                    <p>Cимволом \(L\) обозначим:
+                    \[L\equiv\frac{d^n}{dx^n}+a_1(x)\frac{d^{n-1}}{dx^{n-1}}+\ldots+a_{n-1}(x)\frac{d}{dx}+a_n(x).\]
+                    и будем называть \(\textbf {линейным дифференциальным оператором \(n\)-го порядка}\).
+                    В частности, линейный дифференциальный оператор 2-го порядка имеет вид
+                    \[
+                    L\equiv\frac{d^2}{dx^2}+a_1(x)\frac{d}{dx}+a_2(x).
+                    \]</p>
+                    <p>\(\textbf{Замечание.}\)Хотя структура решений линейного однородного уравнения проста (линейная комбинация решений ФСР),
+                    однако фундаментальные системы решений эффективно находятся лишь для уравнений с ПОСТОЯННЫМИ КОЭФФИЦИЕНТАМИ.</p>
+                    </p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>
+

@@ -1,0 +1,146 @@
+            
+            <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Линейные дифференциальные уравнения 2-го порядка с постоянными коэффициентами</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li><a href="lin_dif_ur.html">Линейные Дифференциальные Уравнения n-го порядка</a></li>
+                        <li><a href="ponigenie_s_chastnim_resh.html">Понижение порядка линейного однородного ДУ n-го порядка с помощью частных решений</a></li>
+                        <li><a href="lin_odn_dif_ur_2_por_s_postk.html">Линейные ДУ 2-го порядка с постоянными коэффициентами</a></li>
+                        <li><a href="lin_odn_dif_ur_n_por_s_postk.html">Линейные ДУ n-го порядка с постоянными коэффициентами</a></li>
+                        <li><a href="lin_neodn_dif_ur_n_por_s_postk.html">Линейные Неоднородные ДУ n-го порядка с постоянными коэффициентами</a></li>    <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title"> Линейные Дифференциальные Уравнения 2-го порядка с постоянными коэффициентами. </div>
+                    <p>
+                    Среди ОДУ порядка выше первого наиболее просто интегрируются линейные однородные дифференциальные
+                    уравнения 2-го порядка с постоянными коэффициентами:
+                        \begin{equation}\label{13}
+                            y''+ay'+by=0, \tag{13}
+                        \end{equation}
+                    где \(a,\,b\in \mathbb{R} \) .                  
+                    </p>
+                    <p>
+                    \[\Gamma: \hspace{1cm}  -\infty < x < \infty ,\hspace{1cm}   -\infty < y < \infty ,\hspace{1cm}   -\infty < y' < \infty  \]
+
+                    Все решения уравнения (\ref{13}) определены при всех \(x\in \mathbb{R} \) .</p>
+                    <p>Справедливы все утверждения и теоремы, сформулированные ранее для линейных уравнений.</p>
+                    <p>Линейная комбинация решений уравнения (\ref{13}) есть снова решение этого уравнения.</p>
+                    <p> Следуя \(\textbf {Эйлеру}\), будем искать решение уравнения (\ref{13}) в виде
+                    \[y=e^{\lambda x},\text{ где   }\lambda\text{ \(-\) вещественное или комплексное число.}\]
+                    \[y'(x)=\lambda e^{\lambda x}, y''(x)=\lambda^2 e^{\lambda x},\]
+                    \[L(y(x))=L(e^{\lambda x})=e^{\lambda x}(\lambda^2+a\lambda+b).\]
+
+                     \(L(e^{\lambda x})=0\) , т.е. \(e^{\lambda x}\) является решением (\ref{13}),
+                     тогда и только тогда, когда \(\lambda\) является корнем уравнения 
+                         \begin{equation}\label{14}
+                            \lambda^2+a\lambda+b=0 \tag{14}
+                        \end{equation}
+                    </p>
+                    <p>Уравнение (\ref{14}) называется \(\textbf {характеристическим уравнением}\)  линейного однородного дифференциального
+                    уравнения 2-го порядка (\ref{14}), а многочлен
+                    \[s(\lambda)=\lambda^2+a\lambda+b\]</p>
+                    <p>\(\textbf {характеристическим многочленом}\) уравнения (\ref{13}).</p>
+                    <p>Характеристическое уравнение (\ref{13}) может иметь два действительных различных корня, один корень кратности \(2\) или
+                    два комплексно \(-\) сопряженных корня.</p>
+                    <p>\(\textbf{А. Случай простых действительных корней характеристического уравнения (\ref{14})} \)
+                    \( \lambda_1,\,\,\lambda_2\in\mathbb{R},\lambda_1\ne\lambda_2. \) </p>
+                    <p>Общее решение уравнения (\ref{13}):
+                    \[y=C_1e^{\lambda_1 x}+C_2e^{\lambda_2 x}.\]
+                    Действительно,
+                    \[y_1=e^{\lambda_1 x}, y_2=e^{\lambda_1 x}\text{\(-\)  ФСР уравнения (\ref{13})}\]
+                    \[W(x)=\begin{vmatrix} e^{\lambda_1 x} & e^{\lambda_2 x} \\  \lambda_1e^{\lambda_1 x} & \lambda_2e^{\lambda_2 x} \end{vmatrix}\]
+                    и при \(x=0\) определитель
+                    \[ W(0)=\left|
+                    \begin{array}{ccccc}
+                    1&1\\
+                    \lambda_1&\lambda_2
+                    \end{array}
+                    \right|=\lambda_2-\lambda_1\neq 0.\]</p>
+                    <p>\(\textbf{Б. Случай кратного корня уравнения (\ref{14}): \(\lambda_0\) \(-\) корень кратности 2.}\)</p>
+                    <p>ФСР уравнения (\ref{13}):
+                    \[y_1=e^{\lambda_0 x},\quad y_2=xe^{\lambda_0 x}.\]</p>
+                    <div class="example">З а д а н и е:</div>
+                    <p> проверить, что \(y_1(x) \) , \(y_2(x) \) \(-\) решения уравнения (\ref{13}).</p>
+                    <p>Установим линейную независимость этих функций:
+                    \[W(x)=\begin{vmatrix} e^{\lambda_0 x} &  xe^{\lambda_0 x}  \\ \lambda_0 e^{\lambda_0 x} & e^{\lambda_0 x}+\lambda_0xe^{\lambda_0 x}  \end{vmatrix} ,\text{при }x=0 \hspace{1cm} W(0)=\begin{vmatrix} 1&0 \\ \lambda_0&1 \end{vmatrix} \neq 0 \]
+                    Тогда общее решение запишется в виде
+                        \begin{equation}\label{15}
+                            y=(C_1+C_2x)e^{\lambda_0 x}. \tag{15}
+                        \end{equation}
+                    </p>
+                    <div class="example"></div>
+                    <p>\(\textbf{В. Случай комплексных корней уравнения (\ref{14}): \( \lambda_{1,2}=\alpha\pm\beta i\) }\)</p>
+                    <p>ФСР уравнения (\ref{13}) составляют функции \[y_1=e^{\lambda_1 x}, y_2=e^{\lambda_1 x}.\]
+                    Уравнение (\ref{13}) имеет действительные коэффициенты. Хотелось бы иметь действительнозначное решение.
+                    По формуле Эйлера
+                    \[e^{(\alpha\pm \beta i)x}=e^{\alpha x}\cos \beta x\pm ie^{\alpha x}\sin \beta x.\]
+                    Вместо ФСР из комплекснозначных функций \(e^{(\alpha+ \beta i)x} \) и \( e^{(\alpha- \beta i)x} \)
+                    составим  ФСР из \(\textbf {действительнозначных } \)функций
+                    \(e^{\alpha x}\cos \beta x\) и \(e^{\alpha x}\sin \beta x\) .</p>
+                    <div class="example">З а д а н и е:</div>
+                    <p>проверить, что \(y_1=e^{\alpha x}\cos \beta x\) и \(y_2=e^{\alpha x}\sin \beta x\) : 
+                    1) решения; 2) линейно независимы.
+                    </p>
+                    <p>Общее решение в этом случае имеет вид
+                    \[y=C_1e^{\alpha x}\cos \beta x+C_2e^{\alpha x}\sin \beta x=e^{\alpha x}(C_1\cos \beta x+C_2\sin \beta x).\]</p>
+
+                    <div class="example">Пример 1.</div>
+                     \(y''+y'-2y=0. \)    Характер. уравнение \( \lambda^2+\lambda-2=0. \) Его корни
+                    \( \lambda_1=-2\), \(\lambda_2=1\) . Общее решение:
+                    \[ y=C_1e^{-2x}+C_2e^x. \hspace{1cm}{\triangle}\]
+                    <div class="example">Пример 2.</div>
+                     \(y''-2y'=0. \)   \( \lambda^2-2\lambda=0, \)  
+                    \( \lambda_1=0,\,\,\lambda_2=2\) .
+                    \[ y=C_1+C_2e^{2x}. \hspace{1cm}{\triangle}\]
+                    <div class="example">Пример 3.</div>
+                     \(y''-2y'+y=0. \)   \( \lambda^2-2\lambda+1=0, \)   \( \lambda_0=1\) \(-\) кратный корень. Общее решение имеет вид:
+                    \[ y=(C_1+C_2x)e^{x}. \hspace{1cm}{\triangle}\]
+                    <div class="example">Пример 4.</div>
+                     \(y''+4y'+13y=0. \)   \( \lambda^2+4\lambda+13=0. \)  
+                    \( \lambda_{1,2}=-2\pm 3i\) . Общее решение имеет вид:
+                    \[y=e^{-2x}(C_1\cos 3x+C_2\sin 3x).\hspace{1cm}{\triangle}\]</p>
+
+            </p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>
