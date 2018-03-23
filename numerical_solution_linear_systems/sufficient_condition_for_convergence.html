@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Достаточные условия метода простой итерации для решения систем линейных уравнений</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+						<li class="category"><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+						<li><a href="matrix_norms.html">Нормы матриц</a></li>
+                        <li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
+                        <li><a href="sufficient_condition_for_convergence.html">Достаточные условия метода простой итерации</a></li>
+						<li><a href="jacobi_method.html">Метод Якоби</a></li>
+						<li><a href="gauss_seidel_method.html">Метод Гаусса-Зейделя</a></li>
+                        <li class="category"><a href="/first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="/second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+						<li class="category"><a href="#">Методы вычислений</a></li>
+						<li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+						<li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="literature.html">Литература</a></li>
+                        <li><a href="formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Достаточные условия метода простой итерации для решения систем линейных уравнений</div>
+					<p>Приведенные необходимые и достаточные условия сходимости метода 
+					простой итерации не совсем удобны: они связаны со сложной задачей
+					нахождения всех собственных значений матрицы. Следующее вспомогательное 
+					утверждение дает путь получения многих простых достаточных условий сходимости.</p>
+					<div class="example">Лемма</div>
+					<p>Модуль собственного числа матрицы не превосходит нормы матрицы:\[|\lambda(B)| \leq ||B||.\]</p>
+					<p>\(\textbf{Доказательство.}\)</p>
+					<p>Пусть \(\lambda\) – собственное число матрицы \(B\), а \(x\) – соответствующий собственный вектор, 
+					тогда по определению \(Bx = \lambda x\). Из свойств подчиненной нормы вытекает
+					\[\left \| B \right \| \left \| x \right \| \geq ||Bx|| = |\lambda x| = |\lambda|||x||.\]</p>
+					<p>Так как собственный вектор \(x\) ненулевой, его норма не ноль, поэтому можно
+					в неравенстве сократить на \(||x||\), получим требуемое.</p>
+					<p>Как следствие из этого утверждения и критерия сходимости метода
+					простой итерации для линейных систем вытекает</p>
+					<div class="example">Теорема</div>
+					<p>Если \(||B|| < 1\), то метод простой итерации сходится при
+					любом начальном приближении.</p>
+					<p>\(\textbf{Доказательство}\) получается из неравенства \[|\lambda(B)| \leq ||B|| < 1.\]</p>
+					<p>В частности, метод простой итерации сходится, если выполняется одно из следующих условий:</p>
+					<p>\(1.\) Для любого \(j = 1, \cdots , n\) \[\sum_{i=1}^n|b_{ij}| < 1\]</p>
+					<p>\(2.\) \[\sum_{i,j=1}^nb_{ij}^2 < 1\]</p>
+					<p>\(3.\) Для любого \(i = 1, \cdots , n\) \[\sum_{j=1}^n|b_{ij}| < 1\]</p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

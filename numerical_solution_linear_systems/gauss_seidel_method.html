@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Метод Гаусса-Зейделя</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+						<li class="category"><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+						<li><a href="matrix_norms.html">Нормы матриц</a></li>
+                        <li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
+                        <li><a href="sufficient_condition_for_convergence.html">Достаточные условия метода простой итерации</a></li>
+						<li><a href="jacobi_method.html">Метод Якоби</a></li>
+						<li><a href="gauss_seidel_method.html">Метод Гаусса-Зейделя</a></li>
+                        <li class="category"><a href="/first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="/second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+						<li class="category"><a href="#">Методы вычислений</a></li>
+						<li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+						<li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="literature.html">Литература</a></li>
+                        <li><a href="formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Метод Гаусса-Зейделя</div>
+					<p>Посмотрим на покоординатные формулы метода Якоби. Когда считается вторая 
+					координата \(k+1\)-го приближения, уже известно \(x^{(k+1)}_1\), поэтому
+					в формулах естественно использовать уже посчитанные приближения координат. 
+					Получаем метод, называемый \(\textbf{методом Гаусса-Зейделя}\)
+					\[
+					\left\{\begin{matrix}
+					 x_1^{(k+1)} = - \frac{a_{12}}{a_{11}}x_2^{(k)} - \cdots - \frac{a_{1n}}{a_{11}}x_n^{(k)} + \frac{b_1}{a_{11}}, \\
+					 x_2^{(k+1)} = - \frac{a_{21}}{a_{22}}x_1^{(k+1)} - \cdots - \frac{a_{2n}}{a_{22}}x_n^{(k)} + \frac{b_2}{a_{22}}, \\
+					 ...................................... \\
+					 x_n^{(k+1)} = - \frac{a_{n1}}{a_{nn}}x_1^{(k+1)} - \frac{a_{n2}}{a_{nn}}x_2^{(k+1)} - \cdots + \frac{b_n}{a_{nn}}.
+					\end{matrix}\right.
+					\]</p>
+					<p>Перепишем его в матричной форме, используя те же обозначения, что и в методе Якоби:
+					\[x^{(k+1)} = D^{−1}(−Lx^{(k+1)} − Rx^{(k)} + b).\]
+					Чтобы свести к методу простой итерации, приведем подобные при \(x^{(k+1)}\):</p>
+					<p>\[Dx^{(k+1)} + Lx^{(k+1)} = −Rx^{(k)} + b, x^{(k+1)} =\]
+					\[= −(L + D)^{−1}Rx^{(k)} + (L + D)^{−1}b,\]
+					откуда матрица \(B\) в методе простой итерации определяется соотношением
+					\[B = −(L + D)^{−1}R.\]</p>
+					<div class="example">Теорема</div>
+					<p>Пусть \(a_{ii} \neq 0\) для всех \(i = 1, \cdots , n\). Тогда для сходимости
+					метода Гаусса-Зейделя необходимо и достаточно, чтобы все корни уравнения
+					\[det(\lambda L + \lambda D + R) = 0\]удовлетворяли соотношению \(|\lambda| < 1\).</p>
+					<p>\(\textbf{Доказательство.}\)</p>
+					<p>Согласно доказанному критерию сходимости метода простой итерации, 
+					метод сходится тогда и только тогда, когда все собственные числа
+					матрицы \(B\) по модулю меньше единицы. Выпишем характеристическое
+					уравнение, учитывая конкретный вид матрицы в методе Гаусса-Зейделя
+					и проделаем преобразования
+					\[0 = det(\lambda E − B) = det(\lambda E + (L + D)^{−1}R) =\]
+					\[= det((D + L)^{−1})det(\lambda(L + D) + R),\]откуда следует заключение теоремы.</p>
+					<p>Без доказательства приведем два достаточных условия сходимости метода Гаусса-Зейделя.</p>
+					<div class="example">Теорема</div>
+					<p>Если исходная матрица \(A\) имеет диагональное преобладание, то метод Гаусса-Зейделя сходится.</p>
+					<div class="example">Теорема</div>
+					<p>Если исходная матрица \(A\) симметричная и положительно определена, то метод Гаусса-Зейделя сходится.</p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Примеры</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+						<li class="category"><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+						<li><a href="formulation_of_problem.html">Постановка задачи</a></li>
+						<li><a href="half_division_method.html">Метод половинного деления</a></li>
+						<li><a href="newton's_method.html">Метод Ньютона</a></li>
+						<li><a href="modified_newton's_method.html">Модифицированный метод Ньютона</a></li>
+						<li><a href="method_of_chords.html">Метод хорд</a></li>
+						<li><a href="method_of_moving_chords.html">Метод подвижных хорд</a></li>
+						<li><a href="mayer_method.html">Метод секущих парабол</a></li>
+						<li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
+						<li><a href="error_of_methods.html">Погрешность методов</a></li>
+						<li><a href="convergence_of_newton.html">Сходимость метода Ньютона</a></li>
+						<li><a href="examples.html">Примеры</a></li>
+                        <li class="category"><a href="/first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="/second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+						<li class="category"><a href="#">Методы вычислений</a></li>
+						<li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+						<li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="literature.html">Литература</a></li>
+                        <li><a href="formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+					<div class="example">Пример</div>
+					<p>Методом Ньютона найти наименьший положительный корень уравнения \(x^2– e^{-x} = 0\) с точностью \(\varepsilon = 0,001\).</p>
+					<p>\(\textbf{Решение}\)</p>
+					<p>Необходимо найти отрезок \([a,b]\), на котором существует
+					единственный корень данного уравнения. Для этого преобразуем уравнение к равносильному 
+					виду \(x^2= e^{-x}\) и найдем точки пересечения графиков \(y = x^2\) и \(y = e^{-x}\).</p>
+					<p class="field"><img class="logo" alt="Пример метода Ньютона" src="../images/newton-example.png"></p>
+					<p>Очевидно, корень уравнения \(\zeta \in [0,5; 1]\). Выберем начальное
+					приближение к корню \(х_0\) из условия: \(f(x_0)·f''(x_0) > 0\)</p>
+					<p>\(f''(x) = 2 – e^{-x} > 0\) на \([0,5; 1]\);</p>
+					<p>\(f(a) = f(0,5) < 0; f(b) = f(1) > 0 \Rightarrow x_0 = 1.\)</p>
+					<p>Результаты расчетов по формуле метода Ньютона: \(x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\) приведены в таблице:</p>
+					<table class="newton">
+						<tr>
+							<td>\(n\)</td><td>\(0\)</td><td>\(1\)</td><td>\(2\)</td><td>\(3\)</td>
+						</tr>
+						<tr>
+							<td>\(x_n\)</td><td>\(1,000\)</td><td>\(0,73304\)</td><td>\(0,70381\)</td><td>\(0,703467\)</td>
+						</tr>
+						<tr>
+							<td>\(|x_n - x_{n-1}|\)</td><td>\(-\)</td><td>\(0,27\)</td><td>\(0,029\)</td><td>\(0,00034\)</td>
+						</tr>
+						<tr>
+							<td>\(f(x_n)\)</td><td>\(0,63212\)</td><td>\(0,05690\)</td><td>\(0,00065\)</td><td>\(8,25\cdot10^{-7}\)</td>
+						</tr>
+					</table>
+					<p>\(\textbf{Вывод:}\) наименьший положительный корень уравнения \(x^2 – e^{-x} = 0\),
+					равный \(0,703467\), был найден методом Ньютона с требуемой точностью за три итерации.</p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

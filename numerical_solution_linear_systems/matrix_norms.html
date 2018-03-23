@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Нормы матриц</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+						<li class="category"><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+						<li><a href="matrix_norms.html">Нормы матриц</a></li>
+                        <li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
+                        <li><a href="sufficient_condition_for_convergence.html">Достаточные условия метода простой итерации</a></li>
+						<li><a href="jacobi_method.html">Метод Якоби</a></li>
+						<li><a href="gauss_seidel_method.html">Метод Гаусса-Зейделя</a></li>
+                        <li class="category"><a href="/first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="/second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+						<li class="category"><a href="#">Методы вычислений</a></li>
+						<li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+						<li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="literature.html">Литература</a></li>
+                        <li><a href="formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Нормы матриц</div>
+					<p>Прежде чем рассматривать итерационные методы решения линейных
+					систем, рассмотрим вспомогательный аппарат: понятие нормы квадратной
+					матрицы. Это понятие вводится по аналогии к норме вектора. Вспомним
+					это определение.</p>
+					<p>Пусть \(x\) – n-мерный вектор с координатами \(x_i\). Нормой вектора называется 
+					поставленное в соответствие \(x\) число \(||x||\), удовлетворяющее свойствам:</p>
+					<p>\(1.\) Для всякого вектора \(x\) выполняется \(||x|| \geq 0\), причем \(||x|| = 0\) тогда
+					и только тогда, когда вектор \(x\) нулевой.</p>
+					<p>\(2.\) Для всякого вектора \(x\) и скаляра \(\lambda\) выполняется \(||\lambda x|| = |\lambda|||x||.\)</p>
+					<p>\(3.\) Для всяких векторов \(x\) и \(y\) выполняется \(||x + y|| \leq ||x|| + ||y||.\)</p>
+					<p>Среди различных видов норм наиболее распространенными являются
+					\[||x||_1 = \sum_{i=1}^{n}|x_i|\]
+					\[||x||_2 = (\sum_{i=1}^{n}x_i^2)^{1/2}\]
+					\[||x||_{\infty} = \max_{1\leq i\leq n}|x_i|\]</p>
+					<p>Пусть \(A\) – квадратная матрица размерности \(n × n\) с элементами \(a_{ij}\).
+					Нормой матрицы называется поставленное в соответствие \(A\) число \(||A||\),
+					удовлетворяющее свойствам:</p>
+					<p>\(1.\) Для всякой матрицы \(A\) выполняется \(||A|| \geq 0\), причем \(||A|| = 0\)
+					тогда и только тогда, когда матрица \(A\) нулевая.</p>
+					<p>\(2.\) Для всякой матрицы \(A\) и скаляра \(\lambda\) выполняется \(||\lambda A|| = |\lambda|||A||\).</p>
+					<p>\(3.\) Для всяких матриц \(A\) и \(B\) выполняется \(||A + B|| \leq ||A|| + ||B||\).</p>
+					<p>Это общее определение нормы матрицы. С другой стороны, при выбранном базисе в 
+					векторном пространстве матрице соответствует линейное
+					отображение \(x \rightarrow Ax\), поэтому на матрицу можно смотреть как на линейный оператор и ввести его норму:
+					\[||A|| = \sup_{x \neq 0}\frac{||Ax||}{||x||}\]</p>
+					<p>Это определение зависит от способа введения нормы вектора \(x\) и называется \(\textbf{подчиненной нормой матрицы}\).
+					Не всякая норма матрицы является подчиненной.
+					Кроме указанных трех свойств, подчиненная норма матрицы удовлетворяет еще следующим свойствам:</p>
+					<p>\(4.\) Для всякой матрицы \(A\) и вектора \(x\) выполняется \(||Ax|| \leq \left \| A \right \| \left \| x \right \|\).</p>
+					<p>\(5.\) Для всяких матриц \(A\) и \(B\) выполняется \(||AB|| \leq \left \| A \right \| \left \| B \right \|\).</p>
+					<p>Укажем без доказательства формулы, которыми описываются нормы
+					матриц, подчиненные наиболее распространенным векторным нормам.</p>
+					<p>Поколонная норма:\[||A||_1 = \max_{1\leq j\leq n}\sum_{1\leq i\leq n}|a_{ij}|.\]</p>
+					<p>Построчная норма:\[||A||_{\infty} = \max_{1\leq i\leq n}\sum_{1\leq j\leq n}|a_{ij}|.\]</p>
+					<p>Евклидова норма:\[||A||_2 = \sqrt{\max_i\lambda_i(A^TA)}.\]</p>
+					<p>В определении евклидовой нормы \(A^T\) – означает транспонированную
+					матрицу, \(λ_i(B)\) – собственные числа матрицы. Определение евклидовой
+					нормы корректно, т.к. A^TA – симметричная, неотрицательно определённая
+					матрица, поэтому её собственные числа вещественны и неотрицательны и
+					под корнем стоит неотрицательное число.</p>
+					<p>В отличие от поколонной и построчной норм, евклидова норма определяется не очень 
+					конструктивно из-за операции вычисления собственных чисел, поэтому часто используют оценку
+					\[||A||_2 \leq \sqrt{\sum_{i,j}(a_{ij})^{1/2}}.\]</p>
+					<p>Кроме того, если матрица \(A\) – симметричная, то \[||A||_2 = \max_i|\lambda_i(A)|.\]</p>
+					<p>В дальнейшем будем рассматривать только подчиненные нормы.</p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

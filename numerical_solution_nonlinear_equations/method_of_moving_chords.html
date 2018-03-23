@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Метод подвижных хорд</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+						<li class="category"><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+						<li><a href="formulation_of_problem.html">Постановка задачи</a></li>
+						<li><a href="half_division_method.html">Метод половинного деления</a></li>
+						<li><a href="newton's_method.html">Метод Ньютона</a></li>
+						<li><a href="modified_newton's_method.html">Модифицированный метод Ньютона</a></li>
+						<li><a href="method_of_chords.html">Метод хорд</a></li>
+						<li><a href="method_of_moving_chords.html">Метод подвижных хорд</a></li>
+						<li><a href="mayer_method.html">Метод секущих парабол</a></li>
+						<li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
+						<li><a href="error_of_methods.html">Погрешность методов</a></li>
+						<li><a href="convergence_of_newton.html">Сходимость метода Ньютона</a></li>
+						<li><a href="examples.html">Примеры</a></li>
+                        <li class="category"><a href="/first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="/second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+						<li class="category"><a href="#">Методы вычислений</a></li>
+						<li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+						<li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="literature.html">Литература</a></li>
+                        <li><a href="formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Метод подвижных хорд</div>
+					<p>В отличие от ранее рассмотренных методов метод подвижных хорд
+					двухшаговый – по двум меняющимся значениям считается третье, а затем
+					происходит переадресация. Возьмем два приближения \(x_0\) и \(x_1\). 
+					Через точки с координатами \((x0, f(x0))\) и \((x1, f(x1))\) на графике функции проведем
+					хорду. Точку пересечения хорды с осью абсцисс обозначим за \(x_2\). Далее
+					проводим хорду через точки с координатами \((x1, f(x1))\) и \((x2, f(x2))\), 
+					пересечения этой хорды с осью абсцисс обозначим за \(x_3\), далее через точки
+					с координатами \((x2, f(x2))\) и \((x3, f(x3))\) и так далее. Используя уравнение
+					прямой линии, проходящей через две заданные точки, получаем формулу
+					\[x_{n+1} = x_n - \frac{f(x_n)(x_n - x_{n-1})}{f(x_n) - f(x_{n-1})}.\]</p>
+					<p>В качестве \(x_0\) принимается один из концов отрезка \([a, b]\), а именно 
+					\[x_0 = \begin{cases} a \text{, если } f(a)\cdot f''(a) > 0\\ b \text{, если } f(b)\cdot f''(b) > 0 \end{cases}.\]</p>
+					<p>За \(x_1\) выбирается второй конец отрезка.</p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

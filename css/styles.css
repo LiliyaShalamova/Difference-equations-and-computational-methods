@@ -58,6 +58,19 @@ ul li
 	color: red;
 }
 
+table.newton
+{
+	width: 650px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+th, td
+{
+	border: 1px solid grey;
+	padding: 10px 0;
+}
+
 .global_container 
 {
 	margin-left: auto;
