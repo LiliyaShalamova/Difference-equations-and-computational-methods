@@ -237,6 +237,7 @@ function solveEquation(equation, x) {
 function getDerivative(equation){
     var top = createNode(parseEquation(equation));
     //TODO
+    //TODO
 }
 
 console.log(solveEquation("cos(pi) + x", 5));
