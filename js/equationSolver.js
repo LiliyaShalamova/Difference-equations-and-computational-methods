@@ -48,6 +48,455 @@ var operators = {
     "-": 1
 };
 
+function NotConstNode(value, calc) {
+    var node = new Node();
+    node.value = value;
+    node.calc = calc;
+    node.isConst = false;
+    return node;
+}
+
+function ConstNode(value) {
+    var node = new Node();
+    node.value = value;
+    node.calc = function () {return parseFloat(value);};
+    return node;
+}
+
+var derivatives = {
+    "number": function () {
+        return new ConstNode("0");
+    },
+    "sin": function (node) {
+        var n = new NotConstNode('*');
+        n.calc = function () {
+            return operatorAction['*'](n.left.calc(), n.right.calc());
+        };
+        var cosCalc = function() {
+            return functions['cos'](n.left.left.calc());
+        };
+        n.left = new NotConstNode('cos', cosCalc);
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left.left = cloneNode(node.left);
+        return n;
+    },
+    "cos": function (node) {
+        var n = new NotConstNode("*");
+        n.calc = function () {
+            return operatorAction['*'](n.left.calc(), n.right.calc());
+        };
+        n.left = new NotConstNode("-");
+        n.left.calc = function () {
+            return operatorAction['-'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left.left = new ConstNode("0");
+        n.left.right = new NotConstNode("sin");
+        n.left.right.calc = function () {
+            return functions['sin'](n.left.right.left.calc());
+        };
+        n.left.right.left = cloneNode(node.left);
+        return n;
+    },
+    "ln": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function () {
+            return operatorAction["*"](n.left.calc(), n.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = "/";
+        n.left.calc = function () {
+            return operatorAction['/'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new ConstNode("1");
+        n.left.right = cloneNode(node.left);
+        return n;
+    },
+    "+": function (node) {
+        var n = new Node();
+        n.value = "+";
+        n.left = getDerivativeNode(cloneNode(node.left));
+        n.right = getDerivativeNode(cloneNode(node.right));
+        n.calc = function () {
+            return operatorAction["+"](n.left.calc(), n.right.calc());
+        };
+        return n;
+    },
+    "-": function (node) {
+        var n = new Node();
+        n.value = "-";
+        n.left = getDerivativeNode(cloneNode(node.left));
+        n.right = getDerivativeNode(cloneNode(node.right));
+        n.calc = function () {
+            return operatorAction['-'](n.left.calc(), n.right.calc());
+        };
+        return n;
+    },
+    "*": function (node) {
+        var n = new Node();
+        n.value = "+";
+        n.calc = function () {
+            return operatorAction['+'](n.left.calc(), n.right.calc());
+        };
+        n.left = new Node();
+        n.left.value = "*";
+        n.left.calc = function () {
+            return operatorAction['*'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = getDerivativeNode(cloneNode(node.left));
+        n.left.right = cloneNode(node.right);
+        n.right = new Node();
+        n.right.value = "*";
+        n.right.calc = function () {
+            return operatorAction['*'](n.right.left.calc(), n.right.right.calc());
+        };
+        n.right.left = getDerivativeNode(cloneNode(node.right));
+        n.right.right = cloneNode(node.left);
+        n.left.right.left = cloneNode(node.left);
+        return n;
+    },
+    "x": function() {
+        return new ConstNode("1");
+    },
+    "pi": function () {
+        return new ConstNode("0");
+    },
+    "PI": function () {
+        return new ConstNode("0");
+    },
+    "e": function () {
+        return new ConstNode("0");
+    },
+    "sqrt": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function () {
+            return operatorAction["*"](n.left.calc(), n.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = "/";
+        n.left.calc = function () {
+            return operatorAction['/'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new ConstNode("1");
+        n.left.right = new Node();
+        n.left.right.value = "*";
+        n.left.right.calc = function () {
+            return operatorAction['*'](n.left.right.left.calc(), n.left.right.right.calc());
+        };
+        n.left.right.left = new ConstNode("2");
+        n.left.right.right = cloneNode(node);
+        return n;
+    },
+    "tg": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function () {
+            return operatorAction['*'](n.left.calc(), n.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = "/";
+        n.left.calc = function () {
+            return operatorAction['/'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new ConstNode("1");
+        n.left.right = new Node();
+        n.left.right.calc = function () {
+            return operatorAction['^'](n.left.right.left.calc(), n.left.right.right.calc());
+        };
+        n.left.right.right = new ConstNode("2");
+        n.left.right.left = new Node();
+        n.left.right.left.value = "cos";
+        n.left.right.left.calc = function () {
+            return functions["cos"](n.left.right.left.left.calc());
+        };
+        n.left.right.left.left = cloneNode(node.left);
+        return n;
+    },
+    "ctg": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function () {
+            return operatorAction['*'](n.left.calc(), n.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = "-";
+        n.left.calc = function () {
+            return operatorAction['-'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new ConstNode("0");
+        n.left.right = new Node();
+        n.left.right.value = "/";
+        n.left.right.calc = function () {
+            return operatorAction['/'](n.left.right.left.calc(), n.left.right.right.calc());
+        };
+        n.left.right.left = new ConstNode("1");
+        n.left.right.right = new Node();
+        n.left.right.right.value = "^";
+        n.left.right.right.calc = function () {
+            return operatorAction['^'](n.left.right.right.left.calc(), n.left.right.right.right.calc());
+        };
+        n.left.right.right.right = new ConstNode("2");
+        n.left.right.right.left = new Node();
+        n.left.right.right.left.value = "sin";
+        n.left.right.right.left.calc = function () {
+            return functions['sin'](n.left.right.right.left.left.calc());
+        };
+        n.left.right.right.left.left = cloneNode(node.left);
+        return n;
+    },
+    "arcsin": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function () {
+            return operatorAction['*'](n.left.calc(), n.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = "/";
+        n.left.calc = function () {
+            return operatorAction['/'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new ConstNode("1");
+        n.left.right = new Node();
+        n.left.right.value = "sqrt";
+        n.left.right.calc = function () {
+            return functions['sqrt'](n.left.right.left.calc());
+        };
+        n.left.right.left = new Node();
+        n.left.right.left.value = "-";
+        n.left.right.left.calc = function () {
+            return operatorAction['-'](n.left.right.left.left.calc(), n.left.right.left.right.calc());
+        };
+        n.left.right.left.left = new ConstNode("1");
+        n.left.right.left.right = new Node();
+        n.left.right.left.right.value = "^";
+        n.left.right.left.right.calc = function () {
+            return operatorAction['^'](n.left.right.left.right.left.calc(), n.left.right.left.right.right.calc());
+        };
+        n.left.right.left.right.left = cloneNode(node.left);
+        n.left.right.left.right.right = new ConstNode("2");
+        return n;
+    },
+    "arccos": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function () {
+            return operatorAction['*'](n.left.calc(), n.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = "-";
+        n.left.calc = function () {
+            return operatorAction['-'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new ConstNode("0");
+        n.left.right = new Node();
+        n.left.right.value = "/";
+        n.left.right.calc = function () {
+            return operatorAction['/'](n.left.right.left.calc(), n.left.right.right.calc());
+        };
+        n.left.right.left = new ConstNode("1");
+        n.left.right.right = new Node();
+        n.left.right.right.value = "sqrt";
+        n.left.right.right.calc = function () {
+            return functions["sqrt"](n.left.right.right.left.calc());
+        };
+        n.left.right.right.left = new Node();
+        n.left.right.right.left.value = '-';
+        n.left.right.right.left.calc = function () {
+            return operatorAction['-'](n.left.right.right.left.left.calc(), n.left.right.right.left.right.calc());
+        };
+        n.left.right.right.left.left = new ConstNode("1");
+        n.left.right.right.left.right = new Node();
+        n.left.right.right.left.right.value = "^";
+        n.left.right.right.left.right.calc = function () {
+            return operatorAction['^'](n.left.right.right.left.right.left.calc(), n.left.right.right.left.right.right.calc());
+        };
+        n.left.right.right.left.right.left = cloneNode(node.left);
+        n.left.right.right.left.right.right = new ConstNode("2");
+        return n;
+    },
+    "arctg": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function () {
+            return operatorAction['*'](n.left.calc(), n.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = "/";
+        n.left.calc = function () {
+            return operatorAction['/'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new ConstNode("1");
+        n.left.right = new Node();
+        n.left.right.value = "+";
+        n.left.right.calc = function () {
+            return operatorAction['+'](n.left.right.left.calc(), n.left.right.right.calc());
+        };
+        n.left.right.left = new ConstNode("1");
+        n.left.right.right = new Node();
+        n.left.right.right.value = "^";
+        n.left.right.right.calc = function () {
+            return operatorAction['^'](n.left.right.right.left.calc(), n.left.right.right.right.calc());
+        };
+        n.left.right.right.left = cloneNode(node.left);
+        n.left.right.right.right = new ConstNode("2");
+        return n;
+    },
+    "arcctg": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function () {
+            return operatorAction['*'](n.left.calc(), n.right.calc());
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = "-";
+        n.left.calc = function () {
+            return operatorAction['-'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new ConstNode("0");
+        n.left.right = new Node();
+        n.left.right.value = "/";
+        n.left.right.calc = function () {
+            return operatorAction['/'](n.left.right.left.calc(), n.left.right.right.calc());
+        };
+        n.left.right.left = new ConstNode("1");
+        n.left.right.right = new Node();
+        n.left.right.right.value = "+";
+        n.left.right.right.calc = function () {
+            return operatorAction['+'](n.left.right.right.left.calc(), n.left.right.right.right.calc());
+        };
+        n.left.right.right.left = new ConstNode("1");
+        n.left.right.right.right = new Node();
+        n.left.right.right.right.value = "^";
+        n.left.right.right.right.calc = function () {
+            return operatorAction['^'](n.left.right.right.right.left.calc(), n.left.right.right.right.right.calc());
+        };
+        n.left.right.right.right.left = cloneNode(node.left);
+        n.left.right.right.right.right = new ConstNode("2");
+        return n;
+    },
+    "/": function (node) {
+        var n = new Node();
+        n.value = "/";
+        n.calc = function () {
+            return operatorAction['/'](n.left.calc(), n.right.calc());
+        };
+        n.left = new Node();
+        n.right = new Node();
+        n.right.value = "^";
+        n.right.calc = function () {
+            return operatorAction['^'](n.right.left.calc(), n.right.right.calc());
+        };
+        n.right.left = cloneNode(node.right);
+        n.right.right = new ConstNode("2");
+        n.left.value = "-";
+        n.left.calc = function () {
+            return operatorAction['-'](n.left.left.calc(), n.left.right.calc());
+        };
+        n.left.left = new Node();
+        n.left.right = new Node();
+        n.left.left.value = "*";
+        n.left.right.value = "*";
+        n.left.left.calc = function () {
+            return operatorAction['*'](n.left.left.left.calc(), n.left.left.right.calc());
+        };
+        n.left.left.left = getDerivativeNode(cloneNode(node.left));
+        n.left.left.right = cloneNode(node.right);
+        n.left.right.calc = function () {
+            return operatorAction['*'](n.left.right.left.calc(), n.left.right.right.calc());
+        };
+        n.left.right.left = getDerivativeNode(cloneNode(node.right));
+        n.left.right.right = cloneNode(node.left);
+        return n;
+    },
+    "^": function (node) {
+        if (node.left.isConst && node.right.isConst)
+            return new ConstNode("0");
+        if (!node.left.isConst && !node.right.isConst)
+        {
+            var n = new Node();
+            n.value = "+";
+            n.calc = function () {
+                return operatorAction['+'](n.left.calc(), n.right.calc());
+            };
+            n.left = createExponentiationNodeWithConstPower(node);
+            n.right = createExponentiationNodeWithConstBase(node);
+            return n;
+        }
+        if (node.right.isConst)
+        {
+            return createExponentiationNodeWithConstPower(node);
+        }
+        return createExponentiationNodeWithConstBase(node);
+    }
+};
+
+function createExponentiationNodeWithConstPower(node) {
+    var n = new Node();
+    n.value = "*";
+    n.calc = function () {
+        return operatorAction['*'](n.left.calc(), n.right.calc());
+    };
+    n.right = getDerivativeNode(cloneNode(node.left));
+    n.left = new Node();
+    n.left.value = "*";
+    n.left.calc = function () {
+        return operatorAction['*'](n.left.left.calc(), n.left.right.calc());
+    };
+    n.left.left = cloneNode(node.right);
+    n.left.right = new Node();
+    n.left.right.value = "^";
+    n.left.right.calc = function () {
+        return operatorAction['^'](n.left.right.left.calc(), n.left.right.right.calc());
+    };
+    n.left.right.left = cloneNode(node.left);
+    n.left.right.right = new Node();
+    n.left.right.right.value = "-";
+    n.left.right.right.calc = function () {
+        return operatorAction['-'](n.left.right.right.left.calc(), n.left.right.right.right.calc());
+    };
+    n.left.right.right.left = cloneNode(node.right);
+    n.left.right.right.right = new ConstNode("1");
+    return n;
+}
+
+function createExponentiationNodeWithConstBase(node) {
+    var n = new Node();
+    n.value = "*";
+    n.calc = function () {
+        return operatorAction['*'](n.left.calc(), n.right.calc());
+    };
+    n.right = getDerivativeNode(cloneNode(node.right));
+    n.left = new Node();
+    n.left.value = "*";
+    n.left.calc = function () {
+        return operatorAction['*'](n.left.left.calc(), n.left.right.calc());
+    };
+    n.left.left = new Node();
+    n.left.left.value = "^";
+    n.left.left.calc = function () {
+        return operatorAction['^'](n.left.left.left.calc(), n.left.left.right.calc());
+    };
+    n.left.left.left = cloneNode(node.left);
+    n.left.left.right = cloneNode(node.right);
+    n.left.right = new Node();
+    n.left.right.value = "ln";
+    n.left.right.calc = function () {
+        return functions['ln'](n.left.right.left.calc());
+    };
+    n.left.right.left = cloneNode(node.left);
+    return n;
+}
+
 function State(type, value) {
     this.value = value;
     this.type = type;
@@ -150,7 +599,7 @@ function parseEquation(equation) {
             i--;
         }
     }
-    if (token !== "$" || tokens.indexOf("x") === -1)
+    if (token !== "$")
         return undefined;
     return cutExtraBrackets(tokens);
 }
@@ -175,6 +624,7 @@ function Node(lec, parent, left, right, value, calc){
     this.right = right;
     this.value = value;
     this.calc = calc;
+    this.isConst = true;
 }
 
 function getInflectionPointIndex(tokens) {
@@ -205,6 +655,16 @@ function createNode(tokens, parent) {
             node.calc = function () {
                 return operands[tokens[0]];
             };
+
+            if (tokens[0] === 'x') {
+                node.isConst = false;
+                var p = node.parent;
+                while (p !== undefined) {
+                    p.isConst = false;
+                    p = p.parent;
+                }
+            }
+
             return node;
         }
         if (isDigitOrComma(tokens[0][0])) {
@@ -228,17 +688,35 @@ function createNode(tokens, parent) {
     return node;
 }
 
+function cloneNode(node) {
+    if (node === undefined)
+        return undefined;
+    var lec = node.lec.slice();
+    var value = node.value;
+    var calc = node.calc;
+    var left = cloneNode(node.left);
+    var right = cloneNode(node.right);
+    var isConst = node.isConst;
+    var n = new Node(lec, undefined, left, right, value, calc);
+    n.isConst = isConst;
+    return n;
+}
+
 function solveEquation(equation, x) {
     operands.x = x;
     var tokens = parseEquation(equation);
     return createNode(tokens).calc();
 }
 
-function getDerivative(equation){
-    var top = createNode(parseEquation(equation));
-    //TODO
-    //TODO
+function getDerivativeNode(node){
+    if (isDigitOrComma(node.value[0]))
+        return derivatives["number"](node);
+    return derivatives[node.value](node);
 }
 
-console.log(solveEquation("cos(pi) + x", 5));
 
+
+console.log(solveEquation("cos(x+5)+sin(pi)", 2));
+var top = createNode(parseEquation("x^x"));
+var top2 = getDerivativeNode(top);
+console.log(top2.calc());
