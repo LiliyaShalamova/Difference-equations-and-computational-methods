@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Интегрирующий множитель</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="osnovny_opredeleniya.html">Основные определения</a></li>
+                        <li><a href="geom_int_ody_razresh.html">Геометрическая интерпретация ОДУ первого порядка, разрешенного относительно производной</a></li>
+                        <li><a href="s_razdel_perem.html">Уравнения с разделяющимися переменными</a></li>
+                        <li><a href="odnorodny_uravnenia.html">Однородные уравнения</a></li>
+                        <li><a href="lineynuie_uravneniya.html">Линейные уравнения</a></li>
+                        <li><a href="uravneniye_bernulli.html">Уравнение Бернулли</a></li>
+                        <li><a href="uravneniye_rikkati.html">Уравнение Риккати</a></li>
+                        <li><a href="uravnenia_v_poln_diff.html">Уравнения в полных дифференциалах</a></li>
+                        <li><a href="integrirushiy_mnozhitel.html">Интегрирующий множитель</a></li>
+                        <li><a href="ne_razresh_otn_proizv.html">ДУ 1-го порядка, не разрешенные относительно производной. Особые решения</a></li>
+                        <li><a href="kurs_algebry.html">Вспомогательный материал из курса алгебры и математического анализа</a></li>
+                        <li><a href="dokazatelstvo_teor_koshi.html">Доказательство теоремы Коши</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Интегрирующий множитель</div>
+                    <p>Рассмотрим уравнение
+                        \begin{equation}\label{1}
+                            M(x,y)dx+N(x,y)dy=0
+                        \end{equation}
+                    Функция \(\mu(x,y)\), определенная в области \(\tilde{\Gamma}\),
+                    называется \(\textbf{интегрирующим множителем}\) уравнения
+                    (\ref{1}), коэффициенты которого \(M(x,y)\) и \(N(x,y)\)
+                    определены в области \(\Gamma\), если  выполняются условия:</p>
+                    <p>1. \(\tilde{\Gamma}\supseteq\Gamma\);</p>
+                    <p>2. \(\mu(x,y)\neq0\) в \(\Gamma\);</p>
+                    <p>3. \(\mu'_y(x,y)\) и \(\mu'_x(x,y)\) существуют и непрерывны в \(\Gamma\);
+                    <p>4. уравнение \(\mu Mdx+\mu Ndy=0\) является уравнением в полных
+                    дифференциалах.</p>
+                    <div class="example">Теорема 2</div>
+                    <p>Если существует общий интеграл \(U(x,y)=C\) уравнения
+                    (\ref{1}), то существует и интегрирующий множитель для этого
+                    уравнения.</p>
+                    <div class="example">Доказательство.</div>
+                    <p>Пусть точка \((x_0,y_0)\in\Gamma\) произвольна, \(y=\varphi(x)\) - решение уравнения (\ref{1}), \(\varphi(x_0)=y_0\) и \(U(x_0,y_0)=C_0\).
+                    Подставим это решение в равенство \(U(x,y)=C_0\).</p>
+                    <p>Вычислим дифференциал функции \(U\left[x,\varphi(x)\right]:\)
+                        \[{\left[\frac{\partial U}{\partial x}+\frac{\partial U}{\partial
+                        y}\varphi{}'(x)\right]\,dx=\frac{\partial U}{\partial
+                        x}dx+\frac{\partial U}{\partial y}dy}.\]
+                    С другой стороны \(\varphi(x)\) - решение, \(U\left[x,\varphi(x)\right]\equiv{C_0}\), поэтому дифференциал левой части равен нулю вдоль кривой \(y=\varphi(x)\):
+                        \[\frac{\partial U}{\partial x}dx+\frac{\partial U}{\partial y}dy=0.\]
+                    Также вдоль кривой \(y=\varphi(x)\) выполняется равенство
+                        $$M(x,y)dx+N(x,y)dy=0.$$
+                    Получена система уравнений относительно \(dx\) и \(dy\)
+                        \begin{equation}\label{2}
+                            \left \{\begin{aligned} 
+                            \frac{\partial U}{\partial x}dx+\frac{\partial U}{\partial y}dy=0,\\ 
+                            M(x,y)dx+N(x,y)dy=0.\\
+                            \end{aligned} \right.
+                        \end{equation}
+                    Cчитая, что  \(dx\neq0\), система имеет ненулевое решение \((dx,dy)\), и, её определитель равен нулю.</p>
+                    <p>Введем функцию \(\mu(x,y)\). 
+                        \[\mu(x,y)=\frac{\frac{\partial U(x,y)}{\partial x}}{M(x,y)}=\frac{\frac{\partial U(x,y)}{\partial y}}{N(x,y)}.\]
+                    Это равенство выполняется при \(y=\varphi(x)\) и, в частности, в
+                    точке \((x_0,y_0)\). Точка \((x_0,y_0)\) выбрана в \(\Gamma\) произвольно. Поэтому в \(\Gamma\) верны равенства:
+                    \[ \mu(x,y)M(x,y)=\frac{\partial U(x,y)}{\partial x};\;\;
+                    \mu(x,y)N(x,y)=\frac{\partial U(x,y)}{\partial y}. \]
+                    Теорема доказана.</p>
+                    <div class="example">Нахождение интегрирующего множителя</div>
+                    <p>Предположим, что интегрирующий множитель \(\mu(x,y)\) для уравнения
+                    (\ref{1}) существует. По теореме 1 из \(\S\ 7\) в \(\Gamma\) имеем
+                          \[ {\frac{\partial(\mu M)}{\partial y}=\frac{\partial(\mu N)}{\partial x}}.\]
+                    Отсюда
+                        \begin{equation}\label{3}
+                            \frac{\partial\mu}{\partial y}-N\frac{\partial\mu}{\partial x}=\mu(\frac{\partial N}{\partial x }-\frac{\partial M}{\partial y})
+                        \end{equation}
+                    Уравнение для \(\mu(x,y)\) не проще, чем уравнение (\ref{1}).
+                    Возможны частные случаи, когда это уравнение разрешимо.</p>
+                    <p>Предположим, что \(\mu\) есть сложная функция:
+                    \(\mu=\mu\left[\omega(x,y)\right].\)  Тогда
+                    \[\frac{\partial\mu}{\partial x}=\frac{d\mu}{d\omega}\frac{\partial\omega}{\partial x}, \quad \frac{\partial\mu}{\partial y}=\frac{d\mu}{d\omega}\frac{\partial\omega}{\partial y}.\]
+                    Подставляя эти выражения в уравнение (\ref{3}), получим
+                        \begin{equation}\label{4}
+                            \frac{\frac{d\mu}{d\omega}}{\mu}=\frac{\frac{\partial N }{\partial x}-\frac{\partial M}{\partial y}}{M\frac{\partial\omega}{\partial y}-N\frac{\partial\omega}{\partial x}}.
+                        \end{equation}
+                    </p>
+                    <div class="entry_title">Частные случаи:</div>
+                    <div class="example">Случай 1</div>
+                    <p>\(\omega=x\) (интегрирующий множитель зависит только от \(x\)). Уравнение
+                    (\ref{4}) принимает вид
+                    \begin{equation}\label{5} 
+                        \frac{\frac{d\mu}{dx}}{\mu}=\frac{\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}}{-N}.
+                    \end{equation}
+                    
+                    Сначала вычисляется правая часть (\ref{5}).
+                    Если она зависит только от \(x\), то (\ref{5}) -
+                    ОДУ с разделяющимися переменными, множитель \(\mu(x)\) находится. Иначе ищем другой путь решения.</p>
+                    <div class="example">Случай 2</div>
+                    <p>\(\omega=y\). Множитель \(\mu=\mu(y)\) существует в том случае, когда выражение
+                    \[\frac{\frac{\partial N }{\partial x}-\frac{\partial M}{\partial y}}{M}\]
+                    зависит только от \(y\).</p>
+                    <div class="example">Случай 3</div>
+                    <p>\(\omega=x+y\), что будет тогда, когда выражение
+                    \[\frac{\frac{\partial N }{\partial x}-\frac{\partial M}{\partial y}}{M-N}\]
+                    можно представить, как функцию величины \(\omega=x+y\)</p>
+                    <div class="example">Случай 4</div>
+                    <p>\(\omega=xy\). В этом случае
+                    \[\frac{\frac{\partial N }{\partial x}-\frac{\partial M}{\partial y}}{Mx-Ny}\;,\] 
+                    и если правая часть как функция от произведения \(xy\), то ищем интегрирующий множитель \(\mu=\mu(xy).\)</p>
+
+                    <div class="example">Теорема 3</div>
+                    <p>Если \(\mu_0\) интегрирующий множитель уравнения (\ref{1}), т.е.
+                        \[ \mu_0(Mdx+Ndy)=dU_0, \]
+                    a \(U_0(x,y)=C\) соответствующий ему интеграл этого уравнения, то выражение
+                        \[ \mu=\mu_0\varphi(U_0), \]
+                    где \(\varphi\) \(-\) произвольная дифференцируемая функция, тоже будет интегрирующим множителем (\ref{1}).</p>
+                    <div class="example">Доказательство</div>
+                    <p>Умножим левую часть (\ref{1}) на \(\mu_0\varphi(U_0)\).
+                        \[ \mu_0\varphi(U_0)(Mdx+Ndy)=\varphi(U_0)\mu_0(Mdx+Ndy)= \]
+                        \[ =\varphi(U_0)dU_0=d\int{\varphi(U_0)\,dU_0} \]
+                    Левая часть (\ref{1}) после умножения на \(\mu_0\varphi(U_0)\)
+                    стала полным дифференциалом функции \(\int{\varphi(U_0)\,dU_0}.\)</p>
+                    <p>Так как \(\varphi\) \(-\) произвольная функция, то уравнение (\ref{1}) имеет бесчисленное множество интегрирующих множителей.</p>
+
+                    <div class="example">Теорема 4</div>
+                    <p>Если \(\mu_0\) интегрирующий множитель уравнения (\ref{1}),
+                    a \(U_0(x,y)\) \(-\) соответствующий ему интеграл уравнения (\ref{1}), то всякий интегрирующий множитель \(\mu_1\) этого уравнения дается формулой
+                        \[ \mu_1=\mu_0\varphi(U_0), \]
+                    где \(\varphi\) \(-\) произвольная дифференцируемая функция.</p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

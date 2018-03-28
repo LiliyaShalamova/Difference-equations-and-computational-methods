@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Выбор оптимального шага</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="general_approach.html">Общий подход</a></li>
+                <li><a href="on_two_nodes.html">Численное дифференцирование по двум узлам</a></li>
+                <li><a href="on_three_nodes.html">Численное дифференцирование по трем узлам</a></li>
+                <li><a href="undefined_coefficients_method.html">Метод неопределенных коэффициентов</a></li>
+                <li><a href="unrecoverable_error.html">Неустранимая погрешность</a></li>
+                <li><a href="choice_of_the_optimal_step.html">Выбор оптимального шага</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Выбор оптимального шага</div>
+            <p>Как показывает формула полной погрешности численного дифференцирования
+                по двум узлам на левый край, существует оптимальный шаг
+                \(h_{опт}\) при котором полная погрешность минимальна. Решая средствами
+                математического анализа задачу на экстремум, получаем
+            \[A'_{пол}(h_{опт}) = \frac{M_2}{2} - \frac{2A_f}{h^2} = 0,\]
+            \[h_{опт} = 2\sqrt{\frac{A_f}{M_2}},\]
+            \[A_{пол}(h_{опт}) = 2\sqrt{A_fM_2}\]</p>
+            <div class="example">Пример</div>
+            <p>Пусть даны четырехзначные таблицы функции
+                \(y = \sin x\) (четырехзначные означает, что все четыре знака в таблице верные
+                и что неустранимая погрешность \(A_f = 0,5·10^{−4}\)). Требуется вычислить в
+                одном из узлов функцию \(y = \cos x\) по формуле численного дифференцирования
+                на левый край и оценить количество верных знаков в результате.
+                Каким следует взять оптимальный шаг \(h = h_{опт}\) в формуле численного
+                дифференцирования? Табличный шаг аргумента \(x\) предполагается равным
+                \(0,001\).
+            </p>
+            <p>В задаче, прежде всего, нужно определить при данной информации
+                \(h_{опт}\). По выведенной выше формуле, взяв в качестве \(M_2 = 1\), получаем
+                \(h_{опт} \approx 0,014\), т.е. 14 табличных шагов. При этом \(A_{пол}(h_{опт}) = 0,014\),
+                т.е. всего один верный знак после запятой. И этот результат при данной
+                информации улучшить за счет выбора шага нельзя.</p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

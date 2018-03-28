@@ -1,0 +1,297 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Линейные дифференциальные уравнения n-го порядка</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальный уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li><a href="lin_dif_ur.html">Линейные Дифференциальные Уравнения n-го порядка</a></li>
+                        <li><a href="ponigenie_s_chastnim_resh.html">Понижение порядка линейного однородного ДУ n-го порядка с помощью частных решений</a></li>
+                        <li><a href="lin_odn_dif_ur_2_por_s_postk.html">Линейные ДУ 2-го порядка с постоянными коэффициентами</a></li>
+                        <li><a href="lin_odn_dif_ur_n_por_s_postk.html">Линейные ДУ n-го порядка с постоянными коэффициентами</a></li>
+                        <li><a href="lin_neodn_dif_ur_n_por_s_postk.html">Линейные Неоднородные ДУ n-го порядка с постоянными коэффициентами</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title"> Линейные Дифференциальные Уравнения N-го порядка </div>
+                    <p>Линейное неоднородное уравнение имеет вид: 
+                        \begin{equation}\label{1}
+                            y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=f(t)
+                        \end{equation}
+                    где \(a_{1} (t),\; a_{2} (t),\; ...,a_{n} (t)\) - коэффициенты,
+                    <p>f(t)  - неоднородность, \(y^{(k)} =\frac{d^{k} y}{dt^{k} } \) </p>
+                    <p>
+                    Уравнение
+                        \begin{equation}\label{2}
+                            y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=0
+                        \end{equation}
+                    - линейное однородное, соответствует уравнению  (\ref{1}).</p>
+
+                    <p>Линейные однородные уравнения всегда имеют тривиальное решение \(y\equiv 0\). </p>
+
+                    <p>Предполагается, что \(a_{i} (t)\quad i=\overline{1,n} \) и \(f(t) \) - непрерывные на \(t\in (r_{1} ,r_{2} ) \) ,
+                    тогда в области \(\Gamma \) :
+                     \[ t\in (r_{1} ,r_{2} ),\; y\in (-\infty ,+\infty ),\; y'\in (-\infty ,+\infty ),\; \ldots ,\, y^{(n-1)} \in (-\infty ,+\infty ),\]
+                    будут выполняться условия теоремы Коши, т. е. начальная задача Коши с любой точкой
+                      \[(t_{0} ,y_{0} ,y'_{0} ,,y_{0}^{(n-1)} )\quad (t\in (r_{1} ,r_{2} ))\]
+                      однозначно разрешима.
+                    </p>
+                    <div class="example">Теорема.Принцип суперпозиции.</div>
+                    <p>Пусть в уравнении (\ref{1}) 
+                    \[f(t)=\sum _{i=1}^{m}\alpha _{i}  f_{i} (t), \quad \alpha _{i} =const\]
+                    \(f(t) \) - линейная комбинация \(f_{i} (t) \) ). Пусть \(y=\varphi _{i} (t) \) - решения следующих уравнений
+                    \[ y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=f_{i} (t)\quad i=\overline{1,n}, \]
+                    Тогда \(y=\sum _{i=1}^{m}\alpha _{i}  \varphi _{i} (t) \) является решением уравнения (\ref{1}).
+                    </p>
+
+
+                    <div class="example">Доказательство:</div>
+                    <p>Сделаем подстановку. Вместо \(y\) везде подставим \( \sum _{i=1}^{m}\alpha _{i}  f_{i} (t) \) . Получаем следующее </p>
+                    <p>
+                    \begin{multline}\nonumber
+                    \begin{array}{l} \left(\sum\limits_{i=1}^{m}\alpha _{i}  \varphi _{i} (t)\right)^{(n)} +
+                    a_{1} (t)\left(\sum\limits_{i=1}^{m}\alpha _{i}  \varphi _{i} (t)\right)^{(n-1)} +\ldots + a_{n-1} (t)\left(\sum\limits_{i=1}^{m}\alpha _{i}  \varphi _{i} (t)\right)^{{'} } +
+                    a_{n} (t)\left(\sum\limits_{i=1}^{m}\alpha _{i}  \varphi _{i} (t)\right)=
+                    \end{array}
+                    \end{multline}
+                    \begin{multline}\nonumber
+                    \begin{array}{l}
+                    =\sum\limits_{i=1}^{m}\alpha _{i}  \varphi _{i}^{(n)} (t)+
+                    a_{1} (t)\sum\limits_{i=1}^{m}\alpha _{i}  \varphi _{i}^{(n-1)} (t)+...+\\[1ex] +a_{n-1} (t)\sum\limits_{i=1}^{m}\alpha _{i}  \varphi '_{i} (t)+
+                    a_{n} (t)\sum\limits_{i=1}^{m}\alpha _{i}  \varphi _{i} (t)= \\[2ex]
+                    =\sum\limits_{i=1}^{m}\Big(\alpha _{i} \varphi _{i}^{(n)} (t)+
+                    a_{1} (t)\alpha _{i} \varphi _{i}^{(n-1)} (t)+...+\\[1ex]+a_{n-1} (t)\alpha _{i} \varphi '_{i} (t)+
+                    a_{n} (t)\alpha _{i} \varphi _{i} (t)\Big) = \\[2ex]
+                    =\sum\limits_{i=1}^{m}\alpha _{i} \Big(\varphi _{i}^{(n)} (t)+
+                    a_{1} (t)\varphi _{i}^{(n-1)} (t)+...+\\[1ex]+a_{n-1} (t)\varphi '_{i} (t)+
+                    a_{n} (t)\varphi _{i} (t)\Big) =
+                    \sum\limits_{i=1}^{m}\alpha _{i} f_{i} (t) =f(t)
+                    \end{array}
+                    \end{multline}
+                    </p>
+                    <p>Учитываем
+                    \[\varphi _{i}^{(n)} (t)+a_{1} (t)\varphi _{i}^{(n-1)} (t)+...+a_{n-1} (t)\varphi '_{i} (t)+a_{n} (t)\varphi _{i} (t)=f_{i} (t), i=\overline{1,n}\]</p>
+                    <p>\(\textbf{Теорема доказана.}\) </p>
+
+                    <div class="example">Cледствия.</div>
+                    <p>\(\underline{\textit{Следствие 1.}}\)</p>
+                    <p>Линейная комбинация решений линейного однородного уравнения есть решение этого уравнения</p>
+                    <p>(следует положить \( f_{i} (t)\equiv0 \quad \forall i=\overline{1,n} \)), следовательно \( f(t)\equiv 0\) . </p>
+                    <p>\(\underline{\textit{Следствие 2.}}\)</p>
+                    <p>Разность двух решений линейного неоднородного уравнения является решением соответствующего однородного уравнения.</p>
+                    <p>(Нужно положить \(m=2,\quad f_{1} =f_{2}, \quad \alpha _{1} =1,\quad \alpha _{2} =-1\) ).</p>
+                    <p>\(\underline{\textit{Следствие 3.}}\)</p>
+                    <p>Пусть в уравнении
+                        \begin{equation}\label{3}
+                            z^{(n)} +a_{1} (t)z^{(n-1)} +...+a_{n-1} (t)z'+a_{n} (t)z=f_{1} (t)+i\cdot f_{2} (t),
+                        \end{equation}
+                    где \( a_{k} (t)\quad (k=\overline{1,n}),\, f_{1} (t),\, f_{2} (t) \) - действительные функции.</p>
+                    <p>Тогда \(z=\varphi _{1} (t)+i\cdot \varphi _{2} (t) \) - решение уравнения  (\ref{3}) \( \Leftrightarrow \)</p>
+                    <p>\(y=\varphi _{j} (t)\quad j=1,\; 2\) - решения следующих уравнений
+                    \[y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=f_{j} (t)\quad j=1,\; 2.\]</p>
+                    <p>(Схема доказательства:</p>
+                    <p>
+                    \( \Rightarrow \) по условию равенства комплексных чисел, т. е. подставить \(z\) в уравнение  (\ref{3}) и
+                    выделить действительную и мнимую часть.</p>
+                    <p>
+                    \( \Leftarrow \) из теоремы о суперпозиции. Нужно положить \(B=2\) , \( \alpha _{1} =1\) ,\( \alpha _{2} =i\) )).</p>
+                    <div class="example">Однородные дифференциальные уравнения n-го порядка</div>
+
+                    <p>\(\underline{Определение.}\) 
+                    Система функций  \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \)
+                    линейно зависима на интервале \( (r_{1} ,r_{2} ) \), если существуют постоянные \(C_{1} ,\, C_{2} ,\; ...,C_{n} \)
+                    такие, что \(C_{1}^{2} +C_{2}^{2} +\; ...+C_{n}^{2} \ne 0\) и \( \sum _{i=1}^{n}C_{i}  \varphi _{i} (t)\equiv 0\) .
+                    </p>
+                    <p>Если же тождество \(\sum _{i=1}^{n}C_{i}  \varphi _{i} (t)\equiv 0\) влечёт
+                    за собой равенство \[C_{1}^{2} +C_{2}^{2} +\; ...+C_{n}^{2} =0,\] то система
+                    функций \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \) линейно независима.</p>
+                    <p>\(\textbf{Определитель Вронского}\)</p>
+                     <p>
+                    \[W(t)=W\left[\varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t)\right]=\]
+
+                    \[=\det \left(\begin{array}{l} {\varphi _{1} (t)\quad \; \quad \varphi _{2} (t)\quad \; \; \ldots \quad \varphi _{n} (t)\; }\\
+                    {\varphi '_{1} (t)\, \quad \quad \, \varphi '_{2} (t)\quad \; \; \ldots \quad \varphi '_{n} (t)} \\
+                    {...................................................} \\ {...................................................} \\
+                    {\varphi _{1}^{(n-1)} (t)\; \; \; \; \varphi _{2}^{(n-1)} (t)\; \; \ldots \; \varphi _{n}^{(n-1)} (t)} \end{array}\right)\]
+                    </p>
+
+                    <div class="example">Теорема.</div>
+                    <p>Справедливы следующие утверждения:</p>
+                    <p>\(\underline{Утверждение 1}.\)</p>
+                    <p>Если система функций \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \)
+                    линейно зависима на интервале \( (r_{1} ,r_{2} )\), то \(\forall t\in (r_{1} ,r_{2} )\quad W(t)=0\quad (W(t)\equiv 0) \) .</p>
+
+                    <p>\(\underline{Утверждение 2}.\)</p>
+                    <p>Если система решений \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t)\)
+                    линейного однородного дифференциального уравнения n-го порядка линейно независима на
+                    интервале \( (r_{1} ,r_{2} ) \) , то \( \forall t\in (r_{1} ,r_{2} )\quad W(t)\ne 0\)</p>
+
+
+                    <div class="example">Доказательство:</div>
+                    <p>\(\textbf{Утверждение 1.}\)</p>
+                    <p>
+                    Так как система функций \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \) линейно зависима,
+                     то существуют постоянные \(C_{1} ,\, C_{2} ,\; ...,C_{n} \) такие,
+                     что \(C_{1}^{2} +C_{2}^{2} +\; ...+C_{n}^{2} \ne 0\) и \( \sum _{i=1}^{n}C_{i}  \varphi _{i} (t)\equiv 0\) .
+                     Теперь продифференцируем это тождество \( (n-1) \) раз </p>
+                    <p> 
+                    \begin{equation}\label{4} 
+                        \left\{\begin{array}{l} {\sum _{i=1}^{n}C_{i}  \varphi _{i} (t)=0} \\ {\sum _{i=1}^{n}C_{i}  \varphi '_{i} (t)=0} \\ {.........................} \\ {\sum _{i=1}^{n}C_{i}  \varphi _{i}^{(n-1)} (t)=0} \end{array}\right.  
+                    \end{equation}</p>
+
+                    <p>Зафиксируем \(t\) . Посмотрим как на систему алгебраических линейных уравнений относительно \(C_{1} ,\, C_{2} ,\; ...,C_{n} \) .
+                    В силу того, что \(C_{1}^{2} +C_{2}^{2} +\; ...+C_{n}^{2} \ne 0\) (т. е. имеется ненулевое решение),
+                    то определитель системы равен нулю, то есть \(W(t)\equiv 0\) .
+                    </p>
+                    <p>\(\textbf{Утверждение 2.}\)</p>
+                    <p>От противного.</p>
+                    <p>Предположим, что \( \exists t_{0} \in (r_{1} ,r_{2} )\quad W(t_{0} )=0\) .
+                    Возьмём \(t_{0} \) и подставим в систему (\ref{4}) алгебраических уравнений относительно \(C_{1} ,\, C_{2} ,\; ...,C_{n} \) .</p>
+                    <p>Так как \(W(t_{0} )=0\) , то кроме тривиального решения есть и другое \( \exists \; \bar{C}_{1} ,\, \bar{C}_{2} ,\; ...,\, \bar{C}_{n} :\bar{C}_{1}^{2} +\bar{C}_{2}^{2} +\; ...+\bar{C}_{n}^{2} \ne 0\) .</p>
+                    <p> 1)\( \quad \bar{y}=\bar{C}_{1} \varphi _{1} (t)+\bar{C}_{2} \varphi _{2} (t)+...+\bar{C}_{n} \varphi _{n} (t) \) - решение линейного однородного уравнения 
+                     \( y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=0\) , так как \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \) - решения этого уравнения. (по следствию 1 из теоремы о принципе суперпозиции). </p>
+                     <p>2)Подставим \( \bar{y}\) по очереди в уравнения системы \((4) \) :
+
+                    \[ \left\{\begin{array}{l} {\bar{y}(t_{0} )=0} \\ {\bar{y}'(t_{0} )=0} \\ {..............................} \\ {\bar{y}^{(n-1)} (t_{0} )=0} \end{array}\right. \]
+                    То есть \( \bar{y} \) удовлетворяет нулевым начальным условиям задачи Коши.</p>
+                    <p>Этим же условиям удовлетворяет тривиальное решение \(y\equiv 0\). В силу единственности решения начальной задачи Коши,
+                    получаем \(y\equiv \bar{y} \) , то есть \( \quad \bar{C}_{1} \varphi _{1} (t)+\bar{C}_{2} \varphi _{2} (t)+...+\bar{C}_{n} \varphi _{n} (t)\equiv 0\) . Из \( \exists \; \bar{C}_{1} ,\, \bar{C}_{2} ,\; ...,\, \bar{C}_{n} :\bar{C}_{1}^{2} +\bar{C}_{2}^{2} +\; ...+\bar{C}_{n}^{2} \ne 0\) и последнего тождества, получается, что \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \) - линейно зависимы.</p>
+                    <p>Получили противоречие.</p>
+                    <p>\(\textbf{Теорема доказана.}\)</p>
+
+                    <div class="example">Следствие:</div>
+                    <p>\(\underline{Определение}\). 
+                    Фундаментальная система решений (ФСР) линейного однородного дифференциального уравнения \(n\) -го порядка 
+                    \[y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=0\] называется любая система из \(n\) линейно независимых решений этого уравнения.</p>
+                    <div class="example">Критерий фундаментальности системы решений</div>
+                    <p>1) Если система решений \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \)
+                    линейного однородного дифференциального уравнения \[ y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=0\] линейно зависима,
+                     то \( \forall t\in (r_{1} ,r_{2} )\quad W(t)=0\quad W(t)\equiv 0 \) .</p>
+                    <p>2) Если система решений \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \)
+                    линейного однородного дифференциального уравнения \[ y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=0\] линейно независима,
+                    то \( \forall t\in (r_{1} ,r_{2} )\quad W(t)\ne 0\) .</p>
+                    <p>\[ \begin{array}{l} {W(t_{0} )=0\Rightarrow \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t)\; \; \text{   \(-\) не ФСР.}\; } \\
+                    {W(t_{0} )\ne 0\Rightarrow \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t)\; \text{   \(-\) ФСР.}\; } \\ {} \end{array}\]</p>
+
+
+
+                    <div class="example">Теорема:</div>
+                    <p>\(\textit{Об общем виде решений линейных однородных уравнений n-го порядка.}\)</p>
+                    <p>Пусть дано уравнение
+                        \begin{equation}\label{5}
+                            y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=0
+                        \end{equation}
+                    \(a_{1} (t),\; a_{2} (t),\; ...,a_{n} (t) \) - определены и непрерывны на \( (r_1,r_2) \) ,
+                    тогда
+                    </p>
+                    <p>1) это уравнение имеет ФСР</p>
+                    <p>2) если \( \varphi _{1} (t),\; \varphi _{2} (t),\; ...,\varphi _{n} (t) \) - ФСР, то любое решение \(y=y(t) \) уравнения представимо в виде
+                    \[y=\sum _{i=1}^{n}C_{i}  \varphi _{i} (t)\]
+                    где \(C_i \) \(-\) постоянные.</p>
+                    <div class="example">Доказательство:</div>
+
+                    <p>\(\underline{Пункт \hspace{0.3cm} 1.}\)</p>
+                    <p>
+                    Берем определитель \( \Delta _{0} \) ненулевой:
+                    \[\Delta _{0} =\det \left(\begin{array}{l} {a_{11} \; ...\; a_{1k} \; ...\; a_{1n} } \\
+                    {a_{21} \; ...\; a_{1k} \; ...\; a_{1n} } \\ {........................} \\ {........................} \\ {a_{n1} \; ...\; a_{nk} \; ...\; a_{nn} } \end{array}\right)\ne 0\]</p>
+                    <p>
+                    Имеется \(n\) задач Коши:</p>
+                    <p>
+                    \(y=\varphi _{k} (t),\quad k=1,\, 2,\, ..,\, n\quad t_{0} \in (r_{1} ,r_{2} ) \) начальные условия
+                    \[\left\{\begin{array}{l} {\varphi _{k} (t_{0} )=a_{1k} }
+                    \\ {\varphi '_{k} (t_{0} )=a_{2k} } \\ {} \\ {\varphi _{k}^{(n-1)} (t_{0} )=a_{nk} } \end{array}\right. \]</p>
+                    <p>\( \forall k=1,\, 2,\, ..,\, n\) задача с данными начальными условиями однозначно разрешима.</p>
+                    <p>
+                    Получаем  \( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t) \) - \(n\) решений уравнения
+                    (\ref{5}), удовлетворяющих начальным условиям. Определитель Вронского \(W(t) \)
+                    для этих решений при \(t=t_0\) совпадает с \( \Delta _{0} \) , и, следовательно, отличен от нуля.
+                    Поэтому наши решения линейно независимы и образуют ФСР.
+                    Т. к. мы можем бесконечно многими способами выбрать \( \Delta _{0} \), то и ФСР бесконечно много.</p>
+                    <p>\(\underline{Пункт \hspace{0.3cm}  2.}\)</p>
+                    <p>\( \varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t)\) - какая-нибудь ФСР , \(y=y(t) \) - произвольное решение
+                     уравнения (\ref{5}), взяв произвольно \(t_{0} \in (r_{1} ,r_{2} )\), составим систему уравнений для
+                     нахождения величин \(C_{1} ,\, C_{2} ,\; ...,C_{n} \)
+
+
+                    \begin{equation}\label{6}
+                        \left\{\begin{array}{l} {\sum _{i=1}^{n}C_{i}  \varphi _{i} (t)=y(t_{0} )} \\ {\sum _{i=1}^{n}C_{i}  \varphi '_{i} (t)=y'(t_{0} )} \\ {..............................} \\ {\sum _{i=1}^{n}C_{i}  \varphi _{i}^{(n-1)} (t)=y^{(n-1)} (t_{0} )} \end{array}\right.
+                    \end{equation}
+
+                    Определитель данной системы \(-\) определитель Вронского \(W\) для данной ФСР в точке \(t_0\) .</p>
+                    <p>\( \forall t\in (r_{1} ,r_{2} )\; \; W(t)\ne 0\; \Rightarrow \; W(t_{0} )\ne 0\Rightarrow \, \exists \; \bar{C}_{1} ,\,
+                    \bar{C}_{2} ,\; ...,\, \bar{C}_{n} \) - решение (единственное) системы (\ref{6})
+                    Обозначим \( \bar{y}=\sum _{i=1}^{n}\bar{C}_{i}  \varphi _{i} (t) \) .</p>
+                    <p>1) \( \bar{y}=\bar{y}(t) \) - решение уравнения (\ref{5})</p>
+                    <p>2) в силу системы (\ref{6}):
+                    \[\begin{array}{l} {\bar{y}(t_{0} )=y(t_{0} )} \\ {\bar{y}'(t_{0} )=y'(t_{0} )}
+                    \\ {....................} \\ {\bar{y}^{(n-1)} (t_{0} )=y^{(n-1)} (t_{0} )} \end{array}\]</p>
+                    <p>3) \(y=y(t) \) - также решение уравнения (\ref{5})</p>
+                    <p>4) \( \bar{y}(t)\equiv y(t) \) на \( (r_1,r_2) \) в силу единственности решения задачи Коши.</p>
+                    <p>\( \exists \; \bar{C}_{1} ,\, \bar{C}_{2} ,\; ...,\, \bar{C}_{n} \quad y=y(t)=\sum _{i=1}^{n}\bar{C}_{i}  \varphi _{i} (t) \) .
+                    (т. е. любое решение уравнения (\ref{5}) представимо в данном виде).
+                     \( \hspace{1cm} \textbf{Теорема доказана.}\)</p>
+
+                    <div class="example">Теорема:</div>
+                    <p>\(\textit{Об общем виде решений линейного неоднородного дифференциального  }\)</p>
+                    <p>\(\textit{уравнения n-го порядка.}\)</p>
+                    <p>Пусть дано уравнение
+                        \begin{equation}\label{7}
+                            y^{(n)} +a_{1} (t)y^{(n-1)} +...+a_{n-1} (t)y'+a_{n} (t)y=f(t)
+                        \end{equation}
+                    \(a_{1} (t),\; a_{2} (t),\; ...,a_{n} (t) \) - определены и непрерывны на \( (r_1,r_2) \) .</p>
+                    <p>Пусть \(y=\bar{y}(t) \) - какое-то частное решение уравнения (\ref{7}),
+                    \[\varphi _{1} (t),\, \varphi _{2} (t),...,\, \varphi _{n} (t)\]
+                    \(-\) какая-нибудь ФСР для соответствующего однородного уравнения.</p>
+                    <p>Тогда любое решение исходного уравнения (\ref{7}) представимо в виде:
+                    \[ y=y(t)=\bar{y}(t)+\sum _{i=1}^{n}C_{i}  \varphi _{i} (t),\]
+                    где \(C_i\) \(-\) постоянные.</p>
+                    <div class="example">Доказательство:</div>
+                    <p>Так как \(y=y(t) \) и \(y=\bar{y}(t) \) - решения исходного неоднородного уравнения (\ref{7}),
+                    то их разность \( (y(t)-\bar{y}(t)) \) \(-\) решение соответствующего однородного уравнения.
+                    По теореме об общем виде решений однородного уравнения получаем, что 
+                    \[\exists \; \bar{C}_{1} ,\, \bar{C}_{2} ,\; ...,\,
+                    \bar{C}_{n} -const\quad y(t)-\bar{y}(t)=\sum _{i=1}^{n}\bar{C}_{i}  \varphi _{i} (t).\]
+                    Отсюда сразу получается, что \(\quad y(t)=\bar{y}(t)+\sum _{i=1}^{n}\bar{C}_{i}  \varphi _{i} (t)\).</p>
+                    <p>\(\textbf{Теорема доказана.}\)</p>
+                    </p>
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Разделенные разности</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="lagrange_polynomial.html">Интерполяционный многочлен в форме Лагранжа</a></li>
+                <li><a href="lagrange_error.html">Погрешность многочлена Лагранжа</a></li>
+                <li><a href="divided_differences.html">Разделенные разности</a></li>
+                <li><a href="newton's_polynomial.html">Интерполяционный многочлен в форме Ньютона</a></li>
+                <li><a href="multiple_nodes.html">Интерполяция с кратными узлами</a></li>
+                <li><a href="divided_differences_with_multiple_nodes.html">Разделенные разности с кратными узлами</a></li>
+                <li><a href="hermitian_polynomial.html">Интерполяционный многочлен Эрмита</a></li>
+                <li><a href="additional_properties.html">Дополнительные свойства разделенных разностей</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Разделенные разности</div>
+            <p>Для того, чтобы построить интерполяционный многочлен, необходимо познакомиться
+                с элементами теории разделенных разностей, созданной Ньютоном.
+            </p>
+            <p>Разделённые разности вводятся реккурентно. Пусть даны попарно
+                различные узлы \(x_0, x_1, \cdots , x_n\), и значения в узлах \(f_0, f_1, \cdots , f_n\).</p>
+            <p>\(\textbf{Разделенными разностями нулевого порядка}\) назовем значения в узлах \(f(x_i) = f_i\).</p>
+            <p>\(\textbf{Разделенной разностью первого порядка}\) по узлам \(x_i, x_j\), назовем величину
+            \[f(x_i, x_j) = \frac{f(x_i) - f(x_j)}{x_i - x_j}.\]</p>
+            <p>Далее разделенные разности \(k\)-го порядка вводятся через разделенные разности \(k − 1\)-го порядка.</p>
+            <p>\(\textbf{Разделенной разностью \(k\)-го порядка}\) по узлам \(x_0, x_1, \cdots , x_k\), назовем
+                величину \[f(x_0, x_1, \cdots , x_k) = \frac{f(x_1, x_2, \cdots , x_k) − f(x_0, x_1, \cdots , x_{k−1})}{x_k − x_0}.\]</p>
+            <p>Среди свойств разделенных разностей отметим следующее представление</p>
+            <div class="example">Лемма</div>
+            <p>\[f(x_0, x_1, \cdots , x_n) = \sum_{k=0}^{n}\frac{f(x_k)}{\prod_{i=0,i \neq k}^{n}(x_k - x_i)}\]</p>
+            <p>\(\textbf{Доказательство}\) проведем индукцией по \(n\).
+            </p>
+            <p>База индукции при \(n = 1\): \[f(x0, x1) = \frac{f(x0) − f(x1)}{x_0 - x_1} = \frac{f(x_0)}{x_0 - x_1} + \frac{f(x_1)}{x_1 - x_0}.\]</p>
+            <p>Шаг индукции. Предположим, что представление справедливо при
+                \(n − 1\), докажем представление при \(n\). По определению разделенной разности
+                \(n\)-го порядка и по индуктивному предположению получаем, приводя
+                подобные
+                \[f(x_0, x_1, \cdots , x_k) = \frac{f(x_1, x_2, \cdots , x_k) − f(x_0, x_1, \cdots , x_{k−1})}{x_k − x_0} = \]
+                \[= \sum_{k=0}^{n-1}\frac{f(x_k)}{(x_0 - x_n)\prod_{i=0,i\neq k}^{n-1}(x_k - x_i)} - \sum_{k=1}^{n}\frac{f(x_k)}{(x_0 - x_n)\prod_{i=1,i\neq k}^{n}(x_k - x_i)} = \]
+                \[= \frac{f(x_0)}{\prod_{i=1}^{n}(x_0 - x_i)} + \frac{f(x_n)}{\prod_{i=0}^{n-1}(x_n - x_i)} + \]
+                \[+ \sum_{k=1}^{n-1}\frac{f(x_k)}{(x_0 - x_n)\prod_{i=1,i\neq k}^{n-1}(x_k - x_i)}[\frac{1}{x_k - x_0} - \frac{1}{x_k - x_n}] = \]
+                \[= \frac{f(x_0)}{\prod_{i=1}^{n}(x_0 - x_i)} + \frac{f(x_n)}{\prod_{i=0}^{n-1}(x_n - x_i)} + \sum_{k=1}^{n-1}\frac{f(x_k)}{\prod_{i=0,i\neq k}^{n}(x_k - x_i)} = \]
+                \[\sum_{k=0}^{n}\frac{f(x_k)}{\prod_{i=0,i\neq k}^{n}(x_k - x_i)}\]
+            </p>
+            <p>Лемма доказана.</p>
+            <div class="example">Замечание</div>
+            <p>Из леммы, в частности, следует, что разделенная разность является симметричной функцией своих аргументов, т.е. порядок
+                аргументов можно менять.</p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

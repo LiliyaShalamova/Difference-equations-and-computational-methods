@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Разделенные разности с кратными узлами</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="lagrange_polynomial.html">Интерполяционный многочлен в форме Лагранжа</a></li>
+                <li><a href="lagrange_error.html">Погрешность многочлена Лагранжа</a></li>
+                <li><a href="divided_differences.html">Разделенные разности</a></li>
+                <li><a href="newton's_polynomial.html">Интерполяционный многочлен в форме Ньютона</a></li>
+                <li><a href="multiple_nodes.html">Интерполяция с кратными узлами</a></li>
+                <li><a href="divided_differences_with_multiple_nodes.html">Разделенные разности с кратными узлами</a></li>
+                <li><a href="hermitian_polynomial.html">Интерполяционный многочлен Эрмита</a></li>
+                <li><a href="additional_properties.html">Дополнительные свойства разделенных разностей</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Разделенные разности с кратными узлами</div>
+            <p>Пусть даны узлы \(x_i, x_{i+1}, \cdots , x_{i+n}\), среди которых могут быть и совпадающие.
+                Для того, чтобы определить разделенную разность по этим узлам,
+                заменим набор узлов набором узлов \(x^ε_i, x^ε_{i+1}, \cdots , x^ε_{i+n}\),
+                который, во-первых, в отличие от исходного, состоит из попарно различных узлов,
+                а, во вторых, \(x^ε_{i+k} \rightarrow x_{i+k}\) при \(ε → 0\).
+                Такие наборы можно всегда организовать, например, если узлы \(x_i, x_{i+1}, \cdots , x_{i+k}\)
+                совпадают, то можно при малом \(ε\) взять (x^ε_{i+j} = x_i + jε\) при \(j = 0, 1, \cdots , k\).</p>
+            <p>\(\textbf{Разделенной разностью по возможно совпадающим узлам}\) назовем
+            \[f(x_i, x_{i+1}, \cdots , x_{i+n}) = \lim_{ε\rightarrow 0}f(x^ε_i, x^ε_{i+1}, \cdots , x^ε_{i+n}),\]
+                если такой предел существует.</p>
+            <p>Отметим два частных случая для конструктивного вычисления такой
+                разделенной разности.</p>
+            <p>А. Пусть среди узлов есть хотя бы одна пара различных. Пусть
+                это первый узел \(x_i\) и последний \(x_{i+n}\). Тогда при фиксированном \(ε\) можно
+                воспользоваться реккурентным определением разделенной разности (узлы
+                различные) и сохранить при переходе к пределу реккурентное определение.
+            \[f(x_i, x_{i+1}, \cdots , x_{i+n}) = \lim_{ε\rightarrow 0}f(x^ε_i, x^ε_{i+1}, \cdots , x^ε_{i+n}) =\]
+            \[= \lim_{ε\rightarrow 0}\frac{f(x^ε_{i+1}, \cdots , x^ε_{i+n}) − f(x^ε_i, \cdots , x^ε_{i+n−1})}{x^ε_{i+n} − x^ε_i} = \]
+            \[= \frac{f(x_{i+1}, \cdots , x_{i+n}) − f(x_i, \cdots , x_{i+n−1})}{x_{i+n} − x_i}\]</p>
+            <p>Б. Пусть все узлы совпадают \(x_i = x_{i+1} = \cdots = x_{i+n}\). Тогда при
+                фиксированном \(ε\) можно воспользоваться связью разделенных разностей и
+                производных и сохранить эту связь при переходе к пределу.
+                \[f(x_i, x_{i+1}, \cdots , x_{i+n}) = f(x_i, x_i, \cdots , x_i) =\]
+                \[= \lim_{ε\rightarrow 0}f(x^ε_i, x^ε_{i+1}, \cdots , x^ε_{i+n}) = \lim_{ε\rightarrow 0}\frac{f^{(k)}(ξ^ε)}{n!} = \frac{f^{(k)}(x_i)}{n!}\]
+            </p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

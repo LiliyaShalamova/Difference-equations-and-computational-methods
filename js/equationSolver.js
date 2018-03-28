@@ -72,7 +72,7 @@ var derivatives = {
         n.calc = function (x) {
             return operatorAction['*'](n.left.calc(x), n.right.calc(x));
         };
-        var coscalc = function(x) {
+        var cosCalc = function(x) {
             return functions['cos'](n.left.left.calc(x));
         };
         n.left = new NotConstNode('cos', cosCalc);
@@ -154,7 +154,7 @@ var derivatives = {
         };
         n.right.left = getDerivativeNode(cloneNode(node.right));
         n.right.right = cloneNode(node.left);
-        n.left.right.left = cloneNode(node.left);
+        //n.left.right.left = cloneNode(node.left);
         return n;
     },
     "x": function() {
@@ -709,6 +709,13 @@ function solveEquation(equation, x) {
     return createNode(tokens).calc(x);
 }
 
+function getDerivative(equation, x) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var derivativeNode = getDerivativeNode(top);
+    return derivativeNode.calc(x);
+}
+
 function getDerivativeNode(node){
     if (isDigitOrComma(node.value[0]))
         return derivatives["number"](node);
@@ -728,4 +735,28 @@ function solveEquationByNewton(equation, a, b, e){
         x = newX;
     }
 }
+
+function solveEquationByHalfDivisionMethod(equation, a, b, e) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    while(true) {
+        var c = (a + b) / 2;
+        if (top.calc(c) * top.calc(a) < 0)
+            b = c;
+        else
+            a = c;
+        if (Math.abs(b - a) < e)
+            return c;
+    }
+}
+
 console.log(solveEquationByNewton("x - 2*cos(x^2)", 1.4, 0, 0.5*Math.pow(10, -5)));
+
+try {
+    module.exports.parseEquation = parseEquation;
+    module.exports.solveEquation = solveEquation;
+    module.exports.getDerivative = getDerivative;
+}
+catch(e) {
+
+}

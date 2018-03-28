@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Линейные системы с постоянными коэффицентами</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                    <li class="category"><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="sys_lin_diff_ur.html">Системы линейных дифференциальных уравнений</a></li>
+                        <li><a href="lin_neodnor_sys.html">Линейные неоднородные системы</a></li>
+                        <li><a href="lin_sys_s_post_coofic.html">Линейные системы с постоянными коэффициентами</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                    </ul>
+                </div>
+                <div id="content_col">
+                    <div class="entry_title"> Линейные системы с постоянными коэффициентами</div>
+                    <p>
+                        \[\begin{equation} \label{11}\dot{X}=AX+B(t) \tag{11}\end{equation}\]
+                    частный случай линейной системы с переменной матрицей \(A(t).\) Для линейной системы с постоянными коэффициентами
+                    всегда существует ФСР, состоящая из элементарных функций и известен эффективный способ построения ФСР.
+                    <br>Рассмотрим  однородную систему с постоянными действительными коэффициентами
+                        \[\begin{equation} \label{12}\dot{X}=AX,\tag{12}\end{equation}\]
+                        \[ \text{где} \hspace{1cm}
+                    A=\left(\begin{array}{ccccc}a_{11}&\ldots& a_{1n}\\\vdots\\a_{n1}&\ldots& a_{nn}\end{array}\right).\]
+                    \(\textbf{Характеристическим уравнением}\) системы (\ref{12}) называется
+                        \[\begin{equation} \label{13}Det(A-\lambda E)=0, \tag{13}\end{equation}\]
+                    здесь  \(E\) \(-\) единичная матрица \(n\times n\),  или в развернутом виде
+                    \[\begin{equation} \label{14}\left|
+                    \begin{array}{ccccc}
+                    a_{11}-\lambda & a_{12} & a_{13} & \ldots & a_{1n}\\
+                    a_{21} & a_{22}-\lambda & a_{23} & \ldots & a_{2n}\\
+                    \cdots&\cdots&\cdots&\cdots&\cdots\\
+                    a_{n1} & a_{n2} & a_{n3} & \ldots & a_{nn}-\lambda
+                    \end{array}
+                    \right|=0. \tag{14}\end{equation}\]
+                    Корни этого уравнения называются \(\textbf{собственными значениями матрицы \(A\)}.\)</p>
+                    <p>Пусть  \(\lambda\) \(-\) собственное значение матрицы \(A\). Возможны случаи.
+                    <br>\(\textbf{I. Корень характеристического уравнения \(\lambda\) простой.}\)</p>
+                    <p>Найдем \(\textbf{собственный вектор}\)
+                    \[\textbf{h}=\left(\begin{array}{cccc}h_1\\h_2\\\vdots\\h_n\end{array}\right)\]
+                    матрицы \(A\), соответствующий собственному значению \(\lambda\):
+                    \[A\textbf{h}=\lambda \textbf{h},\hspace{1cm} \textbf{h}\neq0.\]
+                    Собственный вектор находится с точностью до скалярного множителя.</p>
+                    <p>Простому собственному значению \(\lambda\)  матрицы \(A\) в ФСР соответствует решение уравнения (\ref{12}) вида
+                        \[X=\textbf{h}e^{\lambda t}.\]
+                    Подстановкой в уравнение (\ref{12}) проверим, что это действительно решение:
+                        \[\dot{X}=\lambda \textbf{h}e^{\lambda t}=A\textbf{h}e^{\lambda t}=AX.\]</p>
+                    <div class="example">Пример</div>
+                    <p>Решить систему дифференциальных уравнений
+                    \[\left\{
+                    \begin{array}{l}
+                    \dot{x}=-x-2y\\
+                    \dot{y}=3x+4y.
+                    \end{array}
+                    \right. \]
+                    Характеристическое уравнение
+                    \[\left|
+                    \begin{array}{ccc}
+                    -1-\lambda & -2 \\
+                    3 & 4-\lambda
+                    \end{array}
+                    \right|=0;\hspace{1cm} (\lambda+1)(\lambda-4)+6=\lambda^2-3\lambda+2=0;\]
+                    \[\lambda_1=1;\hspace{1cm}\lambda_2=2;\]
+                    \[\lambda_1=1:\]
+                    Собственный вектор \(\textbf{h}_1= \left(\begin{array}{rrr}h_1 \\ h_2\end{array} \right),\) отвечающий собственному числу \(\lambda_1\), находится из системы 
+                    \[(A-\lambda_1E)\textbf{h}_1=0:\]
+                    \[\left(
+                    \begin{array}{rrr}
+                    -2 & -2\\
+                    3 & 3
+                    \end{array} \right)\cdot
+                    \left(\begin{array}{rrr}h_1\\h_2\end{array} \right)
+                    =0; \hspace{2cm} \left\{
+                    \begin{array}{cccc}
+                    -2h_1-2h_2&=0\\
+                    3h_1+3h_2&=0.
+                    \end{array}
+                    \right. \]
+                    Получаем \(h_1=-h_2\). Пусть \(h_1=1\), тогда \(h_2=-1\),
+                    собственный вектор \(\textbf{h}_1=\left(\begin{array}{rrr}1 \\ -1\end{array} \right)\). Тогда корню \(\lambda_1\) соответствует частное решение
+                    \[X_1=\left(\begin{array}{rrr}1\\-1\end{array} \right)e^t.\]
+                    \(\lambda_2=2\):</p>
+                    <p>собственный вектор \(\textbf{h}_2=\left(\begin{array}{rrr}h_1\\h_2\end{array} \right)\) удовлетворяет системе
+                    \[\left\{
+                    \begin{array}{cccc}
+                    -3h_1-2h_2&=0\\
+                    3h_1+2h_2&=0.
+                    \end{array}
+                    \right. \]
+                    Тогда \(h_1=-\frac 2 3 h_2\). Возьмем \(h_2=-3\), получим \(h_1=2\), \(\textbf{h}_2=\left(\begin{array}{rrr}2 \\ -3 \end{array} \right),\)
+                        \[X_2=\left(\begin{array}{rrr}2\\ -3 \end{array} \right)e^{2t}.\]
+                    Общим решением системы будет
+                        \[\left(\begin{array}{rrr}x\\y\end{array} \right)
+                    =C_1
+                    \left(\begin{array}{rrr}1\\-1\end{array} \right)
+                    e^t+C_2
+                    \left(\begin{array}{rrr}2\\-3\end{array} \right)
+                    e^{2t}=
+                    \left(\begin{array}{rrr} C_1e^t+2C_2e^{2t} \\ -C_1e^t-3C_2e^{2t} \end{array} \right).
+                    \hspace{1cm}\triangle
+                    \]
+                    \(\textbf{II. Корень характеристического уравнения \(\lambda\) кратности \(k\), }\)ему соответствует
+                    один или несколько собственных векторов \(\textbf{h}_1,\ldots,\textbf{h}_i\), \(i\le k\).
+                    Их можно выбрать так, чтобы каждый из них являлся \(\textbf{родоначальником СЕРИИ из ПРИСОЕДИНЕННЫХ векторов}.\)</p>
+                    <p>Например, \(\textbf{h}_1\) \(-\) собственный вектор \(-\) родоначальник \(\textbf{СЕРИИ}\) из \(p\) векторов
+                    \(\textbf{h}_1=\textbf{h}^1_1, \textbf{h}^2_1, \ldots, \textbf{h}^p_1\), удовлетворяющих уравнениям
+                    \[\begin{array}{lllllll}
+                    A\textbf{h}^1_1=\lambda \textbf{h}^1_1,\hspace{1cm} \textbf{h}^1_1\neq0,\\
+                    A\textbf{h}^2_1=\lambda \textbf{h}^2_1+\textbf{h}^1_1,\\
+                    \ldots\\
+                    A\textbf{h}^p_1=\lambda \textbf{h}^p_1+\textbf{h}^{p-1}_1.
+                    \end{array}\]
+                    Каждой серии, например, \(\textbf{h}_1=\textbf{h}^1_1,\,\textbf{h}^2_1,\,\ldots,\,\textbf{h}^p_1\) соответствует
+                    \(p\) линейно независимых решений \(X_1,\,\ldots,\,X_p\) системы \(\dot{X}=AX\):
+                    \[\begin{array}{lllllll}\begin{equation} \label{15}
+                    X_1=\textbf{h}^1_1e^{\lambda t},\\
+                    X_2=(t\textbf{h}^1_1+\textbf{h}^2_1)e^{\lambda t},\\
+                    X_3=\left(\frac{t^2}{2!}\textbf{h}^1_1+t\textbf{h}^2_1+\textbf{h}^3_1\right)e^{\lambda t}, \\
+                    \ldots,\\
+                    X_p=\left(\frac{t^{p-1}}{(p-1)!}\textbf{h}^1_1+\frac{t^{p-2}}{(p-2)!}\textbf{h}^p_1+\cdots+t\textbf{h}^{p-1}_1+
+                    \textbf{h}^p_1\right)e^{\lambda t}.\tag{15}\end{equation}
+                    \end{array}
+                    \]
+                    Общее решение системы представляет собой линейную комбинацию вектор-функций вида (\ref{15}), составленных для каждой серии и для каждого корня
+                    характеристического уравнения.</p>
+                    <div class="example">Пример</div> 
+                    <p>Решить систему дифференциальных уравнений
+                    \[\left\{
+                    \begin{array}{lll}
+                    \dot{x}=2x+y\\
+                    \dot{y}=4y-x.
+                    \end{array}
+                    \right. \]
+                    Характеристическое уравнение
+                    \[\left|
+                    \begin{array}{ccc}
+                    2-\lambda & 1\\
+                    -1 & 4-\lambda
+                    \end{array}
+                    \right|=0;\hspace{1cm} (2-\lambda)(4-\lambda)+1=0;\hspace{1cm} \lambda^2-6\lambda+9=0.\]
+                    \[\lambda_{1,2}=\lambda_0=3\text{ \(-\) корень кратности } 2.\]
+                    \[A-\lambda_0E=\left(
+                    \begin{array}{rrr}
+                     -1 & 1\\
+                    -1 & 1
+                    \end{array} \right)\hspace{1cm} r=1\]
+                    Количество линейно независимых собственных векторов, отвечающих кратному собственному значению:\(\hspace{1cm}d=n-r=2-1=1\).</p>
+                    <p>Собственный вектор \(\textbf{h}_1=\left(\begin{array}{rrr} h_1 \\ h_2 \end{array} \right)\):
+                    \[\hspace{3cm}-h_1+h_2=0,\hspace{1cm} h_1=h_2.\]
+                    Положим \(h_1=1\), тогда \(h_2=1\), \(\textbf{h}_1=\left(\begin{array}{rrr}1 \\ 1\end{array} \right).\) Частное решение
+                        \[X_1(t)=\left(\begin{array}{rrr}1 \\ 1\end{array} \right)e^{3t}.\]
+                    Находим присоединенный вектор \(\textbf{h}_2=\left(\begin{array}{rrr}h_1 \\ h_2\end{array} \right):\)
+                    \[(A-\lambda_0E)\textbf{h}_2=\textbf{h}_1,\hspace{1cm}
+                    \left(
+                    \begin{array}{rrr}
+                     -1 & 1\\
+                    -1 & 1
+                    \end{array} \right)
+                    \left(\begin{array}{rrr}h_1 \\ h_2\end{array} \right)
+                    =\left(\begin{array}{rrr}1 \\ 1\end{array} \right),\hspace{1cm}-h_1+h_2=1.\]
+                    Положим \(h_1=0\), тогда \(h_2=1\), \(\textbf{h}_2=\left(\begin{array}{rrr}0 \\ 1\end{array} \right).\)</p>
+                    <p>Частное решение, линейно независимое с первым:
+                    \[X_2(t)=\left(t
+                    \left(\begin{array}{rrr}1 \\ 1\end{array} \right)
+                    +\left(\begin{array}{rrr}0 \\ 1\end{array} \right)\right)e^{3t}.\]
+                    Общее решение системы
+                    \[X=
+                    \left(\begin{array}{rrr}x \\ y\end{array} \right)=
+                    C_1X_1(t)+C_2X_2(t)=C_1
+                    \left(\begin{array}{rrr}1 \\ 1\end{array} \right)e^{3t}+C_2
+                    \left(t
+                    \left(\begin{array}{rrr}1 \\ 1\end{array} \right)+
+                    \left(\begin{array}{rrr}0 \\ 1\end{array} \right)
+                    \right)e^{3t},\]
+                    или
+                        \[x=(C_1+C_2 t)e^{3t}; \hspace{1cm} y=(C_1+C_2t+C_2)e^{3t}.\hspace{1cm}\bigtriangleup\]
+                    \(\textbf{III. \(\lambda\) \(-\) комплексный корень характеристического уравнения.}\)</p>
+                    <p>Изложенные выше способы дают комплексные решения
+                    <br>Для действительной матрицы \(A\) базис из серий можно выбрать так,
+                    чтобы серии, отвечающие действительным собственным значениям были действительными, а серии, отвечающие
+                    комплексно сопряженным собственным значениям были комплексно сопряжены.
+                    <br>\(\textbf{Комплексные решения в ФСР заменяют их действительными и мнимыми частями.}\)</p>
+                    <div class="example">Пример</div> 
+                    <p>Решить систему дифференциальных уравнений
+                    \[\left\{
+                    \begin{array}{lll}
+                    \dot{x}=x+y\\
+                    \dot{y}=3y-2x.
+                    \end{array}
+                    \right. \]
+                    Характеристическое уравнение
+                    \[\left|
+                    \begin{array}{ccc}
+                    1-\lambda & 1\\
+                    -2 & 3-\lambda
+                    \end{array}
+                    \right|=0;\hspace{1cm} (1-\lambda)(3-\lambda)+2=0;\hspace{1cm} \lambda^2-4\lambda+5=0.\]
+                    \[\lambda_{1,2}=2\pm i.\]
+                    Достаточно рассмотреть \(\lambda_1=2+i:\)</p>
+                    <p>Собственный вектор \(\textbf{h}_1=\left(\begin{array}{rrr}h_1 \\ h_2\end{array} \right),\) отвечающий собственному числу \(\lambda_1\),
+                    находится из системы 
+                    \[(A-\lambda_1E)\textbf{h}_1=0,\hspace{1cm}\text{при этом, } r(A-\lambda_1E)=1.\]
+                    \[\left(
+                    \begin{array}{ccc}
+                    -1-i & 1\\
+                    -2 & 1-i
+                    \end{array} \right)\,
+                    \left(\begin{array}{rrr}h_1 \\ h_2\end{array} \right)
+                    =0;\hspace{1cm}
+                    -2h_1+(1-i)h_2=0 \]</p>
+                    Получаем \(h_2=\frac{2}{1-i}h_1=(1+i)h_1\).
+                    <p>Пусть \(h_1=1\), тогда \(h_2=1+i\),собственный вектор 
+                    \(\textbf{h}_1=\left(\begin{array}{rrr}1 \\ 1+i\end{array} \right)\). Тогда корню \(\lambda_1\) соответствует частное решение
+                    \[X_1=e^{(2+i)t}
+                    \left(\begin{array}{rrr}1 \\ 1+i\end{array} \right)
+                    =e^{2t}(\cos t+i\sin t)
+                    \left(\begin{array}{rrr}1 \\ 1+i\end{array} \right)=\]
+                    \[=e^{2t}\left(\begin{array}{rrr} \cos t \\ \cos t-\sin t\end{array} \right)
+                    +i\,e^{2t}
+                    \left(\begin{array}{rrr} \sin t\\ \cos t+\sin t\end{array} \right).\]
+                    Вместо комплексных решений \(X_1(t)\) и \(X_2(t)\) в ФСР включаем действительную и мнимую часть решений.
+                    Общим решением системы будет
+                    \[X=\left(\begin{array}{rrr}x \\ y\end{array} \right)
+                    =C_1\,e^{2t}
+                    \left(\begin{array}{rrr}\cos t \\ \cos t-\sin t \end{array} \right)
+                    +C_2 e^{2t}
+                    \left(\begin{array}{rrr}\sin t \\ \cos t+\sin t\end{array} \right).
+                    \hspace{1cm}{\triangle}
+                    \]</p>
+                    
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

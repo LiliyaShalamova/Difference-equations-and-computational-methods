@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Численное дифференцирование по двум узлам</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="general_approach.html">Общий подход</a></li>
+                <li><a href="on_two_nodes.html">Численное дифференцирование по двум узлам</a></li>
+                <li><a href="on_three_nodes.html">Численное дифференцирование по трем узлам</a></li>
+                <li><a href="undefined_coefficients_method.html">Метод неопределенных коэффициентов</a></li>
+                <li><a href="unrecoverable_error.html">Неустранимая погрешность</a></li>
+                <li><a href="choice_of_the_optimal_step.html">Выбор оптимального шага</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Численное дифференцирование по двум узлам</div>
+            <p>Заданы узлы \(x_0, x_1\), (в дальнейшем будем считать, что \(h = x_1 − x_0 >0\))
+                и значения \(f_0, f_1\) в узлах. Выпишем интерполяционный многочлен, например,
+                в форме Ньютона, и его продифференцируем.
+                \[L_1(x) = f(x_0) + f(x_0, x_1)(x − x_0),\]\[L'_1(x) = f(x_0, x_1) = \frac{f_1 - f_0}{h},\]
+                тогда формула численного дифференцирования по двум узлам будет:
+                \[f'(x) \approx \frac{f_1 - f_0}{h}.\]
+            </p>
+            <p>Погрешность интерполяции
+                \[R_1(x) = f(x, x_0, x_1)(x − x_0)(x − x_1),\]
+                дифференцируя погрешность, в том числе используя правило дифференцирования
+                разделенной разности по узлу, получаем
+                \[R_{\partial} = R'_1(x) = f(x, x, x_0, x_1)(x − x_0)(x − x_1) +\]
+                \[+ f(x, x_0, x_1)(2x − x_0 − x_1).\]</p>
+            <p>Погрешность дифференцирования зависит от \(x\), в отличие от самой
+                формулы. Рассмотрим наиболее важные частные случаи.</p>
+            <p>\(A.\) Дифференцирование на левый край \(x = x_0\). Тогда, используя связь
+                разделенной разности и производной, получаем
+                \[R_{\partial} = −f(x_0, x_0, x_1)h = -frac{f''(ξ)}{2}h, ξ \in [x_0, x_1].\]
+                Аналогичным образом, при дифференцировании на правый край \(x = x_1\),
+                получаем
+                \[R_{\partial} = f(x_1, x_0, x_1)h = \frac{f''(ξ)}{2}h, ξ \in [x_0, x_1].\]</p>
+            <p>Обычно при дифференцировании на левый или правый край применяют
+                оценку погрешности:
+                \[|R_{\partial}| \leq \frac{M_2}{2}h, M_2 = \max_{x\in[x_0,x_1]}|f''(x)|.\]</p>
+            <p>\(Б.\) Дифференцирование на середину \(x = \frac{x_0 + x_1}{2}\). Используя связь разделенной
+                разности и производной, получаем
+                \[R_{\partial} = -f(\frac{x_0 + x_1}{2}, \frac{x_0 + x_1}{2}, x_0, x_1)\frac{h^2}{4} = -f'''(ξ)\frac{h^2}{24}, ξ \in [x_0, x_1],\]
+                и оценку \[|R_{\partial}| \leq \frac{M_3}{24}h^2, M_3 = \max_{x\in[x_0,x_1]}|f'''(x)|\]
+            </p>
+            <p>Сравнивая погрешности численного дифференцирования на середину и край,
+                заметим, что порядок малости по \(h\) на середину второй, а на
+                край только первый.</p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

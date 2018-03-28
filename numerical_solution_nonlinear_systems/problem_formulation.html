@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Постановка задачи</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="newton_method.html">Метод Ньютона</a></li>
+                <li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
+                <li><a href="examples.html">Примеры</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Постановка задачи</div>
+            <p>Рассмотрим систему уравнений
+            \[
+                \left\{\begin{matrix}
+                f_1(x_1, x_2, \cdots , x_n) = 0,\\
+                f_2(x_1, x_2, \cdots , x_n) = 0,\\
+                ...................... \\
+                f_n(x_1, x_2, \cdots , x_n) = 0.
+                \end{matrix}\right.
+             .\]
+            </p>
+            <p>Эту систему можно записать в векторном виде
+                \[F(X) = 0,\]где вектор \(X = (x_1, x_2, \cdots , x_n) \in R^n
+                , F(X)\) – векторная функция векторного аргумента.
+            </p>
+            <p>Как и в случае одного уравнения, задача состоит из двух этапов: отделение
+                корней - нахождение такой области в \(R^n\)
+                , где существует и единственен корень \(ξ \in R^n\)
+                , и уточнение корней – организация последовательности,
+                сходящейся к корню \(X^k → ξ\).</p>
+            <p>Теория численного решения системы уравнений во многом подобна
+                теории численного решения одного уравнения, главное отличие состоит в
+                определении производной векторной функции по векторному аргументу</p>
+            <p>Существуют разные определении производной векторной функции
+                по векторному аргументу. Самыми распространенными являются производные по Фреше и по Гато.</p>
+            <p>Функция \(F(X)\) называется \(\textbf{дифференцируемой по Фреше}\) в точке \(X\),
+                если найдется матрица \(P\) такая, что для любого \(Y \in R^n\)
+                выполняется:\[||F(Y) − F(X) − P(Y − X)|| = o(||(Y − X)||),\]
+                где \(o(||(Y − X)||)\) – величина более высокого порядка, чем \(||(Y − X)||\).
+            </p>
+            <p>Функция \(F(X)\) называется дифференцируемой по направлению в точке \(X\),
+                если для любого \(Z \in R^n\) найдется матрица \(P\), такая, что выполняется
+            \[\lim_{t \rightarrow \infty}\frac{F(X + tZ) − F(X)}{t} = PZ.\]</p>
+            <p>Матрица \(P\) называется \(\textbf{производной}\) функции \(F(X)\) в точке \(X\).</p>
+            <p>Если матрица \(P\) не зависит от направления \(Z\), то функцию назовем
+                дифференцируемой по Гато. Заметим, что из дифференцируемости по
+                Фреше следует дифференцируемость по Гато. В случае дифференцируемости
+                по Гато матрицу \(P\) можно сформировать, взяв в качестве направлений
+                \(Z_j =  (0, 0, \cdots , 0, 1, 0, \cdots , 0)\) – \(j\)-ый единичный орт, тогда в качестве производной
+                функции \(F(X)\) в точке \(X\) выступает матрица Якоби:
+            \[F'(X) = \begin{pmatrix}
+                \frac{\partial f_1(X)}{\partial x_1}& \cdots & \frac{\partial f_1(X)}{\partial x_n}\\
+                .& \cdots & .\\
+                \frac{\partial f_n(X)}{\partial x_1}& \cdots & \frac{\partial f_n(X)}{\partial x_n}
+                \end{pmatrix}.\]</p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

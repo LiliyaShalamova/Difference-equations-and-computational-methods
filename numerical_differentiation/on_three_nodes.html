@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Численное дифференцирование по трем узлам</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="general_approach.html">Общий подход</a></li>
+                <li><a href="on_two_nodes.html">Численное дифференцирование по двум узлам</a></li>
+                <li><a href="on_three_nodes.html">Численное дифференцирование по трем узлам</a></li>
+                <li><a href="undefined_coefficients_method.html">Метод неопределенных коэффициентов</a></li>
+                <li><a href="unrecoverable_error.html">Неустранимая погрешность</a></li>
+                <li><a href="choice_of_the_optimal_step.html">Выбор оптимального шага</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Численное дифференцирование по трем узлам</div>
+            <p>Пусть даны три равноотстоящих узла \(x_0, x_1, x_2 ( x_1 − x_0 = x_2 − x_1 = h > 0)\)
+                и значения \(f_0, f_1, f_2\) в узлах. Требуется построить формулы численного
+                дифференцирования для первой и второй производной и оценить
+                погрешности.
+            </p>
+            <p>Выпишем интерполяционный многочлен, например, в форме Ньютона,
+                и его продифференцируем два раза
+                \[L_2(x) = f(x_0) + f(x_0, x_1)(x − x_0) + f(x_0, x_1, x_2)(x − x_0)(x − x_1),\]
+                \[L'_2(x) = f(x_0, x_1) + f(x_0, x_1, x_2)(2x − x_0 − x_1),\]
+                \[L''_2(x) = 2f(x_0, x_1, x_2).\]
+                Распишем разделенную разность второго порядка
+                \[f(x_0, x_1, x_2) = \frac{f(x_1, x_2) − f(x_0, x_1)}{2h} = \frac{\frac{f_2−f_1}{h} - \frac{f_1−f_0}{h}}{2h} = \frac{f_0 − 2f_1 + f_2}{2h^2},\]
+                тогда формулы численного дифференцирования по трем узлам будут
+                \[f'(x) \approx \frac{f_1 − f_0}{h} + \frac{f_0 − 2f_1 + f_2}{2h^2}(2x − x_0 − x_1),\]
+                \[f''(x) \approx \frac{f_0 − 2f_1 + f_2}{h^2}\]
+                Подставляя различные \(x\) в формулу для первой производной мы можем
+                получить несколько вариантов, например, формула численного дифференцирования
+                на левый край \((x = x_0)\) по трем равноотстоящим узлам
+                выглядит так:
+                \[f'(x_0) \approx \frac{−3f_0 + 4f_1 − f_2}{2h}\]
+                Но наибольшее значение имеет формула численного дифференцирования
+                для второй производной по трем равноотстоящим узлам, которая
+                не зависит от \(x\), это вообще одна из самых распространенных формул в
+                современной математике.
+            </p>
+            <p>Изучим вопрос о погрешности, особенно формулы для второй производной. Погрешность интерполяции
+            \[R_2(x) = f(x, x_0, x_1, x_2)(x − x_0)(x − x_1)(x − x_2)\]
+                и вычисление производных становится очень громоздким. Чтобы немного
+                сократить записи, введем обозначения \(\alpha_i = x − x_i, i = 0, 1, 2\), тогда
+            \[R_2(x) = f(x, x_0, x_1, x_2)\alpha_0\alpha_1\alpha_2\]
+            \[R'_2(x) = f(x, x, x_0, x_1, x_2)\alpha_0\alpha_1\alpha_2 +\]
+            \[+ f(x, x_0, x_1, x_2)[\alpha_1\alpha_2 + \alpha_0\alpha_2 + \alpha_0\alpha_1].\]
+                Отсюда можно получать оценки погрешности при разных \(x\) для формул
+                численного дифференцирования для первой производной. Но мы это
+                делать не будем, а найдем вторую производную
+            \[R''_2(x) = 2f(x, x, x, x_0, x_1, x_2)\alpha_0\alpha_1\alpha_2 +\]
+            \[+ 2f(x, x, x_0, x_1, x_2)[\alpha_1\alpha_2 + \alpha_0\alpha_2 + \alpha_0\alpha_1] +\]
+            \[+ 2f(x, x_0, x_1, x_2)(\alpha_0 + \alpha_1 + \alpha_2).\]</p>
+            <p>Рассмотрим наиболее важный случай – формулу дифференцирования
+                на середину \((x = x_1)\) для второй производной. Тогда \(\alpha_1 = 0, \alpha_0 = h, \alpha_2 = −h\),
+                и в формуле для погрешности остается только одно слагаемое
+            \[R_{\partial} = R''2(x_1) = 2f(x_1, x_1, x_0, x_1, x_2)(−h2).\]
+                Выражая разделенную разность четвертого порядка через соответствующую
+                производную, получаем погрешность
+            \[R_{\partial} = −f''''(ξ)\frac{h^2}{12}, ξ \in [x_0, x_2]\]и оценку погрешности
+            \[|R_{\partial}| \leq \frac{M_4}{12}h^2, M_4 = \max_{x\in[x_0,x_2]}|f''''(x)|.\]</p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+    <head>
+        <title>Основные определения</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },
+                        TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+        <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    </head>
+    <body>
+        <div id="content_container" class="global_container">
+            <div id="header">
+                <div class="title">Дифференциальные уравнения</div>
+                <div class="descr">Высшая математика</div>
+            </div>
+            <div class="content">
+                <div id="left_col">
+                    <ul class="lcol_menu">
+                        <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                        <li class="category"><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="osnovny_opredeleniya.html">Основные определения</a></li>
+                        <li><a href="geom_int_ody_razresh.html">Геометрическая интерпретация ОДУ первого порядка, разрешенного относительно производной</a></li>
+                        <li><a href="s_razdel_perem.html">Уравнения с разделяющимися переменными</a></li>
+                        <li><a href="odnorodny_uravnenia.html">Однородные уравнения</a></li>
+                        <li><a href="lineynuie_uravneniya.html">Линейные уравнения</a></li>
+                        <li><a href="uravneniye_bernulli.html">Уравнение Бернулли</a></li>
+                        <li><a href="uravneniye_rikkati.html">Уравнение Риккати</a></li>
+                        <li><a href="uravnenia_v_poln_diff.html">Уравнения в полных дифференциалах</a></li>
+                        <li><a href="integrirushiy_mnozhitel.html">Интегрирующий множитель</a></li>
+                        <li><a href="ne_razresh_otn_proizv.html">ДУ 1-го порядка, не разрешенные относительно производной. Особые решения</a></li>
+                        <li><a href="kurs_algebry.html">Вспомогательный материал из курса алгебры и математического анализа</a></li>
+                        <li><a href="dokazatelstvo_teor_koshi.html">Доказательство теоремы Коши</a></li>
+                        <li class="category"><a href="../first_semester.html">1 семестр</a></li>
+                        <li><a href="../osnovny_ponyatiya.html">Основные понятия</a></li>
+                        <li><a href="../uravneniya_1_poryadka.html">Уравнения 1-го порядка</a></li>
+                        <li><a href="../du_vyshih_porydkov_i_systemu.html">ДУ высших порядков и системы</a></li>
+                        <li><a href="../lineynue_du_n_poryadka.html">Линейные ДУ n-го порядка</a></li>
+                        <li class="category"><a href="../second_semestr.html">2 семестр</a></li>
+                        <li><a href="../lineynue_du_n_poryadka_s_post_koff.html">Линейные ДУ n-го порядка с постоянными коэффицентами</a></li>
+                        <li><a href="../systems_lineynuh_du.html">Системы линейных ДУ</a></li>
+                        <li><a href="../interpretation.html">Механическая интерпретация ДУ</a></li>
+                        <li><a href="../stability.html">Устойчивость</a></li>
+                        <li><a href="../differential_equations.html">Разностные уравнения</a></li>
+                        <li class="category"><a href="#">Прочее</a></li>
+                        <li><a href="../literature.html">Литература</a></li>
+                        <li><a href="../formuls.html">Формулы</a></li>
+
+                </div>
+                <div id="content_col">
+                    <div class="entry_title">Основные определения</div>
+                    <p>Изучение теории ОДУ начнем с ОДУ первого порядка, разрешенных относительно производной, т.е. уравнений вида 
+                        \begin{equation}\label{1}
+                            y'=f(x, y).
+                        \end{equation}
+                    Рассмотрим простой пример \(y'=x^{2}\). Решить его - это то же самое, что найти первообразную для функции \(x^{2}\).
+                    Таким образом, \(y=\frac{x^3}{3}+C\). Решения этого уравнения образуют целое множество функций, зависящее от параметра \(C\); такое множество называется \(\textbf {общим решением}\). Чтобы из этого семейства решений выделить одно, частное решение,
+                    задают начальное условие. Например, \(y(0)=1\); находим \(C=1\), в данном случае частное решение \(y=\frac{x^3}{3}+1\).
+
+                    <p>Вернемся к уравнению (\ref{1}) и дадим несколько определений.</p>
+                    <p>Для ОДУ \(y'=f(x, y)\) (\ref{1})
+                     условие вида \(y(x_0)=y_0\) называется \(\textbf {начальным условием}\), а задача нахождения решения, удовлетворяющего начальному условию
+                        \begin{equation}\label{2}
+                            \begin{cases}y' = f(x, y)\\y(x_{0}) = y_{0}\end{cases}
+                        \end{equation} 
+                    называется \(\textbf {задачей Коши}\) (или начальной задачей).</p>
+                    <p>Фундаментальным результатом теории ОДУ является следующая теорема.</p>
+                    <div class="example">Теорема существования и единственности</div>
+                    <p>Пусть функция \(f(x,y)\) и частная производная \(f'_y(x,y)\) непрерывны в некоторой области \(\Gamma\) плоскости \((x,y)\), точка \((x_0,y_0)\) лежит в \( \Gamma \). Тогда
+                    <br>\(\textbf {1. Существование.}\) В некоторой окрестности \( |x-x_0| \leq \delta\) точки \(x_0\) существует решение задачи Коши (\ref{2}).
+                    <br>\(\textbf {2. Единственность.}\) Если \(y=\varphi_1(x)\), \(y=\varphi_2(x)\) - два решения задачи Коши (\ref{2}), то \(\varphi_1(x)\equiv \varphi_2(x)\) в некоторой окрестности точки \(x_0.\)</p>
+                    <p>Пусть область \(\Gamma\) на плоскости переменных \(x\),\(y\) будет той областью, в каждой точке которой выполнены условия теоремы существования и единственности. 
+                    <br>Семейство  функций 
+                        \begin{equation}\label{3}
+                            y=\varphi(x,C)
+                        \end{equation}
+                    зависящее от параметра \(C\), называется \(\textbf {общим решением}\) уравнения (\ref{1}) в области \(\Gamma\), если</p>
+                    <p>1. Для любой точки \((x_0,y_0) \in \Gamma \)  существует такое значение параметра \(C_0\), что \(y_0 = \varphi(x_0,C_0)\);</p>
+                    <p>2. Для любого значения параметра \(C_0\) из (\ref{1}) функция \(y = \varphi(x,C_0)\) является решением ОДУ (\ref{1})</p>
+                    <p>Решение, получающееся из формулы общего решения (\ref{3}) при  конкретном значении произвольной постоянной \(C\), называется \(\textbf {частным}\) решением уравнения (\ref{1}).</p>
+                    <p>Знание общего решения \(y = \varphi(x,C)\) (\ref{3}) дает возможность решить задачу Коши с любыми начальными данными \((x_0,y_0)\) из области \(\Gamma\) за счет выбора соответствующего значения произвольной постоянной \(C\).</p>
+                    
+                </div>
+            </div>
+            <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+        </div>
+        <div id="subfooter" class="global_container">Powered by MathJax</div>
+    </body>
+</html>

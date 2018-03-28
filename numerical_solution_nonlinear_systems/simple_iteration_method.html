@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Метод простой итерации</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="newton_method.html">Метод Ньютона</a></li>
+                <li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
+                <li><a href="examples.html">Примеры</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Метод простой итерации</div>
+            <p>Перейдем от исходной системы к системе вида:
+            \[\left\{\begin{matrix}
+                x_1 = \varphi_1(x_1, x_2, \cdots , x_n)\\
+                x_2 = \varphi_2(x_1, x_2, \cdots , x_n)\\
+                .....................\\
+                x_n = \varphi_n(x_1, x_2, \cdots , x_n)
+                \end{matrix}\right.\]или в векторном виде
+                \[X = Φ(X).\]
+                Методом простой итерации для нелинейных систем назовем алгоритм \[X^{(k+1)} = Φ(X^{(k)}).\]
+                Как и в одномерном случае, метод простой итерации является базовым,
+                т.к. все другие итерационные методы можно представить как метод
+                простой итерации и тем самым исследовать вопрос о сходимости. Справед-
+                ливо утверждение:</p>
+            <div class="example">Теорема</div>
+            <p>Пусть функция \(Φ(X)\) непрерывно дифференцируема в
+                окрестности решения \(ξ\) системы, причем выполняется \(||Φ'(ξ)|| < 1\) для
+                подчиненной нормы. Тогда существует такая окрестность \(U(ξ)\) вектора \(ξ\),
+                что начальное приближение \(X^{(0)}\) принадлежит этой окрестности,
+                то метод простой итерации сходится к \(ξ\).</p>
+            <p>\(\textbf{Доказательство.}\)</p>
+            <p>Рассмотрим разность скалярной функции от векторного аргумента
+                \(\varphi_i(Y ) − \varphi_i(X)\).</p>
+            <p>Сведем разность значений функции векторного аргумента к разности
+                значений функции скалярного аргумента. Введем вспомогательную векторную
+                функцию скалярного аргумента:
+                \[X(t) = X + t(Y − X),\]
+                тогда
+                \[X(0) = X, X(1) = Y,\]
+                \[\varphi_i(Y ) − \varphi_i(X) = \varphi_i(X(1)) − \varphi_i(X(0)) = \psi_i(1) − \psi_i(0).\]
+                Здесь \(\psi_i(t) = \varphi_i(X(t))\) – сложная функция.</p>
+            <p>Применим к функции \(\psi_i(t)\) формулу конечных приращений Лагранжа
+                \[\psi_i(1) − \psi_i(0) = \psi'_i(c_i)(1 − 0), с_i \in [0; 1].\]</p>
+            <p>Вычисляя производную функции \(\psi_i(t)\), получаем
+            \[\psi_i(1) − \psi_i(0) = \sum_{j=1}^n\frac{\partial \varphi_i}{\partial x_j}(X(c_i))(y_j - x_j).\]</p>
+            <p>Возвращаясь к векторной функции векторного аргумента, получаем
+                \[Φ(Y) − Φ(X) = B(c_1, c_2, \cdots , c_n)(Y − X),\]
+                где \[B = B(c_1, c_2, \cdots , c_n) = \left\{\begin{matrix}
+                \frac{\partial \varphi_i(X(c_1))}{\partial x_1} & \cdots & \frac{\partial \varphi_i(X(c_1))}{\partial x_n}\\
+                . & \cdots & .\\
+                \frac{\partial \varphi_n(X(c_n))}{\partial x_1} & \cdots & \frac{\partial \varphi_n(X(c_n))}{\partial x_n}
+                \end{matrix}\right
+                .\]
+            </p>
+            <p>Пусть теперь \(ξ\) – решение системы и в силу непрерывности производной
+                выполняется \(||Φ'(X)|| \leq q < 1\) в некоторой окрестности \(U(ξ)\) вектора
+                \(ξ\). В силу непрерывности частных производных выполняется \(||B|| \leq q < 1\),
+                если \(X\) и \(Y\) принадлежат этой окрестности. Тогда
+                \[||Φ(Y) − Φ(X)|| \leq q||Y − X||.\]</p>
+            <p>Сузим \(U(ξ)\) до его подмножества – некоторого шара в той метрике,
+                в которой рассматривается подчиненная норма, с центром в \(ξ\), обозначать
+                будем также.</p>
+            <p>Докажем, что если некоторое приближение \(X^k \in U(ξ)\), то \(X^{k+1} \in U(ξ)\). В самом деле
+            \[||X^{k+1} − ξ|| \leq q||X^k − ξ|| \leq ||X^k − ξ||.\]</p>
+            <p>Таким образом, если взять начальное приближение \(X^0\) из этой окрестности,
+                то все последующие приближения также будут в этой окрестности. Имеем
+                \[||X^k − ξ|| \leq q||X^{k−1} − ξ|| \leq \cdots \leq q^k||X^0 − ξ||,\]
+                откуда следует сходимость \(X^k \rightarrow ξ\) при \(k \rightarrow \infty\).
+            </p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>
