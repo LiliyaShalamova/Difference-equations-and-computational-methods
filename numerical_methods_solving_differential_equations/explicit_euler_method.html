@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Явный метод Эйлера</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="taylor_decomposition.html">Методы, основанные на тейлоровском разложении</a></li>
+                <li><a href="explicit_euler_method.html">Явный метод Эйлера</a></li>
+                <li><a href="euler_method_with_recalculation.html">Метод Эйлера с пересчетом</a></li>
+                <li><a href="koshi_method.html">Метод Коши</a></li>
+                <li><a href="explicit_second_order_runge-kutta_methods.html">Семейство явных методов Рунге-Кутты второго порядка</a></li>
+                <li><a href="explicit_third_order_and_fourth_order_runge_kutta_methods.html">Семейство явных методов Рунге-Кутты третьего и четвертого порядков</a></li>
+                <li><a href="general_class_runge_kutta_methods.html">Общий класс методов Рунге-Кутты</a></li>
+                <li><a href="explicit_adams_methods.html">Явные методы Адамса</a></li>
+                <li><a href="implicit_adams_methods.html">Неявные методы Адамса</a></li>
+                <li><a href="general_class_mult_step_methods.html">Общий класс многошаговых методов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Явный метод Эйлера</div>
+            <p></p>
+            <p>На примере метода Эйлера исследуем главный вопрос - сходимость.
+                Назовем метод сходящимся с порядком \(p > 0\), если
+                найдется \(C\), такое, что выполняется
+            \[|y_n - y(x_n)| \leq Ch^p\]для всех \(n = 1,2,\cdots, N.\)</p>
+            <p>Цель этого раздела доказать, что метод Эйлера
+                (его называют также явным методом Эйлера)
+            \[y_{n+1} = y_n + hf(x_n,y_n)\] сходится с первым порядком.</p>
+            <p>На первом этапе исследуем локальную погрешность, называемую
+                также погрешностью аппроксимации или невязкой метода.
+                \(\textbf{Невязкой}\) метода назовем разность левой и правой части
+                метода, где вместо приближенного решения подставлено точное
+                решение. Так, невязка метода Эйлера определяется как
+            \[\psi_n = y(x_{n+1}) - y(x_n) - hf(x_n,y(x_n)).\]</p>
+            <div class="example">Лемма</div>
+            <p>Если точное решение — дважды непрерывная дифференцируемая функция,
+                то невязка метода Эйлера имеет второй порядок малости по \(h\).</p>
+            <p>\(\textbf{Доказательство}.\)</p>
+            <p>В определении невязки разложим \(y(x_{n+1})\) в окрестности точки \(x_n\):
+            \[\psi_n = y(x_n) + y'(x_n)h + y''(\vartheta)\frac{h^2}{2} - y(x_n) - hf(x_n, y(x_n)),\]
+                где \(x_n \leq \vartheta \leq x_{n+1}\). Так как вторая производная решения
+                непрерывна на отрезке, то она ограничена и найдется константа \(C\),
+                такая, что
+            \[|\psi_n| \leq Ch^2.\]</p>
+            <div class="example">Теорема</div>
+            <p>Если точное решение — дважды непрерывная
+                дифференцируемая функция, то метод Эйлера сходится с первым порядком.
+            </p>
+            <p>\(\textbf{Доказательство.}\)</p>
+            <p>Обозначим величину погрешности через \[\varepsilon_n = y(x_n) - y_n\]
+                и оценим \(|\varepsilon_{n+1}|\) через \(|\varepsilon_n|\).
+                Выразим \(y(x_{n+1})\) из определения невязки,
+                a \(y_{n+1}\) из определения метода Эйлера:
+                \[|\varepsilon_{n+1}| = |y(x_{n+1}) - y_{n+1}| = |y(x_n) + hf(x_n,y(x_n)) + \psi_n -\]
+                \[- y_n - hf(x_n,y_n)| \leq |\varepsilon_n| + h|f(x_n,y(x_n)) - f(x_n,y_n)| + |\psi_n|.\]
+                Используя для оценки второго слагаемого условие Липшица
+                функции \(f(x ,y)\) по второй переменной, а для оценки третьего
+                слагаемого результат леммы, получаем
+                \[|\varepsilon_{n+1}| \leq (1 + Lh)|\varepsilon_n| + Ch^2.\]
+                Введем обозначения \(А = (1 + Lh)\), \(В = Ch^2\), тогда
+                \[|\varepsilon_{n+1}| \leq A|\varepsilon_n| + B.\]
+            </p>
+            <p>Последовательно получаем \(|\varepsilon_0| = 0, |\varepsilon_1| \leq B, |\varepsilon_2| \leq AB + B,\)
+            \(|\varepsilon_3| \leq (A^2 + A + 1)B,\cdots,|\varepsilon_n| \leq (A^{n-1} + \cdots + A + 1)B\).
+                Используя формулу суммы геометрической прогрессии, получаем
+            \[|\varepsilon_n| \leq \frac{A^n - 1}{A - 1}B \leq \frac{A^N - 1}{A - 1}B.\]
+                Подставим в эту оценку выражения для \(А\) и \(В\), воспользуемся
+                также связью \(hN = X\):
+            \[|\varepsilon_n| \leq \frac{(1 + Lh)^{\frac{X}{h}} - 1}{Lh}Ch^2.\]
+                Используя то, что во втором замечательном пределе
+            \(\lim_{\alpha \rightarrow 0}(1 + \alpha)^{\frac{1}{\alpha}} = e\)
+                выражение под знаком предела не превосходит предела, получаем оценку
+            \[|\varepsilon_n| \leq \frac{C}{L}(e^{LX} - 1)h,\]
+                равномерную по всем \(n = 1,2,\cdots, N\). Эта оценка означает
+                сходимость метода Эйлера с первым порядком.</p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

@@ -17,6 +17,11 @@ body
 	background: #ededed;
 }
 
+p
+{
+	line-height: 1.5;
+}
+
 a 
 {
 	color: #1976D2;
@@ -229,6 +234,35 @@ th, td
 .field 
 {
 	text-align: center;
+}
+
+.runge
+{
+	margin: 0 auto;
+	width: 200px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.runge tr,
+.runge td
+{
+	border: none;
+}
+
+.runge tr:last-child td
+{
+	border-top: 1px solid #000;
+}
+
+.runge td:first-child
+{
+	border-right: 1px solid #000;
+}
+
+.small-runge
+{
+	width: 100px;
 }
 
 #welcome_text 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Общий класс многошаговых методов</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="taylor_decomposition.html">Методы, основанные на тейлоровском разложении</a></li>
+                <li><a href="explicit_euler_method.html">Явный метод Эйлера</a></li>
+                <li><a href="euler_method_with_recalculation.html">Метод Эйлера с пересчетом</a></li>
+                <li><a href="koshi_method.html">Метод Коши</a></li>
+                <li><a href="explicit_second_order_runge-kutta_methods.html">Семейство явных методов Рунге-Кутты второго порядка</a></li>
+                <li><a href="explicit_third_order_and_fourth_order_runge_kutta_methods.html">Семейство явных методов Рунге-Кутты третьего и четвертого порядков</a></li>
+                <li><a href="general_class_runge_kutta_methods.html">Общий класс методов Рунге-Кутты</a></li>
+                <li><a href="explicit_adams_methods.html">Явные методы Адамса</a></li>
+                <li><a href="implicit_adams_methods.html">Неявные методы Адамса</a></li>
+                <li><a href="general_class_mult_step_methods.html">Общий класс многошаговых методов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Общий класс многошаговых методов</div>
+            <p>\(\textbf{Явные k-шаговые методы}\) имеют вид
+            \[y_n = \sum_{i=1}^{k}\alpha_iy_{n-i} + h\sum_{i=1}^{k}\beta_if_{n-i},\]
+            где \[f_{n-i} = f(x_{n-i},y_{n-i}).\]</p>
+            <p>\(\textbf{Неявные k-шаговые методы}\) имеют вид
+                \[y_n = \sum_{i=1}^{k}\alpha_iy_{n-i} + h\sum_{i=0}^{k}\beta_if_{n-i}.\]</p>
+            <p>Класс явных \(k\)-шаговых методов имеет \(2k\) параметров, а
+                класс неявных \(k\)-шаговых методов имеет \(2k + 1\) параметров,
+                поэтому за счет выбора этих параметров можно получить
+                локальную погрешность гораздо более высокого порядка малости,
+                чем, например, у методов Адамса. Подбор параметров
+                удобно проводить, используя понятие алгебраической степени
+                точности. Напомним, что число \(N\) называется \(\textbf{алгебраической
+                степенью точности}\) формулы, если:</p>
+            <p>\(1)\)  она точна для всех многочленов степени \(N\) и ниже;</p>
+            <p>\(2)\)  среди многочленов степени \(N + 1\) найдется хотя бы один,
+                для которого формула неточна.</p>
+            <p>Без доказательства приведем</p>
+            <div class="example">Утверждение</div>
+            <p> Если алгебраическая степень точности метода
+                \(N\), то его невязка имеет порядок \(N + 1\).</p>
+            <p>В качестве примера найдем метод с наивысшей алгебраической
+                степенью точности в классе явных двухшаговых методов:
+            \[y_n = \alpha_1y_{n-1} + \alpha_2y_{n-2} + h\beta_1f_{n-1} + h\beta_2f_{n-2}.\]
+                Подставляя в метод последовательно многочлены
+            \(y \equiv 1,\) \(y = x - x_{n-1},\) \(y = (x - x_{n-1})^2,\) \(y = (x - x_{n-1})^3,\)
+            получаем систему уравнений
+            \[\begin{cases}
+                1 = \alpha_1 + \alpha_2 \\
+                h = -\alpha_2h + h(\beta_1 + \beta_2) \\
+                h^2 = \alpha_2h^2 + h(-2h\beta_2) \\
+                h^3 = -\alpha_2h^3 + h(3h^2\beta_2),
+                \end{cases}\]решая которую, получаем
+            \[\begin{cases}
+                \alpha_1 = -4 \\
+                \beta_1 = 4 \\
+                \alpha_2 = 5 \\
+                \beta_2 = 2.
+                \end{cases}
+                \]
+            Таким образом, получаем метод
+            \[y_n = -4y_{n-1} + 5y_{n-2} + h(4f_{n-1} + 2f_{n-2}),\]
+                который имеет алгебраическую степень точности \(N = 3\) (как
+                нетрудно проверить, для многочленов степени \(4\) метод неточен).
+                Согласно приведенному утверждению, этот метод имеет
+                невязку (локальную погрешность) порядка \(4\), что на порядок
+                выше явного двухшагового метода Адамса из того же класса
+                методов.
+            </p>
+            <p>Однако этот метод расходится, как можно проверить на тестовом примере.</p>
+            <div class="example">Пример</div>
+            <p>Рассмотрим уравнение \[y' = 0\] с начальными условиями \(y(0) = y_0 = 0\),
+            которое имеет тривиальное решение \(y \equiv 0\).</p>
+            <p>Выведенный метод для данного уравнения имеет вид
+            \[y_n = -4y_{n-1} + 5y_{n-2}.\]
+                Чтобы считать по этому методу, нужно в качестве разгона
+                получить \(y_1\), допустим, разгон сделали с малой ошибкой
+                \(y_1 = \varepsilon\).
+            </p>
+            <p>Считая по методу, получаем \(\varepsilon_0 = 0,\)
+            \(\varepsilon_1 = \varepsilon,\) \(\varepsilon_2 = -4\varepsilon,\)
+            \(\varepsilon_3 = 21\varepsilon,\) \(\varepsilon_4 = -104\varepsilon,\cdots\).
+                Ошибка возрастает по абсолютной величине, метод расходится.
+                Такое явление называется неустойчивостью метода.
+                Чтобы привести условия, гарантирующие устойчивость и в
+                конечном итоге — сходимость многошаговых
+                методов, рассмотрим элементы теории линейных разностных
+                уравнений.</p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

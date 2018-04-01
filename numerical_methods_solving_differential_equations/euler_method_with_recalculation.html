@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Метод Эйлера с пересчетом</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="taylor_decomposition.html">Методы, основанные на тейлоровском разложении</a></li>
+                <li><a href="explicit_euler_method.html">Явный метод Эйлера</a></li>
+                <li><a href="euler_method_with_recalculation.html">Метод Эйлера с пересчетом</a></li>
+                <li><a href="koshi_method.html">Метод Коши</a></li>
+                <li><a href="explicit_second_order_runge-kutta_methods.html">Семейство явных методов Рунге-Кутты второго порядка</a></li>
+                <li><a href="explicit_third_order_and_fourth_order_runge_kutta_methods.html">Семейство явных методов Рунге-Кутты третьего и четвертого порядков</a></li>
+                <li><a href="general_class_runge_kutta_methods.html">Общий класс методов Рунге-Кутты</a></li>
+                <li><a href="explicit_adams_methods.html">Явные методы Адамса</a></li>
+                <li><a href="implicit_adams_methods.html">Неявные методы Адамса</a></li>
+                <li><a href="general_class_mult_step_methods.html">Общий класс многошаговых методов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Метод Эйлера с пересчетом</div>
+            <p>Как известно из курса дифференциальных уравнений,
+                задача Коши эквивалентна интегральному уравнению
+                \[y(x) = y_0 + \int_{x_0}^{x}f(s,y(x))ds.\]
+                Если применять на каждом шаге для подсчета интеграла метод
+                левых прямоугольников, то получится метод Эйлера.
+                Попробуем применить для подсчета интеграла более точную формулу
+                трапеций. Получим на первом шаге
+                \[y_1 = y_0 + \frac{h}{2}(f(x_0,y_0) + f(x_1,y(x_1))).\]
+                Однако величина \(y(x_1)\) неизвестна, заменим ее величиной
+                \(\hat{y} = y_0 + hf(x_0,y_0)\), предварительно вычисленной по методу
+                Эйлера. Получим метод
+                \[y_1 = y_0 + \frac{h}{2}(f(x_0,y_0) + f(x_1,y_0 + hf(x_0,y_0))),\]
+                или на \(n\)-м шаге
+                \[y_{n+1} = y_n + \frac{h}{2}(f(x_n,y_n) + f(x_n + h,y_n + hf(x_n,y_n))).\]
+            </p>
+            <figure class="field">
+                <img class="logo" alt="Геометрическая интерпретация метода Эйлера с пересчетом" src="../images/euler-recalculation.png">
+                <figcaption>Геометрическая интерпретация метода Эйлера с пересчетом</figcaption>
+            </figure>
+            <p>Этот метод называется \(\textbf{методом Эйлера с пересчетом}\) или
+                методом Хойна. Геометрическая интерпретация метода Эйлера с
+                пересчетом состоит в движении по прямой с углом наклона \(\gamma\).</p>
+            <p>Покажем, что невязка метода имеет третий порядок. По
+                определению невязка
+            \[\psi_n = y(x_{n+1}) - y(x_n) - \]
+            \[- \frac{h}{2}(f(x_n,y(x_n)) + f(x_n + h, y(x_n) + hf(x_n,y(x_n)))).\]
+                Разложим решение \(y(x)\) в окрестности точки \(x_n\) и функцию
+                \(f(x,y)\) в окрестности точки \((x_n,y(x_n))\). Для сокращения записи обозначим
+                \(f = f(x_n, y(x_n))\), \(f'_x = \frac{\partial f(x_n, y(x_n))}{\partial x},\)
+                \(f'_y = \frac{\partial f(x_n, y(x_n))}{\partial y}.\)Тогда
+                \[\psi_n = y(x_n) + hf + \frac{h^2}{2}(f'_x + f'_yf) + O(h^3) - y(x_n) - \]
+                \[- \frac{h}{2}(f + f + f'_xh + f'_yhf + O(h^2)) = O(h^3).\]
+                Позже будет доказано, что если невязка (локальная погрешность)
+                имеет порядок \(3\), то порядок сходимости этого метода равен \(2\).
+            </p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

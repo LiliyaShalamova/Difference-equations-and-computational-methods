@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Неявные методы Адамса</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="taylor_decomposition.html">Методы, основанные на тейлоровском разложении</a></li>
+                <li><a href="explicit_euler_method.html">Явный метод Эйлера</a></li>
+                <li><a href="euler_method_with_recalculation.html">Метод Эйлера с пересчетом</a></li>
+                <li><a href="koshi_method.html">Метод Коши</a></li>
+                <li><a href="explicit_second_order_runge-kutta_methods.html">Семейство явных методов Рунге-Кутты второго порядка</a></li>
+                <li><a href="explicit_third_order_and_fourth_order_runge_kutta_methods.html">Семейство явных методов Рунге-Кутты третьего и четвертого порядков</a></li>
+                <li><a href="general_class_runge_kutta_methods.html">Общий класс методов Рунге-Кутты</a></li>
+                <li><a href="explicit_adams_methods.html">Явные методы Адамса</a></li>
+                <li><a href="implicit_adams_methods.html">Неявные методы Адамса</a></li>
+                <li><a href="general_class_mult_step_methods.html">Общий класс многошаговых методов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="literature.html">Литература</a></li>
+                <li><a href="formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Неявные методы Адамса</div>
+            <p>Если к данным \(f_n, f_{n-1},\cdots,f_{n-k+1}\) добавить значение \(f_{n+1} = f(x_{n+1},y_{n+1})\),
+                то формально можно построить интерполяционный многочлен Лагранжа на единицу большей степени \(L_k(x).\)</p>
+            <p>\(\textbf{Неявными методами Адамса}\) назовем методы
+            \[y_{n+1} = y_n + \int_{x_n}^{x_{n+1}}L_k(s)ds,\]
+                эти методы еще называются \(\textbf{экстраполяционными}\) методами
+                Адамса, в отличие от явных, которые называются \(\textbf{интерполяционными}\).
+            </p>
+            <p>Выведем некоторые частные случаи при разных \(k\).</p>
+            <p>При \(k = 0\) имеем \(L_k(x) = f_{n+1}\) и получается метод
+            \[y_{n+1} = y_n + hf(x_{n+1},y_{n+1}),\]
+                который называется \(\textbf{неявным методом Эйлера}\).
+            </p>
+            <p>При \(k = 1\) интерполяционный многочлен имеет вид
+            \[L_1(x) = f_{n+1} + f(x_{n+1},x_n)(x - x_{n+1}) = f_n + \frac{f_{n+1} - f_n}{h}(x - x_{n+1}),\]
+                подставим его в интеграл, посчитаем этот интеграл и приведем
+                подобные. Получаем
+                \[y_{n+1} = y_n + \frac{h}{2}(f_{n+1} + f_n),\]
+                этот метод называется \(\textbf{неявным методом Адамса второго порядка}\)
+                или \(\textbf{неявным методом трапеций}\).
+            </p>
+            <p>При \(k = 2\) интерполяционный многочлен имеет вид
+            \[L_1(x) = f_{n+1} + f(x_{n+1},x_n)(x - x_{n+1}) +\]
+            \[+ f(x_{n+1},x_n,x_{n-1})(x - x_{n+1})(x - x_n) = \]
+            \[f_n + \frac{f_{n+1} - f_n}{h}(x - x_{n+1}) + \frac{f_{n+1} - 2f_n + f_{n-1}}{2h^2}(x - x_{n+1})(x - x_n).\]
+                Подставляя его в интеграл, производя вычисления и приводя
+                подобные, получаем метод
+                \[y_{n+1} = y_n + \frac{h}{12}(5f_{n+1} + 8f_n - f_{n-1}),\]
+                этот метод называется \(\textbf{неявным методом Адамса третьего порядка}\)
+                или \(\textbf{методом Адамса-Мултона}\).
+            </p>
+            <p>Сравнивая явные и неявные методы Адамса, можно отметить следующее:
+            </p>
+            <p>\(1.\) Недостаток неявных методов состоит в необходимости на
+                каждом шаге решать уравнение относительно неизвестной
+                величины \(y_{n+1}\).</p>
+            <p>\(2.\)  Некоторое преимущество неявных методов состоит в
+                точности: при одной и той же шаговости \(k\) неявные методы имеют
+                порядок сходимости \(k + 1\), в отличие от явных, у которых
+                порядок сходимости \(k\).
+            </p>
+            <p>\(3.\)  Главное преимущество неявных методов состоит в
+                возможности решать жесткие системы.</p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>
