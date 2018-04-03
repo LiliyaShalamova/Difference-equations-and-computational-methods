@@ -195,7 +195,7 @@ th, td
 .lcol_menu li a
 {
 	color: #000000;
-	display: inline-block;
+	display: block; /*inline-block*/
 	font-size: 14px;
 	padding: 5px 10px 6px 10px;
 	text-decoration: none;
