@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Элементарные квадратурные формулы</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="interpolation_quadrature_formulas.html">Интерполяционные квадратурные формулы</a></li>
+                <li><a href="error.html">Погрешность интерполяционных квадратурных формул</a></li>
+                <li><a class="item-selected" href="elementary_quadrature_formulas.html">Элементарные квадратурные формулы</a></li>
+                <li><a href="elementary_error.html">Погрешность элементарных квадратурных формул</a></li>
+                <li><a href="composite.html">Составные квадратурные формулы</a></li>
+                <li><a href="composite_error.html">Погрешность составных квадратурных формул</a></li>
+                <li><a href="runge_method.html">Метод Рунге</a></li>
+                <li><a href="highest_algebraic_degree_accuracy.html">Формулы наивысшей алгебраической степени точности</a></li>
+                <li><a href="existence_uniqueness_gauss.html">Существование и единственность квадратуры Гаусса</a></li>
+                <li><a href="gauss_algorithm.html">Алгоритм построения квадратуры Гаусса</a></li>
+                <li><a href="gauss_error.html">Погрешность квадратуры Гаусса</a></li>
+                <li><a href="integrals_with_singularities.html">Интегралы с особенностями</a></li>
+                <li><a href="numerical_solution_integrals.html">Численное решение интегралов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Элементарные квадратурные формулы</div>
+            <p>Элементарные квадратурные формулы (Формулы Ньютона-Котеса)
+                – это широко распространенные интерполяционные квадратуры при
+                небольшом количестве узлов и при их стандартном расположении.</p>
+            <p>Их изучение начнем с \(n = 0\) (один узел).</p>
+            <p>\(\textbf{Формулы прямоугольников.}\) Рассмотрим три случая.</p>
+            <p>\(\textbf{A.}\) \(x_0 = a\). Тогда \(L_0(x) = f(x_0) = f(a)\),
+            \[\int_{a}^{b}f(a)dx = f(a)(b − a)\]и формула имеет вид
+            \[\int_{a}^{b}f(x)dx \approx f(a)(b − a),\]
+                эта формула называется \(\textbf{элементарной формулой левых прямоугольников}\).</p>
+            <p>Алгебраическая степень точности \(N = 0\), как можно проверить по
+                определению.</p>
+            <p>\(\textbf{Б.}\) \(x_0 = b\). Тогда \(L_0(x) = f(b)\),
+            \[\int_{a}^{b}f(b)dx = f(b)(b − a)\]и формула имеет вид
+            \[\int_{a}^{b}f(x)dx \approx f(b)(b − a),\]
+                эта формула называется \(\textbf{элементарной формулой правых прямоугольников}\).</p>
+            <p>Алгебраическая степень точности \(N = 0\).</p>
+            <p>\(\textbf{В.}\) \(x_0 =\frac{a+b}{2}\). Тогда \(L_0(x) = f(\frac{a+b}{2})\),
+            \[\int_{a}^{b}f(a)dx = f(\frac{a + b}{2})(b − a)\]и формула имеет вид
+            \[\int_{a}^{b}f(x)dx \approx f(\frac{a + b}{2})(b − a),\]
+                эта формула называется \(\textbf{элементарной формулой средних прямоугольников}\).</p>
+            <p>Алгебраическая степень точности \(N = 1\). Это можно проверить,
+                подставляя в формулу последовательно \(1, x, x^2\).
+                .</p>
+            <p>\(\textbf{Формула трапеций.}\) Пусть теперь \(n = 1\) (два узла), \(x_0 = a, x_1 = b\).
+                Тогда \(L_1(x) = f(a) + f(a, b)(x − a) = f(a) + \frac{f(b)−f(a)}{b−a}(x − a)\),
+                \[\int_{a}^{b}(f(a) + \frac{f(b) − f(a)}{b − a}(x − a))dx = f(a)(b − a) +\]
+                \[+ \frac{f(b) − f(a)}{b − a}\frac{(b − a)^2}{2} = \frac{f(a) + f(b)}{2}(b − a),\]
+                и формула имеет вид
+                \[\int_{a}^{b}f(x)dx \approx \frac{f(a) + f(b)}{2}(b − a).\]
+                Эта формула называется \(\textbf{элементарной формулой трапеций}\).
+            </p>
+            <p>Алгебраическая степень точности \(N = 1\).</p>
+            <p>\(\textbf{Формула Симпсона.}\) Пусть \(n = 2\) (три узла), \(x_0 = a\), \(x_1 =\frac{a+b}{2}\),
+                \(x_2 = b\). Тогда \(L_2(x) = f(a) + f(a, \frac{a+b}{2})(x − a) + f(a, \frac{a+b}{2}, b)(x − a)(x − \frac{a+b}{2})\).</p>
+            <p>Чтобы не проделывать дальнейшее громоздкое расписывание разделенных
+                разностей и последующее интегрирование, воспользуемся методом
+                неопределенных коэффициентов. Запишем формулу
+            \[\int_{a}^{b}f(x)dx \approx Af(a) + Bf(\frac{a + b}{2}) + Cf(b).\]
+            </p>
+            <p>Подставим \(f(x) \equiv 1\), получим равенство
+                \[b − a = A + B + C\]
+                Подставим f(x) = x − a, получим равенство
+            \[\frac{(b − a)^2}{2} = B\frac{(b − a)}{2} + C(b − a)\]
+                Подставим \(f(x) = (x − a)^2\), получим равенство
+            \[\frac{(b − a)^3}{3} = B\frac{(b − a)^2}{4} + C(b − a)^2\]</p>
+            <p>Решая эту систему, получим \(A = \frac{1}{6}(b − a)\), B = \frac{4}{6}(b − a)\),
+                \(C = \frac{1}{6}(b − a)\), т.е.формула приобретает вид
+            \[\int_{a}^{b}f(x)dx \approx \frac{b − a}{6}(f(a) + 4f(\frac{a + b}{2}) + f(b)),\]
+                эта формула называется элементарной интерполяционной формулой
+                парабол или \(\textbf{элементарной формулой Симпсона}\).</p>
+            <p>Алгебраическая степень точности \(N = 3\). Это можно проверить,
+                подставляя в формулу последовательно \(1, x, x^2, x^3, x^4\).</p>
+            <p>\(\textbf{Формула "3/8"}\).</p>
+            <p>Пусть \(n = 3\), четыре равноотстоящих узла, расстояние между которыми \(\frac{b−a}{3}\),
+                тогда \(x_0 = a\), \(x_1 = \frac{2a+b}{3}\), \(x_2 = \frac{a+2b}{3}\), \(x_3 = b\).</p>
+            <p>Запишем формулу с неопределёнными коэффициентами
+            \[\int_{a}^{b}f(x)dx \approx Af(a) + Bf(\frac{2a + b}{3}) + Cf(\frac{a + 2b}{3}) + Df(b).\]
+                Коэффициенты определяются, подставляя многочлены низших степеней, в
+                результате \(A = D = \frac{b−a}{8}\), \(B = C = \frac{3(b−a)}{8}\).</p>
+            <p>Полученная формула
+            \[\int_{a}^{b}f(x)dx \approx \frac{b − a}{8}(f(a) + 3f(\frac{2a + b}{3}) + 3f(\frac{a + 2b}{3}) + f(b))\]
+                называется \(\textbf{формулой "3/8"}\).</p>
+            <p>Заметим, что с увеличением числа узлов элементарные интерполяционные
+                квадратурные формулы всё усложняются, что создает препятствия
+                для их практического применения. Для повышения точности получил
+                распространение другой подход – составные квадратурные формулы.</p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

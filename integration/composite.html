@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Составные квадратурные формулы</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="interpolation_quadrature_formulas.html">Интерполяционные квадратурные формулы</a></li>
+                <li><a href="error.html">Погрешность интерполяционных квадратурных формул</a></li>
+                <li><a href="elementary_quadrature_formulas.html">Элементарные квадратурные формулы</a></li>
+                <li><a href="elementary_error.html">Погрешность элементарных квадратурных формул</a></li>
+                <li><a class="item-selected" href="composite.html">Составные квадратурные формулы</a></li>
+                <li><a href="composite_error.html">Погрешность составных квадратурных формул</a></li>
+                <li><a href="runge_method.html">Метод Рунге</a></li>
+                <li><a href="highest_algebraic_degree_accuracy.html">Формулы наивысшей алгебраической степени точности</a></li>
+                <li><a href="existence_uniqueness_gauss.html">Существование и единственность квадратуры Гаусса</a></li>
+                <li><a href="gauss_algorithm.html">Алгоритм построения квадратуры Гаусса</a></li>
+                <li><a href="gauss_error.html">Погрешность квадратуры Гаусса</a></li>
+                <li><a href="integrals_with_singularities.html">Интегралы с особенностями</a></li>
+                <li><a href="numerical_solution_integrals.html">Численное решение интегралов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Составные квадратурные формулы</div>
+            <p>Составные квадратурные формулы получаются путем разбиения отрезка
+                интегрирования на равные части и применения на каждом отрезке
+                одинаковых элементарных квадратурных формул. Рассмотрим этот процесс
+                на примере \(\textbf{составной формулы левых прямоугольников}\).</p>
+            <p>Пусть требуется посчитать \[I[f] = \int_{a}^{b}f(x)dx.\]</p>
+            <p>Разобьем отрезок интегрирования на \(m\) частей с шагом \(h = \frac{b−a}{m}\), введем
+                точки \(x_i = a + ih\), \(i = 0, 1, \cdots , m\) разобьем интеграл на сумму \(m\) интегралов
+                и для каждого применим элементарную формулу левых прямоугольников:
+                \[\int_{a}^{b}f(x)dx = \sum_{i=0}^{m-1}\int_{x_i}^{x_{i+1}}f(x)dx \approx \sum_{i=0}^{m-1}\int_{x_i}^{x_{i+1}}f(x_i)dx = h\sum_{i=0}^{m-1}f(x_i),\]
+                т.е. \[I[f] \approx h\sum_{i=0}^{m-1}f(x_i).\]
+            </p>
+            <p>Аналогичным образом выводится \(\textbf{составная формула правых
+                прямоугольников}\)
+            \[I[f] \approx h\sum_{i=1}^{m}f(x_i),\]
+            \(\textbf{составная формула средних прямоугольников}\)
+            \[I[f] \approx h\sum_{i=0}^{m}f(x_i + \frac{h}{2})\]
+                и \(\textbf{составная формула трапеций}\)
+                \[I[f] \approx h(\frac{f(a) + f(b)}{2} + \sum_{i=1}^{m-1}f(x_i)).\]
+                Выведем \(\textbf{составную формулу Симпсона}\)
+                \[\sum_{i=0}^{m-1}\int_{x_i}^{x_{i+1}}f(x)dx \approx \frac{h}{6}\sum_{i=0}^{m-1}(f(x_i) + 4f(x_i + \frac{h}{2}) + f(x_{i+1})).\]
+                Приводя подобные, получаем
+                \[I[f] \approx \frac{h}{6}(f(a) + f(b) + 2\sum_{i=1}^{m-1}f(x_i) + 4\sum_{i=0}^{m-1}f(x_i + \frac{h}{2})).\]
+            </p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

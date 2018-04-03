@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Интерполяционные квадратурные формулы</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a class="item-selected" href="interpolation_quadrature_formulas.html">Интерполяционные квадратурные формулы</a></li>
+                <li><a href="error.html">Погрешность интерполяционных квадратурных формул</a></li>
+                <li><a href="elementary_quadrature_formulas.html">Элементарные квадратурные формулы</a></li>
+                <li><a href="elementary_error.html">Погрешность элементарных квадратурных формул</a></li>
+                <li><a href="composite.html">Составные квадратурные формулы</a></li>
+                <li><a href="composite_error.html">Погрешность составных квадратурных формул</a></li>
+                <li><a href="runge_method.html">Метод Рунге</a></li>
+                <li><a href="highest_algebraic_degree_accuracy.html">Формулы наивысшей алгебраической степени точности</a></li>
+                <li><a href="existence_uniqueness_gauss.html">Существование и единственность квадратуры Гаусса</a></li>
+                <li><a href="gauss_algorithm.html">Алгоритм построения квадратуры Гаусса</a></li>
+                <li><a href="gauss_error.html">Погрешность квадратуры Гаусса</a></li>
+                <li><a href="integrals_with_singularities.html">Интегралы с особенностями</a></li>
+                <li><a href="numerical_solution_integrals.html">Численное решение интегралов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Интерполяционные квадратурные формулы</div>
+            <p>В отличие от численного дифференцирования, численное интегрирование
+                – корректная задача. Эта одна из самых старых практических задач математики,
+                её история отразилась в терминологии (квадратура).</p>
+            <p>Основная задача – посчитать приближенно величину определенного
+                интеграла, используя вычисление значений подинтегральной функции.</p>
+            <p>Формула вида \[\int_{a}^{b}f(x)dx \approx \sum_{k=0}^{n}A_kf(x_k)\]
+                называется \(\textbf{квадратурной}\).</p>
+            <p>Один из основных подходов состоит в замене подинтегральной функции
+                интерполяционным многочленом и его последующем интегрировании.</p>
+            <p>Пусть \(f(x) \approx L_n(x)\), запишем интерполяционный многочлен в форме
+                Лагранжа
+            \[L_n(x) = \sum_{k=0}^{n}f(x_k)\prod_{j=0,j\neq k}^{n}\frac{x - x_j}{x_k - x_j},\]
+                подставим его в интеграл и поменяем местами интеграл и сумму. Получим
+            \[\int_{a}^{b}f(x)fx \approx \sum_{k=0}^{n}f(x_k)\int_{a}^{b}\prod_{j=0,j\neq k}^{n}\frac{x - x_j}{x_k - x_j}dx\]</p>
+            <p>Обозначим \[A_k = \int_{a}^{b}\prod_{j=0,j\neq k}^{n}\frac{x - x_j}{x_k - x_j}dx\]
+                и получим квадратурную формулу, которая называется \(\textbf{интерполяционной
+                квадратурной}\).</p>
+            <p>Интерполяционные квадратуры обладают свойством, которое выделяет
+                их из всех квадратур.
+            </p>
+            <div class="example">Теорема</div>
+            <p>Для того, чтобы квадратурная формула была интерполяционной,
+                необходимо и достаточно, чтобы она была точна для любого
+                многочлена степени \(n\) и ниже.</p>
+            <p>\(\textbf{Необходимость.}\) Пусть квадратура интерполяционная, т.е. получилась
+                заменой подинтегральной функции её интерполяционным многочленом
+                \(L_n(x)\). Но если подинтегральная функция является многочленом
+                степени \(n\) и ниже, то она совпадает с интерполяционным многочленом и
+                квадратура становится точной.
+            </p>
+            <p>\(\textbf{Достаточность.}\)</p>
+            <p>Пусть квадратура точна для любого многочлена
+                степени \(n\) и ниже. Возьмем в качестве такого многочлена
+            \[Q_i(x) = \prod_{j=0,j\neq k}^{n}\frac{x - x_j}{x_i - x_j}\]
+            и получим формулу
+            \[\int_{a}^{b}Q_i(x)dx = \sum_{k=0}^{n}A_kQ_i(x_k).\]</p>
+            <p>Но \(Q_i(x_k) = 0, k \neq i, Q_i(x_i) = 0\), и последняя сумма вырождается в одно
+                слагаемое \(A_i\). Подставляя в эту формулу \(Q_i(x)\), получаем
+            \[\int_{a}^{b}\prod_{j=0,j\neq i}^{n}\frac{x - x_j}{x_i - x_j}dx = A_i,\]
+                что совпадает с определением интерполяционной квадратуры.</p>
+            <div class="example">Замечание</div>
+            <p>Введем важное определение алгебраической степени точности формулы.
+                Число \(N\) называется \(\textbf{алгебраической степенью точности}\) формулы,
+                если 1) она точна для всех многочленов степени \(N\) и ниже, 2) среди
+                многочленов степени \(N + 1\) найдется хотя бы один, для которого формула
+                неточна.
+            </p>
+            <p>С учетом этого определения и обозначения \(N\) теорему можно
+                переформулировать так.</p>
+            <p>Для того, чтобы квадратурная формула была интерполяционной,
+                необходимо и достаточно, чтобы \(N \geq n\).</p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

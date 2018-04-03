@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Интегралы с особенностями</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="interpolation_quadrature_formulas.html">Интерполяционные квадратурные формулы</a></li>
+                <li><a href="error.html">Погрешность интерполяционных квадратурных формул</a></li>
+                <li><a href="elementary_quadrature_formulas.html">Элементарные квадратурные формулы</a></li>
+                <li><a href="elementary_error.html">Погрешность элементарных квадратурных формул</a></li>
+                <li><a href="composite.html">Составные квадратурные формулы</a></li>
+                <li><a href="composite_error.html">Погрешность составных квадратурных формул</a></li>
+                <li><a href="runge_method.html">Метод Рунге</a></li>
+                <li><a href="highest_algebraic_degree_accuracy.html">Формулы наивысшей алгебраической степени точности</a></li>
+                <li><a href="existence_uniqueness_gauss.html">Существование и единственность квадратуры Гаусса</a></li>
+                <li><a href="gauss_algorithm.html">Алгоритм построения квадратуры Гаусса</a></li>
+                <li><a href="gauss_error.html">Погрешность квадратуры Гаусса</a></li>
+                <li><a class="item-selected" href="integrals_with_singularities.html">Интегралы с особенностями</a></li>
+                <li><a href="numerical_solution_integrals.html">Численное решение интегралов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Интегралы с особенностями</div>
+            <p>Под интегралами с особенностями понимаются интегралы от неограниченных
+                функций или интегралы на бесконечных промежутках интегрирования.
+                Кроме того, особенностью называется недостаточная гладкость
+                подинтегральной функции при применении той или иной квадратурной
+                формулы, так, например, для применения составной формулы Симпсона
+                требуется непрерывность четвертой производной.
+            </p>
+            <p>Рассмотрим на примерах некоторые приемы, позволяющие устранять
+                особенности.</p>
+            <p>\(\textbf{Аналитические способы.}\)</p>
+            <p>\(1.\) Требуется вычислить \[\int_{0}^{\pi/2}\ln\sin{x}dx,\]
+                имеющий особенность в нуле. Добавим и вычтем \(\sin{x}\) к подинтегральной
+                функции и получим
+            \[\int_{0}^{\pi/2}\ln\sin{x}dx = \int_{0}^{\pi/2}\ln{x}dx + \int_{0}^{\pi/2}\ln\frac{\sin{x}}{x}dx.\]
+                Первый интеграл может быть вычислен аналитически, а второй особенности
+                не содержит и может быть вычислен численно.</p>
+            <p>\(2.\) Чтобы сдвинуть особенность в старшую производную, часто применяют
+                формулу интегрирования по частям. Рассмотрим
+            \[\int_{0}^{a}x^{\alpha}g(x)dx,\]
+                где функция \(g(x)\) "хорошая" (достаточное число раз дифференцируемая).
+                При \(−1 < \alpha < 0\) подынтегральная функция неограничена, при \(0 < \alpha < 1\)
+                подынтегральная функция ограничена, но её первая производная неограничена
+                и так далее. Проинтегрируем по частям
+            \[\int_{0}^{a}x^{\alpha}g(x)dx = \frac{1}{\alpha + 1}x^{\alpha + 1}g(x)|^{a}_{0} - \frac{1}{\alpha + 1}\int_{0}^{a}x^{\alpha+1}g'(x)dx,\]
+                таким образом сдвинули особенность на единицу в старшую производную.</p>
+            <p>\(\textbf{Метод усечений.}\)</p>
+            <p>Суть метода состоит в том, что мы отделяемся от особенности с нужной точностью.
+                В качестве примера рассмотрим задачу о вычислении
+            \[\int_{2}^{\infty}e^{−x^2}dx,\]
+                с точностью \(ε = 0,0001\). Имеем
+            \[\int_{2}^{\infty}e^{−x^2}dx = \int_{2}^{B}e^{−x^2}dx + \int_{B}^{\infty}e^{−x^2}dx.\]
+                Последний интеграл дает погрешность усечения.</p>
+            <p>Сделаем оценку
+            \[\int_{B}^{\infty}e^{−x^2}dx \leq \int_{B}^{\infty}\frac{2x}{2A}e^{−x^2}dx = \frac{1}{2A}e^{−A^2} < ε/2.\]
+                Вычисления показывают, что при \(B = 3\) эта оценка выполняется.</p>
+            <p>Оценка погрешности составной формулы Симпсона показывает, что
+                если взять \(n = 8\), то выполняется
+            \[\int_{2}^{3}e ^{−x^2}dx < ε/2.\]</p>
+            <p>\(\textbf{Введение весовой функции. Мультипликативный метод вы-
+                деления особенностей.}\)</p>
+            <p>Если подинтегральная функция есть произведение двух функций,
+                "хорошей" и содержащей особенность, то имеет смысл рассматривать формулы
+                численного интегрирования с весом, вес включается в коэффициенты
+                квадратуры. Например, для вычисления
+            \[\int_{0}^{1}\sqrt{x}f(x)dx\]
+                можно использовать интерполяционные квадратурные формулы с весом
+            \[\int_{0}^{1}\sqrt{x}f(x)dx \approx \sum_{k=0}^{n}A_kf(x_k),\]
+            \[A_k = \int_{0}^{1}\sqrt{x}\prod_{j=0,j\neq k}^{n}\frac{x − x_j}{x_k − x_j}dx.\]
+                К этому же классу методов относятся специальные формулы для
+                \(\textbf{быстро осцилирующих функций}\). Требуется вычислить
+            \[\int_{a}^{b}g(x)\sin{\omega x}dx.\]
+                Попробуем применить какую-либо составную формулу, например, составную
+                формулу средних прямоугольников
+            \[\int_{a}^{b}g(x)\sin{\omega x}dx \approx h\sum_{i=0}^{n-1}g(x_{i+1/2})\sin{\omega x_{i+1/2}}.\]
+                В оценку погрешности этой формулы входит производная, однако
+            \[f'(x) = (g(x)\sin{\omega x})' = g'(x)\sin{\omega x} + \omega g(x)\cos{\omega x}\]
+                и эта функция при больших \(\omega\) может принимать большие значения.</p>
+            <p>Выведем аналог составной формулы средних прямоугольников заменяя константой
+                в средней точке не всю подинтегральную функцию, а
+                только \(g(x)\), включая \(\sin{\omega x}\) в весовую функцию.
+            \[\int_{a}^{b}g(x)\sin{\omega x}dx = \sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}}g(x)\sin{\omega x}dx \approx\]
+            \[\approx \sum_{i=0}^{n-1}g(x_{i+1/2})\int_{x_i}^{x_{i+1}}\sin{\omega x}dx =\]
+            \[= −\frac{1}{\omega}\sum_{i=0}^{n-1}g(x_{i+1/2})(\cos{\omega x_{i+1}} − \cos{\omega x_i}) =\]
+            \[= \frac{2}{\omega}\sin{ω}\frac{h}{2}\sum_{i=0}^{n-1}g(x_{i+1/2})\sin{\omega x_{i+1/2}}.\]
+                При этом погрешность оценивается величиной
+            \[|R_{инт}[f]| \leq \sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}}|g(x, x_{i+1/2})||x − x_{i+1/2}||\sin{\omega x}|dx \leq\]
+            \[\leq \frac{M_1[g](b-a)}{4}h,\]
+            \[M_1[g] = \max_{x\in[a,b]}|g'(x)|,\]
+                которая стремится к нулю при шаге \(h\), стремящемся к нулю равномерно по \(\omega\).
+            </p>
+            <p>\(\textbf{Аддитивный метод устранения особенностей.}\)</p>
+            <p>Идея метода состоит в том, чтобы представить исходную подинтегральную функцию
+                в виде суммы \(f(x) = \varphi(x) + \psi(x)\), где интеграл от
+                \(\varphi(x)\), содержащей те же особенности, что и исходная функция, считается
+                аналитически, а функция \(\psi(x)\) не содержит особенности и интеграл от неё
+                считается численно. Основным инструментом при этом является тейлоровское
+                разложение в окрестности особенности.</p>
+            <div class="example">Пример</div>
+            <p>Требуется сдвинуть особенность в третью производную для подсчета
+            \[\int_{0}^{1}\frac{\sin{x}}{x^{1/2}(1 + x^2/2)}dx.\]
+                Разложим функции в нуле
+            \[\sin{x} = x − \frac{x^3}{6} + \cdots\]
+            \[\frac{1}{(1 + x^2/2)} = 1 − \frac{x^2}{2} + \frac{x^4}{4} + \cdots\]
+            \[\frac{\sin{x}}{x^{1/2}(1 + x^2/2)} = (x^{1/2} − \frac{x^{5/2}}{6} + \cdots)(1 − \frac{x^2}{2} + \frac{x^4}{4} + \cdots) =\]
+            \[= x^{1/2} − \frac{2}{3}x^{5/2} + \cdots\]
+                Обозначим
+            \[\varphi(x) = x^{1/2} −\frac{2}{3}x^{5/2},\]
+            \[\psi(x) = \frac{\sin{x}}{x^{1/2}(1 + x^2/2)} − x^{1/2} + \frac{2}{3}x^{5/2}.\]
+                Интеграл \(\varphi(x)\) считается аналитически, а функция \(\psi(x)\) по крайней
+                мере дважды непрерывно дифференцируема и интеграл от неё может быть
+                вычислен, например, с помощью составной формулы трапеций.</p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

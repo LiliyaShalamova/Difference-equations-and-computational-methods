@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Погрешность элементарных квадратурных формул</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="interpolation_quadrature_formulas.html">Интерполяционные квадратурные формулы</a></li>
+                <li><a href="error.html">Погрешность интерполяционных квадратурных формул</a></li>
+                <li><a href="elementary_quadrature_formulas.html">Элементарные квадратурные формулы</a></li>
+                <li><a class="item-selected" href="elementary_error.html">Погрешность элементарных квадратурных формул</a></li>
+                <li><a href="composite.html">Составные квадратурные формулы</a></li>
+                <li><a href="composite_error.html">Погрешность составных квадратурных формул</a></li>
+                <li><a href="runge_method.html">Метод Рунге</a></li>
+                <li><a href="highest_algebraic_degree_accuracy.html">Формулы наивысшей алгебраической степени точности</a></li>
+                <li><a href="existence_uniqueness_gauss.html">Существование и единственность квадратуры Гаусса</a></li>
+                <li><a href="gauss_algorithm.html">Алгоритм построения квадратуры Гаусса</a></li>
+                <li><a href="gauss_error.html">Погрешность квадратуры Гаусса</a></li>
+                <li><a href="integrals_with_singularities.html">Интегралы с особенностями</a></li>
+                <li><a href="numerical_solution_integrals.html">Численное решение интегралов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Погрешность элементарных квадратурных формул</div>
+            <p>Рассмотрим \(\textbf{погрешность элементарной формулы левых прямоугольников}\).
+                Как уже отмечалось, для интерполяционных квадратурных формул
+            \[R_{инт}[f] = I[R_n] = \int_{a}^{b}R_n(x)dx,\]
+                в частности, для элементарной формулы левых прямоугольников
+            \[R_{инт}[f] = I[R_n] = \int_{a}^{b}R_0(x)dx = \int_{a}^{b}f(x, a)(x − a)dx.\]
+                Воспользуемся известной из математического анализа теоремой о среднем,
+                которая утверждает, что
+            \[\int_{a}^{b}g(x)h(x)dx = g(c)\int_{a}^{b}h(x)dx, c \in [a, b],\]
+                если \(g(x)\) – непрерывная функция, \(h(x)\) – непрерывная функция,
+                сохраняющая знак на отрезке \([a, b]\).</p>
+            <p>Тогда, т.к. \((x − a) \geq 0\) на отрезке \([a, b]\), то по теореме о среднем
+            \[\int_{a}^{b}f(x, a)(x − a)dx = f(c, a)\int_{a}^{b}(x − a)dx = f(c, a)\frac{(b − a)^2}{2}, c \in [a, b],\]
+                а используя связь разделенной разности и производной, получаем формулу
+                для погрешности
+            \[R_{инт}[f] = f'(η)\frac{(b − a)^2}{2}, η \in [a, b]\]и её оценку
+            \[R_{инт}[f]| \leq \frac{M_1}{2}(b − a)^2.\]
+                Аналогичным образом выводится погрешность \(\textbf{элементарной
+                формулы правых прямоугольников}\)
+            \[R_{инт}[f] = −f'(η)\frac{(b − a)^2}{2}, η \in [a, b].\]и её оценка
+            \[|R_{инт}[f]| \leq \frac{M_1}{2}(b − a)^2.\]</p>
+            <p>Рассмотрим \(\textbf{погрешность элементарной формулы трапеций}\).
+            \[R_{инт}[f] = I[R_n] = \int_{a}^{b}R_1(x)dx =\int_{a}^{b}f(x, a, b)(x − a)(x − b)dx.\]
+                Используя теорему о среднем (т.к. \((x−a)(x−b) \leq 0\) на отрезке \([a, b]\))
+                и считая интеграл, получаем
+            \[\int_{a}^{b}f(x, a, b)(x − a)(x − b)dx = f(c, a, b)\int_{a}^{b}(x − a)(x − b)dx =\]
+            \[= −f(c, a, b)\frac{(b − a)^3}{6}, c \in [a, b].\]
+                Используя связь разделенной разности второго порядка и соответствующей
+                производной, получаем формулу для погрешности
+            \[R_{инт}[f] = −f''(η)\frac{(b − a)^3}{12}, η \in [a, b]\]и её оценку
+            \[R_{инт}[f]| \leq \frac{M_2}{12}(b − a)^3.\]
+                Рассмотрим \(\textbf{погрешность элементарной формулы средних
+                прямоугольников}\). Прием, основанный на прямом интегрировании погрешности
+                интерполяции не проходит, т.к. теорема о среднем неприменима, ибо \(x − \frac{a+b}{2}\)
+                не сохраняет знак на отрезке. Оценка модуля погрешности
+                на этом пути может быть получена, но она слишком завышена. Применим прием,
+                основанный на повышенной алгебраической степени точности
+                формулы \(N = 1\).
+            </p>
+            <p>Пусть \(H_1(x)\) – интерполяционный многочлен Эрмита, построенный
+                по одному двухкратному узлу \(x_0 = \frac{a+b}{2}\), т.е.
+                построенный по интерполяционным данным \(f(\frac{a+b}{2})\), \(f'(\frac{a+b}{2})\).
+                Так как в узле \(x_0 = \frac{a+b}{2}\) функции \(f(x)\) и \(H_1(x)\) совпадают,
+                то для формулы средних прямоугольников \(S[f] = S[H_1]\).
+            </p>
+            <p>Так как \(H_1(x)\) – многочлен первой степени, а алгебраическая степень
+                точности формулы \(N = 1\), то \(I[H_1] = S[H_1]\).</p>
+            <p>Получаем цепочку соотношений
+            \[R_{инт}[f] = I[f] − S[f] = I[f] − S[H_1] = I[f] − I[H_1] =\]
+            \[= I[f − H_1] = I[R_1].\]
+                Посчитаем интеграл от погрешности интерполяции многочленом
+                \(H_1(x)\), используя теорему о среднем
+            \[R_{инт}[f] = I[R_1] = \int_{a}^{b}f(x,\frac{a + b}{2},\frac{a + b}{2})(x − \frac{a + b}{2})^2dx =\]
+            \[= f(c,\frac{a + b}{2},\frac{a + b}{2})\int_{a}^{b}(x − \frac{a + b}{2})^2dx = \frac{f''(η)}{2}\frac{(b − a)^3}{12}, η \in [a, b].\]</p>
+            <p>Таким образом получаем формулу для погрешности
+            \[R_{инт}[f] = f''(η)\frac{(b − a)^3}{24}, η \in [a, b]\]
+                и её оценку \[|R_{инт}[f]| \leq \frac{M_2}{24}(b − a)^3.\]
+                Аналогичный прием применим для вывода \(\textbf{погрешности элементарной
+                формулы Симпсона}\), которая обладает повышенной алгебраической степени точности формулы \(N = 3\).
+            </p>
+            <p>Пусть \(H_3(x)\) – интерполяционный многочлен Эрмита, построенный
+                по двухкратному узлу \(x_1 = \frac{a+b}{2}\), и однократным узлам \(x_0 = a\) и \(x_2 = b\),
+                т.е. построенный по интерполяционным данным \(f(a)\), \(f(\frac{a+b}{2})\), \(f'(\frac{a+b}{2})\), \(f(b)\).
+                Так как в узлах \(f(x)\) и \(H_3(x)\) совпадают, то для формулы Симпсона
+                \(S[f] = S[H_3]\). Так как \(H_3(x)\) – многочлен третьей степени, а
+                алгебраическая степень точности формулы \(N = 3\), то \(I[H_3] = S[H_3]\).</p>
+            <p>Получаем цепочку соотношений
+            \[R_{инт}[f] = I[f] − S[f] = I[f] − S[H_3] = I[f] − I[H_3] =\]
+            \[= I[f − H_3] = I[R_3].\]
+                Посчитаем интеграл от погрешности интерполяции многочленом
+                \(H_1(x)\), используя теорему о среднем
+            \[R_{инт}[f] = \int_{a}^{b}f(x, a, \frac{a + b}{2}, \frac{a + b}{2}, b)(x − a)(x − b)(x − \frac{a + b}{2})^2dx =\]
+            \[= f(c, a, \frac{a + b}{2}, \frac{a + b}{2}, b)\int_{a}^{b}(x − a)(x − b)(x − \frac{a + b}{2})^2dx =\]
+            \[= −\frac{f''''(η)}{24}\frac{(b − a)^5}{120}, η \in [a, b].\]
+                Последний интеграл лучше считать по частям.</p>
+            <p>Таким образом получаем формулу для погрешности
+            \[R_{инт}[f] = −f''''(η)\frac{(b − a)^5}{2880}, η \in [a, b]\]
+                и её оценку \[|R_{инт}[f]| \leq \frac{M_4}{2880}(b − a)^5.\]</p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

@@ -19,7 +19,7 @@ body
 
 p
 {
-	line-height: 1.5;
+	line-height: 2;
 }
 
 a 
@@ -74,6 +74,11 @@ th, td
 {
 	border: 1px solid grey;
 	padding: 10px 0;
+}
+
+.item-selected
+{
+	background: #b4d3ed;
 }
 
 .global_container 

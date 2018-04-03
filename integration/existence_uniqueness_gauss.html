@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Существование и единственность квадратуры Гаусса</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="interpolation_quadrature_formulas.html">Интерполяционные квадратурные формулы</a></li>
+                <li><a href="error.html">Погрешность интерполяционных квадратурных формул</a></li>
+                <li><a href="elementary_quadrature_formulas.html">Элементарные квадратурные формулы</a></li>
+                <li><a href="elementary_error.html">Погрешность элементарных квадратурных формул</a></li>
+                <li><a href="composite.html">Составные квадратурные формулы</a></li>
+                <li><a href="composite_error.html">Погрешность составных квадратурных формул</a></li>
+                <li><a href="runge_method.html">Метод Рунге</a></li>
+                <li><a href="highest_algebraic_degree_accuracy.html">Формулы наивысшей алгебраической степени точности</a></li>
+                <li><a class="item-selected" href="existence_uniqueness_gauss.html">Существование и единственность квадратуры Гаусса</a></li>
+                <li><a href="gauss_algorithm.html">Алгоритм построения квадратуры Гаусса</a></li>
+                <li><a href="gauss_error.html">Погрешность квадратуры Гаусса</a></li>
+                <li><a href="integrals_with_singularities.html">Интегралы с особенностями</a></li>
+                <li><a href="numerical_solution_integrals.html">Численное решение интегралов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Существование и единственность квадратуры Гаусса</div>
+            <p>Представим многочлен \(\omega_n(x)\) в виде разложения по степеням \(x\):
+            \[\omega_n(x) = x^{n+1} + a_1x^n + \cdots + a_nx + a_{n+1} = Ω(x).\]
+                Обозначения \(Ω(x)\) будем применять, т.к. класс таких произвольных многочленов
+                степени \(n + 1\) шире, чем ранее рассмотренные многочлены \(\omega_n(x)\).</p>
+            <p>Распишем условие ортогональности с весом многочлена \(Ω(x)\) степеням
+                \(x^l\), \(l = 0, 1, \cdots , n\):
+            \[\int_{a}^{b}p(x)(x^{n+1} + a_1x^n + \cdots + a_nx + a_{n+1})x^ldx = 0, l = 0, 1, \cdots , n.\]
+                Получили линейную неоднородную систему относительно коэффициентов
+                \(a_i\). Эта система имеет единственное решение тогда и только тогда, когда
+                соответствующая однородная система
+            \[\int_{a}^{b}p(x)(a_1x^n + \cdots + a_nx + a_{n+1})x^ldx = 0, l = 0, 1, \cdots , n\]
+                имеет только тривиальное решение. Умножим \(l\)-ое уравнение последней
+                системы на \(a_l\) и сложим все уравнения, получим одно
+            \[\int_{a}^{b}p(x)(a_1x^n + \cdots + a_nx + a_{n+1})^2dx = 0.\]
+                Установим условия, при котором это уравнение имеет лишь тривиальное решение.
+                Для этого рассмотрим вспомогательное утверждение.</p>
+            <div class="example">Лемма</div>
+            <p>Пусть \(p(x)\) - непрерывная неотрицательная функция, такая,
+                что \(\int_{a}^{b}p(x)dx > 0\), а многочлен \(Q(x)\) неотрицателен на
+                \([a, b]\). Тогда из условия \(\int_{a}^{b}p(x)Q(x)dx = 0\) следует \(Q(x) \equiv 0\).</p>
+            <p>\(\textbf{Доказательство.}\) Так как \(\int_{a}^{b}p(x)dx > 0\), а функция \(p(x)\) непрерывная
+                неотрицательная, то найдется отрезок \([a_1, b_1] \subset [a, b]\), такой, что \(p(x) > 0\)
+                для всех \(x \in [a_1, b_1]\).
+                Так как \(Q(x)\) многочлен, то он имеет на отрезке \([a_1, b_1]\) конечное
+                число корней \(x_i, i = 1, \cdots , m\). Окружим каждый корень интервалом
+                \((x−ε, x+ε)\) (\(ε > 0\) мало) и введем множество \(X_ε = [a_1, b_1]\setminus \bigcup_{i=1}^{m}(x−ε, x+ε).\)
+            </p>
+            <p>На ограниченном замкнутом множестве \(X_ε\) положительная непрерывная функция
+                \(Q(x)\) ограничена снизу: найдется \(\delta > 0\) такое,
+                что \(Q(x) \geq \delta\) для всех \(x \in [a_1, b_1]\).</p>
+            <p>Из равенства
+            \[0 = \int_{a}^{b}p(x)Q(x)dx = \int_{X_ε}p(x)Q(x)dx + \int_{[a,b]\setminus X_ε}p(x)Q(x)dx\]
+                и неотрицательности подинтегральных функций следует, что
+            \[\int_{X_ε}p(x)Q(x)dx = 0.\]
+                Но тогда \[0 = \int_{X_ε}p(x)Q(x)dx \geq \delta\int_{X_ε}p(x)dx > 0,\]
+                получили противоречие, следовательно \(Q(x)\) имеет бесконечное число корней,
+                т.е. \(Q(x)\) – нулевой многочлен.
+            </p>
+            <p>Если применить результат этой леммы к рассматриваемой задаче, то
+                получаем утверждение</p>
+            <div class="example">Теорема</div>
+            <p>Пусть вес \(p(x)\) - непрерывная неотрицательная функция,
+                такая, что \(\int_{a}^{b}p(x)dx > 0\), тогда существует единственный многочлен
+                \(Ω(x) = x^{n+1} + a_1x^n + \cdots + a_nx + a_{n+1}\),
+                ортогональный с весом степеням \(x^l, l = 0, 1, \cdots , n\).</p>
+            <div class="example">Теорема</div>
+            <p>В условиях предыдущей теоремы многочлен \(Ω(x)\) имеет
+                ровно \(n + 1\) различных вещественных корней на отрезке \([a, b]\).
+            </p>
+            <p>\(\textbf{Доказательство}\) состоит из двух частей. Сначала докажем, что многочлен
+                \(Ω(x)\) имеет \(n + 1\) корней на отрезке \([a, b]\). Предположим противное,
+                т.е. что корней меньше, чем \(n + 1\), обозначим корни \(x_0, x_1, \cdots , x_s, s \leq n − 1\).</p>
+            <p>Тогда
+                \[Ω(x) = (x − x_0)(x − x_1)\cdots(x − x_s)r(x),\]
+                где \(r(x)\) не обращается в ноль на отрезке \([a, b]\), для определённости будем
+                считать, что \(r(x) > 0\).</p>
+            <p>Обозначим \(g(x) = (x − x_0)(x − x_1)\cdots(x − x_s)\), степень этого многочлена
+                \(s + 1 \leq n\), воспользуемся ортогональностью с весом многочлену \(Ω(x)\),
+                получим
+            \[\int_{a}^{b}p(x)g^2(x)r(x)dx = 0,\]
+                применяя лемму, получим \(r(x) \equiv 0\), противоречие, т.е. многочлен \(Ω(x)\)
+                имеет \(n + 1\) корней на отрезке \([a, b]\).
+            </p>
+            <p>Теперь докажем, что у многочлена \(Ω(x)\) кратных корней нет.</p>
+            <p>Предположим противное, т.е. что имеется корень, скажем \(x_0\) кратности \(2\) (или выше). Тогда
+                \[Ω(x) = (x − x_0)^2Q(x),\]
+                где степень многочлена \(Q(x)\) равна \(n−1\), воспользуемся ортогональностью
+                \(Q(x)\) с весом многочлену \(Ω(x)\), получим
+            \[\int_{a}^{b}p(x)(x − x_0)^2Q^2(x)dx = 0,\]
+                применяя лемму, получим \(Q(x) \equiv 0\), противоречие, т.е. многочлен \(Ω(x)\) не
+                имеет кратных корней.</p>
+            <p>Теоремы \(15\) и \(16\) дают условия существования и единственности квадратуры Гаусса.</p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

@@ -10,6 +10,7 @@ var menu = "<ul class=\"lcol_menu\">\n" +
 	"\t<li><a href=\"numerical_solution_nonlinear_systems.html\">Численное решение систем нелинейных уравнений</a></li>\n" +
 	"\t<li><a href=\"interpolation.html\">Интерполяция</a></li>\n" +
 	"\t<li><a href=\"numerical_differentiation.html\">Численное дифференцирование</a></li>\n" +
+	"\t<li><a href=\"integration.html\">Численное интегрирование</a></li>\n" +
 	"\t<li><a href=\"numerical_methods_solving_differential_equations.html\">Численные методы решения дифференциальных уравнений</a></li>\n" +
     "\t<li class=\"category\"><a href=\"#\">Прочее</a></li>\n" +
     "\t<li><a href=\"literature.html\">Литература</a></li>\n" +

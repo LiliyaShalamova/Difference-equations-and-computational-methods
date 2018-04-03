@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Алгоритм построения квадратуры Гаусса</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="interpolation_quadrature_formulas.html">Интерполяционные квадратурные формулы</a></li>
+                <li><a href="error.html">Погрешность интерполяционных квадратурных формул</a></li>
+                <li><a href="elementary_quadrature_formulas.html">Элементарные квадратурные формулы</a></li>
+                <li><a href="elementary_error.html">Погрешность элементарных квадратурных формул</a></li>
+                <li><a href="composite.html">Составные квадратурные формулы</a></li>
+                <li><a href="composite_error.html">Погрешность составных квадратурных формул</a></li>
+                <li><a href="runge_method.html">Метод Рунге</a></li>
+                <li><a href="highest_algebraic_degree_accuracy.html">Формулы наивысшей алгебраической степени точности</a></li>
+                <li><a href="existence_uniqueness_gauss.html">Существование и единственность квадратуры Гаусса</a></li>
+                <li><a class="item-selected" href="gauss_algorithm.html">Алгоритм построения квадратуры Гаусса</a></li>
+                <li><a href="gauss_error.html">Погрешность квадратуры Гаусса</a></li>
+                <li><a href="integrals_with_singularities.html">Интегралы с особенностями</a></li>
+                <li><a href="numerical_solution_integrals.html">Численное решение интегралов</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/diff_equations.html">Разностные уравнения</a></li>
+                <li><a href="../differential_equations/basic_def.html">Основные определения</a></li>
+                <li><a href="../differential_equations/solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Алгоритм построения квадратуры Гаусса</div>
+            <p>Подведем итог изложенному выше в виде алгоритма для построения
+                квадратуры Гаусса.</p>
+            <p>\(\textbf{Этап 1.}\) Составляем систему
+            \[\int_{a}^{b}p(x)(x^{n+1} + a_1x^n + \cdots + a_nx + a_{n+1})x^ldx = 0,\] \[l = 0, 1, \cdots , n\]
+                и вычисляем её коэффициенты.</p>
+            <p>\(\textbf{Этап 2.}\) Решаем эту систему, определяя \(a_i\), \(i = 0, 1, \cdots , n\).</p>
+            <p>\(\textbf{Этап 3.}\) Находим корни \(x_k\), \(i = 0, 1, \cdots , n\) многочлена
+                \(\omega_n(x) = x^{n+1} + a_1x^n + \cdots + a_nx + a_{n+1}\).</p>
+            <p>\(\textbf{Этап 4.}\) Находим коэффициенты \(A_k\), \(i = 0, 1, \cdots , n\) квадратуры Гаусса
+            \[\int_{a}^{b}p(x)f(x)dx \approx \sum_{k=0}^{n}A_kf(x_k),\]
+                например, методом неопределенных коэффициентов.</p>
+            <div class="example">Пример</div>
+            <p>Проиллюстрируем примером. Построим квадратуру Гаусса вида
+                \[\int_{-1}^{1}f(x)dx \approx A_0f(x_0) + A_1f(x_1).\]</p>
+            <p>Так как \(n = 1\), составим многочлен \(\omega_1(x) = x^2 + a_1x + a_2\) и запишем систему
+                из условия ортогональности этого многочлена \(1\) и \(x\):
+            \[\begin{cases}
+                \int_{-1}^{1}(x^2 + a_1x + a_2)dx = 0\\
+                \int_{-1}^{1}(x^2 + a_1x + a_2)xdx = 0.
+                \end{cases}\]</p>
+            <p>Считая интегралы, получаем
+            \[\begin{cases}
+                2a_2dx = \frac{2}{3}\\
+                \frac{2}{3}a_1 = 0.
+                \end{cases}\]
+                Находим корни уравнения \(x^2 + \frac{1}{3} = 0\), получаем \(x_0 = −\frac{\sqrt{3}}{3}\),
+                \(x_1 = \frac{\sqrt{3}}{3}\).</p>
+            <p>Записываем формулу
+            \[\int_{-1}^{1}f(x)dx \approx А_0f(−\frac{\sqrt{3}}{3}) + А_1f(\frac{\sqrt{3}}{3})\]
+                и методом неопределенных коэффициентов находим \(A_0 = A_2 = 1\).
+                Алгебраическая степень точности \(N = 2n + 1 = 3\).
+            </p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

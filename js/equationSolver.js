@@ -750,7 +750,92 @@ function solveEquationByHalfDivisionMethod(equation, a, b, e) {
     }
 }
 
-console.log(solveEquationByNewton("x - 2*cos(x^2)", 1.4, 0, 0.5*Math.pow(10, -5)));
+function solveIntegralByTrapezoidFormula(equation, a, b, h) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var n = (b - a) / h;
+    var sum = 0;
+    for (var i = 1; i < n; i++)
+        sum += top.calc(a + i * h);
+    return h * ((top.calc(a) + top.calc(b)) / 2 + sum);
+}
+
+function solveIntegralByLeftRectangles(equation, a, b, h) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var n = (b - a) / h;
+    var sum = 0;
+    for (var i = 0; i < n; i++)
+        sum += top.calc(a + i * h);
+    return h * sum;
+}
+
+function solveIntegralByRightRectangles(equation, a, b, h) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var n = (b - a) / h;
+    var sum = 0;
+    for (var i = 1; i <= n; i++)
+        sum += top.calc(a + i * h);
+    return h * sum;
+}
+
+function solveIntegralByMiddleRectangles(equation, a, b, h) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var n = (b - a) / h;
+    var sum = 0;
+    for (var i = 0; i <= n; i++)
+        sum += top.calc(a + i * h + h / 2);
+    return h * sum;
+}
+
+function solveIntegralBySimpson(equation, a, b, h) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var n = (b - a) / h;
+    var sum1 = 0;
+    var sum2 = 0;
+    for (var i = 1; i < n; i++)
+        sum1 += top.calc(a + i * h);
+    for (var i = 0; i < n; i++)
+        sum2 += top.calc(a + i * h + h / 2);
+    return h / 6 * (top.calc(a) + top.calc(b) + 2 * sum1 + 4 * sum2);
+}
+
+function solveIntegralByGregory(equation, a, b, h) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var n = (b - a) / h;
+    var sum = 0;
+    for (var i = 1; i < n; i++)
+        sum += top.calc(a + i * h);
+    return h / 2 * (top.calc(a) + top.calc(b)) + h * sum + h / 24 * (-3 * top.calc(a) + 4 * top.calc(a + h) - top.calc(a + 2*h) - top.calc(b - 2*h) +4*top.calc(b - h) - 3*top.calc(b));
+}
+
+function solveIntegralByEuler(equation, a, b, h) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var derivative = getDerivativeNode(top);
+    var n = (b - a) / h;
+    var sum = 0;
+    for (var i = 1; i < n; i++)
+        sum += top.calc(a + i * h);
+    return h / 2 * (top.calc(a) + top.calc(b)) + h * sum + Math.pow(h,2) / 12 * (derivative.calc(a) - derivative.calc(b));
+}
+
+function solveIntegralBy38(equation, a, b, h) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var n = (b - a) / h;
+    var sum1 = 0;
+    var sum2 = 0;
+    for (var i = 1; i < n; i++)
+        sum1 += top.calc(a + i * h);
+    for (var i = 3; i <= n - 3; i+=3)
+        sum2 += top.calc(a + i * h);
+    return 3 * h / 8 * (top.calc(a) + 3 * sum1 + 2 * sum2 + top.calc(b));
+}
 
 try {
     module.exports.parseEquation = parseEquation;
