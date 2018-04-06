@@ -693,7 +693,7 @@ function createNode(tokens, parent) {
 function cloneNode(node) {
     if (node === undefined)
         return undefined;
-    var lec = node.lec.slice();
+    var lec = node.lec !== undefined ? node.lec.slice() : undefined;
     var value = node.value;
     var calc = node.calc;
     var left = cloneNode(node.left);
@@ -709,21 +709,110 @@ function solveEquation(equation, x) {
     return createNode(tokens).calc(x);
 }
 
-function getDerivative(equation, x) {
+function getDerivative(equation, x, n) {
+    if (n === undefined)
+        n = 1;
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
-    var derivativeNode = getDerivativeNode(top);
+    var derivativeNode;
+    for (var i = 0; i < n; i++)
+    {
+        derivativeNode = getDerivativeNode(top);
+        top = derivativeNode;
+    }
     return derivativeNode.calc(x);
 }
 
 function getDerivativeNode(node){
+    var derivative;
     if (isDigitOrComma(node.value[0]))
-        return derivatives["number"](node);
-    return derivatives[node.value](node);
+        derivative =  derivatives["number"](node);
+    else
+        derivative = derivatives[node.value](node);
+    normalizeTree(derivative);
+    return derivative;
+}
+
+function normalizeTree(node) {
+    if (node === undefined) {
+        return;
+    }
+    if (node.left !== undefined) {
+        node.left.parent = node;
+    }
+    if (node.right !== undefined) {
+        node.right.parent = node;
+    }
+    normalizeTree(node.left);
+    normalizeTree(node.right);
+    if (node.left === undefined && node.right === undefined) {
+        updateParents(node);
+    }
+}
+
+function updateParents(leaf) {
+    if (leaf.value === "x")
+    {
+        leaf.isConst = false;
+        while(leaf.parent !== undefined){
+            leaf.parent.isConst = false;
+            leaf = leaf.parent;
+        }
+    }
+}
+
+function simplifyTree(node) {
+    var newNode = cloneNode(node);
+
+}
+
+function simplifyNode(node) {
+    if (node === undefined || node.left === undefined && node.right === undefined) {
+        return;
+    }
+    if (isDigitOrComma(node.left.value[0]) && isDigitOrComma(node.right.value[0])) {
+        return new ConstNode(operatorAction[node.value](parseFloat(node.left.value), parseFloat(node.right.value)));
+    }
+}
+
+function getEquationFromTree(node) {
+    var newNode = cloneNode(node);
+    performNode(simplifyTree(newNode));
+    return newNode.value;
+}
+
+function performNode(node) {
+    if (node === undefined || node.left === undefined && node.right === undefined) {
+        return;
+    }
+    performNode(node.left);
+    performNode(node.right);
+
+    if (node.value === '+') {
+        //
+    }
+    else if (node.value === '-') {
+        if (isNode(node.right))
+            node.right.value = '(' + node.right.value + ')';
+    } else if (node.value === '*' || node.value === '/' || node.value === '^') {
+        if (isNode(node.left))
+            node.left.value = '(' + node.left.value + ')';
+        if (isNode(node.right))
+            node.right.value = '(' + node.right.value + ')';
+    } else {
+        node.left.value = '(' + node.left.value + ')';
+        node.value += node.left.value;
+        return;
+    }
+    node.value = node.left.value + node.value + node.right.value;
+}
+
+function isNode(node) {
+    return node.left !== undefined;
 }
 
 function solveEquationByNewton(equation, a, b, e){
-    var tokens = parseEquation("x - 2*cos(x^2)");
+    var tokens = parseEquation(equation);
     var top = createNode(tokens);
     var derivative = getDerivativeNode(top);
     var x = a;
@@ -840,8 +929,12 @@ function solveIntegralBy38(equation, a, b, h) {
 try {
     module.exports.parseEquation = parseEquation;
     module.exports.solveEquation = solveEquation;
+    module.exports.createNode = createNode;
     module.exports.getDerivative = getDerivative;
+    module.exports.getEquationFromTree = getEquationFromTree;
 }
 catch(e) {
 
 }
+
+var equation = 'x+10-(5+4)';

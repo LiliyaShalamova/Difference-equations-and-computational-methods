@@ -34,6 +34,24 @@ describe('tokens', function() {
     });
 });
 
+describe('tree to string', function() {
+    it('should return right answer', function () {
+        var equation = "x-(5+4)";
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)));
+        assert.equal(equation, value);
+    });
+    it('should return right answer', function () {
+        var equation = "(x+10)^(cos(x)+10)";
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)));
+        assert.equal(equation, value);
+    });
+    it('should return right answer', function () {
+        var equation = "(x+10)/(cos(x/4)+10)";
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)));
+        assert.equal(equation, value);
+    });
+});
+
 function areEqualWithTolerance(a, b) {
     return Math.abs(a - b) < 0.000001;
 }
@@ -148,4 +166,7 @@ describe('derivative', function () {
         assert(areEqualWithTolerance(equationSolver.getDerivative("(2*x)^x", 2), 38.18070977791825));
 
     }) ;
+    it ('should return right n derivative', function () {
+        assert(areEqualWithTolerance(equationSolver.getDerivative("x^2", 0, 2), 2));
+    });
 });
