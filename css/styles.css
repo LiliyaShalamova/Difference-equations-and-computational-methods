@@ -76,6 +76,23 @@ th, td
 	padding: 10px 0;
 }
 
+iframe{
+	display: none;
+}
+
+.table
+{
+	border-collapse: collapse;
+	width: 350px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.table td
+{
+	border: 1px solid #000;
+}
+
 .item-selected
 {
 	background: #b4d3ed;
@@ -360,4 +377,8 @@ th, td
 		flex-direction: column;
 	}
 
+}
+
+.white-space-pre {
+	white-space: pre-wrap;
 }

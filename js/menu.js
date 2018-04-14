@@ -2,7 +2,7 @@ var menu = "<ul class=\"lcol_menu\">\n" +
     "\t<li class=\"homepage\"><a href=\"index.html\">Главная страница</a></li>\n" +
     "\t<li class=\"category\"><a href=\"differential_equations.html\">Разностные уравнения</a></li>\n" +
     "\t<li><a href=\"differential_equations/diff_equations.html\">Разностные уравнения</a></li>\n" +
-    "\t<li><a href=\"differential_equations/basic_def.html\">Основные опрделения</a></li>\n" +
+    "\t<li><a href=\"differential_equations/basic_def.html\">Основные определения</a></li>\n" +
     "\t<li><a href=\"differential_equations/solition_methods.html\">Методы решения</a></li>\n" +
     "\t<li class=\"category\"><a href=\"calculation_methods.html\">Методы вычислений</a></li>\n" +
     "\t<li><a href=\"numerical_solution_nonlinear_equations.html\">Численное решение нелинейных уравнений</a></li>\n" +

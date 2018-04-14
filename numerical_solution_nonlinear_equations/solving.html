@@ -14,6 +14,7 @@
         </script>
     <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/equationSolver.js"></script>
+    <script type="text/javascript" src="../js/solvingShower.js"></script>
 </head>
 <body>
 <div id="content_container" class="global_container">
@@ -57,47 +58,42 @@
         </div>
         <div id="content_col">
             <div class="entry_title">Решение нелинейных уравнений</div>
-            <form id="equation_solver">
+            <form id="equation_solver" target="frame">
                 <p><label>Функция \(f(x)\): <input type="text" id="equation"></label></p>
                 <p><label>Отрезок от <input type="text" id="a"> до <input type="text" id="b"></label></p>
                 <p><label>Погрешность: <input type="text" id="error"></label></p>
                 <p>
                     <label>Выберите метод:
                         <select id="method">
-                            <option value="1">Метод дихотомии</option>
-                            <option value="2">Метод половинного деления</option>
-                            <option value="3">Метод Ньютона</option>
-                            <option value="4">Модифицированный метод Ньютона</option>
-                            <option value="5">Метод хорд</option>
-                            <option value="6">Метод подвижных хорд</option>
-                            <option value="7">Метод секущих</option>
-                            <option value="8">Метод простой итерации</option>
+                            <option value="1">Метод половинного деления (дихотомии)</option>
+                            <option value="2">Метод Ньютона</option>
+                            <option value="3">Модифицированный метод Ньютона</option>
+                            <option value="4">Метод хорд</option>
+                            <option value="5">Метод подвижных хорд</option>
+                            <option value="6">Метод секущих</option>
+                            <option value="7">Метод простой итерации</option>
                         </select>
                     </label>
                 </p>
                 <p><input type="submit" value="Решить"></p>
             </form>
+            <div id="solving"></div>
         </div>
     </div>
     <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
 </div>
 <div id="subfooter" class="global_container">Powered by MathJax</div>
 <script>
-    $( "#equation_solver" ).submit(function( event ) {
-        var res = 0;
+    $( "#equation_solver" ).submit(function() {
+        $('#solving').html('');
         var method = $("#method").val();
         var equation = $("#equation").val();
         var a = parseFloat($("#a").val());
         var b = parseFloat($("#b").val());
         var error = solveEquation($("#error").val());
-        if (method === "3") {
-            res = solveEquationByNewton(equation, a, b, error);
-        }
-        else if (method === "1") {
-            res = solveEquationByHalfDivisionMethod(equation, a, b, error);
-        }
-        alert(res);
+        generateSolution(method, equation, a, b, error);
     });
 </script>
+<iframe name="frame"></iframe>
 </body>
 </html>

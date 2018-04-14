@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Устойчивость положения равновесия разностного уравнения</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="diff_equations.html">Разностные уравнения</a></li>
+                <li><a class="item-selected" href="basic_def.html">Основные определения</a></li>
+                <li><a href="solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Устойчивость положения равновесия разностного уравнения</div>
+            <p>\(\textbf{Положением равновесия}\) для разностного уравнения называется решение \(\varphi(t) \equiv_{t \in N} x_0\).</p>
+            <p>Решение \(\varphi(t)\) разностного уравнения т-го порядка называется \(\textbf {устойчивым}\), если для любого \( \varepsilon  > 0\) существует
+                такое \( \delta > 0\), что для всех решений \( \psi(t)\), удовлетворяющих условиям
+                \[|\psi(1) - \varphi(1)| < \delta,\]
+                \[|\psi(2) - \varphi(2)| < \delta,\]
+                \[\cdots\]
+                \[|\psi(n) - \varphi(n)| < \delta,\]
+                выполняется неравенство
+                \[|\psi(t) - \varphi(t)| < \varepsilon\]
+                при всех \(t \in N.\)</p>
+            <p>Решение называется \(\textbf {асимптотически устойчивым}\), если оно устойчиво, и дополнительно
+                \[ \lim_{t \rightarrow +\infty }|\psi(t) - \varphi(t)| = 0.\]</p>
+            <div class="example">Критерий устойчивости решений линейных разностных уравнений с постоянными коэффциентами</div>
+            <p>Все решения уравнения \[x(t+n) + a_1(t)x(t+n-1)+...+a_n(t)x(t) = b(t)\]
+                независимо от \(b(t):\)</p>
+            <p>1) асимптотически устойчивы, если \[|\lambda| < 1\]
+                для всех корней \(\lambda\) характеристического уравнения;</p>
+            <p>2) устойчивы, но не асимптотически при \[|\lambda |  \leq 1\]
+                для всех корней, причем корни \(|\lambda| = 1\) имеют кратность 1;</p>
+            <p>3) неустойчивы во всех остальных случаях.</p>
+            <div class="example">Достаточное условие существования устойчивого положения равновесия нелинейного уравнения</div>
+            <p>Достаточное условие существования устойчивого положения равновесия нелинейного уравнения
+                \[x(t+1) = V(x(t)).\]</p>
+            <p>Если функция \(V: R \rightarrow R\) непрерывно дифференцируема \(k\) раз, где \( k \geq 1,\) и
+                \[|V'(x)| \leq q < 1\]
+                при всех \(X \in R\), то уравнение \(x(t+1) = V(x(t))\) имеет единственное положение равновесия
+                \[x^* = V(x^*),\] причем \[x^* = \lim _{t \rightarrow +\infty}x(t)\]
+                независимо от \(x(0)\), и \[|x(t) - x^*| < q^t|x(0) - x^*|.\]</p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="../index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

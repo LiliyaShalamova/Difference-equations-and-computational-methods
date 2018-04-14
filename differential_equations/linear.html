@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Линейные разностные уравнения</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="diff_equations.html">Разностные уравнения</a></li>
+                <li><a class="item-selected" href="basic_def.html">Основные определения</a></li>
+                <li><a href="solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Линейные разностные уравнения</div>
+            <p>\(\textbf{Линейным разностным уравнением n-го порядка с переменными коэффициентами}\)
+                называется уравнение
+                \[x(t + п) + a_1(t)x(t + n - 1) + \cdots + a_n(t) x(t) = b(t), (2)\]
+                где \(a_1(t),\cdots ,a_n(t), b(t)\) - некоторые функции от номера
+                \(t \in N\). Полагаем \(a_n(t) \neq 0\)
+                для всех \(t.\) Если \(b(t) \equiv_{t \in N} 0\), то уравнение называется \(\textbf{линейным
+                однородным}\).
+            </p>
+            <p>Рассмотрим сначала линейное разностное однородное уравнение первого порядка
+            \[x(t + 1 ) + a_1(t)x(t) = 0. (3)\]
+                Примем теперь, что \(t \in N_0 = N \cup {0}\). Для решения уравнения
+                (3) произведем последовательно подстановки, считая, что
+                задан \(x(0)\). Имеем
+            \[x(1) = -a_1(0)x(0),\]
+            \[х(2) = -a_1(1)x(1) = a_1(0)a_1(1)x(0),\]
+                наконец, получим
+            \[x(t) = (-1)^ta_1(0)a_1(1)a_1(2)\cdots a_1(t - l)x(0).\]
+                Далее, полагая, что \(x(0) = С\), и применяя обозначения
+            \[A(0) = 1,\]
+            \[A(t) = ( - l )^t\prod_{j=0}^{t-1}a_1(j), t \in N,\]
+                находим формулу, описывающую все решения уравнения
+                (3):
+            \[x(t) = CA(t). (4).\]
+                Это формула общего решения однородного уравнения. Заметим,
+                что формула (4) в общем случае содержит произведения с
+                увеличивающимся числом сомножителей. Линейное неоднородное
+                разностное уравнение первого порядка
+            \[x(t + 1) + a_1(t)x(t) = b(t) (5)\]
+                решим методом вариации произвольной постоянной. Будем искать
+                его решение в том же виде (5), что и решение соответствующего
+                линейного однородного уравнения (3), но будем
+                считать \(С\) не произвольной постоянной, а некоторой неизвестной
+                функцией \(C(t)\), \(t \in N_0\). Итак, решение ищем в виде
+            \[x(t) = C(t)A(t),\]
+                где функцию \(C(t)\) находим подстановкой в уравнение \((5)\)</p>
+            <p>Тогда
+                \[C(t + 1 ) A(t + 1 ) + a_1(t)C(t)A(t) = b(t).\]
+                Поскольку
+                \[A(t + l) = -a_1(t)A(t),\]
+                получаем
+                \[C(t + 1 ) A(t + 1) — C(t) A(t + 1) = b(t),\]
+                \[C(t + 1) = C(t) + \frac{b(t)}{A(t+1)}.\]
+                Напомним, что в силу определения уравнения (5)
+                \(A(t + 1) \neq 0\) .
+            </p>
+            <p>Снова производя последовательные подстановки, получим
+            \[C(t) = C(0) + \sum_{j=0}^{t-1}\frac{b(j)}{A(j+1)}.\]
+                Полагая, что \(С(0 ) = D \)(\(D\) - произвольная постоянная), и подставляя
+                \(C(t)\) в (5), находим общее решение исходного неоднородного уравнения
+                \[x(t) = [D + \sum_{j=0}^{t-1}\frac{b(j)}{A(j+1)}]A(t).\]
+                Заметим, что, как и в случае линейного неоднородного обыкноного
+                неоднородного разностного уравнения представляет собой
+                сумму общего решения соответствующего линейного однородного уравнения
+                (4) и частного решения данного неоднородного уравнения.
+            </p>
+            <div class="example">Пример</div>
+            <p> Решим уравнение
+            \[x(t) - (\frac{t+2}{t+1})^2x(t) = \frac{2t+4}{t+3}.\]</p>
+            <p>\(\textbf{Решение.}\) Положим \(А(0 ) = 1\) , вычислим при \(t \in N\)
+            \[A(t) = (-1)^t\prod_{j=0}^{t-1}(\frac{j+2}{j+1})^2 = (t+2)^2,\]
+            \[\sum_{j=0}^{t-1}\frac{b(j)}{A(j+1)} = 2\sum_{j=0}^{t-1}\frac{j+2}{(j+3)(j+2)^2} = \]
+            \[= 2\sum_{j=0}^{t-1}\frac{1}{(j+3)(j+2)} = 2 \sum_{j=0}^{t-1}(\frac{1}{j+2} - \frac{1}{j+3}) = \]
+            \[= 2(\frac{1}{2} - \frac{1}{t+2}) = \frac{t}{t+2}.\]
+                Общее решение имеет вид
+            \[x(t) = (D + \frac{t}{t+2})(t+1)^2,(6)\]
+                где \(D\) — произвольная постоянная. Отметим, что в рассмотренном
+                примере удалось записать общее решение в простом виде:
+                формула (6) не содержит произведения с увеличивающимся
+                числом сомножителей. </p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="../index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

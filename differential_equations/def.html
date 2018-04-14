@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Основные определения</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="diff_equations.html">Разностные уравнения</a></li>
+                <li><a class="item-selected" href="basic_def.html">Основные определения</a></li>
+                <li><a href="solution_methods.html">Методы решения</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Основные определения</div>
+            <p>Разностным (или рекуррентным) уравнением называют
+                уравнение относительно неизвестной последовательности. Разностные уравнения
+                часто используются в моделях динамики с
+                дискретным временем и для приближенного решения дифференциальных уравнений.</p>
+                <p>В экономике к процессам с дискретным временем
+                относятся ежедневные изменения курса валюты, стоимости некоторых ценных бумаг,
+                    величины банковских вкладов; ежемесячный расчет зарплаты и процентов по
+                вкладам; ежеквартальные, ежегодные статистические данные о других
+                    микроэкономических и макроэкономических
+                показателях.</p>
+            <p>\(\textbf{Разностным уравнением n-го порядка}\) называется уравнение вида
+                \[x(t + n) = F (t, x(t), x(t + 1 ), \cdots, x(t + n - 1 ))(2 .1 .1),\]
+                где \(t \in N\), \(F : N \times X^n \rightarrow X\) — заданная функция, \(X \subseteq R\) .</p>
+            <p>\(\textbf{Решением}\) разностного уравнения называется всякая функция
+                \(\varphi: N \rightarrow X\) , для которой
+            \[\varphi(t + n) = F(t, \varphi(t), \varphi(t + 1), \cdots, \varphi(t + n - 1))\]
+            при всех \(t \in N\).
+            </p>
+            <p>Замечательным свойством рекуррентного уравнения (2 .1 .1)
+                является то, что оно само задает алгоритм построения решения.
+                А именно, имея \(n\) начальных условий \(x(1), x(2) ,\cdots, x(n)\),
+                по формуле (2 .1 .1) находим
+            \[x(n + 1) = F(1 , x(1), x(2), \cdots, x(n))\]
+                и далее по значениям \(x(2 ), x(3), \cdots, x(n + 1 )\) определяем
+            \[x(n + 2 ) = F(2, x(2), x(3), \cdots, x(n+ 1)).\]
+                На \(s\)-й итерации, зная предыдущие \(n\) значений
+                \(x(s - n + 1 ) ,\cdots, x(s)\), вычисляем
+            \[x(s + 1) = F(s - n + 1, x(s - n + 1), x(s - n + 2), \cdots, x(s)).\]</p>
+            <p>Как видно, этот алгоритм будет работать и решение будет существовать,
+                если область определения функции \(F\) согласована
+                с ее областью значений \(F : N \times Х^n  \rightarrow X\) и начальные значения
+                \(x(1 ), x(2 ) ,\cdots, x(n)\) принадлежат \(F\), т. е. если на каждом шаге
+                возможна описанная подстановка.
+                Например, для уравнения \(x(t + 1) = - \sqrt{x(t)} - 1\) уже на первом шаге получим \(x(2 ) < 0\),
+                которое не входит в область определения функции, стоящей в
+                правой части этого уравнения.
+            </p>
+            <div class="example">Замечание</div>
+            <p>Если в правую часть \(F\) уравнения (2.1.1) явно не входят аргументы
+            \(x(t), x(t + 1 ), \cdots, x(t + р - 1 )\), \(1 \leq p \leq n-1 \), т.е.
+            если уравнение имеет вид
+            \[x(t + n) = F(t, x(t + р), \cdots, x(t + n - 1 )),(2.1.2) \]
+                то заменой времени \(\tau = t + р\) оно сводится к уравнению меньшего порядка
+            \[x(\tau + n - p) = F(t, x(\tau), \cdots, x(\tau + n - p - 1)).(2.1.3) \]
+                При этом от \(p\) начальных значений \(x(1 ), x(2), \cdots, x(p)\) для исходного
+                уравнения (2.1.2) решение уравнения (2.1.3) зависеть
+                не будет. Пусть \(\varphi(\tau) (\tau \in N)\) - решение уравнения (2.1.3) такое,
+                что \(\varphi(1 ) = x(p + 1 ), \cdots, \varphi(n - p) = x(n)\), тогда не составляет
+                труда выписать решение уравнения (2 .1 .2 ) в виде последовательности
+            \[x(1), x(2), \cdots, x(p), \varphi(1), \cdots, \varphi(n), \cdots (2.1.4)\]
+                В дальнейшем будем предполагать, что уравнение (2.1.1) уже
+                приведено к виду (2.1.3). </p>
+            <p>Как и для обыкновенных дифференциальных уравнений,
+                для разностных уравнений ставится \(\textbf{задача Коши}\).
+            </p>
+            <div class="example">Теорема (о существовании и единственности
+                решения разностной задачи Коши)</div>
+            <p>Для любого набора начальных значений \((u_1, u_2 , \cdots, u_n) \in X^n\) существует
+                единственное решение уравнения \(n\)-го порядка (2 .1 .1 ), удовлетворяющее
+                начальным условиям \(\varphi(1 ) = u_1, \varphi(2) = u_2,\cdots, \varphi(n) = u_n\).</p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="../index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

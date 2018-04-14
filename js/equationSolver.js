@@ -1,3 +1,8 @@
+var methodsIds = {
+    halfDivison: 1,
+    newton: 2
+};
+
 var types = {
     operand: 1,
     operator: 2,
@@ -761,10 +766,6 @@ function updateParents(leaf) {
     }
 }
 
-function simplifyTree(node) {
-    var newNode = cloneNode(node);
-
-}
 
 function simplifyNode(node) {
     if (node === undefined || node.left === undefined && node.right === undefined) {
@@ -775,10 +776,14 @@ function simplifyNode(node) {
     }
 }
 
-function getEquationFromTree(node) {
+function getEquationFromTree(node, onCenter) {
+    if (onCenter === undefined)
+        onCenter = true;
     var newNode = cloneNode(node);
-    performNode(simplifyTree(newNode));
-    return newNode.value;
+    performNode(newNode);
+    return onCenter
+        ? '\\[' + newNode.value + '\\]'
+        : '\\(' + newNode.value + '\\)';
 }
 
 function performNode(node) {
@@ -789,17 +794,26 @@ function performNode(node) {
     performNode(node.right);
 
     if (node.value === '+') {
-        //
+        //pass
     }
     else if (node.value === '-') {
         if (isNode(node.right))
             node.right.value = '(' + node.right.value + ')';
-    } else if (node.value === '*' || node.value === '/' || node.value === '^') {
+    } else if (node.value === '*') {
         if (isNode(node.left))
             node.left.value = '(' + node.left.value + ')';
         if (isNode(node.right))
             node.right.value = '(' + node.right.value + ')';
-    } else {
+    } else if (node.value === '/') {
+        node.value = '\\frac';
+        node.left.value = '{' + node.left.value + '}';
+        node.right.value = '{' + node.right.value + '}';
+    } else if (node.value === '^') {
+        if (isNode(node.left))
+            node.left.value = '(' + node.left.value + ')';
+        node.right.value = '{' + node.right.value + '}';
+    }
+    else {
         node.left.value = '(' + node.left.value + ')';
         node.value += node.left.value;
         return;
@@ -808,34 +822,172 @@ function performNode(node) {
 }
 
 function isNode(node) {
-    return node.left !== undefined;
+    return node.value === '+' || node.value === '-';
+}
+
+function existsEquationRootInInterval(node, a, b) {
+    return node.calc(a) * node.calc(b) < 0;
+}
+
+function latexOnCenter(str) {
+    return '\\[' + str + '\\]';
+}
+
+function latexNotOnCenter(str) {
+    return '\\(' + str + '\\)';
+}
+
+function getTitle(node, error, method) {
+    return "Найдем корни уравнения:" + getEquationFromTree(node) + latexOnCenter('\\varepsilon=' + error) +
+        '\nИспользуем для этого ' + latexNotOnCenter('\\textbf{' + method + '}')+ '.';
+}
+
+function Solution() {
+    this.approx = [];
+    this.errors = [];
+    this.aValues = [];
+    this.bValues = [];
+    this.answer = "";
+    this.startPoint = undefined;
+    this.isCorrect = true;
+    this.withTitle = function (node, error, method) {
+        this.answer += getTitle(node, error, method) + '\n';
+        return this;
+    };
+    this.withIntervalCheck = function (node, a, b) {
+        this.answer += "Проверим, что на отрезке " + latexNotOnCenter('[a,b]') + " существует корень. " +
+            "Чтобы на отрезке существовал корень, должно выполняться условие:" + latexOnCenter('f(a)*f(b)<0') +
+            latexOnCenter('f(' + a + ')=' + node.calc(a)) + latexOnCenter('f(' + b + ')=' + node.calc(b));
+        if (existsEquationRootInInterval(node, a, b)) {
+            this.answer += latexOnCenter('f(a)*f(b)=' + node.calc(a) + node.calc(b) + '<0') + "Условие выполнено\n";
+        } else {
+            this.answer += latexOnCenter('f(a)*f(b)=' + node.calc(a) + node.calc(b) + '>0') +
+                "Условие не выполнено, значит корня на отрезке нет.";
+            this.isCorrect = false;
+        }
+        return this;
+    };
+    this.withStartPoint = function (node, secondDerivative, a, b) {
+        var multiple = node.calc(a) * secondDerivative.calc(a);
+        this.answer += 'Выберем начальную точку ' + latexNotOnCenter('x_0') + ', исходя из условия ' +
+            latexNotOnCenter("f(x_0)*f''(x_0)>0") + latexOnCenter("f(a)*f''(a)=" + multiple);
+        if (multiple > 0) {
+            this.answer += "Точка \\(a\\) удовлетворяет условию, следовательно " + latexNotOnCenter('x_0=a') + ".\n";
+            this.startPoint = a;
+        } else {
+            multiple = node.calc(b) * secondDerivative.calc(b);
+            this.answer += 'Точка \\(a\\) не удовлетворяет условию.';
+            this.answer += latexOnCenter("f(b)*f''(b)=" + multiple);
+            this.answer += "Точка \\(b\\) удовлетворяет условию, следовательно " + latexNotOnCenter('x_0=b') + ".\n";
+            this.startPoint = b;
+        }
+        return this;
+    };
+    this.withLine = function (str) {
+        this.answer += str;
+        return this;
+    };
+    this.withId = function (id) {
+        this.methodId = id;
+        return this;
+    };
+    this.withError = function(e) {
+        var count = 0;
+        while (e < 1) {
+            count++;
+            e *= 10;
+        }
+        this.digitsCount = ++count;
+        return this;
+    };
+    this.round = function () {
+        for (var i = 0; i < this.approx.length; i++)
+            this.approx[i] = parseFloat(this.approx[i].toFixed(this.digitsCount + 1));
+        for (var i = 0; i < this.aValues.length; i++)
+            this.aValues[i] = parseFloat(this.aValues[i].toFixed(this.digitsCount + 1));
+        for (var i = 0; i < this.bValues.length; i++)
+            this.bValues[i] = parseFloat(this.bValues[i].toFixed(this.digitsCount + 1));
+        for (var i = 0; i < this.errors.length; i++) {
+            if (i === 0 && this.methodId === methodsIds.newton)
+                continue;
+            this.errors[i] = parseFloat(this.errors[i].toFixed(this.digitsCount + 1));
+        }
+    }
 }
 
 function solveEquationByNewton(equation, a, b, e){
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
     var derivative = getDerivativeNode(top);
-    var x = a;
-    while(true){
+    var secondDerivative = getDerivativeNode(derivative);
+    var solution = new Solution()
+        .withTitle(top, e, 'Метод Ньютона')
+        .withId(methodsIds.newton)
+        .withError(e)
+        .withIntervalCheck(top, a, b);
+    if (!solution.isCorrect)
+        return solution;
+    solution = solution
+        .withStartPoint(top, secondDerivative, a, b)
+        .withLine("формула для метода Ньютона:" + latexOnCenter("x_{n+1}=x_n-\\frac{f(x_n)}{f'(x_n)}"));
+    var x = solution.startPoint;
+    solution.approx.push(x);
+    while(true) {
         var newX = x - top.calc(x)/derivative.calc(x);
+        solution.approx.push(newX);
         if (Math.abs(newX - x) < e) {
-            return newX;
+            solution.errors = calculateNewtonErrors(solution.approx);
+            return solution;
         }
         x = newX;
     }
 }
 
+function calculateNewtonErrors(approx) {
+    var errors = ['-'];
+    for (var i = 1; i < approx.length; i++) {
+        errors.push(Math.abs(approx[i] - approx[i-1]));
+    }
+
+    return errors;
+}
+
+function calculateHalfDivisionErrors(aValues, bValues) {
+    var errors = [];
+    for (var i = 0; i < aValues.length; i++) {
+        errors.push(Math.abs(aValues[i] - bValues[i]));
+    }
+
+    return errors;
+}
+
 function solveEquationByHalfDivisionMethod(equation, a, b, e) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
+    var solution = new Solution()
+        .withTitle(top, e, 'Метод половинного деления (дихотомии)')
+        .withId(methodsIds.halfDivison)
+        .withError(e)
+        .withIntervalCheck(top, a, b);
+    if (!solution.isCorrect)
+        return solution;
+    solution.withLine("Найдем середину отрезка \\(c=\\frac{a+b}{2}\\) и сужаем отрезок так, " +
+        "чтобы на его концах функция принимала разные знаки.\nЕсли \\(f(a)*f(c)<0\\), то \\(b=c\\), иначе \\(a=c\\).\n" +
+        "Деление отрезка повторяется, пока длина отрезка не станет меньше \\(\\varepsilon\\).");
     while(true) {
         var c = (a + b) / 2;
         if (top.calc(c) * top.calc(a) < 0)
             b = c;
         else
             a = c;
-        if (Math.abs(b - a) < e)
-            return c;
+        solution.approx.push(c);
+        solution.bValues.push(b);
+        solution.aValues.push(a);
+        if (Math.abs(b - a) < e) {
+            solution.errors = calculateHalfDivisionErrors(solution.aValues, solution.bValues);
+            return solution;
+        }
+
     }
 }
 
@@ -932,9 +1084,8 @@ try {
     module.exports.createNode = createNode;
     module.exports.getDerivative = getDerivative;
     module.exports.getEquationFromTree = getEquationFromTree;
+    module.exports.solveEquationByNewton = solveEquationByNewton;
 }
 catch(e) {
 
 }
-
-var equation = 'x+10-(5+4)';

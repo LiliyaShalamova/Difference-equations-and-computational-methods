@@ -169,4 +169,10 @@ describe('derivative', function () {
     it ('should return right n derivative', function () {
         assert(areEqualWithTolerance(equationSolver.getDerivative("x^2", 0, 2), 2));
     });
+    it ('should return right n derivative', function () {
+        assert(areEqualWithTolerance(equationSolver.getDerivative("cos(x)", 0, 2), -1));
+    });
+    it ('should return right n derivative', function () {
+        assert(areEqualWithTolerance(equationSolver.getDerivative("1/x", 2, 2), 0.25));
+    });
 });
