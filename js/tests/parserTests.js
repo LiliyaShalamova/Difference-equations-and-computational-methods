@@ -32,22 +32,47 @@ describe('tokens', function() {
         var tokens = equationSolver.parseEquation(equation);
         assert.deepEqual(['0', '-', 'sqrt', '(', 'cos', '(', 'x', '^', 'e', ')', '^', '2', ')', '+', '1.9'], tokens);
     });
+    it('should return right answer', function() {
+        var equation = "0/100 - 2*cos(x^2)";
+        var tokens = equationSolver.parseEquation(equation);
+        assert.deepEqual(['0', '/', '100', '-', '2', '*', 'cos', '(', 'x', '^', '2', ')'], tokens);
+    });
+    it('should return right answer', function() {
+        var equation = "100-2003+314-124";
+        var tokens = equationSolver.parseEquation(equation);
+        assert.deepEqual(['100', '-', '2003', '+', '314', '-', '124'], tokens);
+    });
 });
 
 describe('tree to string', function() {
     it('should return right answer', function () {
         var equation = "x-(5+4)";
-        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)));
-        assert.equal(equation, value);
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)), false);
+        assert.equal('x-9', value);
     });
     it('should return right answer', function () {
         var equation = "(x+10)^(cos(x)+10)";
-        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)));
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)), false);
         assert.equal(equation, value);
     });
     it('should return right answer', function () {
         var equation = "(x+10)/(cos(x/4)+10)";
-        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)));
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)), false);
+        assert.equal(equation, value);
+    });
+    it('should return right answer', function () {
+        var equation = "x+10^2";
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)), false);
+        assert.equal("x+100", value);
+    });
+    it('should return right answer', function () {
+        var equation = "x+x^2";
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)), false);
+        assert.equal("x+x^2", value);
+    });
+    it('should return right answer', function () {
+        var equation = "(-100)^x";
+        var value = equationSolver.getEquationFromTree(equationSolver.createNode(equationSolver.parseEquation(equation)), false);
         assert.equal(equation, value);
     });
 });

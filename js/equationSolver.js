@@ -1,6 +1,11 @@
 var methodsIds = {
     halfDivison: 1,
-    newton: 2
+    newton: 2,
+    modifiedNewton: 3,
+    chords: 4,
+    movingChords: 5,
+    secant: 6,
+    simpleIteration: 7
 };
 
 var types = {
@@ -63,7 +68,7 @@ function NotConstNode(value, calc) {
 
 function ConstNode(value) {
     var node = new Node();
-    node.value = value;
+    node.value = value.toString();
     node.calc = function (x) {return parseFloat(value);};
     return node;
 }
@@ -528,8 +533,20 @@ var operands = {
 
 var brackets = ["(", ")"];
 
-function isDigitOrComma(char) {
-    return char >= '0' && char <= '9' || char === '.';
+function isDigitOrCommaOrMinus(char) {
+    return char >= '0' && char <= '9' || char === '.' || char === '-';
+}
+
+function isNumberValue(str) {
+    if (str === '-')
+        return false;
+
+    for (var i = 0; i < str.length; i++) {
+        if (!isDigitOrCommaOrMinus(str[i]))
+            return false;
+    }
+
+    return true;
 }
 
 function isCorrectBracketsSequence(sequence) {
@@ -559,7 +576,7 @@ function parseEquation(equation) {
         token += equation[i];
         if (token === "$")
             break;
-        if (isDigitOrComma(equation[i])) {
+        if (isNumberValue(equation[i])) {
             isNumber = true;
             continue;
         }
@@ -630,6 +647,7 @@ function Node(lec, parent, left, right, value, calc){
     this.value = value;
     this.calc = calc;
     this.isConst = true;
+    this.oldValue = "";
 }
 
 function getInflectionPointIndex(tokens) {
@@ -674,7 +692,7 @@ function createNode(tokens, parent) {
 
             return node;
         }
-        if (isDigitOrComma(tokens[0][0])) {
+        if (isNumberValue(tokens[0])) {
             node.calc = function (x) {
                 return parseFloat(tokens[0]);
             };
@@ -730,7 +748,7 @@ function getDerivative(equation, x, n) {
 
 function getDerivativeNode(node){
     var derivative;
-    if (isDigitOrComma(node.value[0]))
+    if (isNumberValue(node.value))
         derivative =  derivatives["number"](node);
     else
         derivative = derivatives[node.value](node);
@@ -769,29 +787,45 @@ function updateParents(leaf) {
 
 function simplifyNode(node) {
     if (node === undefined || node.left === undefined && node.right === undefined) {
-        return;
+        return node;
     }
-    if (isDigitOrComma(node.left.value[0]) && isDigitOrComma(node.right.value[0])) {
+    node.left = simplifyNode(node.left);
+    node.right = simplifyNode(node.right);
+    if (isNumberValue(node.left.value) && isNumberValue(node.right.value)) {
         return new ConstNode(operatorAction[node.value](parseFloat(node.left.value), parseFloat(node.right.value)));
     }
+    if (node.value === '-' && node.left.value === '0') {
+        node.left.value = "";
+    }
+    if (node.value === "/" && node.left.value === '0') {
+        node.value = "0";
+    }
+
+    return node;
 }
 
-function getEquationFromTree(node, onCenter) {
+function getEquationFromTree(node, inLaTeX, onCenter) {
+    inLaTeX = inLaTeX === undefined;
     if (onCenter === undefined)
         onCenter = true;
-    var newNode = cloneNode(node);
-    performNode(newNode);
-    return onCenter
-        ? '\\[' + newNode.value + '\\]'
-        : '\\(' + newNode.value + '\\)';
+    var newNode = simplifyNode(cloneNode(node));
+    performNode(newNode, inLaTeX);
+    if (inLaTeX) {
+        return onCenter
+            ? '\\[' + newNode.value + '\\]'
+            : '\\(' + newNode.value + '\\)';
+    }
+    return newNode.value;
 }
 
-function performNode(node) {
+function performNode(node, inLaTeX) {
+    if (node !== undefined)
+        node.oldValue = node.value;
     if (node === undefined || node.left === undefined && node.right === undefined) {
         return;
     }
-    performNode(node.left);
-    performNode(node.right);
+    performNode(node.left, inLaTeX);
+    performNode(node.right, inLaTeX);
 
     if (node.value === '+') {
         //pass
@@ -805,13 +839,25 @@ function performNode(node) {
         if (isNode(node.right))
             node.right.value = '(' + node.right.value + ')';
     } else if (node.value === '/') {
-        node.value = '\\frac';
-        node.left.value = '{' + node.left.value + '}';
-        node.right.value = '{' + node.right.value + '}';
+        if (inLaTeX) {
+            node.left.value = '{' + node.left.value + '}';
+            node.right.value = '{' + node.right.value + '}';
+            node.value = '\\frac' + node.left.value + node.right.value;
+            return;
+        }
+        if (isNode(node.left))
+            node.left.value = '(' + node.left.value + ')';
+        if (isNode(node.right))
+            node.right.value = '(' + node.right.value + ')';
     } else if (node.value === '^') {
         if (isNode(node.left))
             node.left.value = '(' + node.left.value + ')';
-        node.right.value = '{' + node.right.value + '}';
+        if (inLaTeX) {
+            node.right.value = '{' + node.right.value + '}';
+        } else {
+            if (isNode(node.right))
+                node.right.value = '(' + node.right.value + ')';
+        }
     }
     else {
         node.left.value = '(' + node.left.value + ')';
@@ -822,7 +868,7 @@ function performNode(node) {
 }
 
 function isNode(node) {
-    return node.value === '+' || node.value === '-';
+    return node.oldValue === '-' || node.oldValue === '+' || (isNumberValue(node.oldValue) && node.oldValue[0] === '-');
 }
 
 function existsEquationRootInInterval(node, a, b) {
@@ -838,7 +884,7 @@ function latexNotOnCenter(str) {
 }
 
 function getTitle(node, error, method) {
-    return "Найдем корни уравнения:" + getEquationFromTree(node) + latexOnCenter('\\varepsilon=' + error) +
+    return "Найдем корни уравнения:\\[f(x)=" + getEquationFromTree(node, false) + "\\]" + latexOnCenter('\\varepsilon=' + error) +
         '\nИспользуем для этого ' + latexNotOnCenter('\\textbf{' + method + '}')+ '.';
 }
 
@@ -859,9 +905,9 @@ function Solution() {
             "Чтобы на отрезке существовал корень, должно выполняться условие:" + latexOnCenter('f(a)*f(b)<0') +
             latexOnCenter('f(' + a + ')=' + node.calc(a)) + latexOnCenter('f(' + b + ')=' + node.calc(b));
         if (existsEquationRootInInterval(node, a, b)) {
-            this.answer += latexOnCenter('f(a)*f(b)=' + node.calc(a) + node.calc(b) + '<0') + "Условие выполнено\n";
+            this.answer += latexOnCenter('f(a)*f(b)=' + (node.calc(a) * node.calc(b)) + '<0') + "Условие выполнено\n";
         } else {
-            this.answer += latexOnCenter('f(a)*f(b)=' + node.calc(a) + node.calc(b) + '>0') +
+            this.answer += latexOnCenter('f(a)*f(b)=' + (node.calc(a) * node.calc(b)) + '>0') +
                 "Условие не выполнено, значит корня на отрезке нет.";
             this.isCorrect = false;
         }
@@ -908,14 +954,16 @@ function Solution() {
         for (var i = 0; i < this.bValues.length; i++)
             this.bValues[i] = parseFloat(this.bValues[i].toFixed(this.digitsCount + 1));
         for (var i = 0; i < this.errors.length; i++) {
-            if (i === 0 && this.methodId === methodsIds.newton)
+            if (i === 0 && (this.methodId === methodsIds.newton || this.methodId === methodsIds.modifiedNewton))
+                continue;
+            if (this.methodId === methodsIds.chords && i < 2)
                 continue;
             this.errors[i] = parseFloat(this.errors[i].toFixed(this.digitsCount + 1));
         }
     }
 }
 
-function solveEquationByNewton(equation, a, b, e){
+function solveEquationByNewtonMethod(equation, a, b, e){
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
     var derivative = getDerivativeNode(top);
@@ -929,7 +977,7 @@ function solveEquationByNewton(equation, a, b, e){
         return solution;
     solution = solution
         .withStartPoint(top, secondDerivative, a, b)
-        .withLine("формула для метода Ньютона:" + latexOnCenter("x_{n+1}=x_n-\\frac{f(x_n)}{f'(x_n)}"));
+        .withLine("Формула для метода Ньютона:" + latexOnCenter("x_{n+1}=x_n-\\frac{f(x_n)}{f'(x_n)}"));
     var x = solution.startPoint;
     solution.approx.push(x);
     while(true) {
@@ -946,6 +994,15 @@ function solveEquationByNewton(equation, a, b, e){
 function calculateNewtonErrors(approx) {
     var errors = ['-'];
     for (var i = 1; i < approx.length; i++) {
+        errors.push(Math.abs(approx[i] - approx[i-1]));
+    }
+
+    return errors;
+}
+
+function calculateChordsErrors(approx) {
+    var errors = ['-', '-'];
+    for (var i = 2; i < approx.length; i++) {
         errors.push(Math.abs(approx[i] - approx[i-1]));
     }
 
@@ -987,7 +1044,71 @@ function solveEquationByHalfDivisionMethod(equation, a, b, e) {
             solution.errors = calculateHalfDivisionErrors(solution.aValues, solution.bValues);
             return solution;
         }
+    }
+}
 
+function solveEquationByModifiedNewtonMethod(equation, a, b, e) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var derivative = getDerivativeNode(top);
+    var secondDerivative = getDerivativeNode(derivative);
+    var solution = new Solution()
+        .withTitle(top, e, 'Модифицированный метод Ньютона')
+        .withId(methodsIds.modifiedNewton)
+        .withError(e)
+        .withIntervalCheck(top, a, b);
+    if (!solution.isCorrect)
+        return solution;
+    solution = solution
+        .withStartPoint(top, secondDerivative, a, b)
+        .withLine("Формула для модифицированного метода Ньютона:" + latexOnCenter("x_{n+1}=x_n-\\frac{f(x_n)}{f'(x_0)}"));
+    var x = solution.startPoint;
+    solution.approx.push(x);
+    var calculatedDerivative = derivative.calc(x);
+    while(true) {
+        var newX = x - top.calc(x)/calculatedDerivative;
+        solution.approx.push(newX);
+        if (Math.abs(newX - x) < e) {
+            solution.errors = calculateNewtonErrors(solution.approx);
+            return solution;
+        }
+        x = newX;
+    }
+}
+
+function solveEquationByChordsMethod(equation, a, b, e) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var derivative = getDerivativeNode(top);
+    var secondDerivative = getDerivativeNode(derivative);
+    var solution = new Solution()
+        .withTitle(top, e, 'Метод хорд')
+        .withId(methodsIds.chords)
+        .withError(e)
+        .withIntervalCheck(top, a, b);
+    if (!solution.isCorrect)
+        return solution;
+    solution.withStartPoint(top, secondDerivative, a, b);
+    var nextX;
+    if (solution.startPoint === a) {
+        solution.withLine("Тогда \\(x_1=b\\).\n");
+        nextX = b;
+    } else {
+        solution.withLine("Тогда \\(x_1=a\\).\n");
+        nextX = a;
+    }
+    solution.withLine("Формула для метода хорд:" + latexOnCenter("x_{n+1}=x_n-\\frac{f(x_n)(x_n-x_0)}{f(x_n)-f(x_0)}"));
+    var x = solution.startPoint;
+    solution.approx.push(x);
+    solution.approx.push(nextX);
+    while(true) {
+        var newX = nextX - (top.calc(nextX)*(nextX - x))/(top.calc(nextX) - top.calc(x));
+        solution.approx.push(newX);
+        if (Math.abs(newX - nextX) < e) {
+            solution.errors = calculateChordsErrors(solution.approx);
+            return solution;
+        }
+        nextX = newX;
     }
 }
 
@@ -1051,7 +1172,9 @@ function solveIntegralByGregory(equation, a, b, h) {
     var sum = 0;
     for (var i = 1; i < n; i++)
         sum += top.calc(a + i * h);
-    return h / 2 * (top.calc(a) + top.calc(b)) + h * sum + h / 24 * (-3 * top.calc(a) + 4 * top.calc(a + h) - top.calc(a + 2*h) - top.calc(b - 2*h) +4*top.calc(b - h) - 3*top.calc(b));
+    return h / 2 * (top.calc(a) + top.calc(b)) + h * sum + h / 24 * 
+        (-3 * top.calc(a) + 4 * top.calc(a + h) - top.calc(a + 2*h) - 
+            top.calc(b - 2*h) +4*top.calc(b - h) - 3*top.calc(b));
 }
 
 function solveIntegralByEuler(equation, a, b, h) {
@@ -1084,8 +1207,9 @@ try {
     module.exports.createNode = createNode;
     module.exports.getDerivative = getDerivative;
     module.exports.getEquationFromTree = getEquationFromTree;
-    module.exports.solveEquationByNewton = solveEquationByNewton;
 }
 catch(e) {
 
 }
+
+//solveEquationByChordsMethod("100-2003+314-124", 0, 1.4, 0.000005);
