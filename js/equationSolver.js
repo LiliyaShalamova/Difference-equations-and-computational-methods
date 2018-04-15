@@ -4,8 +4,7 @@ var methodsIds = {
     modifiedNewton: 3,
     chords: 4,
     movingChords: 5,
-    secant: 6,
-    simpleIteration: 7
+    simpleIteration: 6
 };
 
 var types = {
@@ -66,8 +65,9 @@ function NotConstNode(value, calc) {
     return node;
 }
 
-function ConstNode(value) {
+function ConstNode(value, parent) {
     var node = new Node();
+    node.parent = parent;
     node.value = value.toString();
     node.calc = function (x) {return parseFloat(value);};
     return node;
@@ -648,6 +648,7 @@ function Node(lec, parent, left, right, value, calc){
     this.calc = calc;
     this.isConst = true;
     this.oldValue = "";
+    this.id = Math.random() * 1000;
 }
 
 function getInflectionPointIndex(tokens) {
@@ -722,7 +723,7 @@ function cloneNode(node) {
     var left = cloneNode(node.left);
     var right = cloneNode(node.right);
     var isConst = node.isConst;
-    var n = new Node(lec, undefined, left, right, value, calc);
+    var n = new Node(lec, node.parent, left, right, value, calc);
     n.isConst = isConst;
     return n;
 }
@@ -784,23 +785,90 @@ function updateParents(leaf) {
     }
 }
 
+function simplifyMultiple(node, root) {
+    if (node.value !== '*')
+        return;
+    if (isNumberValue(node.left.value)) {
+        if (isNumberValue(root.left.value)) {
+            root.left.value = (parseFloat(root.left.value) * parseFloat(node.left.value)).toString();
+        } else if (isNumberValue(root.right.value)) {
+            root.right.value = (parseFloat(root.right.value) * parseFloat(node.left.value)).toString();
+        }
+        if (node.parent.left === node)
+            node.parent.left = node.right;
+        else
+            node.parent.right = node.right;
+        simplifyMultiple(node.right, root);
+    } else if (isNumberValue(node.right.value)) {
+        if (isNumberValue(root.left.value)) {
+            root.left.value = (parseFloat(root.left.value) * parseFloat(node.right.value)).toString();
+        } else if (isNumberValue(root.right.value)) {
+            root.right.value = (parseFloat(root.right.value) * parseFloat(node.right.value)).toString();
+        }
+        if (node.parent.left === node)
+            node.parent.left = node.left;
+        else
+            node.parent.right = node.left;
+        simplifyMultiple(node.left, root);
+    }
+}
 
 function simplifyNode(node) {
     if (node === undefined || node.left === undefined && node.right === undefined) {
         return node;
     }
+    if (node.value === "*") {
+        if (isNumberValue(node.right.value) && !isNumberValue(node.left.value)) {
+            var tmp = node.right;
+            node.right = node.left;
+            node.left = tmp;
+        }
+        if (isNumberValue(node.left.value)) {
+            simplifyMultiple(node.right, node);
+        }
+    }
     node.left = simplifyNode(node.left);
+    node.left.parent = node;
     node.right = simplifyNode(node.right);
-    if (isNumberValue(node.left.value) && isNumberValue(node.right.value)) {
+    if (node.right !== undefined)
+        node.right.parent = node;
+    if (isNumberValue(node.left.value) && node.right !== undefined && isNumberValue(node.right.value)) {
         return new ConstNode(operatorAction[node.value](parseFloat(node.left.value), parseFloat(node.right.value)));
     }
-    if (node.value === '-' && node.left.value === '0') {
-        node.left.value = "";
+    if (node.value === '-') {
+        if (node.left.value === '0')
+            node.left.value = "";
+        if (node.right.value === '0')
+            return node.left;
+    }
+    if (node.value === '+') {
+        if (node.left.value === '0')
+            return node.right;
+        if (node.right.value === '0')
+            return node.left;
     }
     if (node.value === "/" && node.left.value === '0') {
-        node.value = "0";
+        return new ConstNode(0);
     }
-
+    if (node.value === "*" && (node.left.value === '0' || node.right.value === '0')) {
+        return new ConstNode(0);
+    }
+    if (node.value === '*') {
+        if (node.left.value === '1')
+            return node.right;
+        if (node.right.value === '1')
+            return node.left;
+    }
+    if (node.value === '^') {
+        if (node.left.value === '1')
+            return new ConstNode(1);
+        if (node.right.value === '1')
+            return node.left;
+        if (node.left.value === '0')
+            return node.left;
+        if (node.right.value === '0')
+            return new ConstNode(1);
+    }
     return node;
 }
 
@@ -808,7 +876,9 @@ function getEquationFromTree(node, inLaTeX, onCenter) {
     inLaTeX = inLaTeX === undefined;
     if (onCenter === undefined)
         onCenter = true;
-    var newNode = simplifyNode(cloneNode(node));
+    var cloned = cloneNode(node);
+    updateParents(cloned);
+    var newNode = simplifyNode(cloned);
     performNode(newNode, inLaTeX);
     if (inLaTeX) {
         return onCenter
@@ -865,6 +935,17 @@ function performNode(node, inLaTeX) {
         return;
     }
     node.value = node.left.value + node.value + node.right.value;
+}
+
+function updateParents(node) {
+    if (node.right !== undefined) {
+        node.right.parent = node;
+        updateParents(node.right);
+    }
+    if (node.left !== undefined) {
+        node.left.parent = node;
+        updateParents(node.left);
+    }
 }
 
 function isNode(node) {
@@ -956,7 +1037,7 @@ function Solution() {
         for (var i = 0; i < this.errors.length; i++) {
             if (i === 0 && (this.methodId === methodsIds.newton || this.methodId === methodsIds.modifiedNewton))
                 continue;
-            if (this.methodId === methodsIds.chords && i < 2)
+            if ((this.methodId === methodsIds.chords || this.methodId === methodsIds.movingChords) && i < 2)
                 continue;
             this.errors[i] = parseFloat(this.errors[i].toFixed(this.digitsCount + 1));
         }
@@ -1112,6 +1193,60 @@ function solveEquationByChordsMethod(equation, a, b, e) {
     }
 }
 
+function solveEquationByMovingChordsMethod(equation, a, b, e) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var derivative = getDerivativeNode(top);
+    var secondDerivative = getDerivativeNode(derivative);
+    var solution = new Solution()
+        .withTitle(top, e, 'Метод подвижных хорд')
+        .withId(methodsIds.movingChords)
+        .withError(e)
+        .withIntervalCheck(top, a, b);
+    if (!solution.isCorrect)
+        return solution;
+    solution.withStartPoint(top, secondDerivative, a, b);
+    var nextX;
+    if (solution.startPoint === a) {
+        solution.withLine("Тогда \\(x_1=b\\).\n");
+        nextX = b;
+    } else {
+        solution.withLine("Тогда \\(x_1=a\\).\n");
+        nextX = a;
+    }
+    solution.withLine("Формула для метода подвижных хорд:" +
+        latexOnCenter("x_{n+1}=x_n-\\frac{f(x_n)(x_n-x_{n-1})}{f(x_n)-f(x_{n-1})}"));
+    var x = solution.startPoint;
+    solution.approx.push(x);
+    solution.approx.push(nextX);
+    while(true) {
+        var newX = nextX - (top.calc(nextX)*(nextX - x))/(top.calc(nextX) - top.calc(x));
+        solution.approx.push(newX);
+        if (Math.abs(newX - nextX) < e) {
+            solution.errors = calculateChordsErrors(solution.approx);
+            return solution;
+        }
+        x = nextX;
+        nextX = newX;
+    }
+}
+
+function solveEquationBySimpleIterationMethod(equation, a, b, e) {
+    var tokens = parseEquation(equation);
+    var top = createNode(tokens);
+    var derivative = getDerivativeNode(top);
+    var secondDerivative = getDerivativeNode(derivative);
+    var solution = new Solution()
+        .withTitle(top, e, 'Метод простой итерации')
+        .withId(methodsIds.simpleIteration)
+        .withLine("Заменим уравнение \\(f(x)=0\\) эквивалентным ему уравнением \\[x=x-\\lambda f(x).\\]" +
+        "Тогда \\[\\varphi(x)=x-\\lambda f(x).\\] Найдем \\(f'(x)\\). \\[f'(x)=" +
+            getEquationFromTree(derivative, false) + "\\]");
+
+    solution.isCorrect = false;
+    return solution;
+}
+
 function solveIntegralByTrapezoidFormula(equation, a, b, h) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
@@ -1212,4 +1347,4 @@ catch(e) {
 
 }
 
-//solveEquationByChordsMethod("100-2003+314-124", 0, 1.4, 0.000005);
+solveEquationBySimpleIterationMethod("x - 2*cos(x^2)", 0, 1.4, 0.000005);
