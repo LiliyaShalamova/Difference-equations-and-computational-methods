@@ -25,6 +25,7 @@ function generateApproxTable(solution) {
         case methodsIds.modifiedNewton:
         case methodsIds.chords:
         case methodsIds.movingChords:
+        case methodsIds.simpleIteration:
             table += "<tr><td>\\(\\textbf{№}\\)</td><td>\\(x\\)</td><td>\\(|x_{i+1}-x_i|\\)</td></tr>";
             for (var i = 0; i < solution.approx.length; i++) {
                 table += "<tr><td>" + i + "</td><td>" + solution.approx[i] + "</td><td>" + solution.errors[i] + "</td><tr>";

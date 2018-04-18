@@ -124,6 +124,33 @@ var derivatives = {
         n.left.right = cloneNode(node.left);
         return n;
     },
+    "lg": function (node) {
+        var n = new Node();
+        n.value = "*";
+        n.calc = function (x) {
+            return operatorAction["*"](n.left.calc(x), n.right.calc(x));
+        };
+        n.right = getDerivativeNode(cloneNode(node.left));
+        n.left = new Node();
+        n.left.value = '/';
+        n.left.calc = function (x) {
+            return operatorAction['/'](n.left.left.calc(x), n.left.right.calc(x));
+        };
+        n.left.left = new ConstNode("1");
+        n.left.right = new Node();
+        n.left.right.value = '*';
+        n.left.right.calc = function(x) {
+            return operatorAction['*'](n.left.right.left.calc(x), n.left.right.right.calc(x));
+        };
+        n.left.right.left = cloneNode(node.left);
+        n.left.right.right = new Node();
+        n.left.right.right.value = "ln";
+        n.left.right.right.left = new ConstNode("10");
+        n.left.right.right.calc = function (x) {
+            return functions['ln'](n.left.right.right.left.calc(x));
+        };
+        return n;
+    },
     "+": function (node) {
         var n = new Node();
         n.value = "+";
@@ -863,6 +890,9 @@ function simplifyNode(node) {
     if (node.value === "*" && (node.left.value === '0' || node.right.value === '0')) {
         return new ConstNode(0);
     }
+    if (node.value === '/' && node.right.value === '1') {
+        return node.left;
+    }
     if (node.value === '*') {
         if (node.left.value === '1')
             return node.right;
@@ -889,6 +919,9 @@ function getEquationFromTree(node, inLaTeX, onCenter) {
     var cloned = cloneNode(node);
     normalizeTree(cloned);
     var newNode = simplifyNode(cloned);
+    if (newNode.value === '*' && isNumberValue(newNode.left.value)) {
+        simplifyMultiple(newNode.right, newNode);
+    }
     performNode(newNode, inLaTeX);
     if (inLaTeX) {
         return onCenter
@@ -964,7 +997,9 @@ function latexNotOnCenter(str) {
 }
 
 function getTitle(node, error, method) {
-    return "Найдем корни уравнения:\\[f(x)=" + getEquationFromTree(node, false) + "\\]" + latexOnCenter('\\varepsilon=' + error) +
+    var equationOnCenter = getEquationFromTree(node);
+
+    return "Найдем корни уравнения:\\[f(x)=" + equationOnCenter.substr(2) + latexOnCenter('\\varepsilon=' + error) +
         '\nИспользуем для этого ' + latexNotOnCenter('\\textbf{' + method + '}')+ '.';
 }
 
@@ -1034,9 +1069,7 @@ function Solution() {
         for (var i = 0; i < this.bValues.length; i++)
             this.bValues[i] = parseFloat(this.bValues[i].toFixed(this.digitsCount + 1));
         for (var i = 0; i < this.errors.length; i++) {
-            if (i === 0 && (this.methodId === methodsIds.newton || this.methodId === methodsIds.modifiedNewton))
-                continue;
-            if ((this.methodId === methodsIds.chords || this.methodId === methodsIds.movingChords) && i < 2)
+            if (this.errors[i] === '-')
                 continue;
             this.errors[i] = parseFloat(this.errors[i].toFixed(this.digitsCount + 1));
         }
@@ -1234,16 +1267,42 @@ function solveEquationBySimpleIterationMethod(equation, a, b, e) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
     var derivative = getDerivativeNode(top);
-    var secondDerivative = getDerivativeNode(derivative);
     var solution = new Solution()
         .withTitle(top, e, 'Метод простой итерации')
         .withId(methodsIds.simpleIteration)
+        .withIntervalCheck(top, a, b)
         .withLine("Заменим уравнение \\(f(x)=0\\) эквивалентным ему уравнением \\[x=x-\\lambda f(x).\\]" +
         "Тогда \\[\\varphi(x)=x-\\lambda f(x).\\] Найдем \\(f'(x)\\). \\[f'(x)=" +
-            getEquationFromTree(derivative, false) + "\\]");
-
-    solution.isCorrect = false;
-    return solution;
+            getEquationFromTree(derivative).substr(2));
+    var derivativeAValue = derivative.calc(a);
+    var derivativeBValue = derivative.calc(b);
+    var max = Math.max(derivativeAValue, derivativeBValue);
+    var min = Math.min(derivativeAValue, derivativeBValue);
+    var lambda = 1 / max;
+    var q = 1 - min / max;
+    var error = (1 - q) / q * e;
+    solution
+        .withError(error)
+        .withLine("\\(\\lambda=\\frac{1}{M}\\)\n")
+        .withLine("\\(q = 1 - \\frac{m}{M}\\)\n")
+        .withLine("\\(M = max_{[a,b]}f(x)\\), \\(m = min_{[a,b]}f(x)\\)\n")
+        .withLine("\\(f'(a)= " + derivativeAValue + ", f'(b) = " + derivativeBValue + "\\)\n")
+        .withLine("\\(M=" + max + "\\), \\(m = " + min + "\\)")
+        .withLine("\\[\\lambda = \\frac{1}{M} = " + lambda + "\\]")
+        .withLine("\\[q = 1 - \\frac{m}{M} = " + q + "\\]")
+        .withLine("Условие остановки: \\[|x_{i+1}-x_i| < \\frac{1-q}{q}\\varepsilon\\]")
+        .withLine("Формула метода простой итерации: \\[x_{n+1}=x_n - \\lambda f(x_n)\\]");
+    var x = a;
+    solution.approx.push(x);
+    while (true) {
+        var newX = x - lambda * top.calc(x);
+        solution.approx.push(newX);
+        if (Math.abs(newX - x) < error) {
+            solution.errors = calculateNewtonErrors(solution.approx);
+            return solution;
+        }
+        x = newX;
+    }
 }
 
 function solveIntegralByTrapezoidFormula(equation, a, b, h) {
@@ -1345,8 +1404,3 @@ try {
 catch(e) {
 
 }
-
-var tokens = parseEquation("x - 2*cos(x^2)");
-var node = createNode(tokens);
-var der = getDerivativeNode(node);
-simplifyNode(der)
