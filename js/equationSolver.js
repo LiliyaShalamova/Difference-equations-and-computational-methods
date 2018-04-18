@@ -775,8 +775,7 @@ function normalizeTree(node) {
 }
 
 function updateParents(leaf) {
-    if (leaf.value === "x")
-    {
+    if (leaf.value === "x") {
         leaf.isConst = false;
         while(leaf.parent !== undefined){
             leaf.parent.isConst = false;
@@ -794,10 +793,14 @@ function simplifyMultiple(node, root) {
         } else if (isNumberValue(root.right.value)) {
             root.right.value = (parseFloat(root.right.value) * parseFloat(node.left.value)).toString();
         }
-        if (node.parent.left === node)
+        if (node.parent.left === node) {
             node.parent.left = node.right;
-        else
+            node.right.parent = node.parent;
+        }
+        else {
             node.parent.right = node.right;
+            node.right.parent = node.parent;
+        }
         simplifyMultiple(node.right, root);
     } else if (isNumberValue(node.right.value)) {
         if (isNumberValue(root.left.value)) {
@@ -805,11 +808,18 @@ function simplifyMultiple(node, root) {
         } else if (isNumberValue(root.right.value)) {
             root.right.value = (parseFloat(root.right.value) * parseFloat(node.right.value)).toString();
         }
-        if (node.parent.left === node)
+        if (node.parent.left === node) {
             node.parent.left = node.left;
-        else
+            node.left.parent = node.parent;
+        }
+        else {
             node.parent.right = node.left;
+            node.left.parent = node.parent;
+        }
         simplifyMultiple(node.left, root);
+    } else {
+        simplifyMultiple(node.left, root);
+        simplifyMultiple(node.right, root);
     }
 }
 
@@ -877,7 +887,7 @@ function getEquationFromTree(node, inLaTeX, onCenter) {
     if (onCenter === undefined)
         onCenter = true;
     var cloned = cloneNode(node);
-    updateParents(cloned);
+    normalizeTree(cloned);
     var newNode = simplifyNode(cloned);
     performNode(newNode, inLaTeX);
     if (inLaTeX) {
@@ -935,17 +945,6 @@ function performNode(node, inLaTeX) {
         return;
     }
     node.value = node.left.value + node.value + node.right.value;
-}
-
-function updateParents(node) {
-    if (node.right !== undefined) {
-        node.right.parent = node;
-        updateParents(node.right);
-    }
-    if (node.left !== undefined) {
-        node.left.parent = node;
-        updateParents(node.left);
-    }
 }
 
 function isNode(node) {
@@ -1347,4 +1346,7 @@ catch(e) {
 
 }
 
-solveEquationBySimpleIterationMethod("x - 2*cos(x^2)", 0, 1.4, 0.000005);
+var tokens = parseEquation("x - 2*cos(x^2)");
+var node = createNode(tokens);
+var der = getDerivativeNode(node);
+simplifyNode(der)
