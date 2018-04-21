@@ -1305,6 +1305,24 @@ function solveEquationBySimpleIterationMethod(equation, a, b, e) {
     }
 }
 
+function IntegralSolution() {
+    this.answer = "";
+    this.withTitle = function(node, a, b, h, method) {
+        var equation = getEquationFromTree(node, true, false);
+        if (node.value === '-' || node.value === '+')
+            equation = '(' + equation + ')';
+        this.answer += "\\[\\int_{a}^{b}f(x)dx = \\int_{" + a + "}^{" + b + '}' +
+            equation + 'dx\\]';
+        this.answer += "Для подсчета интеграла используем метод \\(\\textbf{" + method + '}\\).\n' +
+            '\\(h=' + h + '\\)\n';
+        return this;
+    };
+    this.withLine = function (line) {
+        this.answer += line;
+        return this;
+    }
+}
+
 function solveIntegralByTrapezoidFormula(equation, a, b, h) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
@@ -1318,11 +1336,15 @@ function solveIntegralByTrapezoidFormula(equation, a, b, h) {
 function solveIntegralByLeftRectangles(equation, a, b, h) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
-    var n = (b - a) / h;
+    var m = (b - a) / h;
     var sum = 0;
-    for (var i = 0; i < n; i++)
+    for (var i = 0; i < m; i++)
         sum += top.calc(a + i * h);
-    return h * sum;
+    var res = h * sum;
+    return new IntegralSolution()
+        .withTitle(top, a, b, h, "Метод левых прямоугольников")
+        .withLine("Формула: \\[I[f]\\approx h\\sum_{i=0}^{m-1}f(x_i)\\]\\[m=\\frac{b-a}{h}=" + m + "\\]")
+        .withLine("\\[I[f]\\approx" + res + "\\]");
 }
 
 function solveIntegralByRightRectangles(equation, a, b, h) {

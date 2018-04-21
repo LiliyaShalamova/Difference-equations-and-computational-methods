@@ -96,7 +96,7 @@
     
     //
     //  Make MML elements looks like DOM elements (add the
-    //  methods that AsciiMath needs)
+    //  nonLinearEquationMethods that AsciiMath needs)
     //
     MML.mbase.Augment({
       firstChild: null,

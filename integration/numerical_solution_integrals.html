@@ -14,6 +14,7 @@
         </script>
     <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/equationSolver.js"></script>
+    <script type="text/javascript" src="../js/solvingShower.js"></script>
 </head>
 <body>
 <div id="content_container" class="global_container">
@@ -59,10 +60,10 @@
         </div>
         <div id="content_col">
             <div class="entry_title">Численное решение интегралов с помощью составных формул</div>
-            <form id="equation_solver">
-                <p><label>Интеграл \(\int\) <input type="text" id="equation"> \(dx\)</label></p>
-                <p><label>Границы интегрирования от <input type="text" id="a"> до <input type="text" id="b"></label></p>
-                <p><label>Шаг: <input type="text" id="error"></label></p>
+            <form id="equation_solver" target="frame">
+                <p><label>Интеграл \(\int\) <input type="text" id="equation" value="ln(1+cos(x))"> \(dx\)</label></p>
+                <p><label>Границы интегрирования от <input type="text" id="a" value="2"> до <input type="text" id="b" value="3"></label></p>
+                <p><label>Шаг: <input type="text" value="0.025" id="error"></label></p>
                 <p>
                     <label>Выберите формулу:
                         <select id="method">
@@ -80,51 +81,23 @@
                 </p>
                 <p><input type="submit" value="Решить"></p>
             </form>
+            <div id="solving"></div>
         </div>
     </div>
     <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
 </div>
 <div id="subfooter" class="global_container">Powered by MathJax</div>
 <script>
-    $( "#equation_solver" ).submit(function( event ) {
-        var res = 0;
+    $( "#equation_solver" ).submit(function() {
+        $('#solving').html('');
         var method = $("#method").val();
         var equation = $("#equation").val();
         var a = parseFloat($("#a").val());
         var b = parseFloat($("#b").val());
         var h = solveEquation($("#error").val());
-        if (method === "4") {
-            res = solveIntegralByTrapezoidFormula(equation, a, b, h);
-        }
-        if (method === "1") {
-            res = solveIntegralByLeftRectangles(equation, a, b, h);
-        }
-        if (method === "2") {
-            res = solveIntegralByRightRectangles(equation, a, b, h);
-        }
-        if (method === "3") {
-            res = solveIntegralByMiddleRectangles(equation, a, b, h);
-        }
-        if (method === "5") {
-            res = solveIntegralBySimpson(equation, a, b, h);
-        }
-        if (method === "5") {
-            res = solveIntegralBySimpson(equation, a, b, h);
-        }
-        if (method === "6") {
-            res = solveIntegralByGregory(equation, a, b, h);
-        }
-        if (method === "7") {
-            res = (equation, a, b, h);
-        }
-        if (method === "8") {
-            res = solveIntegralByEuler(equation, a, b, h);
-        }
-        if (method === "9") {
-            res = solveIntegralBy38(equation, a, b, h);
-        }
-        alert(res);
+        generateIntegralSolution(method, equation, a, b, h);
     });
 </script>
+<iframe name="frame"></iframe>
 </body>
 </html>

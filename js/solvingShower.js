@@ -1,4 +1,4 @@
-var methods = {
+var nonLinearEquationMethods = {
     1: solveEquationByHalfDivisionMethod,
     2: solveEquationByNewtonMethod,
     3: solveEquationByModifiedNewtonMethod,
@@ -7,8 +7,19 @@ var methods = {
     6: solveEquationBySimpleIterationMethod
 };
 
+var integralMethods = {
+    1: solveIntegralByLeftRectangles,
+    2: solveIntegralByRightRectangles,
+    3: solveIntegralByMiddleRectangles,
+    4: solveIntegralByTrapezoidFormula,
+    5: solveIntegralBySimpson,
+    6: solveIntegralByGregory,
+    8: solveIntegralByEuler,
+    9: solveIntegralBy38
+};
+
 function generateSolution(method, equation, a, b, e) {
-    var solution = methods[parseInt(method)](equation, a, b, e);
+    var solution = nonLinearEquationMethods[parseInt(method)](equation, a, b, e);
     $("#solving").append('<div id="answer" class="white-space-pre"><p>' + solution.answer + '</p></div>');
     if (solution.isCorrect) {
         solution.round();
@@ -42,4 +53,10 @@ function generateApproxTable(solution) {
     }
 
     return table + '</table>';
+}
+
+function generateIntegralSolution(method, equation, a, b, h) {
+    var solution = integralMethods[parseInt(method)](equation, a, b, h);
+    $("#solving").append('<div id="answer" class="white-space-pre"><p>' + solution.answer + '</p></div>');
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub, "solving"]);
 }

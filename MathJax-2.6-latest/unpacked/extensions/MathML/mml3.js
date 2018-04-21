@@ -734,7 +734,7 @@ MathJax.Hub.Register.StartupHook("MathML Jax Ready",function () {
     MATHML.mml3XSLT = new XSLTProcessor();
     MATHML.mml3XSLT.importStylesheet(MATHML.ParseXML(mml3Stylesheet));
   } else if (MathJax.Hub.Browser.isMSIE) {
-    // nonstandard methods for Internet Explorer
+    // nonstandard nonLinearEquationMethods for Internet Explorer
     if (MathJax.Hub.Browser.versionAtLeast("9.0") || (document.documentMode||0) >= 9) {
       // For Internet Explorer >= 9, use createProcessor
       mml3 = new ActiveXObject("Msxml2.FreeThreadedDOMDocument");
