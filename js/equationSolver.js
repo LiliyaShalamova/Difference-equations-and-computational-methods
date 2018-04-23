@@ -1313,7 +1313,7 @@ function IntegralSolution() {
             equation = '(' + equation + ')';
         this.answer += "\\[\\int_{a}^{b}f(x)dx = \\int_{" + a + "}^{" + b + '}' +
             equation + 'dx\\]';
-        this.answer += "Для подсчета интеграла используем метод \\(\\textbf{" + method + '}\\).\n' +
+        this.answer += "Для подсчета интеграла используем \\(\\textbf{" + method + '}\\).\n' +
             '\\(h=' + h + '\\)\n';
         return this;
     };
@@ -1326,11 +1326,15 @@ function IntegralSolution() {
 function solveIntegralByTrapezoidFormula(equation, a, b, h) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
-    var n = (b - a) / h;
+    var m = (b - a) / h;
     var sum = 0;
-    for (var i = 1; i < n; i++)
+    for (var i = 1; i < m; i++)
         sum += top.calc(a + i * h);
-    return h * ((top.calc(a) + top.calc(b)) / 2 + sum);
+    var res =  h * ((top.calc(a) + top.calc(b)) / 2 + sum);
+    return new IntegralSolution()
+        .withTitle(top, a, b, h, "Формулу трапеций")
+        .withLine("Формула: \\[I[f]\\approx h(\\frac{f(a)+f(b)}{2}+\\sum_{i=1}^{m-1}f(x_i))\\]\\[m=\\frac{b-a}{h}=" + m + "\\]")
+        .withLine("\\[I[f]\\approx" + res + "\\]");
 }
 
 function solveIntegralByLeftRectangles(equation, a, b, h) {
@@ -1342,7 +1346,7 @@ function solveIntegralByLeftRectangles(equation, a, b, h) {
         sum += top.calc(a + i * h);
     var res = h * sum;
     return new IntegralSolution()
-        .withTitle(top, a, b, h, "Метод левых прямоугольников")
+        .withTitle(top, a, b, h, "Формулу левых прямоугольников")
         .withLine("Формула: \\[I[f]\\approx h\\sum_{i=0}^{m-1}f(x_i)\\]\\[m=\\frac{b-a}{h}=" + m + "\\]")
         .withLine("\\[I[f]\\approx" + res + "\\]");
 }
@@ -1350,34 +1354,46 @@ function solveIntegralByLeftRectangles(equation, a, b, h) {
 function solveIntegralByRightRectangles(equation, a, b, h) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
-    var n = (b - a) / h;
+    var m = (b - a) / h;
     var sum = 0;
-    for (var i = 1; i <= n; i++)
+    for (var i = 1; i <= m; i++)
         sum += top.calc(a + i * h);
-    return h * sum;
+    var res = h * sum;
+    return new IntegralSolution()
+        .withTitle(top, a, b, h, "Формулу правых прямоугольников")
+        .withLine("Формула: \\[I[f]\\approx h\\sum_{i=1}^{m}f(x_i)\\]\\[m=\\frac{b-a}{h}=" + m + "\\]")
+        .withLine("\\[I[f]\\approx" + res + "\\]");
 }
 
 function solveIntegralByMiddleRectangles(equation, a, b, h) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
-    var n = (b - a) / h;
+    var m = (b - a) / h;
     var sum = 0;
-    for (var i = 0; i <= n; i++)
+    for (var i = 0; i <= m; i++)
         sum += top.calc(a + i * h + h / 2);
-    return h * sum;
+    var res =  h * sum;
+    return new IntegralSolution()
+        .withTitle(top, a, b, h, "Формулу средних прямоугольников")
+        .withLine("Формула: \\[I[f]\\approx h\\sum_{i=0}^{m}f(x_i + \\frac{h}{2})\\]\\[m=\\frac{b-a}{h}=" + m + "\\]")
+        .withLine("\\[I[f]\\approx" + res + "\\]");
 }
 
 function solveIntegralBySimpson(equation, a, b, h) {
     var tokens = parseEquation(equation);
     var top = createNode(tokens);
-    var n = (b - a) / h;
+    var m = (b - a) / h;
     var sum1 = 0;
     var sum2 = 0;
-    for (var i = 1; i < n; i++)
+    for (var i = 1; i < m; i++)
         sum1 += top.calc(a + i * h);
-    for (var i = 0; i < n; i++)
+    for (var i = 0; i < m; i++)
         sum2 += top.calc(a + i * h + h / 2);
-    return h / 6 * (top.calc(a) + top.calc(b) + 2 * sum1 + 4 * sum2);
+    var res =  h / 6 * (top.calc(a) + top.calc(b) + 2 * sum1 + 4 * sum2);
+	return new IntegralSolution()
+        .withTitle(top, a, b, h, "Формулу Симпсона")
+        .withLine("Формула: \\[I[f]\\approx \\frac{h}{6}(f(a) + f(b) + 2\\sum_{i=1}^{m-1}f(x_i) + 4\\sum_{i=0}^{m-1}f(x_i + \\frac{h}{2}))\\]\\[m=\\frac{b-a}{h}=" + m + "\\]")
+        .withLine("\\[I[f]\\approx" + res + "\\]");
 }
 
 function solveIntegralByGregory(equation, a, b, h) {
@@ -1387,9 +1403,11 @@ function solveIntegralByGregory(equation, a, b, h) {
     var sum = 0;
     for (var i = 1; i < n; i++)
         sum += top.calc(a + i * h);
-    return h / 2 * (top.calc(a) + top.calc(b)) + h * sum + h / 24 * 
-        (-3 * top.calc(a) + 4 * top.calc(a + h) - top.calc(a + 2*h) - 
-            top.calc(b - 2*h) +4*top.calc(b - h) - 3*top.calc(b));
+    var res =  h / 2 * (top.calc(a) + top.calc(b)) + h * sum + h / 24 * (-3 * top.calc(a) + 4 * top.calc(a + h) - top.calc(a + 2*h) - top.calc(b - 2*h) +4*top.calc(b - h) - 3*top.calc(b));
+	return new IntegralSolution()
+        .withTitle(top, a, b, h, "Формулу Грегори")
+        .withLine("Формула: \\[I[f]\\approx \\frac{h}{2}(f(x_0) + f(x_n)) + h\\sum_{i=1}^{n-1}f(x_i) + \\frac{h}{24}(-3f(x_0) + 4f(x_1) - f(x_2)-f(x_{n-2}) + 4f(x_{n-1}) - 3f(x_n))\\]\\[n=\\frac{b-a}{h}=" + n + "\\]")
+        .withLine("\\[I[f]\\approx" + res + "\\]");
 }
 
 function solveIntegralByEuler(equation, a, b, h) {
@@ -1400,7 +1418,11 @@ function solveIntegralByEuler(equation, a, b, h) {
     var sum = 0;
     for (var i = 1; i < n; i++)
         sum += top.calc(a + i * h);
-    return h / 2 * (top.calc(a) + top.calc(b)) + h * sum + Math.pow(h,2) / 12 * (derivative.calc(a) - derivative.calc(b));
+    var res = h / 2 * (top.calc(a) + top.calc(b)) + h * sum + Math.pow(h,2) / 12 * (derivative.calc(a) - derivative.calc(b));
+	return new IntegralSolution()
+        .withTitle(top, a, b, h, "Формулу Эйлера")
+        .withLine("Формула: \\[I[f]\\approx \\frac{h}{2}(f(x_0) + f(x_n)) + h\\sum_{i=1}^{n-1}f(x_i) + \\frac{h^2}{12}(f'(x_0) - f'(x_n))\\]\\[n=\\frac{b-a}{h}=" + n + "\\]")
+        .withLine("\\[I[f]\\approx" + res + "\\]");
 }
 
 function solveIntegralBy38(equation, a, b, h) {
@@ -1413,7 +1435,11 @@ function solveIntegralBy38(equation, a, b, h) {
         sum1 += top.calc(a + i * h);
     for (var i = 3; i <= n - 3; i+=3)
         sum2 += top.calc(a + i * h);
-    return 3 * h / 8 * (top.calc(a) + 3 * sum1 + 2 * sum2 + top.calc(b));
+    var res = 3 * h / 8 * (top.calc(a) + 3 * sum1 + 2 * sum2 + top.calc(b));
+	return new IntegralSolution()
+        .withTitle(top, a, b, h, "Формулу '3/8'")
+        .withLine("Формула: \\[I[f]\\approx \\frac{3h}{8}[f(x_0) + 3\\sum_{i=1}^{n-1}f(x_i) + 2\\sum_{i=3}^{n-3}f(x_i) + f(x_n)]\\]\\[n=\\frac{b-a}{h}=" + n + "\\]")
+        .withLine("\\[I[f]\\approx" + res + "\\]");
 }
 
 try {
