@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>Примеры</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+    <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                 displayAlign: "center",
+                 "HTML-CSS": { linebreaks: { automatic: true, width: "95% container" } },
+                        SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
+            });
+        </script>
+</head>
+<body>
+<div id="content_container" class="global_container">
+    <div id="header">
+        <div class="title">Дифференциальные уравнения</div>
+        <div class="descr">Высшая математика</div>
+    </div>
+    <div class="content">
+        <div id="left_col">
+            <ul class="lcol_menu">
+                <li class="homepage"><a href="../index.html">Главная страница</a></li>
+                <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
+                <li><a href="def.html">Основные определения</a></li>
+                <li><a href="examples1.html">Примеры</a></li>
+                <li><a href="linear.html">Линейные разностные уравнения</a></li>
+                <li><a href="theorem.html">Теоремы</a></li>
+                <li><a class="item-selected" href="examples2.html">Примеры</a></li>
+                <li><a href="stability.html">Устойчивость положения равновесия</a></li>
+                <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
+                <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
+                <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
+                <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
+                <li><a href="../interpolation.html">Интерполяция</a></li>
+                <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
+                <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li class="category"><a href="#">Прочее</a></li>
+                <li><a href="../literature.html">Литература</a></li>
+                <li><a href="../formuls.html">Формулы</a></li>
+
+            </ul>
+        </div>
+        <div id="content_col">
+            <div class="entry_title">Примеры</div>
+            <div class="example">\(\textbf {Пример}\)</div>
+            <p>\[x(t+2) -3x(t+1) + 2x(t) = 0\] Это линейное однородное разностное уравнение 2-го порядка
+                с постоянными коэффициентами.\[\lambda^2 -3\lambda + 2 = 0\] \[\lambda_1 = 1,\;\;\lambda_2 = 2,\;\;\; ФСР:
+                \varphi_1(t) = 1^t \equiv 1,\;\; \varphi_2(t) = 2^t,\]
+                общее решение \(x(t) = C_1 + C_22^t.\)</p>
+            <div class="example">\(\textbf {Пример}\)</div>
+            <p>Геометрическая прогрессия \(x(t+1) - qx(t) = 0\)
+                \[\lambda - q = 0,\;\; \lambda = q,\;\; ФСР: \varphi_1(t) = q^t,\]
+                Общее решение: \(x(t) = Cq^t.\)</p>
+            <p>Начальное условие \(x(1) = a_1,\) тогда \(a_1 = Cq,\;\; C = \frac{a_1}{q}.\)</p>
+            <p>Формула общего члена геометрической прогрессии: \(x(t) = a_1q^{t-1}\).</p>
+            <div class="example">\(\textbf {Пример}\)</div>
+            <p>\[x(t+2) + 2x(t+1) +2x(t) = 0\]
+                \[\lambda^2 + 2\lambda + 2 = 0\]
+                \[\lambda_{1,2} = -1 \pm i,\;\;r = \sqrt{2},\;\;\omega = \frac{3\pi}{4}\]
+                \[ФСР:\;\varphi_1(t) = (\sqrt{2})^t\cos\frac{3\pi}{4}t,\;\;\varphi_2(t) = (\sqrt{2})^t\sin\frac{3\pi}{4}t\]
+                общее решение \(x(t) = C_1(\sqrt{2})^t\cos\frac{3\pi}{4}t + C_2(\sqrt{2})^t\sin\frac{3\pi}{4}t.\)</p>
+            <div class="example">\(\textbf {Пример}\)</div>
+            <p>\[x(t+2) + 2x(t+1) + x(t) = 0\]
+                \[\lambda^2 + 2\lambda + 1 = 0\]
+                \[\lambda = -1\;кратности\;2\;\;ФСР:\;\varphi_1(t) = (-1)^t,\;\;\varphi_2(t) = t(-1)^t,\]
+                общее решение \(x(t) = C_1(-1)^t + C_2t(-1)^t.\)</p>
+            <div class="example">\(\textbf {Пример}\)</div>
+            <p>Числа Фибоначчи \[x(t+2) = x(t+1) + x(t),\;\;x(1) = 1,\;x(2) = 1\]
+                \[\lambda^2 - \lambda - 1 = 0,\;\;\lambda_{1,2} = \frac{1 \pm \sqrt{5}}{2},\]
+                общее решение \(x(t) = C_1(\frac{1 + \sqrt{5}}{2})^t + C_2(\frac{1 - \sqrt{5}}{2})^t\)</p>
+            <p>Система для определения \(C_1,\;C_2:\)
+                \[\begin{cases}\begin{eqnarray}x(1) & = & 1 & = & C_1\frac{1 + \sqrt{5}}{2} + C_2\frac{1 - \sqrt{5}}{2},  \\
+                x(2) & = & 1 & = & C_1(\frac{1 + \sqrt{5}}{2})^2 + C_2(\frac{1 - \sqrt{5}}{2})^2,
+                \end{eqnarray}\end{cases}\]
+                \[C_1 = \frac{1}{\sqrt{5}},\;\;C_2 = -\frac{1}{\sqrt{5}}.\]</p>
+            <div class="example">\(\textbf {Пример}\)</div>
+            <p> Найдем решение уравнения \[x(t+4) = x(t+2),\] удовлетворяющее начальным условиям:
+            \(x(1) = u_1, x(2) = u_2, x(3) = u_3, x(4) = u_4 .\)</p>
+            <p>\(\textbf{Решение.}\) Прежде всего отметим, что в данном уравнении
+                коэффициенты при \(x(t + 1)\), \(x(t)\) равны нулю: \(a_3 = 0\),
+            \(a_4=0\).</p>
+            <p>Заменой времени \(\tau = t + 2\) придем к уравнению второго порядка
+                \(х(\tau + 2) = х(\tau)\) с характеристическим уравнением
+                \(\lambda^2 = 1\).</p>
+            <p>Следовательно, его общее решение дается формулой
+                \(x(\tau) = C_1 \cdot 1^{\tau} + C_2 \cdot (-1)^{\tau}\).
+                Определим постоянные \(C_1, C_2\) из начальных условий \(x(1) = u_3, x(2) = u_4\):
+            \[\left\{\begin{matrix}
+                C_1-C_2 = u_3,\\
+                C_1+C_2 = u_4
+                \end{matrix}\right.\]
+                Отсюда \(C_1 = \frac{u_3+u_4}{2}, C_2 = \frac{u_4-u_3}{2}\).</p>
+            <p> Выпишем решение исходной задачи Коши в виде последовательности:
+            \[u_1, u_2, \{\frac{u_3+u_3}{2}\cdot 1^t + \frac{u_4-u_3}{2}\cdot (-1)^t\}_{t=3}^{\infty}.\]</p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="footer">Copyright © 2016 <a href="../index.html">Название сайта</a> Все права защищены.</div>
+</div>
+<div id="subfooter" class="global_container">Powered by MathJax</div>
+</body>
+</html>

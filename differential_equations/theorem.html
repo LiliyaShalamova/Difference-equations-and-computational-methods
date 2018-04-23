@@ -24,15 +24,19 @@
             <ul class="lcol_menu">
                 <li class="homepage"><a href="../index.html">Главная страница</a></li>
                 <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
-                <li><a href="diff_equations.html">Разностные уравнения</a></li>
-                <li><a class="item-selected" href="basic_def.html">Основные определения</a></li>
-                <li><a href="solution_methods.html">Методы решения</a></li>
+                <li><a href="def.html">Основные определения</a></li>
+                <li><a href="examples1.html">Примеры</a></li>
+                <li><a href="linear.html">Линейные разностные уравнения</a></li>
+                <li><a class="item-selected" href="theorem.html">Теоремы</a></li>
+                <li><a href="examples2.html">Примеры</a></li>
+                <li><a href="stability.html">Устойчивость положения равновесия</a></li>
                 <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
                 <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
                 <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
                 <li><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
                 <li><a href="../interpolation.html">Интерполяция</a></li>
                 <li><a href="../numerical_differentiation.html">Численное дифференцирование</a></li>
+                <li><a href="../integration.html">Численное интегрирование</a></li>
                 <li><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
                 <li class="category"><a href="#">Прочее</a></li>
                 <li><a href="../literature.html">Литература</a></li>
@@ -43,16 +47,54 @@
         <div id="content_col">
             <div class="entry_title">Теоремы</div>
             <div class="example">\(\textbf {Теорема (Принцип суперпозиции)}\)</div>
-            <p>Если в уравнении (1) правая часть \(b(t)\) имеет вид \[b(t) = \alpha_1b_1(t) + \alpha_2b_2(t),\] где \(\alpha_1\;и\;\alpha_2\)
+            <p>Если в линейном разностном уравнении правая часть \(b(t)\) имеет вид
+                \[b(t) = \alpha_1b_1(t) + \alpha_2b_2(t),\] где \(\alpha_1\;и\;\alpha_2\)
                 - постоянные числа, и известно,
-                что \(\varphi_1(t)\) есть частное решение уравнения (1) с правой частью \(b_1(t)\),
-                а \(\varphi_2(t)\) - частное решение уравнения (1) с правой частью \(b_2(t)\), то
-                \(\varphi(t) = \alpha_1\varphi_1(t) + \alpha_2\varphi_2(t)\) является частным решением исходного уравнения (1).</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+                что \(\varphi_1(t)\) есть частное решение уравнения с правой частью \(b_1(t)\),
+                а \(\varphi_2(t)\) - частное решение уравнения с правой частью \(b_2(t)\), то
+                \(\varphi(t) = \alpha_1\varphi_1(t) + \alpha_2\varphi_2(t)\) является частным решением исходного уравнения.</p>
+            <div class="example">\(\textbf {Теорема (об общем виде решений линейного однородного уравнения)}\)</div>
+            <p>\[x(t+n) + a_1(t)x(t+n-1) +...+ a_n(t)x(t) = 0\]</p>
+            <p>1. Всякая система решений \(\varphi_1(t),..., \varphi_n(t)\) с линейно независимыми начальными
+                значениями \[ \begin{pmatrix}\varphi_1(1)\\\varphi_1(2)\\\vdots\\\varphi_1(n)\end{pmatrix}
+                ,\;\begin{pmatrix}\varphi_2(1)\\\varphi_2(2)\\\vdots\\\varphi_2(n)\end{pmatrix},\;\cdots,
+                \;\begin{pmatrix}\varphi_n(1)\\\varphi_n(2)\\\vdots\\\varphi_n(n)\end{pmatrix}\]
+                образует фундаментальную систему решений;</p>
+            <p>2. Если \(\varphi_1(t),..., \varphi_n(t)\) - какая-нибудь фундаментальная система решений,
+                то любое решение \(\varphi(t)\) уравнения может быть единственным образом представлено в виде
+                их линейной комбинации \[\varphi(t) = \lambda_1\varphi_1(t) +...+ \lambda_n\varphi_n(t)\]
+                с некоторыми числовыми коэффициентами \(C_1,..., C_n\), определяемыми из начальных условий.</p>
+            <div class="example">\(\textbf {Теорема (об общем виде решений линейного неоднородного разностного уравнения)}\)</div>
+            <p>\[x(t+n) + a_1(t)x(t+n-1) +...+ a_n(t)x(t) = b(t)\]</p>
+            <p>Пусть \(x = x_{част}(t)\) - некоторое решение неоднородного уравнения, а \(\varphi_1(t),..., \varphi_n(t)\) -
+                фундаментальная система решений соответствующего однородного уравнения.</p>
+            <p>Тогда любое решение \(\varphi(t)\) уравнения может быть единственным образом представлено в виде
+                \[\varphi(t) = x_{част}(t) + \lambda_1\varphi_1(t) +...+\lambda_n\varphi_n(t),\] где
+                \(C_1,..., C_n\) - постоянные, определяемые из начальных условий.</p>
+            <p>Для линейного однородного разностного уравнения с постоянными коэффициентами
+                \[x(t+n) + a_1x(t+n-1) +...+a_nx(t) = 0\]
+                уравнение \[\lambda^n +a_1\lambda^{n-1} +...+ a_n = 0\]
+                называется \(\textbf {характеристическим}.\)</p>
+            <div class="example">\(\textbf {Теорема}\)</div>
+            <p>О построениее фундаментальной системы решений линейного однородного <br>
+                уравнения по корням характеристического уравнения</p>
+            <p>Если каждому вещественному корню \(\lambda\) кратности \(k\) поставить
+                в соответствие фукнции \[\lambda_t, t\lambda^t,..., t^{t-1}\lambda^t,\]
+                а каждому комлексному корню \(\lambda = r(\cos\omega + i\sin\omega)\) кратности \(k\)
+                и сопряженному корню \(\bar{\lambda} = r(\cos\omega - i\sin\omega)\) поставить в соответствие функции
+                \[r^t\cos\omega t,\;\;tr^t\cos\omega t,\;\;...,\;\;t_{k-1}r^t\cos\omega t,\]
+                \[r^t\sin\omega t,\;\;tr^t\sin\omega t,\;\;...,\;\;t_{k-1}r^t\sin\omega t,\] то
+                объединение всех таких функций будет одной из фундаментальных систем решений данного уравнения.</p>
+            <div class="example">\(\textbf {Тоерема}\)</div>
+            <p>О построении частного решения неоднородного уравнения с правой частью специального вида</p>
+            <p>Если правая часть линейного неоднородного разностного уравнения с постоянными коэффициентами \[x(t+n) + a_1(t)x(t+n-1)+...+ a_n(t)x(t) = b(t)\]
+                имеет вид \[b(t) = p^t(P(t)\cos\omega t + Q(t)\sin\omega t),\]
+                где \(P(t)\;и\;Q(t)\) - многочлены степени не больше \(m\), то при \(\omega \ne 0\) существует решение вида:
+                \[x_{част}(t) = t^kp^t(R(t)\cos\omega t + T(t)\sin\omega t),\]
+                где \(R(t)\;и\;T(t)\) - многочлены степени не больше \(m\), а \(k\) - кратность корня
+                \(\lambda = p(\cos\omega + i\sin\omega)\) в характеристическом уравнении(если такого корня нет, то \(k = 0\)).</p>
+            <p>При \(\omega = 0,\) т.е. при \[b(t) = p^tP(t)\] существует решение вида \[x_{част}(t) = t^kp^tR(t),\]
+                где \(R(t)\) - многочлен степени не больше \(m\), а \(k\) - кратность корня (если такого корня нет то \(k = 0\)).</p>
         </div>
     </div>
     <div id="footer">Copyright © 2016 <a href="../index.html">Название сайта</a> Все права защищены.</div>

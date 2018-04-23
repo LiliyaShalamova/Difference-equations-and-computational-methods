@@ -1,9 +1,12 @@
 var menu = "<ul class=\"lcol_menu\">\n" +
     "\t<li class=\"homepage\"><a href=\"index.html\">Главная страница</a></li>\n" +
     "\t<li class=\"category\"><a href=\"differential_equations.html\">Разностные уравнения</a></li>\n" +
-    "\t<li><a href=\"differential_equations/diff_equations.html\">Разностные уравнения</a></li>\n" +
-    "\t<li><a href=\"differential_equations/basic_def.html\">Основные определения</a></li>\n" +
-    "\t<li><a href=\"differential_equations/solition_methods.html\">Методы решения</a></li>\n" +
+    "\t<li><a href=\"differential_equations/def.html\">Основные определения</a></li>\n" +
+    "\t<li><a href=\"differential_equations/examples1.html\">Примеры</a></li>\n" +
+    "\t<li><a href=\"differential_equations/linear.html\">Линейные разностные уравнения</a></li>\n" +
+    "\t<li><a href=\"differential_equations/theorem.html\">Теоремы</a></li>\n" +
+    "\t<li><a href=\"differential_equations/examples2.html\">Примеры</a></li>\n" +
+    "\t<li><a href=\"differential_equations/stability.html\">Устойчивость положения равновесия</a></li>\n" +
     "\t<li class=\"category\"><a href=\"calculation_methods.html\">Методы вычислений</a></li>\n" +
     "\t<li><a href=\"numerical_solution_nonlinear_equations.html\">Численное решение нелинейных уравнений</a></li>\n" +
 	"\t<li><a href=\"numerical_solution_linear_systems.html\">Численные методы решения линейных систем</a></li>\n" +
