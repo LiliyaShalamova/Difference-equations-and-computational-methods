@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-    <title>Примеры</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <title>Тестирование</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
     <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
     <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
@@ -12,6 +12,8 @@
                         SVG: { linebreaks: { automatic: true } },TeX: {equationNumbers: {autoNumber: "AMS"}, Augment: {  Definitions: {}}}
             });
         </script>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../js/testsShower.js"></script>
 </head>
 <body>
 <div id="content_container" class="global_container">
@@ -23,19 +25,14 @@
         <div id="left_col">
             <ul class="lcol_menu">
                 <li class="homepage"><a href="../index.html">Главная страница</a></li>
-                <li class="category"><a href="../numerical_solution_nonlinear_systems.html">Численное решение систем нелинейных уравнений</a></li>
-                <li><a href="problem_formulation.html">Постановка задачи</a></li>
-                <li><a href="newton_method.html">Метод Ньютона</a></li>
-                <li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
-                <li><a class="item-selected" href="examples.html">Примеры</a></li>
                 <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
-                <li><a href="../differential_equations/def.html">Основные определения</a></li>
-                <li><a href="../differential_equations/examples1.html">Примеры</a></li>
-                <li><a href="../differential_equations/linear.html">Линейные разностные уравнения</a></li>
-                <li><a href="../differential_equations/theorem.html">Теоремы</a></li>
-                <li><a href="../differential_equations/examples2.html">Примеры</a></li>
-                <li><a href="../differential_equations/stability.html">Устойчивость положения равновесия</a></li>
-                <li><a href="../differential_equations/tests.html">Тестирование</a></li>
+                <li><a href="def.html">Основные определения</a></li>
+                <li><a href="examples1.html">Примеры</a></li>
+                <li><a href="linear.html">Линейные разностные уравнения</a></li>
+                <li><a href="theorem.html">Теоремы</a></li>
+                <li><a href="examples2.html">Примеры</a></li>
+                <li><a href="stability.html">Устойчивость положения равновесия</a></li>
+                <li><a class="item-selected" href="tests.html">Тестирование</a></li>
                 <li class="category"><a href="../calculation_methods.html">Методы вычислений</a></li>
                 <li><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
                 <li><a href="../numerical_solution_linear_systems.html">Численные методы решения линейных систем</a></li>
@@ -51,12 +48,32 @@
             </ul>
         </div>
         <div id="content_col">
-            <div class="entry_title">Примеры</div>
-            <p></p>
+            <div class="entry_title">Тестирование</div>
+            <form id="form" name="form" target="frame">
+
+            </form>
+            <div id="result"></div>
         </div>
     </div>
-    <div id="footer">Copyright © 2016 <a href="index.html">Название сайта</a> Все права защищены.</div>
+    <div id="footer">Copyright © 2016 <a href="../index.html">Название сайта</a> Все права защищены.</div>
 </div>
 <div id="subfooter" class="global_container">Powered by MathJax</div>
+<script>
+    var testsCount = 3;
+    $("#form").html(generateTestCases(testsCount));
+    $("<p><input class=\"testing\" type=\"submit\" value=\"Отправить\"></p>").insertAfter($("label").last());
+    $( "#form" ).submit(function() {
+        $("#form input+label").css({'color': '#000', 'font-weight': 'normal'});
+        $("#result").html('');
+        $("#form input:checked+label").css({'color': 'red', 'font-weight': 'bold'});
+        //$("#form input[value=\"1\"]+label").css({'color': '#73ff0a', 'font-weight': 'bold'});
+        $("input[value=\"1\"]:checked+label").css({'color': '#73ff0a', 'font-weight': 'bold'});
+        var rightAnswer = $("#form input[value=\"1\"]:checked").length;
+        var result = "<div style='text-align: center; font-weight: bold;'>Тестирование пройдено. Вы решили правильно \\(" + Math.round(rightAnswer*100/testsCount) + " \\%\\).";
+        $("#result").append(result);
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub, "result"]);
+    });
+</script>
+<iframe name="frame"></iframe>
 </body>
 </html>

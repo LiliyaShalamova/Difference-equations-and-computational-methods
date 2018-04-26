@@ -34,6 +34,11 @@ a:hover
 	text-decoration: none;
 }
 
+.entry_title
+{
+	text-align: center;
+}
+
 h2, .entry_title 
 {
 	font-size: 20px;
@@ -76,8 +81,20 @@ th, td
 	padding: 10px 0;
 }
 
-iframe{
+iframe
+{
 	display: none;
+}
+
+input.testing
+{
+
+}
+
+.testing
+{
+	display: block;
+	margin: 0 auto;
 }
 
 .table
@@ -155,7 +172,7 @@ iframe{
 
 #header 
 {
-	background: url('../images/top.png') no-repeat;
+	background: url('../images/gradient.jpg') no-repeat;
 	border-radius: 2px 2px 0 0;
 	-moz-border-radius: 2px 2px 0 0;
 	-webkit-border-radius: 2px 2px 0 0;
@@ -168,12 +185,19 @@ iframe{
 {
 	font-size: 20px;
 	text-shadow: #ffffff 0px 1px 1px;
+	content: "";
+}
+
+#header .descr
+{
+	padding-left: 50px;
 }
 
 #header .title 
 {
-	font-size: 32px;
-	padding-top: 95px;
+	font-size: 35px;
+	padding-top: 75px;
+	padding-left: 50px;
 }
 
 .content 

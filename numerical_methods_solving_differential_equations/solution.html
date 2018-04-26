@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-    <title>Решение нелинейных уравнений</title>
+    <title>Решение дифференциальных уравнений</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
     <script type="text/javascript" src="../MathJax-2.6-latest/MathJax.js?config=default&locale=ru"></script>
@@ -26,19 +26,22 @@
         <div id="left_col">
             <ul class="lcol_menu">
                 <li class="homepage"><a href="../index.html">Главная страница</a></li>
-                <li class="category"><a href="../numerical_solution_nonlinear_equations.html">Численное решение нелинейных уравнений</a></li>
-                <li><a href="formulation_of_problem.html">Постановка задачи</a></li>
-                <li><a href="half_division_method.html">Метод половинного деления</a></li>
-                <li><a href="newton's_method.html">Метод Ньютона</a></li>
-                <li><a href="modified_newton's_method.html">Модифицированный метод Ньютона</a></li>
-                <li><a href="method_of_chords.html">Метод хорд</a></li>
-                <li><a href="method_of_moving_chords.html">Метод подвижных хорд</a></li>
-                <li><a href="mayer_method.html">Метод секущих парабол</a></li>
-                <li><a href="simple_iteration_method.html">Метод простой итерации</a></li>
-                <li><a href="error_of_methods.html">Погрешность методов</a></li>
-                <li><a href="convergence_of_newton.html">Сходимость метода Ньютона</a></li>
-                <li><a href="examples.html">Примеры</a></li>
-                <li><a class="item-selected" href="solving.html">Решение нелинейных уравнений</a></li>
+                <li class="category"><a href="../numerical_methods_solving_differential_equations.html">Численные методы решения дифференциальных уравнений</a></li>
+                <li><a href="problem_formulation.html">Постановка задачи</a></li>
+                <li><a href="taylor_decomposition.html">Методы, основанные на тейлоровском разложении</a></li>
+                <li><a href="explicit_euler_method.html">Явный метод Эйлера</a></li>
+                <li><a href="euler_method_with_recalculation.html">Метод Эйлера с пересчетом</a></li>
+                <li><a href="koshi_method.html">Метод Коши</a></li>
+                <li><a href="explicit_second_order_runge-kutta_methods.html">Семейство явных методов Рунге-Кутты второго порядка</a></li>
+                <li><a href="explicit_third_order_and_fourth_order_runge_kutta_methods.html">Семейство явных методов Рунге-Кутты третьего и четвертого порядков</a></li>
+                <li><a href="general_class_runge_kutta_methods.html">Общий класс методов Рунге-Кутты</a></li>
+                <li><a href="explicit_adams_methods.html">Явные методы Адамса</a></li>
+                <li><a href="implicit_adams_methods.html">Неявные методы Адамса</a></li>
+                <li><a href="general_class_mult_step_methods.html">Общий класс многошаговых методов</a></li>
+                <li><a href="linear_equation_and_stability.html">Линейные разностные уравнения и их устойчивость</a></li>
+                <li><a href="0stability.html">0-устойчивость и сходимость многошаговых методов</a></li>
+                <li><a href="rigid_systems_and_Astability.html">Жесткие системы. А-устойчивость</a></li>
+                <li><a class="item-selected" href="solution.html">Решение дифференциальных уравнений</a></li>
                 <li class="category"><a href="../differential_equations.html">Разностные уравнения</a></li>
                 <li><a href="../differential_equations/def.html">Основные определения</a></li>
                 <li><a href="../differential_equations/examples1.html">Примеры</a></li>
@@ -62,20 +65,21 @@
             </ul>
         </div>
         <div id="content_col">
-            <div class="entry_title">Решение нелинейных уравнений</div>
+            <div class="entry_title">Решение дифференциальных уравнений</div>
             <form id="equation_solver" target="frame">
-                <p><label>Функция \(f(x)\): <input type="text" id="equation"></label></p>
+                <p><label>Решить задачу Коши \(y'=f(x,y)\) <input type="text" id="equation"></label></p>
                 <p><label>Отрезок от <input type="text" id="a"> до <input type="text" id="b"></label></p>
-                <p><label>Погрешность: <input type="text" id="error"></label></p>
+                <p><label>С начальными условиями \(x_0\) <input type="text" id="x0"> \(y_0\) <input type="text" id="y0"></label></p>
+                <p><label>Количество точек разбиения \(N\) <input type="text" id="N"></label></p>
                 <p>
                     <label>Выберите метод:
                         <select id="method">
-                            <option value="1">Метод половинного деления (дихотомии)</option>
-                            <option value="2">Метод Ньютона</option>
-                            <option value="3">Модифицированный метод Ньютона</option>
-                            <option value="4">Метод хорд</option>
-                            <option value="5">Метод подвижных хорд</option>
-                            <option value="6">Метод простой итерации</option>
+                            <option value="1">Явный метод Эйлера</option>
+                            <option value="2">Метод Эйлера с пересчетом</option>
+                            <option value="3">Метод Коши</option>
+                            <option value="4">Метод Рунге-Кутты третьего порядка</option>
+                            <option value="5">Метод Рунге-Кутты четвертого порядка</option>
+                            <option value="6">Метод Тейлора второго порядка</option>
                         </select>
                     </label>
                 </p>
@@ -94,8 +98,9 @@
         var equation = $("#equation").val();
         var a = parseFloat($("#a").val());
         var b = parseFloat($("#b").val());
-        var error = solveEquation($("#error").val());
-        generateSolution(method, equation, a, b, error);
+        var x0 = $("#x0").val();
+        var y0 = $("#y0").val();
+        var h = (b - a)/parseFloat($("#N").val());
     });
 </script>
 <iframe name="frame"></iframe>

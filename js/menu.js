@@ -7,6 +7,7 @@ var menu = "<ul class=\"lcol_menu\">\n" +
     "\t<li><a href=\"differential_equations/theorem.html\">Теоремы</a></li>\n" +
     "\t<li><a href=\"differential_equations/examples2.html\">Примеры</a></li>\n" +
     "\t<li><a href=\"differential_equations/stability.html\">Устойчивость положения равновесия</a></li>\n" +
+	"\t<li><a href=\"differential_equations/tests.html\">Тестирование</a></li>\n" +
     "\t<li class=\"category\"><a href=\"calculation_methods.html\">Методы вычислений</a></li>\n" +
     "\t<li><a href=\"numerical_solution_nonlinear_equations.html\">Численное решение нелинейных уравнений</a></li>\n" +
 	"\t<li><a href=\"numerical_solution_linear_systems.html\">Численные методы решения линейных систем</a></li>\n" +

@@ -1,3 +1,8 @@
+var differentialEquationMethods = {
+    1: explicitEulerMethod,
+    2: eulerWithRecalculationMethod
+};
+
 var nonLinearEquationMethods = {
     1: solveEquationByHalfDivisionMethod,
     2: solveEquationByNewtonMethod,
