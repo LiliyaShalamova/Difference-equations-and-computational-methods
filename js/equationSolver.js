@@ -942,8 +942,7 @@ function performNode(node, inLaTeX) {
 
     if (node.value === '+') {
         //pass
-    }
-    else if (node.value === '-') {
+    } else if (node.value === '-') {
         if (isNode(node.right))
             node.right.value = '(' + node.right.value + ')';
     } else if (node.value === '*') {
@@ -971,8 +970,7 @@ function performNode(node, inLaTeX) {
             if (isNode(node.right))
                 node.right.value = '(' + node.right.value + ')';
         }
-    }
-    else {
+    } else {
         node.left.value = '(' + node.left.value + ')';
         node.value += node.left.value;
         return;
@@ -1054,6 +1052,7 @@ function Solution() {
     };
     this.withError = function(e) {
         var count = 0;
+        e = Math.abs(e);
         while (e < 1) {
             count++;
             e *= 10;
@@ -1270,8 +1269,10 @@ function solveEquationBySimpleIterationMethod(equation, a, b, e) {
     var solution = new Solution()
         .withTitle(top, e, 'Метод простой итерации')
         .withId(methodsIds.simpleIteration)
-        .withIntervalCheck(top, a, b)
-        .withLine("Заменим уравнение \\(f(x)=0\\) эквивалентным ему уравнением \\[x=x-\\lambda f(x).\\]" +
+        .withIntervalCheck(top, a, b);
+    if (!solution.isCorrect)
+        return solution;
+    solution.withLine("Заменим уравнение \\(f(x)=0\\) эквивалентным ему уравнением \\[x=x-\\lambda f(x).\\]" +
         "Тогда \\[\\varphi(x)=x-\\lambda f(x).\\] Найдем \\(f'(x)\\). \\[f'(x)=" +
             getEquationFromTree(derivative).substr(2));
     var derivativeAValue = derivative.calc(a);
@@ -1280,7 +1281,7 @@ function solveEquationBySimpleIterationMethod(equation, a, b, e) {
     var min = Math.min(derivativeAValue, derivativeBValue);
     var lambda = 1 / max;
     var q = 1 - min / max;
-    var error = (1 - q) / q * e;
+    var error = Math.abs((1 - q) / q * e);
     solution
         .withError(error)
         .withLine("\\(\\lambda=\\frac{1}{M}\\)\n")
