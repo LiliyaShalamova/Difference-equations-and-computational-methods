@@ -1277,11 +1277,25 @@ function solveEquationBySimpleIterationMethod(equation, a, b, e) {
             getEquationFromTree(derivative).substr(2));
     var derivativeAValue = derivative.calc(a);
     var derivativeBValue = derivative.calc(b);
-    var max = Math.max(derivativeAValue, derivativeBValue);
-    var min = Math.min(derivativeAValue, derivativeBValue);
+	var max;
+	var min;
+	if (Math.abs(derivativeAValue) > Math.abs(derivativeBValue))
+	{
+		max = derivativeAValue;
+		min = derivativeBValue;
+	}
+	else
+	{
+		max = derivativeBValue;
+		min = derivativeAValue;
+	}
     var lambda = 1 / max;
     var q = 1 - min / max;
     var error = Math.abs((1 - q) / q * e);
+    if (error === 0) {
+        error = e;
+    }
+	
     solution
         .withError(error)
         .withLine("\\(\\lambda=\\frac{1}{M}\\)\n")
