@@ -1145,6 +1145,14 @@ function solveEquationByHalfDivisionMethod(equation, a, b, e) {
         "Деление отрезка повторяется, пока длина отрезка не станет меньше \\(\\varepsilon\\).");
     while(true) {
         var c = (a + b) / 2;
+		if (Math.abs(top.calc(c)) < e)
+		{
+			solution.approx.push(c);
+			solution.bValues.push(b);
+			solution.aValues.push(a);
+			solution.errors = calculateHalfDivisionErrors(solution.aValues, solution.bValues);
+			return solution;
+		}
         if (top.calc(c) * top.calc(a) < 0)
             b = c;
         else
